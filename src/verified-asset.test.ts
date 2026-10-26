@@ -23,12 +23,14 @@ function storage() {
 afterEach(() => vi.unstubAllGlobals());
 describe("verified immutable asset storage", () => {
   it("reuses bytes across sessions and separates changed expected hashes", async () => {
-    storage();
+    const saved = storage();
+    const writes = vi.spyOn(saved, "set");
     const fetcher = vi.fn<() => Promise<Response>>(async () => new Response(bytes));
     vi.stubGlobal("fetch", fetcher);
     expect(new Uint8Array(await readVerifiedAsset(url, hash, signal()))).toEqual(bytes);
     expect(new Uint8Array(await readVerifiedAsset(url, hash, signal()))).toEqual(bytes);
     expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(writes).toHaveBeenCalledTimes(1);
     await expect(readVerifiedAsset(url, "0".repeat(64), signal())).rejects.toThrow("integrity");
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
@@ -56,7 +58,7 @@ describe("verified immutable asset storage", () => {
     await expect(readVerifiedAsset(url, "0".repeat(64), signal())).rejects.toThrow("integrity");
     expect(saved.size).toBe(0);
   });
-  it("bounds retained bytes and entries while retaining the most recently used assets", async () => {
+  it("bounds retained bytes and entries while retaining the newest fetched assets", async () => {
     const saved = storage();
     const large = new Uint8Array(7 * 1024 * 1024);
     const largeHash = createHash("sha256").update(large).digest("hex");

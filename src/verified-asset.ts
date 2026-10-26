@@ -21,7 +21,7 @@ async function remember(cache: Cache, key: string, bytes: ArrayBuffer, signal: A
   if (bytes.byteLength > MAX_ASSET_BYTES) return;
   try {
     signal.throwIfAborted();
-    // Replacement moves a hit to the end of CacheStorage's insertion order.
+    // Only newly fetched bytes are written; cache hits never rewrite multi-megabyte assets.
     await cache.delete(key);
     await cache.put(
       key,
@@ -67,7 +67,6 @@ export async function readVerifiedAsset(
         const bytes = await saved.arrayBuffer();
         signal.throwIfAborted();
         if ((await digest(bytes)) === expectedHash) {
-          await remember(cache, key.href, bytes, signal);
           signal.throwIfAborted();
           return bytes;
         }
