@@ -16,7 +16,8 @@
     "test:e2e": "playwright test",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test",
     "data:download": "node scripts/download-sources.mjs",
-    "data:prepare": "tsx scripts/prepare.ts"
+    "data:prepare": "tsx scripts/prepare.ts",
+    "benchmark": "tsx scripts/benchmark.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "5.104.5",
@@ -24,6 +25,7 @@
     "leaflet": "1.9.4",
     "react": "19.3.1",
     "react-dom": "19.3.1",
+    "supercluster": "9.1.0",
     "zod": "4.6.7"
   },
   "devDependencies": {
