@@ -7,6 +7,27 @@ const feature = (properties: Record<string, unknown>, coordinates = [16.39, 48.2
 });
 
 describe("provider import conformance", () => {
+  it("retains a Geneva record with an implausible source year and an explicit quality note", () => {
+    const raw = {
+      spatialReference: { wkid: 4326 },
+      features: [
+        {
+          attributes: {
+            ID_ARBRE: 384757,
+            OBJECTID: 226999,
+            DATE_PLANTATION: -55784073600000,
+            DATE_PLANTATION_ESTIMEE: 1,
+          },
+          geometry: { x: 6.14, y: 46.2 },
+        },
+      ],
+    };
+    expect(importInventory("geneva", raw)[0]).toMatchObject({
+      sourceId: "384757",
+      plantingYear: null,
+      qualityNotes: [expect.stringContaining("202")],
+    });
+  });
   it("preserves Vienna class ranges and qualifies release-scoped IDs", () => {
     const [tree] = importInventory(
       "vienna",

@@ -120,6 +120,8 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
     if (dataset === "geneva") {
       const planted = epoch(p["DATE_PLANTATION"]);
       const observed = epoch(p["DATE_OBSERVATION"]);
+      const year = planted?.getUTCFullYear() ?? null;
+      const invalidYear = year !== null && (year < 1000 || year > 2200);
       return treeSchema.parse({
         dataset,
         sourceId,
@@ -132,7 +134,14 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
         height: scalar(p["HAUTEUR_TOTALE"], "m"),
         crown: scalar(p["DIAMETRE_COURONNE"], "m"),
         circumference: scalar(p["CIRCONFERENCE_1M"], "cm"),
-        plantingYear: planted === null ? null : planted.getUTCFullYear(),
+        plantingYear: invalidYear ? null : year,
+        ...(invalidYear
+          ? {
+              qualityNotes: [
+                `Source planting year ${year} is outside the supported range (1000–2200); kept as unknown. Source timestamp: ${String(p["DATE_PLANTATION"])}.`,
+              ],
+            }
+          : {}),
         plantingEstimated: p["DATE_PLANTATION_ESTIMEE"] === 1,
         age: null,
         observedAt: observed === null ? null : observed.toISOString().slice(0, 10),

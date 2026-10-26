@@ -40,6 +40,7 @@ export const treeSchema = z.object({
   age: z.string().nullable(),
   observedAt: z.string().nullable(),
   status: z.enum(["existing", "removed", "unknown"]),
+  qualityNotes: z.array(z.string()).optional(),
 });
 export type Tree = z.infer<typeof treeSchema>;
 export const datasetSchema = z.object({
@@ -58,6 +59,7 @@ export const datasetSchema = z.object({
   license: z.string(),
   licenseUrl: z.url(),
   coverage: z.string(),
+  scope: z.enum(["study", "full"]).optional(),
 });
 export type Dataset = z.infer<typeof datasetSchema>;
 export const manifestSchema = z.object({
