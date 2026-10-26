@@ -1,40 +1,35 @@
 # Pilot architecture
 
-Status: the bounded pilot implements the prepared-release design for inventories. Vienna, Geneva and Porto are separate datasets. Copernicus uses a live canopy overlay; immutable vector publication remains unvalidated.
+The pilot publishes complete available inventories for Vienna, the canton of Geneva and Porto. Copernicus remains a separate live canopy overlay; official vector publication is not yet validated.
 
-## Work phases
+## Decision
 
-- Ground: complete; the existing Vienna app and provider differences were reviewed.
-- Sketch: complete; direct provider queries and prepared releases were compared independently.
-- Agree: complete; the user selected this pilot and a separate public repository.
-- Implement: bounded inventory pilot complete; Copernicus vector validation remains open.
-- Scrap: revisit if source differences leak into the UI or bounded reads cannot remain complete.
+Prepare validated, immutable releases outside the browser and publish their manifest last. Each selected inventory loads a compact compressed search index into a dedicated worker. The worker validates hashes and schemas, searches the complete snapshot and builds Supercluster indexes. Detailed records arrive on demand in 512-record shards, with four shards cached. Switching inventories disposes the worker.
 
-## Synthesis decision
+The main thread receives only a result page of 30 records and at most 1,000 map markers or clusters. Dense views coarsen clustering rather than truncate matching records. Coincident records remain counted and accessible through the paginated list. Map movement reuses the existing clustering index; changing the text or area filter rebuilds it.
 
-Prepare validated, immutable releases outside the browser. Publish their manifest last. The browser loads a release once and queries that snapshot. The pilot uses small, explicit study areas and loads every record in each area; it does not yet claim citywide or European search. This keeps spatial completeness testable without prematurely adding a tile index.
+Stored gzip bytes use opaque `.bin` filenames. This prevents static servers from treating file compression as HTTP content encoding before the worker checks the stored-byte hash. Descriptor and detail identities must agree with the pinned release. Original study releases remain readable through the version-one interface.
 
-The alternative was a common browser interface over live WFS, ArcGIS and file downloads. That avoids a publishing job but shifts paging, CORS failures and changing upstream schemas into every visitor's session. It cannot provide a consistent snapshot across map, results and details.
+## Alternatives and backend
 
-## Does this need our own backend?
+Direct browser queries to WFS, ArcGIS and file downloads would move paging, CORS failures and changing schemas into each visitor's session. Loading all detailed records on the main thread would also impose unnecessary transfer and rendering work. Neither approach provides the current separation between complete search, bounded presentation and lazy details.
 
-It needs an owned data preparation process now, but not an always-running application API or database. Static releases can be hosted alongside the frontend during the bounded pilot. Move large assets to object storage before extending coverage substantially. Add a spatial backend such as PostGIS when complete cross-country filters, arbitrary large-area searches or incremental source updates justify its operating cost. TanStack Query is a browser request cache, not a substitute for data preparation or a spatial database.
+These three inventories fit static hosting with an owned preparation pipeline; they do not yet require an always-running application API. The largest compressed index is 5.17 MB, but worker memory remains material. Before broader expansion, measure representative phones and move assets to object storage as needed. Spatially partitioned indexes or a PostGIS-backed service become appropriate when client download and memory budgets, cross-country filters or incremental updates require them. TanStack Query caches requests; it does not replace data preparation or spatial indexing.
 
-## Caller interface
+## Public interfaces and tests
 
-`importInventory(dataset, raw)` validates and normalizes provider records. `loadRelease(manifest, signal)` validates a published snapshot. `searchInventory(release, area, text)` searches that complete snapshot. Selection is dataset-qualified and stays independent from search and map position.
-
-## Agreed test interfaces
-
-The user approved source import conformance, published catalogue behavior (including network failures through MSW), and user journeys. Tests exercise these public interfaces. They do not prove that a provider has recorded every real-world tree.
+Source import validates provider records and identity rules. The published catalogue interface validates descriptors, assets, release identity, complete query counts and lazy details, with MSW covering failures. Browser journeys cover search, map interactions, pagination, city changes and saved links. These are the three test interfaces agreed with the user.
 
 ## Invariants
 
-- A source record is not a biological identity. IDs are qualified by dataset; release-scoped IDs also require a release.
-- Unknown values stay unknown. Height ranges are not exact measurements. Age is not a planting year.
-- Source reference date, retrieval date and publication date are distinct.
-- No proximity-based deduplication across inventories.
-- A failed or empty import must not replace a valid release.
-- Search, map and details use the same immutable release. Failed downloads never look like zero trees.
-- Coverage means a published study area, not every tree within that geography.
-- Copernicus polygons have source and reference-year details, not species details.
+- Source records are not biological identities. IDs are dataset-qualified; release-scoped IDs also require a release.
+- Unknown measurements stay unknown; ranges remain ranges and age is not a planting year.
+- Retrieval, publication and source reference dates remain distinct.
+- Full-inventory publication fails if its bounds would exclude records. No proximity deduplication occurs.
+- Failed imports cannot replace the valid manifest. Downloads failing validation never appear as zero results.
+- Search, map and details use one immutable release. Saved releases remain available.
+- Clustering changes presentation, not membership. Pagination does not cap the search.
+- Source extent is not an administrative boundary or proof of complete physical-tree coverage.
+- Copernicus coverage is vegetation, not individual species records.
+
+See [measured performance and limitations](performance.md) and [source evidence](sources.md).
