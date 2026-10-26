@@ -4,7 +4,7 @@ The inventory releases now contain **every available source record** for Vienna,
 
 The checked-in release is reproducible from the raw acquisition manifest and source adapters. Running the downloader later produces a new acquisition; it cannot recreate an upstream snapshot that the publisher no longer serves.
 
-`pnpm data:download` (or `node scripts/download-sources.mjs`) downloads the inventory sources. It writes content-addressed raw files, then replaces `data/raw/provenance.json` only after all sources pass acquisition checks. Raw downloads are not shipped to the browser. The manifest records `scope: full`, exact request URLs, response hashes, retrieval times, measured point extents, geometry audits and observed identity issues. The release preparation step must verify those hashes before normalization. A failed download must not replace the last good published release.
+`pnpm data:download` runs the combined source acquisition and writes `data/raw/provenance.json` after its source checks pass. The direct command `node scripts/download-sources.mjs` downloads only Vienna, Geneva and Porto. It writes content-addressed raw files and `data/raw/original-provenance.json`; it does not assemble the combined provenance file. Raw downloads are not shipped to the browser. The manifest records `scope: full`, exact request URLs, response hashes, retrieval times, measured point extents, geometry audits and observed identity issues. The release preparation step must verify those hashes before normalization. A failed download must not replace the last good published release.
 
 ## Vienna
 

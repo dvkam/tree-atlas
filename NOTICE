@@ -12,7 +12,15 @@ Hamburg: Freie und Hansestadt Hamburg, Behörde für Umwelt, Klima, Energie
 und Agrarwirtschaft. Datenlizenz Deutschland — Namensnennung 2.0.
 https://www.govdata.de/dl-de/by-2-0
 Zürich: Stadt Zürich — Grün Stadt Zürich / Geomatik + Vermessung. CC0 1.0.
-Current extracts cover complete acquired inventories without geographic filtering.
+London: Greater London Authority and contributing public bodies. OGL v3.0.
+Camden: London Borough of Camden. OGL v3.0.
+Edinburgh: Copyright City of Edinburgh Council, contains Ordnance Survey data
+© Crown copyright and database right 2026. OGL v3.0.
+Belfast: Belfast City Council. OGL v3.0.
+Contains public sector information licensed under the Open Government Licence v3.0.
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+London excludes LB Camden contributor rows in favour of the separate Camden
+inventory. Other current extracts retain complete acquired inventories.
 Original saved study-area releases remain available. Source fields are
 reduced and measurement meanings retained. Retrieval dates, exact source
 requests and processing details are in the immutable provenance file referenced
