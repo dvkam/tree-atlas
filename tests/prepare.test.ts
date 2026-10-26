@@ -7,6 +7,9 @@ import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 import { afterEach, expect, test } from "vitest";
 import { z } from "zod";
+import { gunzipSync } from "node:zlib";
+import { indexDescriptorSchema, compactIndexSchema } from "../src/index-format.ts";
+import { releaseSchema } from "../src/domain.ts";
 
 const run = promisify(execFile);
 const script = fileURLToPath(new URL("../scripts/prepare.ts", import.meta.url));
@@ -84,6 +87,7 @@ async function fixture() {
         licenceUrl: "https://example.org/licence",
         attribution: "Synthetic test data",
         coverage: "Test box",
+        scope: "study",
         requests: [{ url: "https://example.org/request", sha256 }],
       };
     }),
@@ -126,6 +130,18 @@ test("publishes complete clipped releases with immutable provenance and structur
   for (const dataset of current.datasets) {
     const bytes = await readFile(resolve(f.cwd, "public/data", dataset.file), "utf8");
     expect(digest(bytes)).toBe(dataset.sha256);
+    const descriptor = indexDescriptorSchema.parse(JSON.parse(bytes));
+    const indexBytes = await readFile(resolve(f.cwd, "public/data", descriptor.index.file));
+    expect(createHash("sha256").update(indexBytes).digest("hex")).toBe(descriptor.index.sha256);
+    const index = compactIndexSchema.parse(JSON.parse(gunzipSync(indexBytes).toString("utf8")));
+    expect(index.rows).toHaveLength(dataset.count);
+    const rows = [];
+    for (const shard of descriptor.details) {
+      const detailBytes = await readFile(resolve(f.cwd, "public/data", shard.file));
+      expect(createHash("sha256").update(detailBytes).digest("hex")).toBe(shard.sha256);
+      rows.push(...releaseSchema.parse(JSON.parse(gunzipSync(detailBytes).toString("utf8"))).trees);
+    }
+    expect(rows.map((t) => t.sourceId)).toEqual(index.rows.map((r) => r[0]));
   }
   const geneva = current.datasets.find((d) => d.id === "geneva");
   if (!geneva) throw new Error("Geneva fixture missing");
@@ -167,6 +183,28 @@ test("identical inputs are repeatable, while changed acquisition metadata create
     expect(stored.release).toBe(dataset.release);
     expect(stored.fetchedAt).toBe("2026-10-27T00:00:00.000Z");
   }
+});
+
+test("full-source publication retains every record beyond the original study window", async () => {
+  const f = await fixture();
+  for (const source of f.sources) {
+    source.scope = "full";
+    source.bbox = [0, 0, 4, 4];
+  }
+  await f.save();
+  await prepare(f.cwd);
+  expect((await manifest(f.cwd)).datasets.map((d) => [d.id, d.count])).toEqual([
+    ["vienna", 2],
+    ["geneva", 2],
+    ["porto", 1],
+  ]);
+  const before = await readFile(resolve(f.cwd, "public/data/manifest.json"), "utf8");
+  const first = f.sources[0];
+  if (!first) throw new Error("Missing fixture");
+  first.bbox = [0, 0, 2, 2];
+  await f.save();
+  await expect(prepare(f.cwd)).rejects.toThrow("Full inventory must not discard");
+  expect(await readFile(resolve(f.cwd, "public/data/manifest.json"), "utf8")).toBe(before);
 });
 
 test.each(["checksum", "count", "duplicate-dataset", "empty-window", "geometry"] as const)(

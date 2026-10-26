@@ -4,7 +4,7 @@ import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { loadDataset, loadManifest, loadRelease, searchInventory } from "./catalog.ts";
-import { manifestSchema, releaseSchema, treeSchema } from "./domain.ts";
+import { datasetSchema, releaseSchema, treeSchema } from "./domain.ts";
 import type { Dataset, Release } from "./domain.ts";
 
 const base = "https://atlas.test/data/";
@@ -104,12 +104,13 @@ describe("published catalogue", () => {
 });
 
 describe("published pilot regression", () => {
+  const archives = ["vienna-e4fc6f34cf3af532", "geneva-d4250459b8e3aba6", "porto-ac49bc8ef867a843"];
   it("loads every checked-in release and matches its independent published count", async () => {
-    const manifest = manifestSchema.parse(
-      JSON.parse(await readFile("public/data/manifest.json", "utf8")),
-    );
     const expected = { vienna: 4375, geneva: 4685, porto: 2328 };
-    for (const source of manifest.datasets) {
+    for (const archive of archives) {
+      const source = datasetSchema.parse(
+        JSON.parse(await readFile(`public/data/releases/${archive}/dataset.json`, "utf8")),
+      );
       const file = await readFile(`public/data/${source.file}`, "utf8");
       server.use(http.get(`${base}${source.file}`, () => new HttpResponse(file)));
       const result = await loadRelease(base, source);
@@ -118,11 +119,11 @@ describe("published pilot regression", () => {
     }
   });
   it("retains all four conflicting Geneva records without conflating their identity", async () => {
-    const manifest = manifestSchema.parse(
-      JSON.parse(await readFile("public/data/manifest.json", "utf8")),
+    const source = datasetSchema.parse(
+      JSON.parse(
+        await readFile("public/data/releases/geneva-d4250459b8e3aba6/dataset.json", "utf8"),
+      ),
     );
-    const source = manifest.datasets.find((d) => d.id === "geneva");
-    if (!source) throw new Error("Missing Geneva");
     const result = releaseSchema.parse(
       JSON.parse(await readFile(`public/data/${source.file}`, "utf8")),
     );
