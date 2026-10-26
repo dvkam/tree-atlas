@@ -111,6 +111,8 @@ describe("published pilot regression", () => {
       const source = datasetSchema.parse(
         JSON.parse(await readFile(`public/data/releases/${archive}/dataset.json`, "utf8")),
       );
+      if (source.id !== "vienna" && source.id !== "geneva" && source.id !== "porto")
+        throw new Error("Unexpected archived dataset");
       const file = await readFile(`public/data/${source.file}`, "utf8");
       server.use(http.get(`${base}${source.file}`, () => new HttpResponse(file)));
       const result = await loadRelease(base, source);

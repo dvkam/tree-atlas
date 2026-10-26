@@ -15,7 +15,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test",
-    "data:download": "node scripts/download-sources.mjs",
+    "data:download": "node scripts/download-all-sources.mjs",
     "data:prepare": "tsx scripts/prepare.ts",
     "benchmark": "tsx scripts/benchmark.ts"
   },

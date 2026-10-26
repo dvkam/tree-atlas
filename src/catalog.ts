@@ -52,7 +52,7 @@ export async function loadRelease(
   for (const tree of release.trees) {
     if (
       tree.dataset !== dataset.id ||
-      !contains(dataset.bounds, tree.position) ||
+      (tree.position !== null && !contains(dataset.bounds, tree.position)) ||
       ids.has(tree.sourceId)
     )
       throw new Error("The release contains invalid or duplicate records.");
@@ -77,7 +77,7 @@ export function searchInventory(
   const term = normalizeText(text);
   return release.trees.filter(
     (tree) =>
-      (area === null || contains(area, tree.position)) &&
+      (area === null || (tree.position !== null && contains(area, tree.position))) &&
       (term === "" ||
         [tree.scientificName, tree.commonName, tree.location, tree.tag, tree.sourceId].some(
           (field) => field !== null && normalizeText(field).includes(term),

@@ -329,4 +329,4 @@ await writeFile(
   temporary,
   `${JSON.stringify({ schemaVersion: 1, acquiredAt: new Date().toISOString(), sources: prepared }, null, 2)}\n`,
 );
-await rename(temporary, join(root, "provenance.json"));
+await rename(temporary, join(root, "original-provenance.json"));

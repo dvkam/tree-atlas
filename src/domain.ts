@@ -9,7 +9,14 @@ export const boundsSchema = z
   );
 export type Position = z.infer<typeof positionSchema>;
 export type Bounds = z.infer<typeof boundsSchema>;
-export const datasetIdSchema = z.enum(["vienna", "geneva", "porto"]);
+export const datasetIdSchema = z.enum([
+  "vienna",
+  "geneva",
+  "porto",
+  "amsterdam",
+  "hamburg",
+  "zurich",
+]);
 export type DatasetId = z.infer<typeof datasetIdSchema>;
 export const measurementSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("unknown") }),
@@ -27,7 +34,7 @@ export const treeSchema = z.object({
   dataset: datasetIdSchema,
   sourceId: z.string().min(1),
   idScope: z.enum(["stable", "release"]),
-  position: positionSchema,
+  position: positionSchema.nullable(),
   tag: z.string().nullable(),
   scientificName: z.string().nullable(),
   commonName: z.string().nullable(),
@@ -49,10 +56,12 @@ export const datasetSchema = z.object({
   country: z.string(),
   center: positionSchema,
   bounds: boundsSchema,
+  viewBounds: boundsSchema.optional(),
   release: z.string().regex(/^[a-zA-Z0-9-]+$/u),
   file: z.string().regex(/^releases\/[a-zA-Z0-9-]+\/[a-z]+\.json$/u),
   sha256: z.string().regex(/^[a-f0-9]{64}$/u),
   count: z.number().int().positive(),
+  locatedCount: z.number().int().nonnegative().optional(),
   fetchedAt: z.iso.datetime(),
   sourceUrl: z.url(),
   attribution: z.string(),

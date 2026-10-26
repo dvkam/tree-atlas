@@ -1,3 +1,4 @@
+import { importAdditionalTree } from "./import-additional.ts";
 import { z } from "zod";
 import { positionSchema, treeSchema } from "./domain.ts";
 import type { DatasetId, Measurement, Tree } from "./domain.ts";
@@ -8,7 +9,7 @@ const collectionSchema = z.object({
     .array(
       z.object({
         type: z.literal("Feature"),
-        geometry: z.object({ type: z.literal("Point"), coordinates: positionSchema }),
+        geometry: z.object({ type: z.literal("Point"), coordinates: positionSchema }).nullish(),
         properties: z.record(z.string(), z.unknown()),
       }),
     )
@@ -88,6 +89,8 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
     }
   const sourceIds = new Set<string>();
   return features.map(({ geometry, properties: p }) => {
+    if (geometry == null && dataset !== "amsterdam") throw new Error("Missing source geometry");
+    const position = geometry?.coordinates ?? null;
     const stableId = dataset === "geneva" ? requiredId(p["ID_ARBRE"]) : "";
     const conflict = (genevaIds.get(stableId) ?? 0) > 1;
     const sourceId =
@@ -95,15 +98,27 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
         ? conflict
           ? `${stableId}:object:${requiredId(p["OBJECTID"])}`
           : stableId
-        : requiredId(p[dataset === "porto" ? "objectid" : "OBJECTID"]);
+        : requiredId(
+            p[
+              dataset === "amsterdam"
+                ? "id"
+                : dataset === "hamburg"
+                  ? "baumid"
+                  : dataset === "porto" || dataset === "zurich"
+                    ? "objectid"
+                    : "OBJECTID"
+            ],
+          );
     if (sourceIds.has(sourceId)) throw new Error("Duplicate source identity");
     sourceIds.add(sourceId);
+    if (dataset === "amsterdam" || dataset === "hamburg" || dataset === "zurich")
+      return importAdditionalTree(dataset, sourceId, p, position);
     if (dataset === "porto")
       return treeSchema.parse({
         dataset,
         sourceId,
         idScope: "release",
-        position: geometry.coordinates,
+        position,
         tag: null,
         scientificName: text(p["esp_nomecientifico"]),
         commonName: text(p["esp_nomecomum"]),
@@ -126,7 +141,7 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
         dataset,
         sourceId,
         idScope: conflict ? "release" : "stable",
-        position: geometry.coordinates,
+        position,
         tag: text(p["NO_INVENTAIRE"]),
         scientificName: text(p["NOM_COMPLET"]),
         commonName: null,
@@ -154,7 +169,7 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
       dataset,
       sourceId,
       idScope: "release",
-      position: geometry.coordinates,
+      position,
       tag: text(p["BAUMNUMMER"]),
       scientificName: match?.[1]?.trim() ?? species,
       commonName: match?.[2]?.trim() ?? null,
