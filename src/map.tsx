@@ -9,6 +9,7 @@ type Props = {
   dataset: Dataset;
   markers: readonly MapItem[];
   aggregated: boolean;
+  preview: boolean;
   loading: boolean;
   updating: boolean;
   selectedTree: Summary | null;
@@ -23,6 +24,7 @@ export function TreeMap({
   dataset,
   markers,
   aggregated,
+  preview,
   loading,
   updating,
   selectedTree,
@@ -231,6 +233,7 @@ export function TreeMap({
       className="map-panel"
       aria-label="Tree map"
       aria-busy={loading || updating}
+      data-city={dataset.id}
       data-marker-count={markers.length}
     >
       <div
@@ -257,7 +260,10 @@ export function TreeMap({
       {loading && (
         <output className="map-loading">Opening {dataset.city}… You can still move the map.</output>
       )}
-      {!loading && aggregated && (
+      {!loading && preview && (
+        <p className="cluster-hint">Unfiltered map · groups may extend beyond the view</p>
+      )}
+      {!loading && !preview && aggregated && (
         <p className="cluster-hint">Grouped records · zoom in to explore</p>
       )}
       {mapMessage !== "" && (

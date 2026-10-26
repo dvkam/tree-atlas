@@ -9,7 +9,7 @@ import {
   datasetSchema,
   manifestSchema,
 } from "../src/domain.ts";
-import { importInventory } from "../src/import.ts";
+import { loadSourceTrees } from "./source-loader.ts";
 import { packInventory } from "./pack.ts";
 
 const sourceSchema = z.looseObject({
@@ -41,12 +41,14 @@ const names = {
   amsterdam: ["Amsterdam", "Netherlands"],
   hamburg: ["Hamburg", "Germany"],
   zurich: ["Zürich", "Switzerland"],
+  london: ["London", "United Kingdom"],
+  camden: ["Camden", "United Kingdom"],
+  edinburgh: ["Edinburgh", "United Kingdom"],
+  belfast: ["Belfast", "United Kingdom"],
 } as const;
 const hash = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
 async function prepareSource(source: z.infer<typeof sourceSchema>) {
-  const raw = await readFile(resolve(rawRoot, source.file));
-  if (hash(raw) !== source.sha256) throw new Error(`Raw checksum mismatch: ${source.id}`);
-  const imported = importInventory(source.id, JSON.parse(raw.toString("utf8")));
+  const imported = await loadSourceTrees(source.id, resolve(rawRoot, source.file), source.sha256);
   if (imported.length !== source.count) throw new Error(`Count mismatch: ${source.id}`);
   const trees = imported
     .filter((tree) => tree.position === null || contains(source.bbox, tree.position))
@@ -55,11 +57,11 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
     throw new Error("Full inventory must not discard records outside its declared bounds");
   // Immutable identity includes the evidence and metadata, not only tree rows.
   const identity = createHash("sha256").update(
-    JSON.stringify({ normalizationVersion: 2, storageVersion: 3, source }),
+    JSON.stringify({ normalizationVersion: 2, storageVersion: 4, source }),
   );
   for (const tree of trees) identity.update(JSON.stringify(tree));
   const release = `${source.id}-${identity.digest("hex").slice(0, 16)}`;
-  const { bytes, files, descriptor } = packInventory(source.id, release, trees);
+  const { bytes, files, descriptor, map } = packInventory(source.id, release, trees);
   const [city, country] = names[source.id];
   const [w, s, e, n] = source.bbox;
   const dataset = datasetSchema.parse({
@@ -72,6 +74,7 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
     release,
     file: `releases/${release}/${source.id}.json`,
     sha256: hash(bytes),
+    map,
     count: trees.length,
     locatedCount: trees.filter((tree) => tree.position !== null).length,
     fetchedAt: source.retrievedAt,
@@ -99,8 +102,10 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
       indexBytes: files.find((f) => f.name === "index.bin")?.bytes.length,
       detailShardCount: descriptor.details.length,
       compressedBytes: files.reduce((sum, f) => sum + f.bytes.length, 0),
+      qualityWarningCount: trees.filter((tree) => tree.qualityNotes !== undefined).length,
       qualityWarnings: trees
         .filter((tree) => tree.qualityNotes !== undefined)
+        .slice(0, 1000)
         .map((tree) => ({ sourceId: tree.sourceId, notes: tree.qualityNotes })),
       identityConflicts: imported
         .filter((tree) => tree.dataset === "geneva" && tree.sourceId.includes(":object:"))
@@ -112,16 +117,6 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
     },
   };
 }
-// Process sources sequentially so full inventories do not multiply peak import memory.
-const prepared = [];
-for (const source of provenance.sources) prepared.push(await prepareSource(source));
-const provenancePath = `provenance/${hash(rawProvenance)}.json`;
-const manifest = manifestSchema.parse({
-  version: 1,
-  publishedAt: new Date().toISOString(),
-  provenance: provenancePath,
-  datasets: prepared.map((p) => p.dataset),
-});
 await mkdir(output, { recursive: true });
 async function writeImmutable(path: string, content: string | Buffer) {
   try {
@@ -133,7 +128,10 @@ async function writeImmutable(path: string, content: string | Buffer) {
   }
 }
 // Immutable files are written before the small manifest pointer is replaced.
-for (const { dataset, bytes, report, sourceProvenance, files } of prepared) {
+// Retain only dataset metadata between sources, not compressed inventories.
+const datasets = [];
+for (const source of provenance.sources) {
+  const { dataset, bytes, report, sourceProvenance, files } = await prepareSource(source);
   const dir = resolve(output, "releases", dataset.release);
   await mkdir(dir, { recursive: true });
   for (const file of files) await writeImmutable(resolve(dir, file.name), file.bytes);
@@ -147,7 +145,15 @@ for (const { dataset, bytes, report, sourceProvenance, files } of prepared) {
     const path = resolve(dir, name);
     await writeImmutable(path, content);
   }
+  datasets.push(dataset);
 }
+const provenancePath = `provenance/${hash(rawProvenance)}.json`;
+const manifest = manifestSchema.parse({
+  version: 1,
+  publishedAt: new Date().toISOString(),
+  provenance: provenancePath,
+  datasets,
+});
 await mkdir(resolve(output, "provenance"), { recursive: true });
 await writeImmutable(resolve(output, provenancePath), rawProvenance);
 const staging = resolve(output, "manifest-staging");
@@ -176,5 +182,5 @@ try {
   await rm(nextManifest, { force: true });
 }
 process.stdout.write(
-  `Published ${prepared.map((p) => `${p.dataset.city}: ${p.dataset.count}`).join(", ")}\n`,
+  `Published ${datasets.map((dataset) => `${dataset.city}: ${dataset.count}`).join(", ")}\n`,
 );

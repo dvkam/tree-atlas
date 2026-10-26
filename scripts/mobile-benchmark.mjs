@@ -27,7 +27,7 @@ const mime = {
   ".json": "application/json",
   ".bin": "application/octet-stream",
 };
-const server = createServer(async (request, response) => {
+async function serve(request, response) {
   try {
     const pathname = decodeURIComponent(new URL(request.url ?? "/", "http://localhost").pathname);
     const file = resolve(root, `.${pathname === "/" ? "/index.html" : pathname}`);
@@ -56,6 +56,9 @@ const server = createServer(async (request, response) => {
   } catch {
     response.writeHead(404).end();
   }
+}
+const server = createServer((request, response) => {
+  void serve(request, response);
 });
 await new Promise((resolveReady) => server.listen(0, "127.0.0.1", resolveReady));
 const address = server.address();
@@ -99,6 +102,20 @@ try {
         await page
           .getByRole("button", { name: `${dataset.city} ${dataset.country}`, exact: true })
           .click();
+      await page.waitForFunction(
+        (cityId) => {
+          const map = document.querySelector(".map-panel");
+          return (
+            map?.getAttribute("data-city") === cityId &&
+            Number(map.getAttribute("data-marker-count")) > 0 &&
+            map.getAttribute("aria-busy") !== "true"
+          );
+        },
+        city,
+        { timeout: 120_000 },
+      );
+      const firstMapMs = performance.now() - started;
+      const firstMapServerBytes = served.reduce((sum, record) => sum + record.bytes, 0);
       await page
         .getByRole("heading", {
           name: `${dataset.count.toLocaleString("en")} records`,
@@ -135,6 +152,8 @@ try {
         kind:
           step === 0 ? "cold-app" : step === sequence.length - 1 ? "return" : "first-city-switch",
         readyMs: Math.round(readyMs),
+        firstMapMs: Math.round(firstMapMs),
+        firstMapServerBytes,
         ...observed,
         serverBytes: served.reduce((sum, record) => sum + record.bytes, 0),
         inventoryBytes: served

@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { readVerifiedAsset } from "./verified-asset.ts";
+import { readVerifiedAsset, waitForAssetCache } from "./verified-asset.ts";
 
 const url = new URL("https://assets.test/releases/example/index.bin");
 const bytes = new TextEncoder().encode("immutable source index");
@@ -20,7 +20,10 @@ function storage() {
   vi.stubGlobal("caches", { open: async () => cache });
   return saved;
 }
-afterEach(() => vi.unstubAllGlobals());
+afterEach(async () => {
+  await waitForAssetCache();
+  vi.unstubAllGlobals();
+});
 describe("verified immutable asset storage", () => {
   it("reuses bytes across sessions and separates changed expected hashes", async () => {
     const saved = storage();
@@ -28,7 +31,9 @@ describe("verified immutable asset storage", () => {
     const fetcher = vi.fn<() => Promise<Response>>(async () => new Response(bytes));
     vi.stubGlobal("fetch", fetcher);
     expect(new Uint8Array(await readVerifiedAsset(url, hash, signal()))).toEqual(bytes);
+    await waitForAssetCache();
     expect(new Uint8Array(await readVerifiedAsset(url, hash, signal()))).toEqual(bytes);
+    await waitForAssetCache();
     expect(fetcher).toHaveBeenCalledTimes(1);
     expect(writes).toHaveBeenCalledTimes(1);
     await expect(readVerifiedAsset(url, "0".repeat(64), signal())).rejects.toThrow("integrity");
@@ -39,8 +44,10 @@ describe("verified immutable asset storage", () => {
     const fetcher = vi.fn<() => Promise<Response>>(async () => new Response(bytes));
     vi.stubGlobal("fetch", fetcher);
     await readVerifiedAsset(url, hash, signal());
+    await waitForAssetCache();
     for (const key of saved.keys()) saved.set(key, new Response("corrupted"));
     expect(new Uint8Array(await readVerifiedAsset(url, hash, signal()))).toEqual(bytes);
+    await waitForAssetCache();
     expect(fetcher).toHaveBeenCalledTimes(2);
   });
   it("continues online when storage is denied and never caches invalid downloads", async () => {
@@ -54,6 +61,7 @@ describe("verified immutable asset storage", () => {
       vi.fn<() => Promise<Response>>(async () => new Response(bytes)),
     );
     expect(new Uint8Array(await readVerifiedAsset(url, hash, signal()))).toEqual(bytes);
+    await waitForAssetCache();
     const saved = storage();
     await expect(readVerifiedAsset(url, "0".repeat(64), signal())).rejects.toThrow("integrity");
     expect(saved.size).toBe(0);
@@ -66,8 +74,10 @@ describe("verified immutable asset storage", () => {
       "fetch",
       vi.fn(async () => new Response(large)),
     );
-    for (let i = 0; i < 6; i++)
+    for (let i = 0; i < 6; i++) {
       await readVerifiedAsset(new URL(`${url.href}?asset=${i}`), largeHash, signal());
+      await waitForAssetCache();
+    }
     expect(saved.size).toBe(4);
     expect([...saved.keys()].some((key) => key.includes("asset=0"))).toBe(false);
     expect(
@@ -80,8 +90,10 @@ describe("verified immutable asset storage", () => {
       "fetch",
       vi.fn<() => Promise<Response>>(async () => new Response(bytes)),
     );
-    for (let i = 0; i < 20; i++)
+    for (let i = 0; i < 20; i++) {
       await readVerifiedAsset(new URL(`${url.href}?small=${i}`), hash, signal());
+      await waitForAssetCache();
+    }
     expect(saved.size).toBe(18);
   });
   it("does not start a request after a city switch has cancelled loading", async () => {
@@ -93,4 +105,74 @@ describe("verified immutable asset storage", () => {
     await expect(readVerifiedAsset(url, hash, controller.signal)).rejects.toThrow(/abort/iu);
     expect(fetcher).not.toHaveBeenCalled();
   });
+});
+
+it("returns verified bytes before slow storage and bounds queued writes", async () => {
+  let release: () => void = () => undefined;
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const put = vi.fn<() => Promise<void>>(async () => {
+    await gate;
+  });
+  vi.stubGlobal("caches", {
+    open: async () => ({
+      match: async () => undefined,
+      delete: async () => false,
+      put,
+      keys: async () => [],
+    }),
+  });
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => new Response(bytes)),
+  );
+  try {
+    for (let i = 0; i < 8; i++) {
+      const loaded = await readVerifiedAsset(new URL(`${url.href}?queued=${i}`), hash, signal());
+      expect(new Uint8Array(loaded)).toEqual(bytes);
+    }
+    expect(put).toHaveBeenCalledTimes(1);
+  } finally {
+    release();
+    await waitForAssetCache();
+  }
+  expect(put).toHaveBeenCalledTimes(3);
+});
+
+it("limits pending buffer bytes and drops cancelled queued writes", async () => {
+  let release: () => void = () => undefined;
+  const gate = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  const put = vi.fn<() => Promise<void>>(async () => {
+    await gate;
+  });
+  vi.stubGlobal("caches", {
+    open: async () => ({
+      match: async () => undefined,
+      delete: async () => false,
+      put,
+      keys: async () => [],
+    }),
+  });
+  const large = new Uint8Array(7 * 1024 * 1024);
+  const largeHash = createHash("sha256").update(large).digest("hex");
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async () => new Response(large)),
+  );
+  const controller = new AbortController();
+  try {
+    await readVerifiedAsset(new URL(`${url.href}?large=1`), largeHash, signal());
+    await readVerifiedAsset(new URL(`${url.href}?large=2`), largeHash, controller.signal);
+    await readVerifiedAsset(new URL(`${url.href}?large=3`), largeHash, signal());
+    controller.abort();
+    expect(put).toHaveBeenCalledTimes(1);
+  } finally {
+    release();
+    await waitForAssetCache();
+  }
+  // The third buffer exceeded the pending-byte budget; the second was cancelled.
+  expect(put).toHaveBeenCalledTimes(1);
 });

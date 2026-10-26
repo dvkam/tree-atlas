@@ -16,6 +16,10 @@ export const datasetIdSchema = z.enum([
   "amsterdam",
   "hamburg",
   "zurich",
+  "london",
+  "camden",
+  "edinburgh",
+  "belfast",
 ]);
 export type DatasetId = z.infer<typeof datasetIdSchema>;
 export const measurementSchema = z.discriminatedUnion("kind", [
@@ -57,6 +61,12 @@ export const datasetSchema = z.object({
   center: positionSchema,
   bounds: boundsSchema,
   viewBounds: boundsSchema.optional(),
+  map: z
+    .object({
+      file: z.string().regex(/^releases\/[a-zA-Z0-9-]+\/map\.bin$/u),
+      sha256: z.string().regex(/^[a-f0-9]{64}$/u),
+    })
+    .optional(),
   release: z.string().regex(/^[a-zA-Z0-9-]+$/u),
   file: z.string().regex(/^releases\/[a-zA-Z0-9-]+\/[a-z]+\.json$/u),
   sha256: z.string().regex(/^[a-f0-9]{64}$/u),

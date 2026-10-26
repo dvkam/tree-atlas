@@ -1,3 +1,4 @@
+import { useProgressiveMap } from "./use-progressive-map.ts";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { loadDataset, loadManifest, normalizeText } from "./catalog.ts";
@@ -116,11 +117,12 @@ function Explorer({ manifest }: { manifest: Manifest }) {
 }
 
 type SessionState = { key: string; client: InventoryClient | null; error: string | null };
-function useInventory(dataset: Dataset) {
+function useInventory(dataset: Dataset, enabled: boolean) {
   const [attempt, setAttempt] = useState(0);
   const key = `${datasetKey(dataset)}:${attempt}`;
   const [state, setState] = useState<SessionState | null>(null);
   useEffect(() => {
+    if (!enabled) return undefined;
     const controller = new AbortController();
     let active = true;
     let client: InventoryClient | null = null;
@@ -146,7 +148,7 @@ function useInventory(dataset: Dataset) {
       controller.abort();
       client?.dispose();
     };
-  }, [dataset, key]);
+  }, [dataset, key, enabled]);
   const current = state?.key === key ? state : null;
   return {
     key,
@@ -164,7 +166,8 @@ type ExplorerProps = {
   navigate: (view: ViewState) => void;
 };
 function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerProps) {
-  const session = useInventory(dataset);
+  const preview = useProgressiveMap(dataBase, dataset);
+  const [handoff, setHandoff] = useState<string | null>(null);
   const scopeKey = `${datasetKey(dataset)}:${view.q}:${view.area?.join(",") ?? ""}`;
   const [paging, setPaging] = useState({ key: scopeKey, offset: 0 });
   const offset = paging.key === scopeKey ? paging.offset : 0;
@@ -172,6 +175,24 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
   const viewport =
     camera?.key === datasetKey(dataset) ? camera.bounds : (dataset.viewBounds ?? dataset.bounds);
   const zoom = camera?.key === datasetKey(dataset) ? camera.zoom : 11;
+  const previewQuery = useQuery({
+    queryKey: ["progressive-map", preview.key, viewport, zoom],
+    queryFn: ({ signal }) => {
+      if (preview.client === null) throw new Error("Map data is not ready.");
+      return preview.client.query(viewport, zoom, signal);
+    },
+    enabled: preview.client !== null && handoff !== preview.key,
+    gcTime: 0,
+    placeholderData: (previous, query) =>
+      query?.queryKey[1] === preview.key ? previous : undefined,
+  });
+  const canStartSearch =
+    dataset.map === undefined ||
+    preview.error !== null ||
+    previewQuery.isError ||
+    previewQuery.data !== undefined ||
+    handoff === preview.key;
+  const session = useInventory(dataset, canStartSearch);
   const request: InventoryQuery = { q: view.q, area: view.area, viewport, zoom, offset, limit: 30 };
   const findings = useQuery({
     queryKey: ["inventory-query", session.key, scopeKey, offset, viewport, zoom],
@@ -186,17 +207,22 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
     enabled: session.client !== null,
     gcTime: 60_000,
   });
+  if (findings.data !== undefined && handoff !== preview.key) setHandoff(preview.key);
   const selectedId =
     view.tree?.startsWith(`${dataset.id}:`) === true
       ? view.tree.slice(dataset.id.length + 1)
       : null;
   const detail = useQuery({
-    queryKey: ["inventory-detail", session.key, view.tree],
+    queryKey: ["inventory-detail", datasetKey(dataset), view.tree],
     queryFn: () => {
-      if (session.client === null || selectedId === null) return null;
-      return session.client.detail(selectedId);
+      if (selectedId === null) return null;
+      const early = preview.client?.detail(selectedId);
+      if (early !== null && early !== undefined) return early;
+      return session.client?.detail(selectedId) ?? null;
     },
-    enabled: session.client !== null && view.tree !== null,
+    enabled:
+      selectedId !== null &&
+      (session.client !== null || preview.client?.detail(selectedId) != null),
   });
   const [locationMessage, setLocationMessage] = useState("");
   const outsideCoverage =
@@ -350,16 +376,24 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
             </p>
           )}
         </div>
+        {findings.data === undefined && (preview.error !== null || previewQuery.isError) && (
+          <Notice
+            title="Early map data could not load"
+            text="The complete inventory is still loading. The map will use it when it is ready."
+          />
+        )}
         {session.error !== null && (
           <Notice title="Records could not load" text={session.error} retry={session.retry} />
         )}
-        {session.client === null && session.error === null && (
+        {findings.data === undefined && session.error === null && (
           <p className="loading" aria-live="polite">
-            Opening {dataset.city} · {number.format(dataset.count)} records. You can choose another
-            location or move the map while they load.
+            Preparing complete search for {number.format(dataset.count)} records in {dataset.city}.
+            {previewQuery.data !== undefined
+              ? " The map is ready to explore. Map markers are not yet filtered by your search."
+              : " Opening the map first…"}
           </p>
         )}
-        {session.client !== null && (
+        {(session.client !== null || detail.data != null) && (
           <>
             {view.tree !== null && detail.isPending && (
               <p className="loading" aria-live="polite">
@@ -469,10 +503,13 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
       >
         <TreeMap
           dataset={dataset}
-          markers={findings.data?.markers ?? []}
+          markers={findings.data?.markers ?? previewQuery.data ?? []}
           aggregated={findings.data?.mapAggregated ?? false}
-          loading={session.error === null && (session.client === null || findings.isPending)}
-          updating={session.client !== null && findings.isFetching}
+          preview={findings.data === undefined && previewQuery.data !== undefined}
+          loading={
+            session.error === null && findings.data === undefined && previewQuery.data === undefined
+          }
+          updating={findings.data !== undefined ? findings.isFetching : previewQuery.isFetching}
           selectedTree={view.tree !== null ? (detail.data ?? null) : null}
           canopy={view.canopy}
           area={view.area}

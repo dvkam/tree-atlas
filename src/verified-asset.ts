@@ -2,6 +2,41 @@ const CACHE_NAME = "tree-atlas-verified-assets-v1";
 const MAX_BYTES = 32 * 1024 * 1024;
 const MAX_ASSET_BYTES = 8 * 1024 * 1024;
 const MAX_ENTRIES = 18;
+const MAX_PENDING_BYTES = 8 * 1024 * 1024;
+const MAX_PENDING_WRITES = 2;
+type CacheWrite = { cache: Cache; key: string; bytes: ArrayBuffer; signal: AbortSignal };
+const pendingWrites: CacheWrite[] = [];
+let pendingBytes = 0;
+let persistence: Promise<void> | null = null;
+
+function enqueueWrite(write: CacheWrite) {
+  if (
+    write.signal.aborted ||
+    write.bytes.byteLength > MAX_ASSET_BYTES ||
+    pendingWrites.length >= MAX_PENDING_WRITES ||
+    pendingBytes + write.bytes.byteLength > MAX_PENDING_BYTES
+  )
+    return;
+  pendingWrites.push(write);
+  pendingBytes += write.bytes.byteLength;
+  persistence ??= (async () => {
+    try {
+      while (pendingWrites.length > 0) {
+        const next = pendingWrites.shift();
+        if (next === undefined) break;
+        pendingBytes -= next.bytes.byteLength;
+        await remember(next.cache, next.key, next.bytes, next.signal);
+      }
+    } finally {
+      persistence = null;
+    }
+  })();
+}
+
+/** Tests and explicit storage tasks can wait; display paths must not await persistence. */
+export async function waitForAssetCache(): Promise<void> {
+  await persistence;
+}
 
 async function digest(bytes: ArrayBuffer): Promise<string> {
   return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)), (value) =>
@@ -82,7 +117,7 @@ export async function readVerifiedAsset(
   if ((await digest(bytes)) !== expectedHash)
     throw new Error("Inventory asset failed its integrity check.");
   signal.throwIfAborted();
-  if (cache !== null) await remember(cache, key.href, bytes, signal);
+  if (cache !== null) enqueueWrite({ cache, key: key.href, bytes, signal });
   signal.throwIfAborted();
   return bytes;
 }

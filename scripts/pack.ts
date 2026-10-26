@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { gzipSync } from "node:zlib";
+import { packMap } from "./map-pack.ts";
 import { encodeIndexColumns } from "../src/index-codec.ts";
 import { releaseSchema } from "../src/domain.ts";
 import type { DatasetId, Tree } from "../src/domain.ts";
@@ -59,5 +60,7 @@ export function packInventory(dataset: DatasetId, release: string, trees: Tree[]
   }
   const descriptor = indexDescriptorSchema.parse({ version: 2, dataset, release, index, details });
   const bytes = JSON.stringify(descriptor);
-  return { bytes, files, descriptor };
+  const map = packMap(dataset, release, trees);
+  files.push(...map.files);
+  return { bytes, files, descriptor, map: map.asset };
 }
