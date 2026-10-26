@@ -29,6 +29,17 @@ const expected: Record<DatasetId, { count: number; outsideId: string; position: 
   vienna: { count: 233102, outsideId: "831570825", position: [16.48569958, 48.25896836] },
   geneva: { count: 240827, outsideId: "214933", position: [6.128820091326579, 46.184733145914656] },
   porto: { count: 71634, outsideId: "1", position: [-8.661176779591438, 41.154706316195195] },
+  amsterdam: {
+    count: 326518,
+    outsideId: "919933",
+    position: [4.904670906630066, 52.3398135015195],
+  },
+  hamburg: {
+    count: 229876,
+    outsideId: "100000117",
+    position: [9.846289287519417, 53.52547419808404],
+  },
+  zurich: { count: 81142, outsideId: "1", position: [8.509643, 47.321987] },
 };
 const world: InventoryQuery = {
   q: "",
@@ -40,7 +51,7 @@ const world: InventoryQuery = {
 };
 
 describe("complete published inventories", () => {
-  for (const id of ["vienna", "geneva", "porto"] as const) {
+  for (const id of ["vienna", "geneva", "porto", "amsterdam", "hamburg", "zurich"] as const) {
     it(`${id}: preserves audited counts, complete map clusters, endpoint pagination and records outside the old pilot window`, async () => {
       const manifest = manifestSchema.parse(
         JSON.parse(await readFile("public/data/manifest.json", "utf8")),
@@ -48,6 +59,7 @@ describe("complete published inventories", () => {
       const dataset = manifest.datasets.find((source) => source.id === id);
       if (!dataset) throw new Error(`Missing ${id} dataset`);
       const reference = expected[id];
+      if (!reference) throw new Error("Missing audited source reference");
       expect(dataset.scope).toBe("full");
       expect(dataset.count).toBe(reference.count);
       const catalogue = await loadInventory(base, dataset);
@@ -60,7 +72,7 @@ describe("complete published inventories", () => {
             (count, item) => count + (item.kind === "cluster" ? item.count : 1),
             0,
           ),
-        ).toBe(reference.count);
+        ).toBe(dataset.locatedCount ?? reference.count);
         const first = all.items[0];
         const last = catalogue.query({ ...world, offset: reference.count - 1 }).items[0];
         if (!first || !last) throw new Error("Missing first or last record");
@@ -97,3 +109,26 @@ describe("complete published inventories", () => {
     }
   }, 60_000);
 });
+
+it("retains Amsterdam unlocated records in global search but not spatial results", async () => {
+  const manifest = manifestSchema.parse(
+    JSON.parse(await readFile("public/data/manifest.json", "utf8")),
+  );
+  const dataset = manifest.datasets.find((source) => source.id === "amsterdam");
+  if (!dataset) throw new Error("Missing Amsterdam");
+  const session = await loadInventory(base, dataset);
+  try {
+    expect(dataset.count - (dataset.locatedCount ?? 0)).toBe(24);
+    const result = session.query({ ...world, q: "3869075" });
+    expect(result.total).toBe(1);
+    expect(result.items[0]?.position).toBeNull();
+    expect(result.markers).toHaveLength(0);
+    expect(session.query({ ...world, q: "3869075", area: dataset.bounds }).total).toBe(0);
+    expect((await session.detail("3869075"))?.position).toBeNull();
+    const outlier = await session.detail("9441293");
+    expect(outlier?.qualityNotes?.join(" ")).toContain("far outside Amsterdam");
+    expect(outlier?.position?.[1]).toBeLessThan(48);
+  } finally {
+    session.dispose();
+  }
+}, 60_000);

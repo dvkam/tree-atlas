@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "publishedAt": "2026-10-26T21:34:19.262Z",
-  "provenance": "provenance/b0561561db215df87e3b93239001a8f41eac15bff9e6ed2370fcc007445e2fe9.json",
+  "publishedAt": "2026-10-26T22:10:39.722Z",
+  "provenance": "provenance/4ab9e448351eba821ab779c04dd9dd76703a0444b8d152ce955c49b7cbc1544d.json",
   "datasets": [
     {
       "id": "vienna",
@@ -17,10 +17,11 @@
         16.56954724,
         48.31979651
       ],
-      "release": "vienna-48cade6b5cfba9ce",
-      "file": "releases/vienna-48cade6b5cfba9ce/vienna.json",
-      "sha256": "0662436688012554f2936f89ac30777a67b268e1f5dd82ed0b35349f1e249c9b",
+      "release": "vienna-c490f766666cec1f",
+      "file": "releases/vienna-c490f766666cec1f/vienna.json",
+      "sha256": "8261ba82f6960642998c407229ba4f56f7aa0323696451197a67d338a5cd9dd1",
       "count": 233102,
+      "locatedCount": 233102,
       "fetchedAt": "2026-10-26T21:26:14.489Z",
       "sourceUrl": "https://www.data.gv.at/datasets/c91a4635-8b7d-43fe-9b27-d95dec8392a7",
       "attribution": "Datenquelle: Stadt Wien — data.wien.gv.at",
@@ -43,10 +44,11 @@
         6.309769163985774,
         46.36400288193435
       ],
-      "release": "geneva-0e78b7755592354c",
-      "file": "releases/geneva-0e78b7755592354c/geneva.json",
-      "sha256": "12effd4833c7ce6effbdf89c5c093c0914d94f23460f875d9fd13d08b572745e",
+      "release": "geneva-2fa84782d851f6e7",
+      "file": "releases/geneva-2fa84782d851f6e7/geneva.json",
+      "sha256": "2300cc8e3ec85fa31ab4da40421147bde925fbe6207f66b505fa2be48dd28862",
       "count": 240827,
+      "locatedCount": 240827,
       "fetchedAt": "2026-10-26T21:26:33.845Z",
       "sourceUrl": "https://sitg.ge.ch/donnees/sipv-ica-arbre-isole",
       "attribution": "Données SITG / Ville de Genève",
@@ -69,16 +71,104 @@
         -8.556268262507327,
         41.185854916477986
       ],
-      "release": "porto-cf3a80e876ac8824",
-      "file": "releases/porto-cf3a80e876ac8824/porto.json",
-      "sha256": "0884cbc14fa26f6ecb90ab70a6511a6787d3adc66a852a55df7c77019293bc58",
+      "release": "porto-79f29c963812b6f6",
+      "file": "releases/porto-79f29c963812b6f6/porto.json",
+      "sha256": "6258d0d36daac29734b15559cf2dccc1117149d3dd79f2688b56442cdf472af8",
       "count": 71634,
+      "locatedCount": 71634,
       "fetchedAt": "2026-10-26T21:26:36.109Z",
       "sourceUrl": "https://dadosabertos.cm-porto.pt/dataset/identificacao-e-caracterizacao-do-arvoredo-do-municipio-do-porto",
       "attribution": "Município do Porto",
       "license": "CC0 1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
       "coverage": "Complete published public-domain municipal tree inventory. The age field is an interval, not a planting year; private trees are not covered.",
+      "scope": "full"
+    },
+    {
+      "id": "amsterdam",
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "center": [
+        4.201472275078653,
+        50.202774404610096
+      ],
+      "bounds": [
+        3.313603853028434,
+        47.97523746667059,
+        5.089340697128872,
+        52.4303113425496
+      ],
+      "viewBounds": [
+        4.7,
+        52.25,
+        5.1,
+        52.45
+      ],
+      "release": "amsterdam-efcd0dfbc18ae394",
+      "file": "releases/amsterdam-efcd0dfbc18ae394/amsterdam.json",
+      "sha256": "72e0d7a4822649f50b20894e684be690fbde3b9a5eb48c0a75dc630f73cda4bb",
+      "count": 326518,
+      "locatedCount": 326494,
+      "fetchedAt": "2026-10-26T22:06:37.183Z",
+      "sourceUrl": "https://api.data.amsterdam.nl/v1/docs/datasets/bomen@v2.html",
+      "attribution": "Gemeente Amsterdam — Directie Verkeer en Openbare Ruimte",
+      "license": "Public data — Amsterdam published terms",
+      "licenseUrl": "https://api.data.amsterdam.nl/v1/docs/datasets/bomen@v2.html",
+      "coverage": "Complete available municipal tree master records. Includes recorded management locations, not all physical trees. No street-address field is published in this collection.",
+      "scope": "full"
+    },
+    {
+      "id": "hamburg",
+      "city": "Hamburg",
+      "country": "Germany",
+      "center": [
+        10.026301441407384,
+        53.56196673760235
+      ],
+      "bounds": [
+        9.73454210132544,
+        53.398934921516556,
+        10.318060781489326,
+        53.72499855368813
+      ],
+      "release": "hamburg-0aed29769c6162c9",
+      "file": "releases/hamburg-0aed29769c6162c9/hamburg.json",
+      "sha256": "d8b2993ae12ee06f7c453b3ed5da2ddb51ca1664da128212e07e4e49bf4baab4",
+      "count": 229876,
+      "locatedCount": 229876,
+      "fetchedAt": "2026-10-26T22:07:56.571Z",
+      "sourceUrl": "https://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburg34",
+      "attribution": "Freie und Hansestadt Hamburg, Behörde für Umwelt, Klima, Energie und Agrarwirtschaft",
+      "license": "Datenlizenz Deutschland — Namensnennung 2.0",
+      "licenseUrl": "https://www.govdata.de/dl-de/by-2-0",
+      "coverage": "Complete available public street-tree inventory. Park, forest and private trees are not comprehensively covered. Published source records may lag planting or removal.",
+      "scope": "full"
+    },
+    {
+      "id": "zurich",
+      "city": "Zürich",
+      "country": "Switzerland",
+      "center": [
+        8.5380015,
+        47.3788325
+      ],
+      "bounds": [
+        8.463149,
+        47.321549,
+        8.612854,
+        47.436116
+      ],
+      "release": "zurich-6c7f8697835d1982",
+      "file": "releases/zurich-6c7f8697835d1982/zurich.json",
+      "sha256": "114135eb7d267e3ff2a22cd2002d15c666c417286d354ed868fdc977eb0128ea",
+      "count": 81142,
+      "locatedCount": 81142,
+      "fetchedAt": "2026-10-26T22:08:04.285Z",
+      "sourceUrl": "https://data.stadt-zuerich.ch/dataset/geo_baumkataster",
+      "attribution": "Stadt Zürich — Grün Stadt Zürich / Geomatik + Vermessung",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "coverage": "Complete available municipal tree-point inventory, including street trees, fruit trees, selected public green areas and some private trees. Includes records outside the municipal boundary. Park coverage is being expanded gradually.",
       "scope": "full"
     }
   ]
