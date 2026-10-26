@@ -75,7 +75,7 @@ async function benchmark(dataset: Dataset) {
     check(first.total === dataset.count, "Full query does not return the complete inventory count");
     checkMarkers(first);
     check(
-      representedTrees(first) === dataset.count,
+      representedTrees(first) === (dataset.locatedCount ?? dataset.count),
       "World clusters lose or duplicate inventory records",
     );
     const cachedTimes: number[] = [];
@@ -84,7 +84,7 @@ async function benchmark(dataset: Dataset) {
       check(cached.total === dataset.count, "Cached query count changed");
       checkMarkers(cached);
       check(
-        representedTrees(cached) === dataset.count,
+        representedTrees(cached) === (dataset.locatedCount ?? dataset.count),
         "Cached world clusters lose or duplicate records",
       );
       cachedTimes.push(cached.elapsedMs);

@@ -56,7 +56,7 @@ function serve(input: CompactIndex = index) {
   const trees = input.rows.map((row): Tree => ({
     ...tree,
     sourceId: row[0],
-    position: [row[1], row[2]],
+    position: row[1] === null || row[2] === null ? null : [row[1], row[2]],
     tag: row[3] === -1 ? null : "12",
   }));
   const detailBytes = gzipSync(

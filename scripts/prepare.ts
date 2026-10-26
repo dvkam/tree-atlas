@@ -30,14 +30,17 @@ const rawRoot = resolve("data/raw");
 const output = resolve("public/data");
 const rawProvenance = await readFile(resolve(rawRoot, "provenance.json"), "utf8");
 const provenance = z
-  .object({ sources: z.array(sourceSchema).length(3) })
+  .object({ sources: z.array(sourceSchema).min(1) })
   .parse(JSON.parse(rawProvenance));
-if (new Set(provenance.sources.map((source) => source.id)).size !== 3)
+if (new Set(provenance.sources.map((source) => source.id)).size !== provenance.sources.length)
   throw new Error("Missing or repeated dataset");
 const names = {
   vienna: ["Vienna", "Austria"],
   geneva: ["Geneva", "Switzerland"],
   porto: ["Porto", "Portugal"],
+  amsterdam: ["Amsterdam", "Netherlands"],
+  hamburg: ["Hamburg", "Germany"],
+  zurich: ["Zürich", "Switzerland"],
 } as const;
 const hash = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
 async function prepareSource(source: z.infer<typeof sourceSchema>) {
@@ -46,13 +49,13 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
   const imported = importInventory(source.id, JSON.parse(raw.toString("utf8")));
   if (imported.length !== source.count) throw new Error(`Count mismatch: ${source.id}`);
   const trees = imported
-    .filter((tree) => contains(source.bbox, tree.position))
+    .filter((tree) => tree.position === null || contains(source.bbox, tree.position))
     .sort((a, b) => (a.sourceId < b.sourceId ? -1 : a.sourceId > b.sourceId ? 1 : 0));
   if (source.scope === "full" && trees.length !== imported.length)
     throw new Error("Full inventory must not discard records outside its declared bounds");
   // Immutable identity includes the evidence and metadata, not only tree rows.
   const identity = createHash("sha256").update(
-    JSON.stringify({ normalizationVersion: 2, storageVersion: 2, source }),
+    JSON.stringify({ normalizationVersion: 2, storageVersion: 3, source }),
   );
   for (const tree of trees) identity.update(JSON.stringify(tree));
   const release = `${source.id}-${identity.digest("hex").slice(0, 16)}`;
@@ -65,10 +68,12 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
     country,
     center: [(w + e) / 2, (s + n) / 2],
     bounds: source.bbox,
+    ...(source.id === "amsterdam" ? { viewBounds: [4.7, 52.25, 5.1, 52.45] } : {}),
     release,
     file: `releases/${release}/${source.id}.json`,
     sha256: hash(bytes),
     count: trees.length,
+    locatedCount: trees.filter((tree) => tree.position !== null).length,
     fetchedAt: source.retrievedAt,
     sourceUrl: source.url,
     license: source.licence,
@@ -89,6 +94,7 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
       published: trees.length,
       excludedByCoverage: imported.length - trees.length,
       rejected: 0,
+      unlocated: trees.filter((tree) => tree.position === null).length,
       rawSha256: source.sha256,
       indexBytes: files.find((f) => f.name === "index.bin")?.bytes.length,
       detailShardCount: descriptor.details.length,

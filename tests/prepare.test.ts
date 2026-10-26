@@ -1,3 +1,4 @@
+import { decodeIndexColumns } from "../src/index-codec.ts";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
@@ -133,7 +134,11 @@ test("publishes complete clipped releases with immutable provenance and structur
     const descriptor = indexDescriptorSchema.parse(JSON.parse(bytes));
     const indexBytes = await readFile(resolve(f.cwd, "public/data", descriptor.index.file));
     expect(createHash("sha256").update(indexBytes).digest("hex")).toBe(descriptor.index.sha256);
-    const index = compactIndexSchema.parse(JSON.parse(gunzipSync(indexBytes).toString("utf8")));
+    const unpacked = gunzipSync(indexBytes);
+    const index =
+      descriptor.index.encoding === "columns-v1"
+        ? decodeIndexColumns(unpacked)
+        : compactIndexSchema.parse(JSON.parse(unpacked.toString("utf8")));
     expect(index.rows).toHaveLength(dataset.count);
     const rows = [];
     for (const shard of descriptor.details) {

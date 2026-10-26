@@ -1,3 +1,5 @@
+import { decodeIndexColumns } from "./index-codec.ts";
+import { readVerifiedAsset } from "./verified-asset.ts";
 import Supercluster from "supercluster";
 import type { PointFeature } from "supercluster";
 import { contains, releaseSchema } from "./domain.ts";
@@ -29,15 +31,7 @@ async function verifiedJson(
   compressed: boolean,
   signal: AbortSignal,
 ): Promise<unknown> {
-  const response = await fetch(new URL(file, base), { signal });
-  if (!response.ok) throw new Error(`Inventory asset unavailable (${response.status}). Try again.`);
-  const bytes = await response.arrayBuffer();
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  const hash = Array.from(new Uint8Array(digest), (value) =>
-    value.toString(16).padStart(2, "0"),
-  ).join("");
-  if (hash !== expectedHash) throw new Error("Inventory asset failed its integrity check.");
-  signal.throwIfAborted();
+  const bytes = await readVerifiedAsset(new URL(file, base), expectedHash, signal);
   const text = compressed
     ? await new Response(
         new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip")),
@@ -57,7 +51,7 @@ function summary(index: CompactIndex, row: IndexRow): Summary {
   return {
     dataset: index.dataset,
     sourceId: row[0],
-    position: [row[1], row[2]],
+    position: row[1] === null || row[2] === null ? null : [row[1], row[2]],
     tag: dictionary(index, row[3]),
     scientificName: dictionary(index, row[4]),
     commonName: dictionary(index, row[5]),
@@ -74,6 +68,8 @@ function validateIndex(
     index.release !== dataset.release ||
     index.rows.length !== dataset.count ||
     descriptor.index.count !== dataset.count ||
+    (dataset.locatedCount !== undefined &&
+      index.rows.filter((row) => row[1] !== null).length !== dataset.locatedCount) ||
     descriptor.details.reduce((sum, asset) => sum + asset.count, 0) !== dataset.count
   )
     throw new Error("Index does not match the catalogue.");
@@ -82,7 +78,7 @@ function validateIndex(
   for (const row of index.rows) {
     if (
       rows.has(row[0]) ||
-      !contains(dataset.bounds, [row[1], row[2]]) ||
+      (row[1] !== null && row[2] !== null && !contains(dataset.bounds, [row[1], row[2]])) ||
       descriptor.details[row[7]] === undefined
     )
       throw new Error("Invalid or duplicate inventory index record.");
@@ -116,7 +112,8 @@ function compactLegacy(trees: Tree[], dataset: Dataset): CompactIndex {
     strings,
     rows: trees.map((tree) => [
       tree.sourceId,
-      ...tree.position,
+      tree.position?.[0] ?? null,
+      tree.position?.[1] ?? null,
       intern(tree.tag),
       intern(tree.scientificName),
       intern(tree.commonName),
@@ -155,7 +152,11 @@ function engine(
         for (let i = 0; i < index.rows.length; i++) {
           const row = index.rows[i];
           if (!row) continue;
-          if (query.area !== null && !contains(query.area, [row[1], row[2]])) continue;
+          if (
+            query.area !== null &&
+            (row[1] === null || row[2] === null || !contains(query.area, [row[1], row[2]]))
+          )
+            continue;
           if (
             term !== "" &&
             !ids[i]?.includes(term) &&
@@ -173,7 +174,7 @@ function engine(
         const points: PointFeature<PointProperties>[] = [];
         for (const i of filtered) {
           const row = index.rows[i];
-          if (row)
+          if (row && row[1] !== null && row[2] !== null)
             points.push({
               type: "Feature",
               geometry: { type: "Point", coordinates: [row[1], row[2]] },
@@ -278,7 +279,7 @@ export async function loadInventory(
         if (
           tree.dataset !== dataset.id ||
           trees.has(tree.sourceId) ||
-          !contains(dataset.bounds, tree.position)
+          (tree.position !== null && !contains(dataset.bounds, tree.position))
         )
           throw new Error("Invalid or duplicate inventory record.");
         trees.set(tree.sourceId, tree);
@@ -293,15 +294,21 @@ export async function loadInventory(
     const descriptor = indexDescriptorSchema.parse(raw);
     if (descriptor.dataset !== dataset.id || descriptor.release !== dataset.release)
       throw new Error("Descriptor does not match the catalogue.");
-    const index = compactIndexSchema.parse(
-      await verifiedJson(
-        base,
-        descriptor.index.file,
-        descriptor.index.sha256,
-        true,
-        controller.signal,
-      ),
+    const stored = await readVerifiedAsset(
+      new URL(descriptor.index.file, base),
+      descriptor.index.sha256,
+      controller.signal,
     );
+    const unpacked = new Uint8Array(
+      await new Response(
+        new Blob([stored]).stream().pipeThrough(new DecompressionStream("gzip")),
+      ).arrayBuffer(),
+    );
+    controller.signal.throwIfAborted();
+    const index =
+      descriptor.index.encoding === "columns-v1"
+        ? decodeIndexColumns(unpacked)
+        : compactIndexSchema.parse(JSON.parse(new TextDecoder().decode(unpacked)));
     const rows = validateIndex(index, descriptor, dataset);
     const cache = new Map<number, Map<string, Tree>>();
     const pending = new Map<number, Promise<Map<string, Tree>>>();
@@ -324,8 +331,8 @@ export async function loadInventory(
           throw new Error("Detail record does not match its index.");
         const expected = summary(index, row);
         if (
-          tree.position[0] !== expected.position[0] ||
-          tree.position[1] !== expected.position[1] ||
+          tree.position?.[0] !== expected.position?.[0] ||
+          tree.position?.[1] !== expected.position?.[1] ||
           tree.tag !== expected.tag ||
           tree.scientificName !== expected.scientificName ||
           tree.commonName !== expected.commonName ||

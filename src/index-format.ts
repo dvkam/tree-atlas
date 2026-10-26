@@ -11,21 +11,26 @@ export const indexDescriptorSchema = z.object({
   version: z.literal(2),
   dataset: datasetIdSchema,
   release: z.string(),
-  index: assetSchema,
+  index: assetSchema.extend({ encoding: z.literal("columns-v1").optional() }),
   details: z.array(assetSchema).min(1),
 });
 export type IndexDescriptor = z.infer<typeof indexDescriptorSchema>;
 // Dictionary indexes use -1 for an absent value. Source IDs are never converted to numbers.
-export const indexRowSchema = z.tuple([
-  z.string().min(1),
-  z.number().min(-180).max(180),
-  z.number().min(-90).max(90),
-  z.number().int().min(-1),
-  z.number().int().min(-1),
-  z.number().int().min(-1),
-  z.number().int().min(-1),
-  z.number().int().nonnegative(),
-]);
+export const indexRowSchema = z
+  .tuple([
+    z.string().min(1),
+    z.number().min(-180).max(180).nullable(),
+    z.number().min(-90).max(90).nullable(),
+    z.number().int().min(-1),
+    z.number().int().min(-1),
+    z.number().int().min(-1),
+    z.number().int().min(-1),
+    z.number().int().nonnegative(),
+  ])
+  .refine(
+    (row) => (row[1] === null) === (row[2] === null),
+    "Both coordinates must be present or absent",
+  );
 export const compactIndexSchema = z.object({
   version: z.literal(2),
   dataset: datasetIdSchema,
