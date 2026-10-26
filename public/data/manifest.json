@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "publishedAt": "2026-10-26T20:32:55.636Z",
+  "provenance": "provenance/eb68b2cc98b47b89c04a442e23573c2af99208f71cf150884edeef14f3d386d2.json",
+  "datasets": [
+    {
+      "id": "vienna",
+      "city": "Vienna",
+      "country": "Austria",
+      "center": [
+        16.394,
+        48.207499999999996
+      ],
+      "bounds": [
+        16.383,
+        48.202,
+        16.405,
+        48.213
+      ],
+      "release": "vienna-e4fc6f34cf3af532",
+      "file": "releases/vienna-e4fc6f34cf3af532/vienna.json",
+      "sha256": "7f506bb6ab5889d2b550d1772d67a230192e845dc89d839928db4247c7a399f8",
+      "count": 4375,
+      "fetchedAt": "2026-10-26T20:23:16.149Z",
+      "sourceUrl": "https://www.data.gv.at/datasets/c91a4635-8b7d-43fe-9b27-d95dec8392a7",
+      "attribution": "Datenquelle: Stadt Wien — data.wien.gv.at",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Selected public tree records around Hundertwasserhaus and western Prater; not all trees in Vienna."
+    },
+    {
+      "id": "geneva",
+      "city": "Geneva",
+      "country": "Switzerland",
+      "center": [
+        6.145,
+        46.203500000000005
+      ],
+      "bounds": [
+        6.135,
+        46.195,
+        6.155,
+        46.212
+      ],
+      "release": "geneva-d4250459b8e3aba6",
+      "file": "releases/geneva-d4250459b8e3aba6/geneva.json",
+      "sha256": "e71e81a51f14fe7077f578b7dd8e8feaac48d188ff50f0221986b7dd6fe6ad30",
+      "count": 4685,
+      "fetchedAt": "2026-10-26T20:23:17.755Z",
+      "sourceUrl": "https://sitg.ge.ch/donnees/sipv-ica-arbre-isole",
+      "attribution": "Données SITG / Ville de Genève",
+      "license": "SITG A — Accès libre",
+      "licenseUrl": "https://sitg.ge.ch/ressources/conditions-utilisation-donnees",
+      "coverage": "Selected inventory records outside forests in central Geneva. Historical positioning may be inaccurate by about 25 m; recent surveys about 1 m."
+    },
+    {
+      "id": "porto",
+      "city": "Porto",
+      "country": "Portugal",
+      "center": [
+        -8.6105,
+        41.1485
+      ],
+      "bounds": [
+        -8.622,
+        41.141,
+        -8.599,
+        41.156
+      ],
+      "release": "porto-ac49bc8ef867a843",
+      "file": "releases/porto-ac49bc8ef867a843/porto.json",
+      "sha256": "03f94a1e6c7b22e4220d336b26aa60029190e1124000d72ca61b912c9af5f468",
+      "count": 2328,
+      "fetchedAt": "2026-10-26T20:23:22.482Z",
+      "sourceUrl": "https://dadosabertos.cm-porto.pt/dataset/identificacao-e-caracterizacao-do-arvoredo-do-municipio-do-porto",
+      "attribution": "Município do Porto",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "coverage": "Selected public-domain inventory records in central Porto. The age field is an interval, not a planting year."
+    }
+  ]
+}
