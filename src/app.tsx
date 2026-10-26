@@ -1,23 +1,23 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  loadDataset,
-  loadManifest,
-  loadRelease,
-  normalizeText,
-  searchInventory,
-} from "./catalog.ts";
+import { loadDataset, loadManifest, normalizeText } from "./catalog.ts";
 import { contains, measurementLabel, treeKey } from "./domain.ts";
-import type { Dataset, Manifest, Release, Tree } from "./domain.ts";
+import type { Bounds, Dataset, Manifest, Tree } from "./domain.ts";
+import { createInventorySession } from "./inventory-client.ts";
+import type { InventoryClient } from "./inventory-client.ts";
+import type { InventoryQuery, Summary } from "./index-format.ts";
 import { useView } from "./navigation.ts";
 import type { ViewState } from "./navigation.ts";
-const TreeMap = lazy(async () => {
-  const module = await import("./map.tsx");
-  return { default: module.TreeMap };
-});
 
+const TreeMap = lazy(async () => ({ default: (await import("./map.tsx")).TreeMap }));
 const dataBase = new URL("data/", document.baseURI).href;
 const number = new Intl.NumberFormat("en");
+function summaryKey(tree: Summary): string {
+  return `${tree.dataset}:${tree.sourceId}`;
+}
+function datasetKey(dataset: Dataset): string {
+  return `${dataset.id}:${dataset.release}:${dataset.sha256}`;
+}
 
 function Notice({ title, text, retry }: { title: string; text: string; retry?: () => void }) {
   return (
@@ -45,7 +45,7 @@ export function App() {
           </span>
           Tree Atlas
         </a>
-        <span className="pilot-badge">PILOT · THREE STUDY AREAS</span>
+        <span className="pilot-badge">THREE PUBLIC INVENTORIES</span>
         <a href="https://github.com/dvkam/tree-atlas" className="about-link">
           About this project ↗
         </a>
@@ -69,8 +69,8 @@ export function App() {
 
 function Explorer({ manifest }: { manifest: Manifest }) {
   const [view, navigate] = useView();
-  const dataset = manifest.datasets.find((item) => item.id === view.city);
-  const archived = view.release !== null && view.release !== dataset?.release;
+  const current = manifest.datasets.find((item) => item.id === view.city);
+  const archived = view.release !== null && view.release !== current?.release;
   const archive = useQuery({
     queryKey: ["dataset-release", view.city, view.release],
     queryFn: ({ signal }) => {
@@ -79,11 +79,11 @@ function Explorer({ manifest }: { manifest: Manifest }) {
     },
     enabled: archived,
   });
-  if (dataset === undefined)
+  if (current === undefined)
     return (
       <Notice
-        title="This study area is unavailable"
-        text="Choose another city from the atlas home page."
+        title="This inventory is unavailable"
+        text="Choose another location from the atlas home page."
       />
     );
   if (archived && archive.isPending)
@@ -98,42 +98,109 @@ function Explorer({ manifest }: { manifest: Manifest }) {
       <div className="notice" aria-live="polite">
         <h2>This saved release is unavailable</h2>
         <p>{archive.error.message} We have not substituted newer records.</p>
-        <button onClick={() => navigate({ ...view, release: dataset.release, tree: null })}>
+        <button onClick={() => navigate({ ...view, release: current.release, tree: null })}>
           Open the current release
         </button>
       </div>
     );
-  if (archived && archive.data !== undefined)
-    return (
-      <CityExplorer manifest={manifest} dataset={archive.data} view={view} navigate={navigate} />
-    );
-  return <CityExplorer manifest={manifest} dataset={dataset} view={view} navigate={navigate} />;
+  const dataset = archived && archive.data !== undefined ? archive.data : current;
+  return (
+    <CityExplorer
+      manifest={manifest}
+      dataset={dataset}
+      current={current}
+      view={view}
+      navigate={navigate}
+    />
+  );
+}
+
+type SessionState = { key: string; client: InventoryClient | null; error: string | null };
+function useInventory(dataset: Dataset) {
+  const [attempt, setAttempt] = useState(0);
+  const key = `${datasetKey(dataset)}:${attempt}`;
+  const [state, setState] = useState<SessionState | null>(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    let active = true;
+    let client: InventoryClient | null = null;
+    void createInventorySession(dataBase, dataset, controller.signal)
+      .then((created) => {
+        if (!active) {
+          created.dispose();
+          return;
+        }
+        client = created;
+        setState({ key, client: created, error: null });
+      })
+      .catch((error: unknown) => {
+        if (active)
+          setState({
+            key,
+            client: null,
+            error: error instanceof Error ? error.message : "The inventory could not load.",
+          });
+      });
+    return () => {
+      active = false;
+      controller.abort();
+      client?.dispose();
+    };
+  }, [dataset, key]);
+  const current = state?.key === key ? state : null;
+  return {
+    key,
+    client: current?.client ?? null,
+    error: current?.error ?? null,
+    retry: () => setAttempt((value) => value + 1),
+  };
 }
 
 type ExplorerProps = {
   manifest: Manifest;
   dataset: Dataset;
+  current: Dataset;
   view: ViewState;
   navigate: (view: ViewState) => void;
 };
-
-function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
-  const expired = view.release !== null && view.release !== dataset.release;
-  const release = useQuery({
-    queryKey: ["inventory", dataset.id, dataset.release, dataset.sha256],
-    queryFn: ({ signal }) => loadRelease(dataBase, dataset, signal),
-    enabled: !expired,
+function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerProps) {
+  const session = useInventory(dataset);
+  const scopeKey = `${datasetKey(dataset)}:${view.q}:${view.area?.join(",") ?? ""}`;
+  const [paging, setPaging] = useState({ key: scopeKey, offset: 0 });
+  const offset = paging.key === scopeKey ? paging.offset : 0;
+  const [camera, setCamera] = useState<{ key: string; bounds: Bounds; zoom: number } | null>(null);
+  const viewport = camera?.key === datasetKey(dataset) ? camera.bounds : dataset.bounds;
+  const zoom = camera?.key === datasetKey(dataset) ? camera.zoom : 11;
+  const request: InventoryQuery = { q: view.q, area: view.area, viewport, zoom, offset, limit: 30 };
+  const findings = useQuery({
+    queryKey: ["inventory-query", session.key, request],
+    queryFn: () => {
+      if (session.client === null) throw new Error("The inventory is not ready.");
+      return session.client.query(request);
+    },
+    enabled: session.client !== null,
+    gcTime: 60_000,
+  });
+  const selectedId =
+    view.tree?.startsWith(`${dataset.id}:`) === true
+      ? view.tree.slice(dataset.id.length + 1)
+      : null;
+  const detail = useQuery({
+    queryKey: ["inventory-detail", session.key, view.tree],
+    queryFn: () => {
+      if (session.client === null || selectedId === null) return null;
+      return session.client.detail(selectedId);
+    },
+    enabled: session.client !== null && view.tree !== null,
   });
   const [locationMessage, setLocationMessage] = useState("");
-  const trees = release.data === undefined ? [] : searchInventory(release.data, view.area, view.q);
-  const selected = release.data?.trees.find((tree) => treeKey(tree) === view.tree);
   const outsideCoverage =
     view.area !== null &&
     (view.area[2] < dataset.bounds[0] ||
       view.area[0] > dataset.bounds[2] ||
       view.area[3] < dataset.bounds[1] ||
       view.area[1] > dataset.bounds[3]);
-
+  const archived = dataset.release !== current.release;
   function update(changes: Partial<ViewState>) {
     navigate({ ...view, release: dataset.release, ...changes });
   }
@@ -159,7 +226,7 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
         const place = manifest.datasets.find((item) => contains(item.bounds, position));
         if (place === undefined) {
           setLocationMessage(
-            "You are outside the three pilot study areas. Choose a city to explore the available records.",
+            "You are outside the three inventory extents. Choose a location to explore the available records.",
           );
           return;
         }
@@ -179,18 +246,16 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
           canopy: view.canopy,
         });
         setLocationMessage(
-          "Showing published records around your location. Coverage stops at the dashed boundary.",
+          "Showing published records around your location. An absent record does not mean there is no tree.",
         );
       },
-      () => {
+      () =>
         setLocationMessage(
-          "Location was unavailable. You can explore any pilot area without sharing it.",
-        );
-      },
+          "Location was unavailable. You can explore the atlas without sharing it.",
+        ),
       { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 },
     );
   }
-
   return (
     <main className="atlas">
       <aside className="sidebar" aria-label="Search and tree records">
@@ -202,11 +267,11 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
             <em>its own canopy.</em>
           </h1>
           <p className="lede">
-            Explore recorded trees in three small study areas. Compare what their sources can tell
-            us.
+            Explore the published inventories of Vienna, the canton of Geneva and Porto. Zoom in to
+            see individual records.
           </p>
         </div>
-        <nav className="cities" aria-label="Pilot cities">
+        <nav className="cities" aria-label="Inventory locations">
           {manifest.datasets.map((place) => (
             <button
               key={place.id}
@@ -218,11 +283,21 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
             </button>
           ))}
         </nav>
+        {archived && (
+          <div className="archive-note">
+            <strong>You are viewing a saved release</strong>
+            <p>
+              This link retains its original coverage and records. A newer full inventory is
+              available.
+            </p>
+            <button onClick={() => changeCity(current)}>Open full inventory</button>
+          </div>
+        )}
         <div className="search-section">
           <SearchBox
-            key={`${dataset.id}:${view.q}`}
+            key={`${session.key}:${view.q}`}
             initial={view.q}
-            release={release.data}
+            client={session.client}
             datasets={manifest.datasets}
             onSearch={(q) => update({ q, tree: null })}
             onCity={changeCity}
@@ -237,10 +312,13 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
           )}
         </div>
         <div className="coverage-note">
-          <span className="eyebrow">{dataset.city} · STUDY AREA</span>
+          <span className="eyebrow">
+            {dataset.city} · {archived ? "SAVED RELEASE" : "PUBLIC INVENTORY"}
+          </span>
           <p>{dataset.coverage}</p>
           <p className="small">
-            The dashed boundary marks this pilot’s extent. No records outside it have been imported.
+            The dashed extent encloses published records. It is not a guarantee that every tree
+            inside it is recorded.
           </p>
         </div>
         <div className="layer-control">
@@ -261,77 +339,90 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
             </p>
           )}
         </div>
-        {expired ? (
-          <div className="notice" aria-live="polite">
-            <h2>This link uses a different release</h2>
-            <p>
-              The requested snapshot is not listed in the current catalogue. We have not silently
-              substituted newer records.
-            </p>
-            <button onClick={() => update({ tree: null })}>Open the current release</button>
-          </div>
-        ) : (
+        {session.error !== null && (
+          <Notice title="Records could not load" text={session.error} retry={session.retry} />
+        )}
+        {session.client === null && session.error === null && (
+          <p className="loading" aria-live="polite">
+            Preparing {number.format(dataset.count)} records for search… You can move the map while
+            they load.
+          </p>
+        )}
+        {session.client !== null && (
           <>
-            {release.isPending && (
+            {view.tree !== null && detail.isPending && (
               <p className="loading" aria-live="polite">
-                Loading {dataset.city} records…
+                Loading selected tree details…
               </p>
             )}
-            {release.isError && (
+            {view.tree !== null && detail.isError && (
               <Notice
-                title="Records could not load"
-                text={release.error.message}
+                title="Details could not load"
+                text={detail.error.message}
                 retry={() => {
-                  void release.refetch();
+                  void detail.refetch();
                 }}
               />
             )}
-            {release.data !== undefined && (
-              <>
-                {view.tree !== null && selected === undefined && (
-                  <Notice
-                    title="Record not found in this release"
-                    text="The selected identifier does not belong to this published snapshot."
-                  />
-                )}
-                {selected !== undefined && (
-                  <TreeDetails
-                    tree={selected}
-                    dataset={dataset}
-                    close={() => update({ tree: null })}
-                  />
-                )}
-                <div className="results-heading">
-                  <h2>{number.format(trees.length)} records</h2>
-                  {(view.q !== "" || view.area !== null) && (
-                    <button
-                      className="text-button"
-                      onClick={() => update({ q: "", area: null, tree: null })}
-                    >
-                      Clear filters
-                    </button>
-                  )}
-                </div>
-                <p className="small result-scope">
-                  {view.area === null
-                    ? "Across this pilot study area"
-                    : "Inside your selected map area"}
-                  {view.q !== "" ? ` · “${view.q}”` : ""}
-                </p>
-                {outsideCoverage ? (
-                  <Notice
-                    title="Outside this pilot’s coverage"
-                    text="This map area has not been imported. Clear filters to return to the available study area."
-                  />
-                ) : (
-                  <TreeList
-                    key={`${dataset.id}:${view.q}:${view.area?.join(",") ?? ""}`}
-                    trees={trees}
-                    selected={view.tree}
-                    onSelect={(tree) => update({ tree: treeKey(tree) })}
-                  />
-                )}
-              </>
+            {view.tree !== null && detail.isSuccess && detail.data === null && (
+              <Notice
+                title="Record not found in this release"
+                text="The selected identifier does not belong to this published snapshot."
+              />
+            )}
+            {view.tree !== null && detail.data !== undefined && detail.data !== null && (
+              <TreeDetails
+                tree={detail.data}
+                dataset={dataset}
+                close={() => update({ tree: null })}
+              />
+            )}
+            {findings.isError && (
+              <Notice
+                title="The search could not complete"
+                text={findings.error.message}
+                retry={() => {
+                  void findings.refetch();
+                }}
+              />
+            )}
+            <div className="results-heading">
+              <h2>
+                {findings.data === undefined
+                  ? "Searching…"
+                  : `${number.format(findings.data.total)} records`}
+              </h2>
+              {(view.q !== "" || view.area !== null) && (
+                <button
+                  className="text-button"
+                  onClick={() => update({ q: "", area: null, tree: null })}
+                >
+                  Clear filters
+                </button>
+              )}
+            </div>
+            <p className="small result-scope">
+              {view.area === null
+                ? "Across this published inventory"
+                : "Inside your selected map area"}
+              {view.q !== "" ? ` · “${view.q}”` : ""}
+            </p>
+            {outsideCoverage ? (
+              <Notice
+                title="Outside this inventory’s extent"
+                text="The selected area lies beyond the published records. Clear filters to return to the available inventory."
+              />
+            ) : (
+              findings.data !== undefined && (
+                <TreeList
+                  trees={findings.data.items}
+                  total={findings.data.total}
+                  offset={offset}
+                  selected={view.tree}
+                  onPage={(next) => setPaging({ key: scopeKey, offset: next })}
+                  onSelect={(tree) => update({ tree: summaryKey(tree) })}
+                />
+              )
             )}
           </>
         )}
@@ -341,8 +432,8 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
             <a href={dataset.licenseUrl}>{dataset.license}</a>
           </p>
           <p>
-            Retrieved {new Date(dataset.fetchedAt).toLocaleDateString("en-GB")}. This is an extract,
-            not a census of every tree.
+            Retrieved {new Date(dataset.fetchedAt).toLocaleDateString("en-GB")}. These are source
+            records, not a census of every tree.
           </p>
           <details>
             <summary>Release and source notes</summary>
@@ -367,12 +458,17 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
       >
         <TreeMap
           dataset={dataset}
-          trees={expired ? [] : trees}
+          markers={findings.data?.markers ?? []}
+          aggregated={findings.data?.mapAggregated ?? false}
           selected={view.tree}
+          selectedTree={view.tree !== null ? (detail.data ?? null) : null}
           canopy={view.canopy}
           area={view.area}
-          onSelect={(tree) => update({ tree: treeKey(tree) })}
+          onSelect={(tree) => update({ tree: summaryKey(tree) })}
           onArea={(area) => update({ area, tree: null })}
+          onViewport={(bounds, nextZoom) =>
+            setCamera({ key: datasetKey(dataset), bounds, zoom: nextZoom })
+          }
         />
       </Suspense>
     </main>
@@ -381,25 +477,35 @@ function CityExplorer({ manifest, dataset, view, navigate }: ExplorerProps) {
 
 type SearchProps = {
   initial: string;
-  release: Release | undefined;
+  client: InventoryClient | null;
   datasets: readonly Dataset[];
   onSearch: (q: string) => void;
   onCity: (dataset: Dataset) => void;
 };
-function SearchBox({ initial, release, datasets, onSearch, onCity }: SearchProps) {
+function SearchBox({ initial, client, datasets, onSearch, onCity }: SearchProps) {
   const [draft, setDraft] = useState(initial);
   const [open, setOpen] = useState(false);
+  const [suggestions, setSuggestions] = useState<{ term: string; values: string[] } | null>(null);
   const term = normalizeText(draft);
-  const suggestions = new Set<string>();
-  if (term.length >= 2 && release !== undefined) {
-    for (const tree of release.trees) {
-      for (const value of [tree.scientificName, tree.commonName, tree.location, tree.tag]) {
-        if (value !== null && normalizeText(value).includes(term)) suggestions.add(value);
-        if (suggestions.size >= 6) break;
-      }
-      if (suggestions.size >= 6) break;
-    }
-  }
+  useEffect(() => {
+    if (client === null || term.length < 2) return undefined;
+    let active = true;
+    const timer = window.setTimeout(() => {
+      void client
+        .suggest(term)
+        .then((values) => {
+          if (active) setSuggestions({ term, values });
+        })
+        .catch(() => {
+          if (active) setSuggestions({ term, values: [] });
+        });
+    }, 200);
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
+  }, [client, term]);
+  const values = suggestions?.term === term ? suggestions.values : [];
   const cities =
     term.length >= 2
       ? datasets.filter((item) => normalizeText(`${item.city} ${item.country}`).includes(term))
@@ -453,10 +559,10 @@ function SearchBox({ initial, release, datasets, onSearch, onCity }: SearchProps
               }}
             >
               {city.city}
-              <small>Study area · {city.country}</small>
+              <small>Inventory · {city.country}</small>
             </button>
           ))}
-          {[...suggestions].map((text) => (
+          {values.map((text) => (
             <button
               type="button"
               key={text}
@@ -470,13 +576,13 @@ function SearchBox({ initial, release, datasets, onSearch, onCity }: SearchProps
             </button>
           ))}
           <button type="submit">
-            Search for “{draft}”<small>In the selected study area</small>
+            Search for “{draft}”<small>In the selected inventory</small>
           </button>
         </div>
       )}
       <p id="search-help" className="small">
         Search recorded species, street labels or tree tags. Full address and landmark search is not
-        included in this pilot.
+        included.
       </p>
     </form>
   );
@@ -484,29 +590,34 @@ function SearchBox({ initial, release, datasets, onSearch, onCity }: SearchProps
 
 function TreeList({
   trees,
+  total,
+  offset,
   selected,
   onSelect,
+  onPage,
 }: {
-  trees: readonly Tree[];
+  trees: readonly Summary[];
+  total: number;
+  offset: number;
   selected: string | null;
-  onSelect: (tree: Tree) => void;
+  onSelect: (tree: Summary) => void;
+  onPage: (offset: number) => void;
 }) {
-  const [shown, setShown] = useState(30);
-  if (trees.length === 0)
+  if (total === 0)
     return (
       <p className="empty">
-        No matching records in this part of the published study area. Try another term or clear the
-        filters. This does not mean there are no trees here.
+        No matching source records. Try another term or clear the filters. This does not mean there
+        are no trees here.
       </p>
     );
   return (
     <>
       <ul className="tree-list" aria-label="Tree records">
-        {trees.slice(0, shown).map((tree) => (
-          <li key={treeKey(tree)}>
+        {trees.map((tree) => (
+          <li key={summaryKey(tree)}>
             <button
-              id={`record-${treeKey(tree)}`}
-              aria-pressed={selected === treeKey(tree)}
+              id={`record-${summaryKey(tree)}`}
+              aria-pressed={selected === summaryKey(tree)}
               onClick={() => onSelect(tree)}
             >
               <span className="list-leaf" aria-hidden="true">
@@ -527,14 +638,18 @@ function TreeList({
           </li>
         ))}
       </ul>
-      {shown < trees.length && (
-        <button className="show-more" onClick={() => setShown((value) => value + 30)}>
-          Show 30 more{" "}
-          <span>
-            {number.format(shown)} of {number.format(trees.length)}
-          </span>
+      <nav className="pagination" aria-label="Results pages">
+        <button disabled={offset === 0} onClick={() => onPage(Math.max(0, offset - 30))}>
+          Previous
         </button>
-      )}
+        <span>
+          {number.format(offset + 1)}–{number.format(Math.min(offset + trees.length, total))} of{" "}
+          {number.format(total)}
+        </span>
+        <button disabled={offset + trees.length >= total} onClick={() => onPage(offset + 30)}>
+          Next
+        </button>
+      </nav>
     </>
   );
 }
@@ -569,6 +684,16 @@ function TreeDetails({
       <h2 id={`detail-${selection}`} tabIndex={-1}>
         {tree.commonName ?? tree.scientificName ?? "Unidentified tree"}
       </h2>
+      {tree.qualityNotes !== undefined && tree.qualityNotes.length > 0 && (
+        <div className="source-quality">
+          <strong>Source quality note</strong>
+          <ul>
+            {tree.qualityNotes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       {tree.scientificName !== null && <p className="latin">{tree.scientificName}</p>}
       <dl>
         <div>

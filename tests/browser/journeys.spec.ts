@@ -1,10 +1,15 @@
 import { expect, test } from "@playwright/test";
 
 let browserErrors: string[] = [];
+let detailRequests: string[] = [];
 
 test.beforeEach(async ({ page }) => {
   browserErrors = [];
+  detailRequests = [];
   page.on("pageerror", (error) => browserErrors.push(error.message));
+  page.context().on("request", (request) => {
+    if (/\/detail-\d+\.bin/u.test(request.url())) detailRequests.push(request.url());
+  });
   // Basemap availability is outside these local-data user journeys.
   await page.route("https://tile.openstreetmap.org/**", (route) => route.abort());
   await page.goto("/");
@@ -92,4 +97,91 @@ test("mobile layout remains usable without horizontal scrolling", async ({ page 
     () => document.documentElement.scrollWidth > window.innerWidth,
   );
   expect(overflow).toBe(false);
+});
+
+test("full inventories use bounded map markers and list pages, fetching details only on selection", async ({
+  page,
+}) => {
+  const cases = [
+    { name: "Vienna", minimum: 200_000 },
+    { name: "Geneva", minimum: 200_000 },
+    { name: "Porto", minimum: 70_000 },
+  ];
+  for (const item of cases) {
+    await page
+      .getByRole("navigation", { name: "Inventory locations" })
+      .getByRole("button", { name: new RegExp(item.name, "u") })
+      .click();
+    await expect
+      .poll(async () =>
+        Number((await page.locator(".results-heading h2").innerText()).replace(/\D/gu, "")),
+      )
+      .toBeGreaterThan(item.minimum);
+    await expect(
+      page.getByRole("list", { name: "Tree records" }).getByRole("listitem"),
+    ).toHaveCount(30);
+    await expect
+      .poll(async () =>
+        Number(
+          await page.getByRole("region", { name: "Tree map" }).getAttribute("data-marker-count"),
+        ),
+      )
+      .toBeGreaterThan(0);
+    expect(
+      Number(
+        await page.getByRole("region", { name: "Tree map" }).getAttribute("data-marker-count"),
+      ),
+    ).toBeLessThanOrEqual(1000);
+  }
+  const first = await page
+    .getByRole("list", { name: "Tree records" })
+    .getByRole("button")
+    .first()
+    .innerText();
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await expect(page.getByRole("navigation", { name: "Results pages" })).toContainText("31–60");
+  await expect(page.getByRole("list", { name: "Tree records" }).getByRole("listitem")).toHaveCount(
+    30,
+  );
+  await expect(
+    page.getByRole("list", { name: "Tree records" }).getByRole("button").first(),
+  ).not.toHaveText(first);
+  expect(detailRequests).toHaveLength(0);
+  await page.getByRole("list", { name: "Tree records" }).getByRole("button").first().click();
+  await expect(page.getByRole("region", { name: "Selected tree details" })).toBeVisible();
+  expect(detailRequests).toHaveLength(1);
+});
+
+test("an original Geneva study link keeps its snapshot and offers the full inventory", async ({
+  page,
+}) => {
+  await page.goto("/?city=geneva&release=geneva-d4250459b8e3aba6");
+  await expect(page.getByRole("heading", { name: "4,685 records" })).toBeVisible();
+  await expect(page.getByText("You are viewing a saved release")).toBeVisible();
+  await page.getByRole("button", { name: "Open full inventory" }).click();
+  await expect
+    .poll(async () =>
+      Number((await page.locator(".results-heading h2").innerText()).replace(/\D/gu, "")),
+    )
+    .toBeGreaterThan(200_000);
+  expect(new URL(page.url()).searchParams.get("release")).not.toBe("geneva-d4250459b8e3aba6");
+  await expect(page.getByText("You are viewing a saved release")).toHaveCount(0);
+});
+
+test("cluster selection zooms the viewport without committing a new search until requested", async ({
+  page,
+}) => {
+  await page.getByRole("button", { name: "Search this area" }).click();
+  const before = new URL(page.url()).searchParams.get("area");
+  expect(before).not.toBeNull();
+  await page
+    .getByRole("button", { name: /records; zoom in/u })
+    .first()
+    .click();
+  expect(new URL(page.url()).searchParams.get("area")).toBe(before);
+  await page.getByRole("button", { name: "Search this area" }).click();
+  await expect.poll(() => new URL(page.url()).searchParams.get("area")).not.toBe(before);
+  expect(
+    Number(await page.getByRole("region", { name: "Tree map" }).getAttribute("data-marker-count")),
+  ).toBeLessThanOrEqual(1000);
 });

@@ -1,25 +1,43 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 import L from "leaflet";
-import type { Bounds, Dataset, Tree } from "./domain.ts";
-import { treeKey } from "./domain.ts";
+import type { Bounds, Dataset } from "./domain.ts";
+import type { MapItem, Summary } from "./index-format.ts";
+
 import "leaflet/dist/leaflet.css";
 
 type Props = {
   dataset: Dataset;
-  trees: readonly Tree[];
+  markers: readonly MapItem[];
+  aggregated: boolean;
   selected: string | null;
+  selectedTree: Summary | null;
   canopy: boolean;
   area: Bounds | null;
-  onSelect: (tree: Tree) => void;
+  onSelect: (tree: Summary) => void;
+  onViewport: (bounds: Bounds, zoom: number) => void;
   onArea: (bounds: Bounds) => void;
 };
 
-export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onArea }: Props) {
+export function TreeMap({
+  dataset,
+  markers,
+  aggregated,
+  selected,
+  selectedTree,
+  canopy,
+  area,
+  onSelect,
+  onArea,
+  onViewport,
+}: Props) {
   const host = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const [canopyError, setCanopyError] = useState(false);
   const [basemapError, setBasemapError] = useState(false);
   const select = useEffectEvent(onSelect);
+  const reportViewport = useEffectEvent(onViewport);
+  const commitArea = useEffectEvent(onArea);
+  const [mapMessage, setMapMessage] = useState("");
   const areaKey = area?.join(",") ?? "";
 
   useEffect(() => {
@@ -28,8 +46,14 @@ export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onAr
       preferCanvas: true,
       scrollWheelZoom: true,
       zoomControl: true,
+      maxZoom: 19,
+      worldCopyJump: true,
     }).setView([48.207, 16.394], 15);
     mapRef.current = map;
+    map.on("moveend", () => {
+      setMapMessage("");
+      reportViewport(viewportBounds(map), map.getZoom());
+    });
     const basemap = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -88,8 +112,41 @@ export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onAr
     const map = mapRef.current;
     if (map === null) return undefined;
     const group = L.layerGroup().addTo(map);
-    for (const tree of trees) {
-      const active = treeKey(tree) === selected;
+    for (const item of markers) {
+      if (item.kind === "cluster") {
+        const label = document.createElement("span");
+        label.className = "cluster-count";
+        label.textContent = new Intl.NumberFormat("en", {
+          notation: "compact",
+          maximumFractionDigits: 1,
+        }).format(item.count);
+        const marker = L.marker([item.position[1], item.position[0]], {
+          icon: L.divIcon({
+            className: "inventory-cluster",
+            html: label,
+            iconSize: [44, 44],
+            iconAnchor: [22, 22],
+          }),
+          title: `${item.count.toLocaleString("en")} records; zoom in`,
+          keyboard: true,
+        }).addTo(group);
+        marker
+          .getElement()
+          ?.setAttribute("aria-label", `${item.count.toLocaleString("en")} records; zoom in`);
+        marker.on("click", () => {
+          const nextZoom = Math.min(19, Math.max(map.getZoom() + 1, item.zoom));
+          map.setView([item.position[1], item.position[0]], nextZoom, { animate: false });
+          if (nextZoom === 19) {
+            setMapMessage(
+              "At the closest map scale, some records share a position. The result list provides their individual details.",
+            );
+            commitArea(viewportBounds(map));
+          }
+        });
+        continue;
+      }
+      const tree = item.tree;
+      const active = `${tree.dataset}:${tree.sourceId}` === selected;
       const marker = L.circleMarker([tree.position[1], tree.position[0]], {
         radius: active ? 8 : 4,
         color: active ? "#713e20" : "#1e543c",
@@ -106,7 +163,24 @@ export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onAr
     return () => {
       group.remove();
     };
-  }, [trees, selected]);
+  }, [markers, selected]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (map === null || selectedTree === null) return undefined;
+    const position: L.LatLngTuple = [selectedTree.position[1], selectedTree.position[0]];
+    const marker = L.circleMarker(position, {
+      radius: 9,
+      color: "#713e20",
+      fillColor: "#efac60",
+      fillOpacity: 1,
+      weight: 3,
+    }).addTo(map);
+    if (!map.getBounds().contains(position)) map.panTo(position, { animate: false });
+    return () => {
+      marker.remove();
+    };
+  }, [selectedTree]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -131,11 +205,12 @@ export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onAr
   function searchArea() {
     const bounds = mapRef.current?.getBounds();
     if (bounds === undefined) return;
-    onArea([bounds.getWest(), bounds.getSouth(), bounds.getEast(), bounds.getNorth()]);
+    const map = mapRef.current;
+    if (map !== null) onArea(viewportBounds(map));
   }
 
   return (
-    <section className="map-panel" aria-label="Tree map">
+    <section className="map-panel" aria-label="Tree map" data-marker-count={markers.length}>
       <div
         ref={host}
         className="map"
@@ -149,7 +224,7 @@ export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onAr
           <i className="tree-dot" /> Inventory record
         </span>
         <span>
-          <i className="coverage-line" /> Pilot boundary
+          <i className="coverage-line" /> Published extent
         </span>
         {canopy && (
           <span>
@@ -157,13 +232,29 @@ export function TreeMap({ dataset, trees, selected, canopy, area, onSelect, onAr
           </span>
         )}
       </div>
+      {aggregated && <p className="cluster-hint">Grouped records · zoom in to explore</p>}
+      {mapMessage !== "" && (
+        <p className="map-message" aria-live="polite">
+          {mapMessage}
+        </p>
+      )}
       {(basemapError || (canopy && canopyError)) && (
         <p className="map-alert" aria-live="polite">
           {basemapError ? "Street-map tiles could not load. " : ""}
           {canopy && canopyError ? "Canopy tiles could not load. " : ""}
-          Inventory records are still available.
+          The record list can be used without map tiles.
         </p>
       )}
     </section>
   );
+}
+
+function viewportBounds(map: L.Map): Bounds {
+  const bounds = map.getBounds();
+  return [
+    Math.max(-180, bounds.getWest()),
+    Math.max(-85, bounds.getSouth()),
+    Math.min(180, bounds.getEast()),
+    Math.min(85, bounds.getNorth()),
+  ];
 }
