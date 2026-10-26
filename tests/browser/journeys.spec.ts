@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { manifestSchema } from "../../src/domain.ts";
 
 let browserErrors: string[] = [];
 let detailRequests: string[] = [];
@@ -102,21 +103,18 @@ test("mobile layout remains usable without horizontal scrolling", async ({ page 
 test("full inventories use bounded map markers and list pages, fetching details only on selection", async ({
   page,
 }) => {
-  const cases = [
-    { name: "Vienna", minimum: 200_000 },
-    { name: "Geneva", minimum: 200_000 },
-    { name: "Porto", minimum: 70_000 },
-  ];
+  const response = await page.request.get("/data/manifest.json");
+  const cases = manifestSchema.parse(await response.json()).datasets;
   for (const item of cases) {
     await page
       .getByRole("navigation", { name: "Inventory locations" })
-      .getByRole("button", { name: new RegExp(item.name, "u") })
+      .getByRole("button", { name: new RegExp(item.city, "u") })
       .click();
     await expect
       .poll(async () =>
         Number((await page.locator(".results-heading h2").innerText()).replace(/\D/gu, "")),
       )
-      .toBeGreaterThan(item.minimum);
+      .toBe(item.count);
     await expect(
       page.getByRole("list", { name: "Tree records" }).getByRole("listitem"),
     ).toHaveCount(30);
@@ -184,4 +182,86 @@ test("cluster selection zooms the viewport without committing a new search until
   expect(
     Number(await page.getByRole("region", { name: "Tree map" }).getAttribute("data-marker-count")),
   ).toBeLessThanOrEqual(1000);
+});
+
+test("paging keeps existing map clusters instead of replacing their elements", async ({ page }) => {
+  const cluster = page.locator(".inventory-cluster").first();
+  await expect(cluster).toBeVisible();
+  const element = await cluster.elementHandle();
+  expect(element).not.toBeNull();
+  await page.getByRole("button", { name: "Next", exact: true }).click();
+  await expect(page.getByRole("navigation", { name: "Results pages" })).toContainText("31–60");
+  await expect(page.getByRole("region", { name: "Tree map" })).toHaveAttribute(
+    "aria-busy",
+    "false",
+  );
+  expect(await element?.evaluate((node) => node.isConnected)).toBe(true);
+});
+
+test("mobile rapid city changes settle on the requested complete inventory", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const locations = page.getByRole("navigation", { name: "Inventory locations" });
+  await locations.getByRole("button", { name: /Geneva/u }).click();
+  await locations.getByRole("button", { name: /Porto/u }).click();
+  await expect(page).toHaveURL(/city=porto/u);
+  await expect(page.getByRole("heading", { name: "71,634 records" })).toBeVisible();
+  await expect(page.locator('[id^="record-geneva:"]')).toHaveCount(0);
+  await expect(page.locator('[id^="record-vienna:"]')).toHaveCount(0);
+  await expect(page.getByRole("region", { name: "Tree map" })).toHaveAttribute(
+    "aria-busy",
+    "false",
+  );
+  await page.getByRole("searchbox").fill("1");
+  await page.getByRole("searchbox").press("Enter");
+  await page.locator('[id="record-porto:1"]').click();
+  await expect(page.getByRole("region", { name: "Selected tree details" })).toContainText(
+    "Source ID 1",
+  );
+  await expect(page).toHaveURL(/tree=porto%3A1/u);
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > window.innerWidth,
+  );
+  expect(overflow).toBe(false);
+});
+
+test("returning to an inventory reuses verified bytes with the HTTP cache disabled", async ({
+  page,
+}) => {
+  const requests: string[] = [];
+  // Routing disables the browser HTTP cache; CacheStorage remains an independent verified cache.
+  await page.context().route("**/data/**", (route) => route.continue());
+  page.context().on("request", (request) => {
+    if (request.url().includes("/index.bin")) requests.push(request.url());
+  });
+  const locations = page.getByRole("navigation", { name: "Inventory locations" });
+  await locations.getByRole("button", { name: /Geneva/u }).click();
+  await expect(page.getByRole("heading", { name: "240,827 records" })).toBeVisible();
+  await locations.getByRole("button", { name: /Vienna/u }).click();
+  await expect(page.getByRole("heading", { name: "233,102 records" })).toBeVisible();
+  expect(requests.filter((url) => url.includes("/vienna-"))).toHaveLength(0);
+  await expect(page.getByRole("list", { name: "Tree records" }).getByRole("listitem")).toHaveCount(
+    30,
+  );
+});
+
+test("Amsterdam records without coordinates stay searchable and readable", async ({ page }) => {
+  await page
+    .getByRole("navigation", { name: "Inventory locations" })
+    .getByRole("button", { name: /Amsterdam/u })
+    .click();
+  await expect(page.getByText(/records have no recorded position/u)).toBeVisible();
+  await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible();
+  await page.getByRole("searchbox").fill("3869075");
+  await page.getByRole("searchbox").press("Enter");
+  const record = page.locator('[id="record-amsterdam:3869075"]');
+  await expect(record).toBeVisible();
+  await expect(page.getByRole("region", { name: "Tree map" })).toHaveAttribute(
+    "data-marker-count",
+    "0",
+  );
+  await record.click();
+  await expect(page.getByRole("region", { name: "Selected tree details" })).toContainText(
+    "Location not recorded",
+  );
+  await expect(page).toHaveURL(/tree=amsterdam%3A3869075/u);
 });

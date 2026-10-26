@@ -9,7 +9,8 @@ type Props = {
   dataset: Dataset;
   markers: readonly MapItem[];
   aggregated: boolean;
-  selected: string | null;
+  loading: boolean;
+  updating: boolean;
   selectedTree: Summary | null;
   canopy: boolean;
   area: Bounds | null;
@@ -22,7 +23,8 @@ export function TreeMap({
   dataset,
   markers,
   aggregated,
-  selected,
+  loading,
+  updating,
   selectedTree,
   canopy,
   area,
@@ -32,6 +34,7 @@ export function TreeMap({
 }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
+  const visibleLayers = useRef(new Map<string, L.Layer>());
   const [canopyError, setCanopyError] = useState(false);
   const [basemapError, setBasemapError] = useState(false);
   const select = useEffectEvent(onSelect);
@@ -50,6 +53,7 @@ export function TreeMap({
       worldCopyJump: true,
     }).setView([48.207, 16.394], 15);
     mapRef.current = map;
+    const layers = visibleLayers.current;
     map.on("moveend", () => {
       setMapMessage("");
       reportViewport(viewportBounds(map), map.getZoom());
@@ -72,11 +76,13 @@ export function TreeMap({
       });
       map.remove();
       mapRef.current = null;
+      layers.clear();
     };
   }, []);
 
   useEffect(() => {
-    const parts = areaKey === "" ? dataset.bounds : areaKey.split(",").map(Number);
+    const parts =
+      areaKey === "" ? (dataset.viewBounds ?? dataset.bounds) : areaKey.split(",").map(Number);
     const [w, s, e, n] = parts;
     if (w !== undefined && s !== undefined && e !== undefined && n !== undefined)
       mapRef.current?.fitBounds(
@@ -110,16 +116,22 @@ export function TreeMap({
 
   useEffect(() => {
     const map = mapRef.current;
-    if (map === null) return undefined;
-    const group = L.layerGroup().addTo(map);
+    if (map === null) return;
+    const layers = visibleLayers.current;
+    const next = new Set<string>();
+    const compact = new Intl.NumberFormat("en", {
+      notation: "compact",
+      maximumFractionDigits: 1,
+    });
     for (const item of markers) {
+      // Cluster IDs are local to a filtered index. Include their rendered content and action.
+      const key = `${dataset.release}:${JSON.stringify(item)}`;
+      next.add(key);
+      if (layers.has(key)) continue;
       if (item.kind === "cluster") {
         const label = document.createElement("span");
         label.className = "cluster-count";
-        label.textContent = new Intl.NumberFormat("en", {
-          notation: "compact",
-          maximumFractionDigits: 1,
-        }).format(item.count);
+        label.textContent = compact.format(item.count);
         const marker = L.marker([item.position[1], item.position[0]], {
           icon: L.divIcon({
             className: "inventory-cluster",
@@ -129,7 +141,7 @@ export function TreeMap({
           }),
           title: `${item.count.toLocaleString("en")} records; zoom in`,
           keyboard: true,
-        }).addTo(group);
+        }).addTo(map);
         marker
           .getElement()
           ?.setAttribute("aria-label", `${item.count.toLocaleString("en")} records; zoom in`);
@@ -143,31 +155,36 @@ export function TreeMap({
             commitArea(viewportBounds(map));
           }
         });
+        layers.set(key, marker);
         continue;
       }
       const tree = item.tree;
-      const active = `${tree.dataset}:${tree.sourceId}` === selected;
+      if (tree.position === null) continue;
       const marker = L.circleMarker([tree.position[1], tree.position[0]], {
-        radius: active ? 8 : 4,
-        color: active ? "#713e20" : "#1e543c",
-        fillColor: active ? "#efac60" : "#438a5e",
-        fillOpacity: active ? 1 : 0.8,
-        weight: active ? 3 : 1,
+        radius: 4,
+        color: "#1e543c",
+        fillColor: "#438a5e",
+        fillOpacity: 0.8,
+        weight: 1,
       });
       const label = document.createElement("span");
       label.textContent = tree.commonName ?? tree.scientificName ?? `Record ${tree.sourceId}`;
       marker.bindTooltip(label);
       marker.on("click", () => select(tree));
-      marker.addTo(group);
+      marker.addTo(map);
+      layers.set(key, marker);
     }
-    return () => {
-      group.remove();
-    };
-  }, [markers, selected]);
+    for (const [key, layer] of layers) {
+      if (!next.has(key)) {
+        layer.remove();
+        layers.delete(key);
+      }
+    }
+  }, [markers, dataset.release]);
 
   useEffect(() => {
     const map = mapRef.current;
-    if (map === null || selectedTree === null) return undefined;
+    if (map === null || selectedTree === null || selectedTree.position === null) return undefined;
     const position: L.LatLngTuple = [selectedTree.position[1], selectedTree.position[0]];
     const marker = L.circleMarker(position, {
       radius: 9,
@@ -210,7 +227,12 @@ export function TreeMap({
   }
 
   return (
-    <section className="map-panel" aria-label="Tree map" data-marker-count={markers.length}>
+    <section
+      className="map-panel"
+      aria-label="Tree map"
+      aria-busy={loading || updating}
+      data-marker-count={markers.length}
+    >
       <div
         ref={host}
         className="map"
@@ -232,7 +254,12 @@ export function TreeMap({
           </span>
         )}
       </div>
-      {aggregated && <p className="cluster-hint">Grouped records · zoom in to explore</p>}
+      {loading && (
+        <output className="map-loading">Opening {dataset.city}… You can still move the map.</output>
+      )}
+      {!loading && aggregated && (
+        <p className="cluster-hint">Grouped records · zoom in to explore</p>
+      )}
       {mapMessage !== "" && (
         <p className="map-message" aria-live="polite">
           {mapMessage}

@@ -45,7 +45,7 @@ export function App() {
           </span>
           Tree Atlas
         </a>
-        <span className="pilot-badge">THREE PUBLIC INVENTORIES</span>
+        <span className="pilot-badge">PUBLIC TREE INVENTORIES</span>
         <a href="https://github.com/dvkam/tree-atlas" className="about-link">
           About this project ↗
         </a>
@@ -169,14 +169,19 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
   const [paging, setPaging] = useState({ key: scopeKey, offset: 0 });
   const offset = paging.key === scopeKey ? paging.offset : 0;
   const [camera, setCamera] = useState<{ key: string; bounds: Bounds; zoom: number } | null>(null);
-  const viewport = camera?.key === datasetKey(dataset) ? camera.bounds : dataset.bounds;
+  const viewport =
+    camera?.key === datasetKey(dataset) ? camera.bounds : (dataset.viewBounds ?? dataset.bounds);
   const zoom = camera?.key === datasetKey(dataset) ? camera.zoom : 11;
   const request: InventoryQuery = { q: view.q, area: view.area, viewport, zoom, offset, limit: 30 };
   const findings = useQuery({
-    queryKey: ["inventory-query", session.key, request],
-    queryFn: () => {
+    queryKey: ["inventory-query", session.key, scopeKey, offset, viewport, zoom],
+    placeholderData: (previous, previousQuery) =>
+      previousQuery?.queryKey[1] === session.key && previousQuery.queryKey[2] === scopeKey
+        ? previous
+        : undefined,
+    queryFn: async () => {
       if (session.client === null) throw new Error("The inventory is not ready.");
-      return session.client.query(request);
+      return { ...(await session.client.query(request)), offset };
     },
     enabled: session.client !== null,
     gcTime: 60_000,
@@ -226,7 +231,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
         const place = manifest.datasets.find((item) => contains(item.bounds, position));
         if (place === undefined) {
           setLocationMessage(
-            "You are outside the three inventory extents. Choose a location to explore the available records.",
+            "You are outside the available inventory extents. Choose a location to explore its records.",
           );
           return;
         }
@@ -267,8 +272,8 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
             <em>its own canopy.</em>
           </h1>
           <p className="lede">
-            Explore the published inventories of Vienna, the canton of Geneva and Porto. Zoom in to
-            see individual records.
+            Explore public tree inventories across Europe. Choose a location, then zoom in to see
+            individual records.
           </p>
         </div>
         <nav className="cities" aria-label="Inventory locations">
@@ -316,6 +321,12 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
             {dataset.city} · {archived ? "SAVED RELEASE" : "PUBLIC INVENTORY"}
           </span>
           <p>{dataset.coverage}</p>
+          {dataset.locatedCount !== undefined && dataset.locatedCount < dataset.count && (
+            <p className="small">
+              {number.format(dataset.count - dataset.locatedCount)} records have no recorded
+              position. They remain searchable in the list.
+            </p>
+          )}
           <p className="small">
             The dashed extent encloses published records. It is not a guarantee that every tree
             inside it is recorded.
@@ -344,8 +355,8 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
         )}
         {session.client === null && session.error === null && (
           <p className="loading" aria-live="polite">
-            Preparing {number.format(dataset.count)} records for search… You can move the map while
-            they load.
+            Opening {dataset.city} · {number.format(dataset.count)} records. You can choose another
+            location or move the map while they load.
           </p>
         )}
         {session.client !== null && (
@@ -417,7 +428,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
                 <TreeList
                   trees={findings.data.items}
                   total={findings.data.total}
-                  offset={offset}
+                  offset={findings.data.offset}
                   selected={view.tree}
                   onPage={(next) => setPaging({ key: scopeKey, offset: next })}
                   onSelect={(tree) => update({ tree: summaryKey(tree) })}
@@ -460,7 +471,8 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
           dataset={dataset}
           markers={findings.data?.markers ?? []}
           aggregated={findings.data?.mapAggregated ?? false}
-          selected={view.tree}
+          loading={session.error === null && (session.client === null || findings.isPending)}
+          updating={session.client !== null && findings.isFetching}
           selectedTree={view.tree !== null ? (detail.data ?? null) : null}
           canopy={view.canopy}
           area={view.area}
@@ -733,8 +745,10 @@ function TreeDetails({
         </div>
       </dl>
       <p className="small">
-        {tree.location ?? dataset.city} · {tree.position[1].toFixed(5)},{" "}
-        {tree.position[0].toFixed(5)}
+        {tree.location ?? dataset.city} ·{" "}
+        {tree.position === null
+          ? "Location not recorded"
+          : `${tree.position[1].toFixed(5)}, ${tree.position[0].toFixed(5)}`}
       </p>
       <p className="small">
         Source ID {tree.sourceId} ·{" "}

@@ -149,7 +149,8 @@ h1 em {
   line-height: 1.6;
 }
 .cities {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
   padding-bottom: 22px;
 }
@@ -196,7 +197,7 @@ h1 em {
   border: 1px solid #bcc8bb;
   border-radius: 8px;
   padding: 10px 12px;
-  font-size: 13px;
+  font-size: 16px;
   min-height: 46px;
 }
 .search-row button {
@@ -720,7 +721,7 @@ h1 em {
     transform: translateX(-50%);
   }
 }
-.inventory-cluster {
+.leaflet-marker-icon.inventory-cluster {
   border: 1px solid #386943;
   border-radius: 50%;
   background: #f5f7e6e8;
@@ -800,4 +801,26 @@ h1 em {
 .source-quality ul {
   padding-left: 17px;
   margin: 6px 0 0;
+}
+
+.map-loading {
+  position: absolute;
+  bottom: 73px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 450;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--paper);
+  font-size: 12px;
+  text-align: center;
+  pointer-events: none;
+}
+@media (max-width: 380px) {
+  .pilot-badge {
+    display: none;
+  }
 }
