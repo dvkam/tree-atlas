@@ -26,6 +26,10 @@ afterAll(() => server.close());
 // Counts come from separately audited complete upstream acquisitions. Coordinates and source IDs
 // below were read from the raw official responses, rather than generated from the prepared index.
 const expected: Record<DatasetId, { count: number; outsideId: string; position: Position }> = {
+  london: { count: 1111784, outsideId: "69", position: [-0.1446498054134123, 51.63168457437338] },
+  camden: { count: 28128, outsideId: "row-dt5b-9ckc_fhty", position: [-0.123797, 51.528505] },
+  edinburgh: { count: 50400, outsideId: "1", position: [-3.45441364771778, 55.833552040985] },
+  belfast: { count: 56521, outsideId: "1", position: [-5.929743, 54.607214] },
   vienna: { count: 233102, outsideId: "831570825", position: [16.48569958, 48.25896836] },
   geneva: { count: 240827, outsideId: "214933", position: [6.128820091326579, 46.184733145914656] },
   porto: { count: 71634, outsideId: "1", position: [-8.661176779591438, 41.154706316195195] },
@@ -51,7 +55,18 @@ const world: InventoryQuery = {
 };
 
 describe("complete published inventories", () => {
-  for (const id of ["vienna", "geneva", "porto", "amsterdam", "hamburg", "zurich"] as const) {
+  for (const id of [
+    "vienna",
+    "geneva",
+    "porto",
+    "amsterdam",
+    "hamburg",
+    "zurich",
+    "london",
+    "camden",
+    "edinburgh",
+    "belfast",
+  ] as const) {
     it(`${id}: preserves audited counts, complete map clusters, endpoint pagination and records outside the old pilot window`, async () => {
       const manifest = manifestSchema.parse(
         JSON.parse(await readFile("public/data/manifest.json", "utf8")),

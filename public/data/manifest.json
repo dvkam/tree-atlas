@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "publishedAt": "2026-10-26T22:10:39.722Z",
-  "provenance": "provenance/4ab9e448351eba821ab779c04dd9dd76703a0444b8d152ce955c49b7cbc1544d.json",
+  "publishedAt": "2026-10-26T22:53:43.145Z",
+  "provenance": "provenance/772b6a76a38764fbb84cb4d2ffaacdc510d50bc8772108250a77f465177bb535.json",
   "datasets": [
     {
       "id": "vienna",
@@ -17,9 +17,13 @@
         16.56954724,
         48.31979651
       ],
-      "release": "vienna-c490f766666cec1f",
-      "file": "releases/vienna-c490f766666cec1f/vienna.json",
-      "sha256": "8261ba82f6960642998c407229ba4f56f7aa0323696451197a67d338a5cd9dd1",
+      "map": {
+        "file": "releases/vienna-2925984ab1dd6276/map.bin",
+        "sha256": "b8f977e1f7f1b4326c179b794a9396c6fdf76947e6679b1eab86e89a9a19a303"
+      },
+      "release": "vienna-2925984ab1dd6276",
+      "file": "releases/vienna-2925984ab1dd6276/vienna.json",
+      "sha256": "903cf91a74554405381a76bafda6a029216725570b9f5f2506db85b5d80206d9",
       "count": 233102,
       "locatedCount": 233102,
       "fetchedAt": "2026-10-26T21:26:14.489Z",
@@ -44,9 +48,13 @@
         6.309769163985774,
         46.36400288193435
       ],
-      "release": "geneva-2fa84782d851f6e7",
-      "file": "releases/geneva-2fa84782d851f6e7/geneva.json",
-      "sha256": "2300cc8e3ec85fa31ab4da40421147bde925fbe6207f66b505fa2be48dd28862",
+      "map": {
+        "file": "releases/geneva-a3456b2d943dc57d/map.bin",
+        "sha256": "cf0267a8f4e6c1922835cb9a3e60a649d03f10b066caba95ae18dc2e9f57bea1"
+      },
+      "release": "geneva-a3456b2d943dc57d",
+      "file": "releases/geneva-a3456b2d943dc57d/geneva.json",
+      "sha256": "3f86ef219778dc48e910f26470d5d128ef2656ec592420a0f1f924b9486cf093",
       "count": 240827,
       "locatedCount": 240827,
       "fetchedAt": "2026-10-26T21:26:33.845Z",
@@ -71,9 +79,13 @@
         -8.556268262507327,
         41.185854916477986
       ],
-      "release": "porto-79f29c963812b6f6",
-      "file": "releases/porto-79f29c963812b6f6/porto.json",
-      "sha256": "6258d0d36daac29734b15559cf2dccc1117149d3dd79f2688b56442cdf472af8",
+      "map": {
+        "file": "releases/porto-6be0471b6c303ac2/map.bin",
+        "sha256": "ecdc28412bf978a58144dcfc0b1b3102c61a7630acce5f19a108f8050ad6cd50"
+      },
+      "release": "porto-6be0471b6c303ac2",
+      "file": "releases/porto-6be0471b6c303ac2/porto.json",
+      "sha256": "222c6f4b4c2de4293e440036256587d9928ad1733fe055793c618761158cbaa8",
       "count": 71634,
       "locatedCount": 71634,
       "fetchedAt": "2026-10-26T21:26:36.109Z",
@@ -104,9 +116,13 @@
         5.1,
         52.45
       ],
-      "release": "amsterdam-efcd0dfbc18ae394",
-      "file": "releases/amsterdam-efcd0dfbc18ae394/amsterdam.json",
-      "sha256": "72e0d7a4822649f50b20894e684be690fbde3b9a5eb48c0a75dc630f73cda4bb",
+      "map": {
+        "file": "releases/amsterdam-4385e89d7cd9ab11/map.bin",
+        "sha256": "156ec9c786a7e50523a6b7d14b2c9fbdba4cbea38c98f48e66198552d608c2b6"
+      },
+      "release": "amsterdam-4385e89d7cd9ab11",
+      "file": "releases/amsterdam-4385e89d7cd9ab11/amsterdam.json",
+      "sha256": "9a6584ccfe6ce4a5e20949c20a70636c900b1bd024532cd183079ac3aa8eacab",
       "count": 326518,
       "locatedCount": 326494,
       "fetchedAt": "2026-10-26T22:06:37.183Z",
@@ -131,9 +147,13 @@
         10.318060781489326,
         53.72499855368813
       ],
-      "release": "hamburg-0aed29769c6162c9",
-      "file": "releases/hamburg-0aed29769c6162c9/hamburg.json",
-      "sha256": "d8b2993ae12ee06f7c453b3ed5da2ddb51ca1664da128212e07e4e49bf4baab4",
+      "map": {
+        "file": "releases/hamburg-1f7ef54a6439fefb/map.bin",
+        "sha256": "35d235b102cab145b8912922d3e1dbe2c09b02a06f6e744e142936179656b6cb"
+      },
+      "release": "hamburg-1f7ef54a6439fefb",
+      "file": "releases/hamburg-1f7ef54a6439fefb/hamburg.json",
+      "sha256": "83f4f04e8636a18977ea38fe709a7a3aecb14c0b92a76fb6c16480f3349918a9",
       "count": 229876,
       "locatedCount": 229876,
       "fetchedAt": "2026-10-26T22:07:56.571Z",
@@ -158,9 +178,13 @@
         8.612854,
         47.436116
       ],
-      "release": "zurich-6c7f8697835d1982",
-      "file": "releases/zurich-6c7f8697835d1982/zurich.json",
-      "sha256": "114135eb7d267e3ff2a22cd2002d15c666c417286d354ed868fdc977eb0128ea",
+      "map": {
+        "file": "releases/zurich-d13ddfe9777cc198/map.bin",
+        "sha256": "60c5dfd15c7aeda9b37747b1fb68f73d9a76a197d11c08c21ce31190b19096c1"
+      },
+      "release": "zurich-d13ddfe9777cc198",
+      "file": "releases/zurich-d13ddfe9777cc198/zurich.json",
+      "sha256": "47db92ec6c5d56d5d9d4cf6ca7b92bcb31fabf9bd1b4e1cf87afbbbdfa985849",
       "count": 81142,
       "locatedCount": 81142,
       "fetchedAt": "2026-10-26T22:08:04.285Z",
@@ -169,6 +193,130 @@
       "license": "CC0 1.0",
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
       "coverage": "Complete available municipal tree-point inventory, including street trees, fruit trees, selected public green areas and some private trees. Includes records outside the municipal boundary. Park coverage is being expanded gradually.",
+      "scope": "full"
+    },
+    {
+      "id": "camden",
+      "city": "Camden",
+      "country": "United Kingdom",
+      "center": [
+        -0.1837885,
+        51.5818505
+      ],
+      "bounds": [
+        -0.261719,
+        51.512858,
+        -0.105858,
+        51.650843
+      ],
+      "map": {
+        "file": "releases/camden-d53cf4a979a41bd9/map.bin",
+        "sha256": "e5eaa4a4c20e722d3e94f5b9b163264cc8daa2ea300690a79227f7a7ab11a478"
+      },
+      "release": "camden-d53cf4a979a41bd9",
+      "file": "releases/camden-d53cf4a979a41bd9/camden.json",
+      "sha256": "17a8ed3e02460d5c8635225344a674934bfe263bfab46d015d069650b350a6f8",
+      "count": 28128,
+      "locatedCount": 27883,
+      "fetchedAt": "2026-10-26T22:46:31.333Z",
+      "sourceUrl": "https://opendata.camden.gov.uk/d/csqp-kdss",
+      "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. London Borough of Camden.",
+      "license": "Open Government Licence v3.0",
+      "licenseUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "coverage": "All published Camden council tree records; groups retain number_of_trees.",
+      "scope": "full"
+    },
+    {
+      "id": "london",
+      "city": "London",
+      "country": "United Kingdom",
+      "center": [
+        -0.10557160452457559,
+        51.4930782575914
+      ],
+      "bounds": [
+        -0.4976816539342512,
+        51.30075137186821,
+        0.2865384448851,
+        51.68540514331459
+      ],
+      "map": {
+        "file": "releases/london-86ff32ebf1c1ca1f/map.bin",
+        "sha256": "4175238490eb55440a4c909fd43788b5afaa8ba1107b85c3848e2e32a9cd1969"
+      },
+      "release": "london-86ff32ebf1c1ca1f",
+      "file": "releases/london-86ff32ebf1c1ca1f/london.json",
+      "sha256": "32840a4fe0ef9e6df30d310bcc24d38d76f09149eea408442b219e1429c34c25",
+      "count": 1111784,
+      "locatedCount": 1111784,
+      "fetchedAt": "2026-10-26T22:46:42.607Z",
+      "sourceUrl": "https://data.london.gov.uk/dataset/london-public-realm-trees-2r45m",
+      "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. Greater London Authority and contributing public bodies.",
+      "license": "Open Government Licence v3.0",
+      "licenseUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "coverage": "November 2025 compilation, excluding LB Camden contributor rows replaced by the separate current Camden inventory.",
+      "scope": "full"
+    },
+    {
+      "id": "edinburgh",
+      "city": "Edinburgh",
+      "country": "United Kingdom",
+      "center": [
+        -3.2666532510719497,
+        55.90985004362335
+      ],
+      "bounds": [
+        -3.45441364771778,
+        55.8269251479642,
+        -3.07889285442612,
+        55.9927749392825
+      ],
+      "map": {
+        "file": "releases/edinburgh-b920f1d895a04bc5/map.bin",
+        "sha256": "f4c51c720b79189ec3ff45f55ea19b0e10fd3ff9cde660665af792a5d6d3eff7"
+      },
+      "release": "edinburgh-b920f1d895a04bc5",
+      "file": "releases/edinburgh-b920f1d895a04bc5/edinburgh.json",
+      "sha256": "9ff7bab83e91763a55767b9fa7e1bc3746afeedb51400bb8c38eed8f85aaa415",
+      "count": 50400,
+      "locatedCount": 50400,
+      "fetchedAt": "2026-10-26T22:47:54.102Z",
+      "sourceUrl": "https://city-of-edinburgh-council-open-spatial-data-cityofedinburgh.hub.arcgis.com/datasets/cityofedinburgh::trees",
+      "attribution": "Copyright City of Edinburgh Council, contains Ordnance Survey data © Crown copyright and database right 2026",
+      "license": "Open Government Licence v3.0",
+      "licenseUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "coverage": "All records in the official council Trees layer 41.",
+      "scope": "full"
+    },
+    {
+      "id": "belfast",
+      "city": "Belfast",
+      "country": "United Kingdom",
+      "center": [
+        -8.199283000000001,
+        53.0568775
+      ],
+      "bounds": [
+        -10.863421,
+        51.218565,
+        -5.535145,
+        54.89519
+      ],
+      "map": {
+        "file": "releases/belfast-6002ead22edbb8db/map.bin",
+        "sha256": "b4adbcedfa7b951937428375be0172232042704c4ccc9af5e71abb2d200fc655"
+      },
+      "release": "belfast-6002ead22edbb8db",
+      "file": "releases/belfast-6002ead22edbb8db/belfast.json",
+      "sha256": "3bcb3b0b4c7d5d96b9def88309a8c58f4669c149a5fb9ed178dadb38924e158c",
+      "count": 56521,
+      "locatedCount": 56521,
+      "fetchedAt": "2026-10-26T22:47:59.259Z",
+      "sourceUrl": "https://www.belfastcity.gov.uk/open-and-linked-data",
+      "attribution": "Contains public sector information licensed under the Open Government Licence v3.0. Belfast City Council.",
+      "license": "Open Government Licence v3.0",
+      "licenseUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "coverage": "Complete CSV export. TreeTag is not a reliable unique identifier.",
       "scope": "full"
     }
   ]
