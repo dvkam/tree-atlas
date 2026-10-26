@@ -1,12 +1,12 @@
 # Pilot verification — 26 October 2026
 
-Full releases contain 233,102 Vienna, 240,827 Geneva canton and 71,634 Porto records: **545,563 total**. All acquired records have valid point coordinates; none were geographically excluded. Vienna uses before/after WFS counts, Geneva uses source ID-set reconciliation, and Porto uses the complete published GeoJSON. These checks do not prove a transactional upstream snapshot or a census of physical trees.
+Current releases contain 233,102 Vienna, 240,827 Geneva canton, 71,634 Porto, 326,518 Amsterdam, 229,876 Hamburg and 81,142 Zürich records: **1,183,099 total**. Exactly 24 Amsterdam records lack coordinates and remain globally searchable. No rows were geographically excluded. Acquisitions reconcile source counts and unique identities; they do not prove a transactional upstream snapshot or a census of physical trees.
 
 ## Checks performed
 
 - Strict TypeScript, type-aware Oxlint with React Compiler validation, and Oxfmt.
-- Vitest source conformance, MSW catalogue failures, publication recovery, full-inventory regression and canopy fixtures.
-- Eight Chromium journeys covering full counts, pagination, lazy details, cluster zoom, wheel zoom, city isolation, history, old-release links and mobile overflow.
+- 59 Vitest tests: source conformance, MSW failures, cache corruption and denial, lossless codec validation, publication recovery, full-inventory regression and canopy fixtures.
+- 12 Chromium journeys passed and cover every published inventory, pagination, lazy details, cluster and wheel zoom, city isolation, history, old-release links, mobile overflow, rapid switching, cache reuse, stable marker layers and unlocated records.
 - Production build with the Oxc React Compiler.
 - Actual-inventory engine benchmark, including cluster count conservation and the 1,000-marker limit.
 
@@ -33,3 +33,5 @@ Browser testing found that `.gz` filenames could trigger server content encoding
 One local Chromium desktop run observed no main-thread tasks of at least 50 ms during measured cluster zoom and pan. Initial result readiness was 1.83 s for Vienna, 1.39 s for Geneva and 0.87 s for Porto. This was a development build with blocked basemap requests and no throttling, not a production or mobile performance guarantee. See [benchmark details](performance.md).
 
 Real-device touch behavior, screen readers, other browser engines and mobile memory budgets remain unvalidated. The complete index per city is not a countrywide scaling claim. Address geocoding, translations, scheduled refreshes and cross-inventory search remain outside this pilot. Copernicus WMS was probed successfully, but official vector download requires authentication and has not been validated end to end; no synthetic polygons are shipped as observations.
+
+The six-source publication was independently reconciled by reading every descriptor, index and detail shard: all hashes, IDs, coordinates and totals matched. Existing published release files remain unchanged. See [mobile measurements](mobile-performance.md) and the [Emil interface review](mobile-ui-review.md).

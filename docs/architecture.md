@@ -1,6 +1,6 @@
 # Pilot architecture
 
-The pilot publishes complete available inventories for Vienna, the canton of Geneva and Porto. Copernicus remains a separate live canopy overlay; official vector publication is not yet validated.
+The pilot publishes complete available inventories for Vienna, the canton of Geneva, Porto, Amsterdam, Hamburg and Zürich. Copernicus remains a separate live canopy overlay; official vector publication is not yet validated.
 
 ## Decision
 
@@ -14,7 +14,7 @@ Stored gzip bytes use opaque `.bin` filenames. This prevents static servers from
 
 Direct browser queries to WFS, ArcGIS and file downloads would move paging, CORS failures and changing schemas into each visitor's session. Loading all detailed records on the main thread would also impose unnecessary transfer and rendering work. Neither approach provides the current separation between complete search, bounded presentation and lazy details.
 
-These three inventories fit static hosting with an owned preparation pipeline; they do not yet require an always-running application API. The largest compressed index is 5.17 MB, but worker memory remains material. Before broader expansion, measure representative phones and move assets to object storage as needed. Spatially partitioned indexes or a PostGIS-backed service become appropriate when client download and memory budgets, cross-country filters or incremental updates require them. TanStack Query caches requests; it does not replace data preparation or spatial indexing.
+These six inventories fit static hosting with an owned preparation pipeline; they do not yet require an always-running application API. Worker memory remains material; current index sizes are recorded in [mobile performance](mobile-performance.md). Before broader expansion, measure representative phones and move assets to object storage as needed. Spatially partitioned indexes or a PostGIS-backed service become appropriate when client download and memory budgets, cross-country filters or incremental updates require them. TanStack Query caches requests; it does not replace data preparation or spatial indexing.
 
 ## Public interfaces and tests
 
@@ -33,3 +33,5 @@ Source import validates provider records and identity rules. The published catal
 - Copernicus coverage is vegetation, not individual species records.
 
 See [measured performance and limitations](performance.md) and [source evidence](sources.md).
+
+See [mobile architecture](mobile-architecture.md) for the cache, lossless encoding and partitioned-search comparison.

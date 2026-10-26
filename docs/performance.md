@@ -1,5 +1,7 @@
 # Full-inventory engine benchmark
 
+This records the earlier three-inventory release. For current six-inventory payloads and before/after mobile-like browser measurements, see [mobile performance](mobile-performance.md).
+
 The app searches complete published inventories: **233,102 Vienna records, 240,827 Geneva records and 71,634 Porto records**. It downloads a compact city index first, builds the search and clustering index in a worker, and fetches tree details in small shards when requested.
 
 Run the benchmark from the repository root:

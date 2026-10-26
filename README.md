@@ -1,6 +1,6 @@
 # Tree Atlas
 
-Explore all available records from the public tree inventories of **Vienna, the canton of Geneva and Porto**, with an optional **Copernicus 2021 tree-cover overlay**. The current releases contain **545,563 records**. These inventories describe the trees their publishers record, not every physical tree in those places.
+Explore all available records from the public tree inventories of **Vienna, the canton of Geneva, Porto, Amsterdam, Hamburg and Zürich**, with an optional **Copernicus 2021 tree-cover overlay**. The current releases contain **1,183,099 records**. These inventories describe the trees their publishers record, not every physical tree in those places.
 
 [Open Tree Atlas](https://dvkam.github.io/tree-atlas/)
 
@@ -23,7 +23,7 @@ The checked-in data makes the pilot usable without running imports, registering 
 
 Choose a city, then type a species, recorded street label, tag or city name in the single search field. Suggestions use the loaded source records. Full address and landmark geocoding is not included in this pilot. Porto's source has no street-label field.
 
-Select a numbered cluster to zoom in, then select a dot or a list item to read its details. Closing details keeps the map and search. Move the map and select **Search this area** to filter to the visible bounds. Mouse-wheel, trackpad, touch and button zoom work. Results are paged in groups of 30 for keyboard access. Without a map-area filter, search covers the entire selected inventory.
+Select a numbered cluster to zoom in, then select a dot or a list item to read its details. Closing details keeps the map and search. Move the map and select **Search this area** to filter to the visible bounds. Mouse-wheel, trackpad, touch and button zoom work. Results are paged in groups of 30 for keyboard access. Unlocated records remain searchable but cannot appear on the map. Without a map-area filter, search covers the entire selected inventory.
 
 **Near me** requests location once and searches the surrounding area when it falls within an inventory's extent. The dashed rectangle is the extent of the published coordinates, not an administrative boundary or a guarantee of coverage at every point. Geneva includes its canton, not only the city.
 
@@ -36,9 +36,12 @@ Links retain the city, filters, selected record, layer choice and source release
 | Vienna        |                      233,102 | [Stadt Wien Baumkataster](https://www.data.gv.at/datasets/c91a4635-8b7d-43fe-9b27-d95dec8392a7), CC BY 4.0                                     |
 | Geneva canton |                      240,827 | [SITG isolated-tree inventory](https://sitg.ge.ch/donnees/sipv-ica-arbre-isole), SITG A open access                                            |
 | Porto         |                       71,634 | [Município do Porto inventory](https://dadosabertos.cm-porto.pt/dataset/identificacao-e-caracterizacao-do-arvoredo-do-municipio-do-porto), CC0 |
+| Amsterdam     |                      326,518 | [Gemeente Amsterdam v2 tree API](https://api.data.amsterdam.nl/v1/docs/datasets/bomen@v2.html), published public-data terms                    |
+| Hamburg       |                      229,876 | [Transparenzportal street-tree inventory](https://suche.transparenz.hamburg.de/dataset/strassenbaumkataster-hamburg34), DL-DE-BY 2.0           |
+| Zürich        |                       81,142 | [Stadt Zürich Baumkataster](https://data.stadt-zuerich.ch/dataset/geo_baumkataster), CC0                                                       |
 | Copernicus    | Not an individual-tree count | [Urban Atlas Street Tree Layer 2021](https://land.copernicus.eu/en/products/urban-atlas/street-tree-layer-stl-2021), live WMS                  |
 
-Inventory extracts were retrieved on 26 October 2026. Retrieval dates are not survey dates. See [source documentation](docs/sources.md), [Copernicus findings](docs/copernicus.md), and the machine-readable [manifest](public/data/manifest.json), which points to immutable provenance with requests, licences, transformations and limitations.
+Inventory extracts were retrieved on 26 October 2026. Retrieval dates are not survey dates. See [original source documentation](docs/sources.md), [new source documentation](docs/new-sources.md), [Copernicus findings](docs/copernicus.md), and the machine-readable [manifest](public/data/manifest.json), which points to immutable provenance with requests, licences, transformations and limitations.
 
 Vienna height and crown values remain ranges. Geneva measurements remain values, with estimated planting years identified. Porto age ranges do not become invented planting years. Six Geneva records share two identifiers documented as stable; each is retained with an object-qualified, release-scoped identity. One Geneva record has source planting year 202, outside the supported range: the record remains available, its planting year is shown as unknown, and the original value is preserved in a quality note. No nearby records are automatically merged.
 
@@ -53,15 +56,15 @@ pnpm check
 pnpm build
 ```
 
-Downloads go into ignored `data/raw/`. Vienna uses ordered keyset paging with before/after source counts. Geneva uses all source IDs, validated batches and a final ID-set comparison. Porto uses the full published GeoJSON resource. Preparation validates every record; full-inventory releases fail if any record would be excluded by their geographic extent. All 545,563 records in this acquisition have valid point coordinates. Immutable files are written before the manifest pointer changes. Review the generated reports before committing a release. Imports are manual; no freshness schedule is promised.
+Downloads go into ignored `data/raw/`. Vienna uses ordered keyset paging with before/after source counts. Geneva uses all source IDs, validated batches and a final ID-set comparison. Porto uses the full published GeoJSON resource. Amsterdam uses the current v2 REST collection, Hamburg its Transparenzportal-linked WFS, and Zürich its WFS tree-point layer. Before/after counts and unique IDs are reconciled. WFS, GeoJSON and Amsterdam vector-tile capabilities are documented; the app uses pinned snapshots rather than mixing live provider tiles with saved records. Preparation validates every record; full-inventory releases fail if any record would be excluded by their geographic extent. Of 1,183,099 records, 1,183,075 have source coordinates. Amsterdam’s 24 unlocated records remain searchable and readable; map-area searches exclude them. Thirty distant Amsterdam source coordinates remain unchanged with quality notes. Immutable files are written before the manifest pointer changes. Review the generated reports before committing a release. Imports are manual; no freshness schedule is promised.
 
 ## Architecture and backend
 
 React renders the interface; TanStack Router owns shareable search state; TanStack Query caches query results and details. A dedicated worker loads and validates the selected inventory's compact search index. Search and Supercluster indexing run off the UI thread. Leaflet draws at most 1,000 result markers or clusters for the viewport, plus the selected-record highlight. The list returns 30 records per page. Search results remain complete: clusters change presentation, not which records match.
 
-Each city initially downloads a compressed index: approximately 4.0 MB for Vienna, 5.2 MB for Geneva and 1.4 MB for Porto. Measurements and other details are loaded in 512-record compressed shards on demand, with four shards cached per worker. Files use opaque `.bin` names to prevent static hosts from interpreting stored gzip bytes as HTTP content encoding. Hashes are checked before worker decompression. Switching inventory disposes its worker. See [performance measurements and limits](docs/performance.md).
+Each location downloads its complete compressed search index. Publication chooses the smaller of JSON and lossless byte-plane columns. Geneva and Porto indices are about 27% and 25% smaller than before, with coordinates preserved exactly. Measurements and other details are loaded in 512-record compressed shards on demand, with four shards cached per worker. Files use opaque `.bin` names to prevent static hosts from interpreting stored gzip bytes as HTTP content encoding. Hashes are checked before worker decompression. A bounded browser cache retains verified immutable bytes (up to 32 MiB and 18 entries); denied or corrupted storage falls back to the network. Switching inventory disposes its worker, so parsed inventories do not accumulate. See [mobile-like measurements and limitations](docs/mobile-performance.md) and the [architecture comparison](docs/mobile-architecture.md).
 
-We own the preparation pipeline. These three inventories still fit static hosting without an always-running application API. Broader coverage should use object storage and a measured indexing strategy; complete cross-country queries or more complex spatial filters would justify a spatial backend such as PostGIS. This implementation is not a claim that loading a complete index per country will scale. See the [architecture decision](docs/architecture.md).
+We own the preparation pipeline. These six inventories still fit static hosting without an always-running application API. Broader coverage should use object storage and a measured indexing strategy; complete cross-country queries or more complex spatial filters would justify a spatial backend such as PostGIS. This implementation is not a claim that loading a complete index per country will scale. See the [architecture decision](docs/architecture.md).
 
 The UI is English, with source names preserved in their original languages. Countrywide search, translated interfaces and full address geocoding are not included.
 
