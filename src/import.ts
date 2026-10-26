@@ -1,3 +1,4 @@
+import { importUkTree } from "./import-uk.ts";
 import { importAdditionalTree } from "./import-additional.ts";
 import { z } from "zod";
 import { positionSchema, treeSchema } from "./domain.ts";
@@ -89,7 +90,13 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
     }
   const sourceIds = new Set<string>();
   return features.map(({ geometry, properties: p }) => {
-    if (geometry == null && dataset !== "amsterdam") throw new Error("Missing source geometry");
+    const uk =
+      dataset === "london" ||
+      dataset === "camden" ||
+      dataset === "edinburgh" ||
+      dataset === "belfast";
+    if (geometry == null && dataset !== "amsterdam" && !uk)
+      throw new Error("Missing source geometry");
     const position = geometry?.coordinates ?? null;
     const stableId = dataset === "geneva" ? requiredId(p["ID_ARBRE"]) : "";
     const conflict = (genevaIds.get(stableId) ?? 0) > 1;
@@ -100,17 +107,24 @@ export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
           : stableId
         : requiredId(
             p[
-              dataset === "amsterdam"
-                ? "id"
-                : dataset === "hamburg"
-                  ? "baumid"
-                  : dataset === "porto" || dataset === "zurich"
-                    ? "objectid"
-                    : "OBJECTID"
+              dataset === "london"
+                ? "uniqueid"
+                : dataset === "camden"
+                  ? ":id"
+                  : dataset === "belfast"
+                    ? "source_row"
+                    : dataset === "amsterdam"
+                      ? "id"
+                      : dataset === "hamburg"
+                        ? "baumid"
+                        : dataset === "porto" || dataset === "zurich"
+                          ? "objectid"
+                          : "OBJECTID"
             ],
           );
     if (sourceIds.has(sourceId)) throw new Error("Duplicate source identity");
     sourceIds.add(sourceId);
+    if (uk) return importUkTree(dataset, sourceId, p, position);
     if (dataset === "amsterdam" || dataset === "hamburg" || dataset === "zurich")
       return importAdditionalTree(dataset, sourceId, p, position);
     if (dataset === "porto")

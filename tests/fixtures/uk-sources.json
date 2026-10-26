@@ -1,0 +1,238 @@
+{
+  "camden": [
+    {
+      "type": "Feature",
+      "properties": {
+        "identifier": "00067372",
+        "sequence": "165",
+        "number_of_trees": "1",
+        "scientific_name": "Acer palmatum",
+        "common_name": "Maple - Japanese",
+        "height_in_metres": "9",
+        "spread_in_metres": "7",
+        "crown_in_metres": "0",
+        "diameter_in_centimetres_at_breast_height": "0",
+        "maturity": "Not Applicable",
+        "physiological_condition": "Not applicable",
+        "site_name": "Cressfield & Woodyard Estate",
+        "contract_area": "Housing",
+        "tree_set_to_be_removed": "No",
+        "newly_planted": "Not Applicable",
+        "outstanding_job_count": "2",
+        "outstanding_job_number": "499181;499181",
+        "outstanding_job_description": "General prune;Uplift for street property",
+        "autumn_map": "Maple",
+        "easting": "0",
+        "northing": "0",
+        "spatial_accuracy": "No spatial information available",
+        "last_uploaded": "2026-10-26T20:30:43.000",
+        "organisation_uri": {
+          "url": "http://opendatacommunities.org/id/london-borough-council/camden"
+        },
+        ":id": "row-4tb4~wpai~tsiu"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "identifier": "00001141",
+        "sequence": "10",
+        "number_of_trees": "1",
+        "scientific_name": "Sorbus",
+        "common_name": "Rowan",
+        "height_in_metres": "8",
+        "spread_in_metres": "4",
+        "crown_in_metres": "6",
+        "diameter_in_centimetres_at_breast_height": "21",
+        "maturity": "Semi-mature",
+        "physiological_condition": "Good",
+        "capital_asset_value_for_amenity_trees": "11007",
+        "carbon_storage_in_kilograms": "108",
+        "gross_carbon_sequestration_per_year_in_kilograms": "6.2",
+        "pollution_removal_per_year_in_grams": "3.39",
+        "site_name": "ARGYLE PRIMARY",
+        "contract_area": "Education",
+        "inspection_date": "2024-10-08T00:00:00.000",
+        "inspection_due_date": "2027/2028",
+        "tree_set_to_be_removed": "No",
+        "newly_planted": "Not Applicable",
+        "autumn_map": "Rowan",
+        "ward_code": "E05013666",
+        "ward_name": "Kings Cross",
+        "easting": "530245",
+        "northing": "182734",
+        "longitude": "-0.123797",
+        "latitude": "51.528505",
+        "location": {
+          "type": "Point",
+          "coordinates": [-0.123797, 51.528505]
+        },
+        "spatial_accuracy": "Captured By Camden Officer",
+        "last_uploaded": "2026-10-26T20:30:43.000",
+        "organisation_uri": {
+          "url": "http://opendatacommunities.org/id/london-borough-council/camden"
+        },
+        ":id": "row-dt5b-9ckc_fhty"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.123797, 51.528505]
+      }
+    }
+  ],
+  "london": [
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Barnet",
+        "lat": "51.63168457437338",
+        "lon": "-0.1446498054134123",
+        "uniqueid": "69",
+        "taxon_species": "Acer",
+        "common_name": "Maple",
+        "taxon_genus": "Acer",
+        "common_genus": "Maple",
+        "gla_name": "Maple",
+        "taxon_family": "Sapindaceae",
+        "maintainer": "LB Barnet",
+        "location": "Other",
+        "climate_suitability": "Low",
+        "cs_confidence": "Low",
+        "age_cat": "Not provided",
+        "canopy_m": "8 m",
+        "height_m": "10 m",
+        "girth_dbh": "32 cm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.1446498054134123, 51.63168457437338]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "borough": "Barnet",
+        "lat": "51.65787763863593",
+        "lon": "-0.1994028625134902",
+        "uniqueid": "70",
+        "taxon_species": "Acer",
+        "common_name": "Maple",
+        "taxon_genus": "Acer",
+        "common_genus": "Maple",
+        "gla_name": "Maple",
+        "taxon_family": "Sapindaceae",
+        "maintainer": "LB Barnet",
+        "location": "Other",
+        "climate_suitability": "Low",
+        "cs_confidence": "Low",
+        "age_cat": "Not provided",
+        "canopy_m": "8 m",
+        "height_m": "12 m",
+        "girth_dbh": "60 cm"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.1994028625134902, 51.65787763863593]
+      }
+    }
+  ],
+  "edinburgh": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.45441364771778, 55.833552040985]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "PrimaryKey": "Grp/1 (845800)",
+        "LocationOrTagNo": "",
+        "Ward": "Inverleith\n",
+        "Site": "Raeburn Mews, Edinburgh",
+        "LatinName": "",
+        "CommonName": "",
+        "Owner": "",
+        "NTRef": "NT06-9001-0993",
+        "Height": "",
+        "Spread": "",
+        "AgeGroup": "Over-Mature",
+        "DiameterAtBreastHeight": "",
+        "Easting": 309001,
+        "Northing": 660993
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.45427571038628, 55.8337064300253]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "PrimaryKey": "Sgl/358 (813204)",
+        "LocationOrTagNo": "2-205-16",
+        "Ward": "Fountainbridge/Craiglockhart\n",
+        "Site": "Craiglockhart Woods",
+        "LatinName": "",
+        "CommonName": "",
+        "Owner": "Culture and Leisure",
+        "NTRef": "NT06-9010-1010",
+        "Height": "5 to 10 meters",
+        "Spread": "6 to 9 meters",
+        "AgeGroup": "Juvenile",
+        "DiameterAtBreastHeight": "10 - 20",
+        "Easting": 309010,
+        "Northing": 661010
+      }
+    }
+  ],
+  "belfast": [
+    {
+      "type": "Feature",
+      "properties": {
+        "TreeType": "StreetTree",
+        "SpecieGroup": "Lime",
+        "Specie": "Tilla cordata 'Green Spire'",
+        "AGE": "Young",
+        "Vigour": "Normal",
+        "Condition": "Good",
+        "DBH": "14",
+        "Spread": "3",
+        "Longitude": "-5.929743           ",
+        "Latitude": "54.607214           ",
+        "TreeTag": "NULL",
+        "Height": "8.00",
+        "source_row": "1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.929743, 54.607214]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "TreeType": "StreetTree",
+        "SpecieGroup": "Lime",
+        "Specie": "Tilla cordata 'Green Spire'",
+        "AGE": "Young",
+        "Vigour": "Normal",
+        "Condition": "Good",
+        "DBH": "15",
+        "Spread": "3",
+        "Longitude": "-5.929019           ",
+        "Latitude": "54.607036           ",
+        "TreeTag": "NULL",
+        "Height": "8.00",
+        "source_row": "2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.929019, 54.607036]
+      }
+    }
+  ]
+}

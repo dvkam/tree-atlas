@@ -3,7 +3,11 @@ import { readFile, writeFile, rename } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 const root = new URL("../data/raw/", import.meta.url);
 if (!process.argv.includes("--merge-only")) {
-  for (const file of ["download-sources.mjs", "download-new-sources.mjs"]) {
+  for (const file of [
+    "download-sources.mjs",
+    "download-new-sources.mjs",
+    "download-uk-sources.mjs",
+  ]) {
     const result = spawnSync(process.execPath, [fileURLToPath(new URL(file, import.meta.url))], {
       stdio: "inherit",
     });
@@ -11,14 +15,25 @@ if (!process.argv.includes("--merge-only")) {
   }
 }
 const sources = [];
-for (const file of ["original-provenance.json", "new-provenance.json"]) {
+for (const file of ["original-provenance.json", "new-provenance.json", "uk-provenance.json"]) {
   const evidence = JSON.parse(await readFile(new URL(file, root), "utf8"));
   sources.push(...evidence.sources);
 }
 const ids = sources.map((source) => source.id);
 if (
-  new Set(ids).size !== 6 ||
-  !["vienna", "geneva", "porto", "amsterdam", "hamburg", "zurich"].every((id) => ids.includes(id))
+  new Set(ids).size !== 10 ||
+  ![
+    "vienna",
+    "geneva",
+    "porto",
+    "amsterdam",
+    "hamburg",
+    "zurich",
+    "london",
+    "camden",
+    "edinburgh",
+    "belfast",
+  ].every((id) => ids.includes(id))
 )
   throw new Error("Incomplete or repeated acquisition set");
 const temporary = new URL(`all-provenance-${process.pid}.tmp`, root);
