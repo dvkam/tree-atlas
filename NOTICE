@@ -1,0 +1,18 @@
+Tree Atlas is a new project by David Kaminski, informed by the earlier
+dvkam/baumkataster-wien application. No Git history was imported.
+
+DATA IS NOT COVERED BY THE CODE'S MIT LICENCE.
+
+Vienna: Datenquelle: Stadt Wien — data.wien.gv.at. CC BY 4.0.
+Geneva: Données SITG / Ville de Genève. SITG A open-access conditions.
+Porto: Município do Porto. CC0.
+The extracts are geographically filtered and normalized. Source fields are
+reduced and measurement meanings retained. Retrieval dates, exact source
+requests and processing details are in public/data/provenance.json.
+
+Copernicus: European Union's Copernicus Land Monitoring Service information,
+Street Tree Layer 2021. https://doi.org/10.2909/ed0018c3-5ad0-4721-b5e4-0042aeaf9d00
+The live overlay is not an inventory of individual trees. No endorsement by
+the European Union or data providers is implied.
+
+Map tiles: © OpenStreetMap contributors. https://www.openstreetmap.org/copyright
