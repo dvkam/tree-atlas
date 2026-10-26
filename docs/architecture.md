@@ -1,13 +1,13 @@
 # Pilot architecture
 
-Status: implementing the approved prepared-release design. Vienna, Geneva and Porto are separate inventory datasets. Copernicus is a canopy layer, never an inventory of individual trees.
+Status: the bounded pilot implements the prepared-release design for inventories. Vienna, Geneva and Porto are separate datasets. Copernicus uses a live canopy overlay; immutable vector publication remains unvalidated.
 
 ## Work phases
 
 - Ground: complete; the existing Vienna app and provider differences were reviewed.
 - Sketch: complete; direct provider queries and prepared releases were compared independently.
 - Agree: complete; the user selected this pilot and a separate public repository.
-- Implement: in progress.
+- Implement: bounded inventory pilot complete; Copernicus vector validation remains open.
 - Scrap: revisit if source differences leak into the UI or bounded reads cannot remain complete.
 
 ## Synthesis decision

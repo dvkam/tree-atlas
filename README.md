@@ -36,7 +36,7 @@ Links retain the city, filters, selected record, layer choice and source release
 | Porto      |                        2,328 | [Município do Porto inventory](https://dadosabertos.cm-porto.pt/dataset/identificacao-e-caracterizacao-do-arvoredo-do-municipio-do-porto), CC0 |
 | Copernicus | Not an individual-tree count | [Urban Atlas Street Tree Layer 2021](https://land.copernicus.eu/en/products/urban-atlas/street-tree-layer-stl-2021), live WMS                  |
 
-Inventory extracts were retrieved on 26 October 2026. Retrieval dates are not survey dates. See [source documentation](docs/sources.md), [Copernicus findings](docs/copernicus.md), and the machine-readable [provenance](public/data/provenance.json) for requests, licences, transformations and limitations.
+Inventory extracts were retrieved on 26 October 2026. Retrieval dates are not survey dates. See [source documentation](docs/sources.md), [Copernicus findings](docs/copernicus.md), and the machine-readable [manifest](public/data/manifest.json), which points to immutable provenance with requests, licences, transformations and limitations.
 
 Vienna height and crown values remain ranges. Geneva measurements remain values, with estimated planting years identified. Porto age ranges do not become invented planting years. Four Geneva records share an identifier documented as stable; each is retained with an object-qualified, release-scoped identity. No nearby records are automatically merged.
 

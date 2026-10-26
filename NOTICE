@@ -8,7 +8,8 @@ Geneva: Données SITG / Ville de Genève. SITG A open-access conditions.
 Porto: Município do Porto. CC0.
 The extracts are geographically filtered and normalized. Source fields are
 reduced and measurement meanings retained. Retrieval dates, exact source
-requests and processing details are in public/data/provenance.json.
+requests and processing details are in the immutable provenance file referenced
+by public/data/manifest.json.
 
 Copernicus: European Union's Copernicus Land Monitoring Service information,
 Street Tree Layer 2021. https://doi.org/10.2909/ed0018c3-5ad0-4721-b5e4-0042aeaf9d00
