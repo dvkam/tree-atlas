@@ -1,0 +1,278 @@
+{
+  "measuredAt": "2026-10-27T00:48:17.122Z",
+  "browser": "156.0.8078.4",
+  "root": "production build",
+  "method": {
+    "viewport": "390x844",
+    "deviceScaleFactor": 2,
+    "touch": true,
+    "pageCpuSlowdown": 4,
+    "workerCpuSlowdown": "Not applied: page CDP CPU throttling does not establish worker throttling",
+    "serverBytesPerSecondPerResponse": 500000,
+    "serverLatencyMs": 100,
+    "serverCacheSeconds": 600,
+    "externalTiles": "blocked via CDP; HTTP cache remains enabled",
+    "repetitions": 3,
+    "limitations": "Desktop Chromium mobile emulation, not physical phone. Per-response bandwidth is not a shared radio budget. Page heap excludes worker heap. JS/CSS are served without HTTP compression; inventory assets are already compressed. Existing browser HTTP cache is allowed; each repetition starts a fresh context. Initial Vienna includes app load, others measure city changes."
+  },
+  "runs": [
+    {
+      "run": 1,
+      "steps": [
+        {
+          "city": "vienna",
+          "kind": "cold-app",
+          "readyMs": 15855,
+          "exactMapMs": 15859,
+          "firstMapMs": 3507,
+          "firstMapServerBytes": 800185,
+          "markers": 28,
+          "results": 30,
+          "longTasks": 10,
+          "longestTaskMs": 401,
+          "totalLongTaskMs": 1443,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 5016000,
+          "inventoryBytes": 4188209,
+          "inventoryRequests": [
+            "/data/releases/vienna-2925984ab1dd6276/map.bin",
+            "/data/releases/vienna-2925984ab1dd6276/vienna.json",
+            "/data/releases/vienna-2925984ab1dd6276/index.bin"
+          ]
+        },
+        {
+          "city": "geneva",
+          "kind": "first-city-switch",
+          "readyMs": 11723,
+          "exactMapMs": 11726,
+          "firstMapMs": 574,
+          "firstMapServerBytes": 102259,
+          "markers": 20,
+          "results": 30,
+          "longTasks": 1,
+          "longestTaskMs": 69,
+          "totalLongTaskMs": 69,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 3947773,
+          "inventoryBytes": 3947773,
+          "inventoryRequests": [
+            "/data/releases/geneva-a3456b2d943dc57d/map.bin",
+            "/data/releases/geneva-a3456b2d943dc57d/geneva.json",
+            "/data/releases/geneva-a3456b2d943dc57d/index.bin"
+          ]
+        },
+        {
+          "city": "london",
+          "kind": "first-city-switch",
+          "readyMs": 11678,
+          "exactMapMs": 47014,
+          "firstMapMs": 1556,
+          "firstMapServerBytes": 456849,
+          "markers": 30,
+          "results": 30,
+          "longTasks": 2,
+          "longestTaskMs": 106,
+          "totalLongTaskMs": 158,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 16596110,
+          "inventoryBytes": 16596110,
+          "inventoryRequests": [
+            "/data/releases/london-316fa121a19059da/map.bin",
+            "/data/releases/london-316fa121a19059da/london.json",
+            "/data/releases/london-316fa121a19059da/text.bin",
+            "/data/releases/london-316fa121a19059da/geometry.bin"
+          ]
+        },
+        {
+          "city": "vienna",
+          "kind": "return",
+          "readyMs": 1024,
+          "exactMapMs": 1026,
+          "firstMapMs": 177,
+          "firstMapServerBytes": 0,
+          "markers": 28,
+          "results": 30,
+          "longTasks": 0,
+          "longestTaskMs": 0,
+          "totalLongTaskMs": 0,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 0,
+          "inventoryBytes": 0,
+          "inventoryRequests": []
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "steps": [
+        {
+          "city": "vienna",
+          "kind": "cold-app",
+          "readyMs": 15441,
+          "exactMapMs": 15444,
+          "firstMapMs": 3094,
+          "firstMapServerBytes": 800185,
+          "markers": 28,
+          "results": 30,
+          "longTasks": 8,
+          "longestTaskMs": 334,
+          "totalLongTaskMs": 1061,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 5016000,
+          "inventoryBytes": 4188209,
+          "inventoryRequests": [
+            "/data/releases/vienna-2925984ab1dd6276/map.bin",
+            "/data/releases/vienna-2925984ab1dd6276/vienna.json",
+            "/data/releases/vienna-2925984ab1dd6276/index.bin"
+          ]
+        },
+        {
+          "city": "geneva",
+          "kind": "first-city-switch",
+          "readyMs": 12276,
+          "exactMapMs": 12280,
+          "firstMapMs": 628,
+          "firstMapServerBytes": 102259,
+          "markers": 20,
+          "results": 30,
+          "longTasks": 2,
+          "longestTaskMs": 71,
+          "totalLongTaskMs": 122,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 3947773,
+          "inventoryBytes": 3947773,
+          "inventoryRequests": [
+            "/data/releases/geneva-a3456b2d943dc57d/map.bin",
+            "/data/releases/geneva-a3456b2d943dc57d/geneva.json",
+            "/data/releases/geneva-a3456b2d943dc57d/index.bin"
+          ]
+        },
+        {
+          "city": "london",
+          "kind": "first-city-switch",
+          "readyMs": 11711,
+          "exactMapMs": 47470,
+          "firstMapMs": 1570,
+          "firstMapServerBytes": 456849,
+          "markers": 30,
+          "results": 30,
+          "longTasks": 2,
+          "longestTaskMs": 128,
+          "totalLongTaskMs": 182,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 16596110,
+          "inventoryBytes": 16596110,
+          "inventoryRequests": [
+            "/data/releases/london-316fa121a19059da/map.bin",
+            "/data/releases/london-316fa121a19059da/london.json",
+            "/data/releases/london-316fa121a19059da/text.bin",
+            "/data/releases/london-316fa121a19059da/geometry.bin"
+          ]
+        },
+        {
+          "city": "vienna",
+          "kind": "return",
+          "readyMs": 1575,
+          "exactMapMs": 1579,
+          "firstMapMs": 175,
+          "firstMapServerBytes": 0,
+          "markers": 28,
+          "results": 30,
+          "longTasks": 0,
+          "longestTaskMs": 0,
+          "totalLongTaskMs": 0,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 0,
+          "inventoryBytes": 0,
+          "inventoryRequests": []
+        }
+      ]
+    },
+    {
+      "run": 3,
+      "steps": [
+        {
+          "city": "vienna",
+          "kind": "cold-app",
+          "readyMs": 15301,
+          "exactMapMs": 15304,
+          "firstMapMs": 3024,
+          "firstMapServerBytes": 800185,
+          "markers": 28,
+          "results": 30,
+          "longTasks": 9,
+          "longestTaskMs": 284,
+          "totalLongTaskMs": 1010,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 5016000,
+          "inventoryBytes": 4188209,
+          "inventoryRequests": [
+            "/data/releases/vienna-2925984ab1dd6276/map.bin",
+            "/data/releases/vienna-2925984ab1dd6276/vienna.json",
+            "/data/releases/vienna-2925984ab1dd6276/index.bin"
+          ]
+        },
+        {
+          "city": "geneva",
+          "kind": "first-city-switch",
+          "readyMs": 12276,
+          "exactMapMs": 12280,
+          "firstMapMs": 602,
+          "firstMapServerBytes": 102259,
+          "markers": 20,
+          "results": 30,
+          "longTasks": 1,
+          "longestTaskMs": 79,
+          "totalLongTaskMs": 79,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 3947773,
+          "inventoryBytes": 3947773,
+          "inventoryRequests": [
+            "/data/releases/geneva-a3456b2d943dc57d/map.bin",
+            "/data/releases/geneva-a3456b2d943dc57d/geneva.json",
+            "/data/releases/geneva-a3456b2d943dc57d/index.bin"
+          ]
+        },
+        {
+          "city": "london",
+          "kind": "first-city-switch",
+          "readyMs": 11718,
+          "exactMapMs": 47064,
+          "firstMapMs": 1581,
+          "firstMapServerBytes": 456849,
+          "markers": 30,
+          "results": 30,
+          "longTasks": 1,
+          "longestTaskMs": 147,
+          "totalLongTaskMs": 147,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 16596110,
+          "inventoryBytes": 16596110,
+          "inventoryRequests": [
+            "/data/releases/london-316fa121a19059da/map.bin",
+            "/data/releases/london-316fa121a19059da/london.json",
+            "/data/releases/london-316fa121a19059da/text.bin",
+            "/data/releases/london-316fa121a19059da/geometry.bin"
+          ]
+        },
+        {
+          "city": "vienna",
+          "kind": "return",
+          "readyMs": 1519,
+          "exactMapMs": 1522,
+          "firstMapMs": 152,
+          "firstMapServerBytes": 0,
+          "markers": 28,
+          "results": 30,
+          "longTasks": 0,
+          "longestTaskMs": 0,
+          "totalLongTaskMs": 0,
+          "pageHeapBytes": 10600000,
+          "serverBytes": 0,
+          "inventoryBytes": 0,
+          "inventoryRequests": []
+        }
+      ]
+    }
+  ]
+}
