@@ -234,6 +234,7 @@ export function TreeMap({
       aria-label="Tree map"
       aria-busy={loading || updating}
       data-city={dataset.id}
+      data-filter-ready={!preview}
       data-marker-count={markers.length}
     >
       <div

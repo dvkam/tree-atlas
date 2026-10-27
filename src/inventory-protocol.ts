@@ -17,15 +17,17 @@ export const inventoryRequestSchema = z.discriminatedUnion("kind", [
   z.object({ id: requestId, kind: z.literal("detail"), sourceId: z.string() }),
 ]);
 export type InventoryRequest = z.infer<typeof inventoryRequestSchema>;
-const summarySchema = treeSchema.pick({
-  dataset: true,
-  sourceId: true,
-  position: true,
-  tag: true,
-  scientificName: true,
-  commonName: true,
-  location: true,
-});
+const summarySchema = treeSchema
+  .pick({
+    dataset: true,
+    sourceId: true,
+    position: true,
+    tag: true,
+    scientificName: true,
+    commonName: true,
+    location: true,
+  })
+  .extend({ positionPending: z.literal(true).optional() });
 const resultSchema = z.object({
   total: z.number().int().nonnegative(),
   items: z.array(summarySchema).max(100),
@@ -45,8 +47,10 @@ const resultSchema = z.object({
     .max(1000),
   mapAggregated: z.boolean(),
   elapsedMs: z.number().nonnegative(),
+  spatialReady: z.boolean().optional(),
 });
 export const inventoryResponseSchema = z.discriminatedUnion("kind", [
+  z.object({ id: requestId, kind: z.literal("spatial"), error: z.string().nullable() }),
   z.object({ id: requestId, kind: z.literal("ready") }),
   z.object({ id: requestId, kind: z.literal("result"), result: resultSchema }),
   z.object({ id: requestId, kind: z.literal("suggestions"), values: z.array(z.string()).max(8) }),

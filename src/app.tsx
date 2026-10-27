@@ -1,8 +1,10 @@
 import { useProgressiveMap } from "./use-progressive-map.ts";
+import { LocationPicker } from "./location-picker.tsx";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { loadDataset, loadManifest, normalizeText } from "./catalog.ts";
-import { contains, measurementLabel, treeKey } from "./domain.ts";
+import { measurementLabel, treeKey } from "./domain.ts";
+import { inventoryAt } from "./local-inventory.ts";
 import type { Bounds, Dataset, Manifest, Tree } from "./domain.ts";
 import { createInventorySession } from "./inventory-client.ts";
 import type { InventoryClient } from "./inventory-client.ts";
@@ -121,6 +123,7 @@ function useInventory(dataset: Dataset, enabled: boolean) {
   const [attempt, setAttempt] = useState(0);
   const key = `${datasetKey(dataset)}:${attempt}`;
   const [state, setState] = useState<SessionState | null>(null);
+  const [spatial, setSpatial] = useState<{ key: string; error: string | null } | null>(null);
   useEffect(() => {
     if (!enabled) return undefined;
     const controller = new AbortController();
@@ -134,6 +137,9 @@ function useInventory(dataset: Dataset, enabled: boolean) {
         }
         client = created;
         setState({ key, client: created, error: null });
+        created.subscribeSpatial((error) => {
+          if (active) setSpatial({ key, error });
+        });
       })
       .catch((error: unknown) => {
         if (active)
@@ -154,6 +160,8 @@ function useInventory(dataset: Dataset, enabled: boolean) {
     key,
     client: current?.client ?? null,
     error: current?.error ?? null,
+    spatialRevision: spatial?.key === key ? 1 : 0,
+    spatialError: spatial?.key === key ? spatial.error : null,
     retry: () => setAttempt((value) => value + 1),
   };
 }
@@ -195,7 +203,15 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
   const session = useInventory(dataset, canStartSearch);
   const request: InventoryQuery = { q: view.q, area: view.area, viewport, zoom, offset, limit: 30 };
   const findings = useQuery({
-    queryKey: ["inventory-query", session.key, scopeKey, offset, viewport, zoom],
+    queryKey: [
+      "inventory-query",
+      session.key,
+      scopeKey,
+      offset,
+      viewport,
+      zoom,
+      session.spatialRevision,
+    ],
     placeholderData: (previous, previousQuery) =>
       previousQuery?.queryKey[1] === session.key && previousQuery.queryKey[2] === scopeKey
         ? previous
@@ -204,18 +220,27 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
       if (session.client === null) throw new Error("The inventory is not ready.");
       return { ...(await session.client.query(request)), offset };
     },
-    enabled: session.client !== null,
+    enabled: session.client !== null && (view.area === null || session.spatialRevision > 0),
     gcTime: 60_000,
   });
-  if (findings.data !== undefined && handoff !== preview.key) setHandoff(preview.key);
+  if (
+    findings.data !== undefined &&
+    findings.data.spatialReady !== false &&
+    handoff !== preview.key
+  )
+    setHandoff(preview.key);
   const selectedId =
     view.tree?.startsWith(`${dataset.id}:`) === true
       ? view.tree.slice(dataset.id.length + 1)
       : null;
+  const exactDetails =
+    handoff === preview.key ||
+    (findings.data !== undefined && findings.data.spatialReady !== false);
   const detail = useQuery({
-    queryKey: ["inventory-detail", datasetKey(dataset), view.tree],
+    queryKey: ["inventory-detail", datasetKey(dataset), view.tree, exactDetails],
     queryFn: () => {
       if (selectedId === null) return null;
+      if (exactDetails && session.client !== null) return session.client.detail(selectedId);
       const early = preview.client?.detail(selectedId);
       if (early !== null && early !== undefined) return early;
       return session.client?.detail(selectedId) ?? null;
@@ -254,7 +279,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         const position: [number, number] = [coords.longitude, coords.latitude];
-        const place = manifest.datasets.find((item) => contains(item.bounds, position));
+        const place = inventoryAt(manifest.datasets, position);
         if (place === undefined) {
           setLocationMessage(
             "You are outside the available inventory extents. Choose a location to explore its records.",
@@ -302,18 +327,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
             individual records.
           </p>
         </div>
-        <nav className="cities" aria-label="Inventory locations">
-          {manifest.datasets.map((place) => (
-            <button
-              key={place.id}
-              aria-pressed={place.id === dataset.id}
-              onClick={() => changeCity(place)}
-            >
-              {place.city}
-              <span>{place.country}</span>
-            </button>
-          ))}
-        </nav>
+        <LocationPicker datasets={manifest.datasets} selected={dataset.id} onChange={changeCity} />
         {archived && (
           <div className="archive-note">
             <strong>You are viewing a saved release</strong>
@@ -385,14 +399,35 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
         {session.error !== null && (
           <Notice title="Records could not load" text={session.error} retry={session.retry} />
         )}
-        {findings.data === undefined && session.error === null && (
+        {session.spatialError !== null && (
+          <Notice
+            title="Exact map search could not load"
+            text={`${session.spatialError} Complete text search is still available.`}
+            retry={session.retry}
+          />
+        )}
+        {findings.data?.spatialReady === false && session.spatialError === null && (
           <p className="loading" aria-live="polite">
-            Preparing complete search for {number.format(dataset.count)} records in {dataset.city}.
-            {previewQuery.data !== undefined
-              ? " The map is ready to explore. Map markers are not yet filtered by your search."
-              : " Opening the map first…"}
+            All records are searchable. Exact map filtering is still loading; the map shows
+            unfiltered trees.
           </p>
         )}
+        {view.area !== null && findings.isPending && session.client !== null && (
+          <p className="loading" aria-live="polite">
+            Preparing exact results for this area. No partial count is shown.
+          </p>
+        )}
+        {findings.data === undefined &&
+          session.error === null &&
+          (session.client === null || view.area === null) && (
+            <p className="loading" aria-live="polite">
+              Preparing complete search for {number.format(dataset.count)} records in {dataset.city}
+              .
+              {previewQuery.data !== undefined
+                ? " The map is ready to explore. Map markers are not yet filtered by your search."
+                : " Opening the map first…"}
+            </p>
+          )}
         {(session.client !== null || detail.data != null) && (
           <>
             {view.tree !== null && detail.isPending && (
@@ -503,9 +538,16 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
       >
         <TreeMap
           dataset={dataset}
-          markers={findings.data?.markers ?? previewQuery.data ?? []}
+          markers={
+            findings.data?.spatialReady === false
+              ? (previewQuery.data ?? [])
+              : (findings.data?.markers ?? previewQuery.data ?? [])
+          }
           aggregated={findings.data?.mapAggregated ?? false}
-          preview={findings.data === undefined && previewQuery.data !== undefined}
+          preview={
+            (findings.data === undefined || findings.data.spatialReady === false) &&
+            previewQuery.data !== undefined
+          }
           loading={
             session.error === null && findings.data === undefined && previewQuery.data === undefined
           }

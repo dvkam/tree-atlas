@@ -25,7 +25,9 @@ afterAll(() => server.close());
 
 // Counts come from separately audited complete upstream acquisitions. Coordinates and source IDs
 // below were read from the raw official responses, rather than generated from the prepared index.
-const expected: Record<DatasetId, { count: number; outsideId: string; position: Position }> = {
+const expected: Partial<
+  Record<DatasetId, { count: number; outsideId: string; position: Position }>
+> = {
   london: { count: 1111784, outsideId: "69", position: [-0.1446498054134123, 51.63168457437338] },
   camden: { count: 28128, outsideId: "row-dt5b-9ckc_fhty", position: [-0.123797, 51.528505] },
   edinburgh: { count: 50400, outsideId: "1", position: [-3.45441364771778, 55.833552040985] },
@@ -78,6 +80,7 @@ describe("complete published inventories", () => {
       expect(dataset.scope).toBe("full");
       expect(dataset.count).toBe(reference.count);
       const catalogue = await loadInventory(base, dataset);
+      await catalogue.spatialReady;
       try {
         const all = catalogue.query(world);
         expect(all.total).toBe(reference.count);
@@ -132,6 +135,7 @@ it("retains Amsterdam unlocated records in global search but not spatial results
   const dataset = manifest.datasets.find((source) => source.id === "amsterdam");
   if (!dataset) throw new Error("Missing Amsterdam");
   const session = await loadInventory(base, dataset);
+  await session.spatialReady;
   try {
     expect(dataset.count - (dataset.locatedCount ?? 0)).toBe(24);
     const result = session.query({ ...world, q: "3869075" });

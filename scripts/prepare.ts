@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { createReadStream } from "node:fs";
 import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { z } from "zod";
@@ -10,6 +11,7 @@ import {
   manifestSchema,
 } from "../src/domain.ts";
 import { loadSourceTrees } from "./source-loader.ts";
+import { locationDefinition } from "../src/datasets.ts";
 import { packInventory } from "./pack.ts";
 
 const sourceSchema = z.looseObject({
@@ -34,18 +36,6 @@ const provenance = z
   .parse(JSON.parse(rawProvenance));
 if (new Set(provenance.sources.map((source) => source.id)).size !== provenance.sources.length)
   throw new Error("Missing or repeated dataset");
-const names = {
-  vienna: ["Vienna", "Austria"],
-  geneva: ["Geneva", "Switzerland"],
-  porto: ["Porto", "Portugal"],
-  amsterdam: ["Amsterdam", "Netherlands"],
-  hamburg: ["Hamburg", "Germany"],
-  zurich: ["Zürich", "Switzerland"],
-  london: ["London", "United Kingdom"],
-  camden: ["Camden", "United Kingdom"],
-  edinburgh: ["Edinburgh", "United Kingdom"],
-  belfast: ["Belfast", "United Kingdom"],
-} as const;
 const hash = (bytes: string | Buffer) => createHash("sha256").update(bytes).digest("hex");
 async function prepareSource(source: z.infer<typeof sourceSchema>) {
   const imported = await loadSourceTrees(source.id, resolve(rawRoot, source.file), source.sha256);
@@ -57,12 +47,12 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
     throw new Error("Full inventory must not discard records outside its declared bounds");
   // Immutable identity includes the evidence and metadata, not only tree rows.
   const identity = createHash("sha256").update(
-    JSON.stringify({ normalizationVersion: 2, storageVersion: 4, source }),
+    JSON.stringify({ normalizationVersion: 2, storageVersion: 6, source }),
   );
   for (const tree of trees) identity.update(JSON.stringify(tree));
   const release = `${source.id}-${identity.digest("hex").slice(0, 16)}`;
   const { bytes, files, descriptor, map } = packInventory(source.id, release, trees);
-  const [city, country] = names[source.id];
+  const { city, country } = locationDefinition(source.id);
   const [w, s, e, n] = source.bbox;
   const dataset = datasetSchema.parse({
     id: source.id,
@@ -99,7 +89,8 @@ async function prepareSource(source: z.infer<typeof sourceSchema>) {
       rejected: 0,
       unlocated: trees.filter((tree) => tree.position === null).length,
       rawSha256: source.sha256,
-      indexBytes: files.find((f) => f.name === "index.bin")?.bytes.length,
+      indexBytes: files.find((f) => f.name === "text.bin" || f.name === "index.bin")?.bytes.length,
+      geometryBytes: files.find((f) => f.name === "geometry.bin")?.bytes.length,
       detailShardCount: descriptor.details.length,
       compressedBytes: files.reduce((sum, f) => sum + f.bytes.length, 0),
       qualityWarningCount: trees.filter((tree) => tree.qualityNotes !== undefined).length,
@@ -130,7 +121,45 @@ async function writeImmutable(path: string, content: string | Buffer) {
 // Immutable files are written before the small manifest pointer is replaced.
 // Retain only dataset metadata between sources, not compressed inventories.
 const datasets = [];
+let previous = null;
+if (process.argv.includes("--reuse-unchanged")) {
+  try {
+    previous = manifestSchema.parse(
+      JSON.parse(await readFile(resolve(output, "manifest.json"), "utf8")),
+    );
+  } catch (error) {
+    if (!(error instanceof Error) || !("code" in error) || error.code !== "ENOENT") throw error;
+  }
+}
 for (const source of provenance.sources) {
+  const existing = previous?.datasets.find((dataset) => dataset.id === source.id);
+  if (existing !== undefined) {
+    const directory = resolve(output, "releases", existing.release);
+    const evidence = JSON.parse(await readFile(resolve(directory, "provenance.json"), "utf8"));
+    if (JSON.stringify(evidence) === JSON.stringify(source)) {
+      const descriptorBytes = await readFile(resolve(output, existing.file));
+      if (
+        hash(descriptorBytes) !== existing.sha256 ||
+        (await readFile(resolve(directory, "dataset.json"), "utf8")) !== JSON.stringify(existing)
+      )
+        throw new Error("Immutable release collision");
+      const descriptor = z
+        .object({
+          version: z.number().int(),
+          index: z.object({ encoding: z.string() }).optional(),
+        })
+        .parse(JSON.parse(descriptorBytes.toString("utf8")));
+      if (source.id !== "london" || descriptor.index?.encoding === "text-columns-v1") {
+        const digest = createHash("sha256");
+        for await (const bytes of createReadStream(resolve(rawRoot, source.file)))
+          digest.update(bytes);
+        if (digest.digest("hex") !== source.sha256)
+          throw new Error(`Raw checksum mismatch: ${source.id}`);
+        datasets.push(existing);
+        continue;
+      }
+    }
+  }
   const { dataset, bytes, report, sourceProvenance, files } = await prepareSource(source);
   const dir = resolve(output, "releases", dataset.release);
   await mkdir(dir, { recursive: true });
@@ -146,6 +175,7 @@ for (const source of provenance.sources) {
     await writeImmutable(path, content);
   }
   datasets.push(dataset);
+  process.stdout.write(`Prepared ${dataset.city}: ${dataset.count} records\n`);
 }
 const provenancePath = `provenance/${hash(rawProvenance)}.json`;
 const manifest = manifestSchema.parse({

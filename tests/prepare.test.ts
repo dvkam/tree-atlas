@@ -1,4 +1,4 @@
-import { decodeIndexColumns } from "../src/index-codec.ts";
+import { decodeIndexColumns, decodeTextColumns } from "../src/index-codec.ts";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
@@ -99,8 +99,8 @@ async function fixture() {
   await save();
   return { cwd, rawRoot, sources, save };
 }
-async function prepare(cwd: string) {
-  return run(process.execPath, ["--import", loader, script], { cwd, timeout: 20_000 });
+async function prepare(cwd: string, options: string[] = []) {
+  return run(process.execPath, ["--import", loader, script, ...options], { cwd, timeout: 20_000 });
 }
 async function manifest(cwd: string) {
   return manifestShape.parse(
@@ -136,9 +136,11 @@ test("publishes complete clipped releases with immutable provenance and structur
     expect(createHash("sha256").update(indexBytes).digest("hex")).toBe(descriptor.index.sha256);
     const unpacked = gunzipSync(indexBytes);
     const index =
-      descriptor.index.encoding === "columns-v1"
-        ? decodeIndexColumns(unpacked)
-        : compactIndexSchema.parse(JSON.parse(unpacked.toString("utf8")));
+      descriptor.index.encoding === "text-columns-v1"
+        ? decodeTextColumns(unpacked)
+        : descriptor.index.encoding === "columns-v1"
+          ? decodeIndexColumns(unpacked)
+          : compactIndexSchema.parse(JSON.parse(unpacked.toString("utf8")));
     expect(index.rows).toHaveLength(dataset.count);
     const rows = [];
     for (const shard of descriptor.details) {
@@ -282,4 +284,17 @@ test("a blocked final manifest write leaves the existing publication and its pro
   expect(await readFile(resolve(f.cwd, "public/data", current.provenance), "utf8")).toBe(
     priorProvenance,
   );
+});
+
+test("reuses unchanged releases only with matching source and immutable metadata", async () => {
+  const f = await fixture();
+  await prepare(f.cwd);
+  const before = await manifest(f.cwd);
+  await prepare(f.cwd, ["--reuse-unchanged"]);
+  expect((await manifest(f.cwd)).datasets).toEqual(before.datasets);
+  const first = f.sources[0];
+  if (first === undefined) throw new Error("Missing fixture source");
+  await writeFile(resolve(f.rawRoot, first.file), "corrupt");
+  await expect(prepare(f.cwd, ["--reuse-unchanged"])).rejects.toThrow(/Raw checksum mismatch/u);
+  expect((await manifest(f.cwd)).datasets).toEqual(before.datasets);
 });

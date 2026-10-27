@@ -77,4 +77,4 @@ await writeFile(
   ),
 );
 await rename(temporary, new URL("provenance.json", root));
-console.log(`Combined evidence for ${sources.length} complete source acquisitions`);
+console.log(`Combined evidence for ${sources.length} acquired inventories`);

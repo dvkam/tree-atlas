@@ -98,10 +98,14 @@ try {
       const started = performance.now();
       const browserStart = step === 0 ? 0 : await page.evaluate(() => performance.now());
       if (step === 0) await page.goto(`${base}/?city=${city}`, { waitUntil: "domcontentloaded" });
-      else
-        await page
-          .getByRole("button", { name: `${dataset.city} ${dataset.country}`, exact: true })
-          .click();
+      else {
+        const picker = page.getByRole("combobox", { name: "Inventory location", exact: true });
+        if (await picker.count()) await picker.selectOption(city);
+        else
+          await page
+            .getByRole("button", { name: `${dataset.city} ${dataset.country}`, exact: true })
+            .click();
+      }
       await page.waitForFunction(
         (cityId) => {
           const map = document.querySelector(".map-panel");
@@ -134,6 +138,12 @@ try {
         { timeout: 120_000 },
       );
       const readyMs = performance.now() - started;
+      await page.waitForFunction(
+        () => document.querySelector(".map-panel")?.getAttribute("data-filter-ready") === "true",
+        null,
+        { timeout: 120_000 },
+      );
+      const exactMapMs = performance.now() - started;
       const observed = await page.evaluate((since) => {
         const tasks = window.mobileBenchmarkTasks.filter((task) => task.start >= since);
         return {
@@ -152,6 +162,7 @@ try {
         kind:
           step === 0 ? "cold-app" : step === sequence.length - 1 ? "return" : "first-city-switch",
         readyMs: Math.round(readyMs),
+        exactMapMs: Math.round(exactMapMs),
         firstMapMs: Math.round(firstMapMs),
         firstMapServerBytes,
         ...observed,

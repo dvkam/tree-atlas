@@ -70,8 +70,8 @@ await instrument("inventory.ts", (source) => {
   );
   s = replace(
     s,
-    "const rows = validateIndex(index, descriptor, dataset);",
-    'const rows = timed("index-identity", () => validateIndex(index, descriptor, dataset));',
+    "const rows = validateIndex(\n      index,\n      descriptor,\n      split ? { ...dataset, locatedCount: 0 } : dataset,\n    );",
+    'const rows = timed("index-identity", () => validateIndex(index, descriptor, split ? { ...dataset, locatedCount: 0 } : dataset));',
     "identity",
   );
   s = replace(
@@ -79,6 +79,12 @@ await instrument("inventory.ts", (source) => {
     "decodeIndexColumns(unpacked)",
     'timed("columns-decode-and-schema", () => decodeIndexColumns(unpacked))',
     "decode",
+  );
+  s = replace(
+    s,
+    "decodeTextColumns(unpacked)",
+    'timed("text-columns-decode", () => decodeTextColumns(unpacked))',
+    "text decode",
   );
   s = replace(
     s,

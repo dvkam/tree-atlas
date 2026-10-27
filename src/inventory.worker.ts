@@ -16,13 +16,25 @@ async function dispatch(request: InventoryRequest): Promise<void> {
       initializing = true;
       session = await loadInventory(request.base, request.dataset);
       reply({ id: request.id, kind: "ready" });
+      void Promise.resolve(session.spatialReady).then(
+        () => reply({ id: 0, kind: "spatial", error: null }),
+        (error: unknown) =>
+          reply({
+            id: 0,
+            kind: "spatial",
+            error: error instanceof Error ? error.message : "Exact map search could not load.",
+          }),
+      );
       return;
     }
     if (session === null) throw new Error("Inventory session is not ready.");
     switch (request.kind) {
-      case "query":
-        reply({ id: request.id, kind: "result", result: session.query(request.query) });
+      case "query": {
+        if (request.query.area !== null) await session.spatialReady;
+        const result = session.query(request.query);
+        reply({ id: request.id, kind: "result", result });
         return;
+      }
       case "suggest":
         reply({ id: request.id, kind: "suggestions", values: session.suggest(request.text) });
         return;

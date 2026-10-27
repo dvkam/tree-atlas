@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "publishedAt": "2026-10-26T22:53:43.145Z",
+  "publishedAt": "2026-10-27T00:35:04.609Z",
   "provenance": "provenance/772b6a76a38764fbb84cb4d2ffaacdc510d50bc8772108250a77f465177bb535.json",
   "datasets": [
     {
@@ -241,12 +241,12 @@
         51.68540514331459
       ],
       "map": {
-        "file": "releases/london-86ff32ebf1c1ca1f/map.bin",
-        "sha256": "4175238490eb55440a4c909fd43788b5afaa8ba1107b85c3848e2e32a9cd1969"
+        "file": "releases/london-316fa121a19059da/map.bin",
+        "sha256": "3b5154212ef4e257fc84c145653e78c43148bad7bf6ed8c33e82259ac3c064d2"
       },
-      "release": "london-86ff32ebf1c1ca1f",
-      "file": "releases/london-86ff32ebf1c1ca1f/london.json",
-      "sha256": "32840a4fe0ef9e6df30d310bcc24d38d76f09149eea408442b219e1429c34c25",
+      "release": "london-316fa121a19059da",
+      "file": "releases/london-316fa121a19059da/london.json",
+      "sha256": "63a8261dedec574e97d799a3db56c376dfec0e82137e704159936d45a140c861",
       "count": 1111784,
       "locatedCount": 1111784,
       "fetchedAt": "2026-10-26T22:46:42.607Z",

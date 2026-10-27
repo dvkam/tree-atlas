@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { gzipSync } from "node:zlib";
 import { packMap } from "./map-pack.ts";
-import { encodeIndexColumns } from "../src/index-codec.ts";
+import { encodeTextColumns } from "../src/index-codec.ts";
 import { releaseSchema } from "../src/domain.ts";
 import type { DatasetId, Tree } from "../src/domain.ts";
 import { compactIndexSchema, indexDescriptorSchema } from "../src/index-format.ts";
@@ -45,20 +45,51 @@ export function packInventory(dataset: DatasetId, release: string, trees: Tree[]
   const compact = compactIndexSchema.parse({ version: 2, dataset, release, strings, rows });
   // Opaque filenames prevent hosts from treating the stored gzip bytes as HTTP Content-Encoding.
   // The browser verifies these exact bytes, then explicitly decompresses them in the worker.
-  const jsonBytes = gzipSync(JSON.stringify(compact), { level: 9 });
-  const columnBytes = gzipSync(encodeIndexColumns(compact), { level: 9 });
-  const useColumns = columnBytes.length < jsonBytes.length;
-  const index = {
-    ...store("index.bin", useColumns ? columnBytes : jsonBytes, trees.length),
-    ...(useColumns ? { encoding: "columns-v1" } : {}),
-  };
   const details = [];
   for (let offset = 0; offset < trees.length; offset += DETAIL_PAGE_SIZE) {
     const slice = trees.slice(offset, offset + DETAIL_PAGE_SIZE);
     const shard = releaseSchema.parse({ version: 1, dataset, release, trees: slice });
     details.push(asset(`detail-${Math.floor(offset / DETAIL_PAGE_SIZE)}.bin`, shard, slice.length));
   }
-  const descriptor = indexDescriptorSchema.parse({ version: 2, dataset, release, index, details });
+  const textRows: IndexRow[] = rows.map((row) => [
+    row[0],
+    null,
+    null,
+    row[3],
+    row[4],
+    row[5],
+    row[6],
+    row[7],
+  ]);
+  const textIndex = {
+    ...store(
+      "text.bin",
+      gzipSync(encodeTextColumns({ ...compact, rows: textRows }), { level: 9 }),
+      trees.length,
+    ),
+    encoding: "text-columns-v1" as const,
+  };
+  // Exact float64 coordinates keep row order; the descriptor binds both assets to one release.
+  const geometryBytes = Buffer.alloc(rows.length * 16);
+  const value = Buffer.alloc(8);
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    if (row === undefined) throw new Error("Missing geometry row.");
+    for (let column = 0; column < 2; column++) {
+      value.writeDoubleLE((column === 0 ? row[1] : row[2]) ?? Number.NaN);
+      for (let lane = 0; lane < 8; lane++)
+        geometryBytes[column * rows.length * 8 + lane * rows.length + i] = value[lane] ?? 0;
+    }
+  }
+  const geometry = store("geometry.bin", gzipSync(geometryBytes, { level: 9 }), trees.length);
+  const descriptor = indexDescriptorSchema.parse({
+    version: 3,
+    dataset,
+    release,
+    index: textIndex,
+    geometry,
+    details,
+  });
   const bytes = JSON.stringify(descriptor);
   const map = packMap(dataset, release, trees);
   files.push(...map.files);

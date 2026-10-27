@@ -1,4 +1,4 @@
-import { decodeIndexColumns } from "./index-codec.ts";
+import { decodeIndexColumns, decodeTextColumns } from "./index-codec.ts";
 import { readVerifiedAsset } from "./verified-asset.ts";
 import Supercluster from "supercluster";
 import type { PointFeature } from "supercluster";
@@ -22,6 +22,8 @@ export interface InventorySession {
   suggest(text: string): string[];
   detail(sourceId: string): Promise<Tree | null>;
   dispose(): void;
+  spatialReady?: Promise<void>;
+  hasGeometry?: () => boolean;
 }
 
 async function verifiedJson(
@@ -88,7 +90,11 @@ function validateIndex(
   }
   if (descriptor.details.some((asset, i) => asset.count !== counts[i]))
     throw new Error("Detail shard counts do not match the index.");
-  const files = [descriptor.index.file, ...descriptor.details.map((asset) => asset.file)];
+  const files = [
+    descriptor.index.file,
+    ...(descriptor.geometry === undefined ? [] : [descriptor.geometry.file]),
+    ...descriptor.details.map((asset) => asset.file),
+  ];
   if (new Set(files).size !== files.length) throw new Error("Duplicate inventory asset path.");
   return rows;
 }
@@ -294,9 +300,11 @@ export async function loadInventory(
     const descriptor = indexDescriptorSchema.parse(raw);
     if (descriptor.dataset !== dataset.id || descriptor.release !== dataset.release)
       throw new Error("Descriptor does not match the catalogue.");
+    const selectedIndex = descriptor.index;
+    const split = descriptor.version === 3;
     const stored = await readVerifiedAsset(
-      new URL(descriptor.index.file, base),
-      descriptor.index.sha256,
+      new URL(selectedIndex.file, base),
+      selectedIndex.sha256,
       controller.signal,
     );
     const unpacked = new Uint8Array(
@@ -306,10 +314,24 @@ export async function loadInventory(
     );
     controller.signal.throwIfAborted();
     const index =
-      descriptor.index.encoding === "columns-v1"
-        ? decodeIndexColumns(unpacked)
-        : compactIndexSchema.parse(JSON.parse(new TextDecoder().decode(unpacked)));
-    const rows = validateIndex(index, descriptor, dataset);
+      selectedIndex.encoding === "text-columns-v1"
+        ? decodeTextColumns(unpacked)
+        : selectedIndex.encoding === "columns-v1"
+          ? decodeIndexColumns(unpacked)
+          : compactIndexSchema.parse(JSON.parse(new TextDecoder().decode(unpacked)));
+    const rows = validateIndex(
+      index,
+      descriptor,
+      split ? { ...dataset, locatedCount: 0 } : dataset,
+    );
+    if (
+      split &&
+      (selectedIndex.count !== dataset.count ||
+        descriptor.geometry?.count !== dataset.count ||
+        index.rows.some((row) => row[1] !== null || row[2] !== null))
+    )
+      throw new Error("Invalid complete text index.");
+    let geometryReady = !split;
     const cache = new Map<number, Map<string, Tree>>();
     const pending = new Map<number, Promise<Map<string, Tree>>>();
     async function readShard(shard: number): Promise<Map<string, Tree>> {
@@ -331,8 +353,10 @@ export async function loadInventory(
           throw new Error("Detail record does not match its index.");
         const expected = summary(index, row);
         if (
-          tree.position?.[0] !== expected.position?.[0] ||
-          tree.position?.[1] !== expected.position?.[1] ||
+          (geometryReady &&
+            (tree.position?.[0] !== expected.position?.[0] ||
+              tree.position?.[1] !== expected.position?.[1])) ||
+          (tree.position !== null && !contains(dataset.bounds, tree.position)) ||
           tree.tag !== expected.tag ||
           tree.scientificName !== expected.scientificName ||
           tree.commonName !== expected.commonName ||
@@ -348,32 +372,122 @@ export async function loadInventory(
       }
       return trees;
     }
-    return engine(
-      index,
-      async (id) => {
-        const row = rows.get(id);
-        if (!row) return null;
-        const shard = row[7];
-        const cached = cache.get(shard);
-        if (cached) {
-          cache.delete(shard);
-          cache.set(shard, cached);
-          return cached.get(id) ?? null;
+    const readDetail = async (id: string): Promise<Tree | null> => {
+      const row = rows.get(id);
+      if (!row) return null;
+      const shard = row[7];
+      const cached = cache.get(shard);
+      if (cached) {
+        cache.delete(shard);
+        cache.set(shard, cached);
+        const tree = cached.get(id) ?? null;
+        if (
+          geometryReady &&
+          tree !== null &&
+          ((tree.position?.[0] ?? null) !== row[1] || (tree.position?.[1] ?? null) !== row[2])
+        )
+          throw new Error("Cached detail does not match exact geometry.");
+        return tree;
+      }
+      let loading = pending.get(shard);
+      if (!loading) {
+        loading = readShard(shard);
+        pending.set(shard, loading);
+      }
+      try {
+        return (await loading).get(id) ?? null;
+      } finally {
+        pending.delete(shard);
+      }
+    };
+    let active = engine(index, readDetail, controller, detach);
+    if (!split) return active;
+    const spatialReady = (async () => {
+      const asset = descriptor.geometry;
+      if (asset === undefined) throw new Error("Missing geometry asset.");
+      const bytes = await readVerifiedAsset(
+        new URL(asset.file, base),
+        asset.sha256,
+        controller.signal,
+      );
+      const decoded = new Uint8Array(
+        await new Response(
+          new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip")),
+        ).arrayBuffer(),
+      );
+      controller.signal.throwIfAborted();
+      if (decoded.length !== index.rows.length * 16) throw new Error("Invalid geometry length.");
+      const value = new DataView(new ArrayBuffer(8));
+      const count = index.rows.length;
+      const coordinates = new Float64Array(count * 2);
+      let located = 0;
+      for (let i = 0; i < count; i++) {
+        for (let column = 0; column < 2; column++) {
+          for (let lane = 0; lane < 8; lane++)
+            value.setUint8(lane, decoded[column * count * 8 + lane * count + i] ?? 0);
+          const coordinate = value.getFloat64(0, true);
+          coordinates[i * 2 + column] = coordinate;
         }
-        let loading = pending.get(shard);
-        if (!loading) {
-          loading = readShard(shard);
-          pending.set(shard, loading);
+        const lon = coordinates[i * 2];
+        const lat = coordinates[i * 2 + 1];
+        if (lon === undefined || lat === undefined || Number.isNaN(lon) !== Number.isNaN(lat))
+          throw new Error("Invalid geometry coordinates.");
+        if (!Number.isNaN(lon)) {
+          if (
+            !Number.isFinite(lon) ||
+            !Number.isFinite(lat) ||
+            !contains(dataset.bounds, [lon, lat])
+          )
+            throw new Error("Geometry lies outside catalogue bounds.");
+          located++;
         }
-        try {
-          return (await loading).get(id) ?? null;
-        } finally {
-          pending.delete(shard);
-        }
+      }
+      if (dataset.locatedCount !== undefined && located !== dataset.locatedCount)
+        throw new Error("Geometry count does not match catalogue.");
+      const earlyDetails = new Map<string, Tree>();
+      for (const shard of cache.values())
+        for (const [id, tree] of shard) earlyDetails.set(id, tree);
+      for (const [i, row] of index.rows.entries()) {
+        const tree = earlyDetails.get(row[0]);
+        if (tree === undefined) continue;
+        const lon = coordinates[i * 2];
+        const lat = coordinates[i * 2 + 1];
+        if (
+          (tree.position?.[0] ?? null) !== (lon === undefined || Number.isNaN(lon) ? null : lon) ||
+          (tree.position?.[1] ?? null) !== (lat === undefined || Number.isNaN(lat) ? null : lat)
+        )
+          throw new Error("Cached detail does not match exact geometry.");
+      }
+      for (const [i, row] of index.rows.entries()) {
+        const lon = coordinates[i * 2];
+        const lat = coordinates[i * 2 + 1];
+        row[1] = lon === undefined || Number.isNaN(lon) ? null : lon;
+        row[2] = lat === undefined || Number.isNaN(lat) ? null : lat;
+      }
+      geometryReady = true;
+      active = engine(index, readDetail, controller, detach);
+    })();
+    // Keep failures observable through the session promise without an unhandled rejection.
+    void spatialReady.catch(() => undefined);
+    return {
+      query(query) {
+        if (!geometryReady && query.area !== null)
+          throw new Error("Exact area search is still loading.");
+        const result = active.query(query);
+        return {
+          ...result,
+          items: geometryReady
+            ? result.items
+            : result.items.map((item) => ({ ...item, positionPending: true as const })),
+          spatialReady: geometryReady,
+        };
       },
-      controller,
-      detach,
-    );
+      suggest: (text) => active.suggest(text),
+      detail: readDetail,
+      dispose: () => active.dispose(),
+      spatialReady,
+      hasGeometry: () => geometryReady,
+    };
   } catch (error) {
     controller.abort();
     detach();

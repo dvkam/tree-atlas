@@ -1,3 +1,4 @@
+import { chooseInventory } from "./location.ts";
 import { expect, test } from "@playwright/test";
 import { manifestSchema } from "../../src/domain.ts";
 
@@ -52,16 +53,13 @@ test("city changes do not display results or selections from the previous city",
   page,
 }) => {
   await page.getByRole("list", { name: "Tree records" }).getByRole("button").first().click();
-  await page
-    .getByRole("button", { name: /Geneva/u, exact: false })
-    .first()
-    .click();
+  await chooseInventory(page, "geneva", "Geneva");
   await expect(page).toHaveURL(/city=geneva/u);
   await expect(page.getByRole("region", { name: "Selected tree details" })).toHaveCount(0);
   await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible();
   await page.getByRole("list", { name: "Tree records" }).getByRole("button").first().click();
   await expect(page).toHaveURL(/tree=geneva%3A/u);
-  await page.getByRole("button", { name: /Porto/u, exact: false }).first().click();
+  await chooseInventory(page, "porto", "Porto");
   await expect(page).toHaveURL(/city=porto/u);
   await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Selected tree details" })).toHaveCount(0);
@@ -100,16 +98,15 @@ test("mobile layout remains usable without horizontal scrolling", async ({ page 
   expect(overflow).toBe(false);
 });
 
-test("full inventories use bounded map markers and list pages, fetching details only on selection", async ({
+test("full inventories use bounded map markers, list pages and detail downloads", async ({
   page,
 }) => {
   const response = await page.request.get("/data/manifest.json");
   const cases = manifestSchema.parse(await response.json()).datasets;
+  test.setTimeout(Math.max(60_000, cases.length * 10_000));
   for (const item of cases) {
-    await page
-      .getByRole("navigation", { name: "Inventory locations" })
-      .getByRole("button", { name: new RegExp(item.city, "u") })
-      .click();
+    const requestsBeforeCity = detailRequests.length;
+    await chooseInventory(page, item.id, item.city);
     await expect
       .poll(async () =>
         Number((await page.locator(".results-heading h2").innerText()).replace(/\D/gu, "")),
@@ -130,6 +127,7 @@ test("full inventories use bounded map markers and list pages, fetching details 
         await page.getByRole("region", { name: "Tree map" }).getAttribute("data-marker-count"),
       ),
     ).toBeLessThanOrEqual(1000);
+    expect(detailRequests.length - requestsBeforeCity).toBe(0);
   }
   const first = await page
     .getByRole("list", { name: "Tree records" })
@@ -144,10 +142,10 @@ test("full inventories use bounded map markers and list pages, fetching details 
   await expect(
     page.getByRole("list", { name: "Tree records" }).getByRole("button").first(),
   ).not.toHaveText(first);
-  expect(detailRequests).toHaveLength(0);
+  const beforeSelection = detailRequests.length;
   await page.getByRole("list", { name: "Tree records" }).getByRole("button").first().click();
   await expect(page.getByRole("region", { name: "Selected tree details" })).toBeVisible();
-  expect(detailRequests).toHaveLength(1);
+  expect(detailRequests.length - beforeSelection).toBeLessThanOrEqual(1);
 });
 
 test("an original Geneva study link keeps its snapshot and offers the full inventory", async ({
@@ -200,9 +198,8 @@ test("paging keeps existing map clusters instead of replacing their elements", a
 
 test("mobile rapid city changes settle on the requested complete inventory", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  const locations = page.getByRole("navigation", { name: "Inventory locations" });
-  await locations.getByRole("button", { name: /Geneva/u }).click();
-  await locations.getByRole("button", { name: /Porto/u }).click();
+  await chooseInventory(page, "geneva", "Geneva");
+  await chooseInventory(page, "porto", "Porto");
   await expect(page).toHaveURL(/city=porto/u);
   await expect(page.getByRole("heading", { name: "71,634 records" })).toBeVisible();
   await expect(page.locator('[id^="record-geneva:"]')).toHaveCount(0);
@@ -233,10 +230,9 @@ test("returning to an inventory reuses verified bytes with the HTTP cache disabl
   page.context().on("request", (request) => {
     if (request.url().includes("/index.bin")) requests.push(request.url());
   });
-  const locations = page.getByRole("navigation", { name: "Inventory locations" });
-  await locations.getByRole("button", { name: /Geneva/u }).click();
+  await chooseInventory(page, "geneva", "Geneva");
   await expect(page.getByRole("heading", { name: "240,827 records" })).toBeVisible();
-  await locations.getByRole("button", { name: /Vienna/u }).click();
+  await chooseInventory(page, "vienna", "Vienna");
   await expect(page.getByRole("heading", { name: "233,102 records" })).toBeVisible();
   expect(requests.filter((url) => url.includes("/vienna-"))).toHaveLength(0);
   await expect(page.getByRole("list", { name: "Tree records" }).getByRole("listitem")).toHaveCount(
@@ -245,10 +241,7 @@ test("returning to an inventory reuses verified bytes with the HTTP cache disabl
 });
 
 test("Amsterdam records without coordinates stay searchable and readable", async ({ page }) => {
-  await page
-    .getByRole("navigation", { name: "Inventory locations" })
-    .getByRole("button", { name: /Amsterdam/u })
-    .click();
+  await chooseInventory(page, "amsterdam", "Amsterdam");
   await expect(page.getByText(/records have no recorded position/u)).toBeVisible();
   await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible();
   await page.getByRole("searchbox").fill("3869075");

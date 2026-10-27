@@ -8,6 +8,7 @@ export interface InventoryClient {
   suggest(text: string): Promise<string[]>;
   detail(sourceId: string): Promise<Tree | null>;
   dispose(): void;
+  subscribeSpatial(listener: (error: string | null) => void): () => void;
 }
 
 /** Each active city owns one worker; disposing it releases the index and cancels pending requests. */
@@ -24,6 +25,8 @@ export async function createInventorySession(
   >();
   let nextId = 0;
   let disposed = false;
+  const spatialListeners = new Set<(error: string | null) => void>();
+  let spatialStatus: { error: string | null } | undefined;
   function dispose(reason: Error = new DOMException("Inventory session disposed", "AbortError")) {
     if (disposed) return;
     disposed = true;
@@ -31,6 +34,7 @@ export async function createInventorySession(
     signal?.removeEventListener("abort", abort);
     for (const waiter of pending.values()) waiter.reject(reason);
     pending.clear();
+    spatialListeners.clear();
   }
   const abort = () => dispose();
   signal?.addEventListener("abort", abort, { once: true });
@@ -47,6 +51,11 @@ export async function createInventorySession(
       return;
     }
     const response = parsed.data;
+    if (response.kind === "spatial") {
+      spatialStatus = { error: response.error };
+      for (const listener of spatialListeners) listener(response.error);
+      return;
+    }
     const waiter = pending.get(response.id);
     if (!waiter) return;
     pending.delete(response.id);
@@ -70,6 +79,13 @@ export async function createInventorySession(
     const ready = await call({ id: nextId++, kind: "init", base, dataset });
     if (ready.kind !== "ready") throw new Error("Inventory worker did not initialize.");
     return {
+      subscribeSpatial(listener) {
+        spatialListeners.add(listener);
+        if (spatialStatus !== undefined) listener(spatialStatus.error);
+        return () => {
+          spatialListeners.delete(listener);
+        };
+      },
       async query(query) {
         const response = await call({ id: nextId++, kind: "query", query });
         if (response.kind !== "result") throw new Error("Unexpected inventory result.");

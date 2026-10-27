@@ -4,7 +4,7 @@ import { compactIndexSchema } from "./index-format.ts";
 import type { CompactIndex, IndexRow } from "./index-format.ts";
 
 const headerSchema = z.object({
-  version: z.literal(3),
+  version: z.union([z.literal(3), z.literal(4)]),
   dataset: datasetIdSchema,
   release: z.string(),
   strings: z.array(z.string()),
@@ -15,10 +15,18 @@ const MAX_INT32 = 2_147_483_647;
 
 /** Byte planes group equal-significance bytes without rounding coordinates or numeric IDs. */
 export function encodeIndexColumns(input: CompactIndex): Uint8Array {
+  return encodeColumns(input, false);
+}
+export function encodeTextColumns(input: CompactIndex): Uint8Array {
+  if (input.rows.some((row) => row[1] !== null || row[2] !== null))
+    throw new Error("Text columns cannot contain coordinates.");
+  return encodeColumns(input, true);
+}
+function encodeColumns(input: CompactIndex, textOnly: boolean): Uint8Array {
   const index = compactIndexSchema.parse(input);
   const header = new TextEncoder().encode(
     JSON.stringify({
-      version: 3,
+      version: textOnly ? 4 : 3,
       dataset: index.dataset,
       release: index.release,
       strings: index.strings,
@@ -26,12 +34,12 @@ export function encodeIndexColumns(input: CompactIndex): Uint8Array {
     }),
   );
   const count = index.rows.length;
-  const bytes = new Uint8Array(4 + header.length + count * BYTES_PER_ROW);
+  const bytes = new Uint8Array(4 + header.length + count * (textOnly ? 20 : BYTES_PER_ROW));
   new DataView(bytes.buffer).setUint32(0, header.length, true);
   bytes.set(header, 4);
   const value = new DataView(new ArrayBuffer(8));
   let offset = 4 + header.length;
-  for (let column = 1; column < 8; column += 1) {
+  for (let column = textOnly ? 3 : 1; column < 8; column += 1) {
     const width = column < 3 ? 8 : 4;
     for (let i = 0; i < count; i += 1) {
       const row = index.rows[i];
@@ -53,6 +61,12 @@ export function encodeIndexColumns(input: CompactIndex): Uint8Array {
 }
 
 export function decodeIndexColumns(bytes: Uint8Array): CompactIndex {
+  return decodeColumns(bytes, false);
+}
+export function decodeTextColumns(bytes: Uint8Array): CompactIndex {
+  return decodeColumns(bytes, true);
+}
+function decodeColumns(bytes: Uint8Array, textOnly: boolean): CompactIndex {
   if (bytes.byteLength < 4) throw new Error("Truncated inventory column header.");
   const headerLength = new DataView(bytes.buffer, bytes.byteOffset, 4).getUint32(0, true);
   if (headerLength > bytes.byteLength - 4)
@@ -63,12 +77,14 @@ export function decodeIndexColumns(bytes: Uint8Array): CompactIndex {
     ),
   );
   const count = header.ids.length;
-  if (bytes.byteLength !== 4 + headerLength + count * BYTES_PER_ROW)
+  if (header.version !== (textOnly ? 4 : 3))
+    throw new Error("Unexpected inventory column encoding.");
+  if (bytes.byteLength !== 4 + headerLength + count * (textOnly ? 20 : BYTES_PER_ROW))
     throw new Error("Inventory column payload length does not match its record count.");
   const rows: IndexRow[] = header.ids.map((id) => [id, null, null, -1, -1, -1, -1, 0]);
   const value = new DataView(new ArrayBuffer(8));
   let offset = 4 + headerLength;
-  for (let column = 1; column < 8; column += 1) {
+  for (let column = textOnly ? 3 : 1; column < 8; column += 1) {
     const width = column < 3 ? 8 : 4;
     for (let i = 0; i < count; i += 1) {
       const row = rows[i];
@@ -79,6 +95,8 @@ export function decodeIndexColumns(bytes: Uint8Array): CompactIndex {
         value.setUint8(lane, byte);
       }
       const number = column < 3 ? value.getFloat64(0, true) : value.getInt32(0, true);
+      if (textOnly && number < (column === 7 ? 0 : -1))
+        throw new Error("Invalid text column reference.");
       const coordinate = Number.isNaN(number) ? null : number;
       switch (column) {
         case 1:
@@ -106,11 +124,15 @@ export function decodeIndexColumns(bytes: Uint8Array): CompactIndex {
     }
     offset += width * count;
   }
-  return compactIndexSchema.parse({
+  const decoded: CompactIndex = {
     version: 2,
     dataset: header.dataset,
     release: header.release,
     strings: header.strings,
     rows,
-  });
+  };
+  // Text rows are valid by construction: IDs and strings were checked above, coordinates
+  // are absent, and every integer was range checked while reading. Identity, dictionary
+  // and shard references are checked by the public inventory loader.
+  return textOnly ? decoded : compactIndexSchema.parse(decoded);
 }
