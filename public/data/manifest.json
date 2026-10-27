@@ -1,7 +1,7 @@
 {
   "version": 1,
   "publishedAt": "2026-10-27T00:35:04.609Z",
-  "provenance": "provenance/772b6a76a38764fbb84cb4d2ffaacdc510d50bc8772108250a77f465177bb535.json",
+  "provenance": "provenance/6ae8d5865d3265710a7bff2862c458f55474b5c231656f692b37b99c45cc2ac5.json",
   "datasets": [
     {
       "id": "vienna",
@@ -317,6 +317,1060 @@
       "license": "Open Government Licence v3.0",
       "licenseUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
       "coverage": "Complete CSV export. TreeTag is not a reliable unique identifier.",
+      "scope": "full"
+    },
+    {
+      "id": "basel",
+      "city": "Basel-Stadt",
+      "country": "Switzerland",
+      "center": [
+        7.610348432854769,
+        47.55814771395397
+      ],
+      "bounds": [
+        7.549376875916423,
+        47.52116336641132,
+        7.671319989793116,
+        47.595132061496614
+      ],
+      "map": {
+        "file": "releases/basel-1a1c54215dc317c6/map.bin",
+        "sha256": "07fc6ff3604a79b74b9c155f30e407d9d3a63c4fdcf0ca9b27451e6532e70327"
+      },
+      "release": "basel-1a1c54215dc317c6",
+      "file": "releases/basel-1a1c54215dc317c6/basel.json",
+      "sha256": "9f06e8eb72d5fbf0fbfc927480493215e2f775ff7f109ac93aa67c9ea47a9dc8",
+      "count": 32435,
+      "locatedCount": 32435,
+      "fetchedAt": "2026-10-26T23:40:45.505Z",
+      "sourceUrl": "https://data.bs.ch/explore/dataset/100052/",
+      "attribution": "Stadtgärtnerei; Geodaten Kanton Basel-Stadt",
+      "license": "CC BY 4.0 + OpenStreetMap",
+      "licenseUrl": "https://data-bs.ch/stata/dataspot/permalinks/20240822-osm-vektordaten.pdf",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "bologna",
+      "city": "Bologna",
+      "country": "Italy",
+      "center": [
+        11.332835179502222,
+        44.486672812917334
+      ],
+      "bounds": [
+        11.23221948430666,
+        44.42135184385179,
+        11.433450874697783,
+        44.55199378198289
+      ],
+      "map": {
+        "file": "releases/bologna-5dc92bf5233c95ac/map.bin",
+        "sha256": "fb6bd426efb152f7cd36dbdb0e27b22b0f9b048adaf4c4e7428f287e71b4ec84"
+      },
+      "release": "bologna-5dc92bf5233c95ac",
+      "file": "releases/bologna-5dc92bf5233c95ac/bologna.json",
+      "sha256": "ed154c3e336b6c6cb4b8016408e88b72ff90016702abc8fc856b2e72aa528be7",
+      "count": 87285,
+      "locatedCount": 87285,
+      "fetchedAt": "2026-10-26T23:40:55.690Z",
+      "sourceUrl": "https://opendata.comune.bologna.it/explore/dataset/alberi-manutenzioni/",
+      "attribution": "Comune di Bologna - Settore Ambiente e Verde",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "strasbourg",
+      "city": "Strasbourg",
+      "country": "France",
+      "center": [
+        7.69161108765,
+        48.60383466095
+      ],
+      "bounds": [
+        7.5395928911,
+        48.4412019714,
+        7.8436292842,
+        48.7664673505
+      ],
+      "map": {
+        "file": "releases/strasbourg-2bca6a7cf5380727/map.bin",
+        "sha256": "2aa63847ca6787a0bc7652eaa1ae2654e3b2c9906cb9544f75fac1b8ad05a6dd"
+      },
+      "release": "strasbourg-2bca6a7cf5380727",
+      "file": "releases/strasbourg-2bca6a7cf5380727/strasbourg.json",
+      "sha256": "80cd46059ca7f3de1f2adcf7163b6ff353faaebded58f98c9e7d7a9119fd0a89",
+      "count": 83399,
+      "locatedCount": 83398,
+      "fetchedAt": "2026-10-26T23:41:10.367Z",
+      "sourceUrl": "https://opendata.strasbourg.eu/explore/dataset/patrimoine_arbore/",
+      "attribution": "Ville et eurométropole de Strasbourg; Ville et eurométropole de Strasbourg",
+      "license": "Licence Ouverte v2.0 (Etalab)",
+      "licenseUrl": "https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "bordeaux",
+      "city": "Bordeaux Métropole",
+      "country": "France",
+      "center": [
+        -0.8290354,
+        44.8069256
+      ],
+      "bounds": [
+        -1.1941728,
+        44.6432245,
+        -0.463898,
+        44.9706267
+      ],
+      "map": {
+        "file": "releases/bordeaux-081ecf92c51d9738/map.bin",
+        "sha256": "88269c6ef22891390e9a556ea8fd82bf17d73787202fca38b4fc317a0cdd323f"
+      },
+      "release": "bordeaux-081ecf92c51d9738",
+      "file": "releases/bordeaux-081ecf92c51d9738/bordeaux.json",
+      "sha256": "da310b9cbd49b8cef79169145b272e8e67d174ca208c6a713b3b05cbf99aeada",
+      "count": 84718,
+      "locatedCount": 84718,
+      "fetchedAt": "2026-10-26T23:41:24.450Z",
+      "sourceUrl": "https://datahub.bordeaux-metropole.fr/explore/dataset/ec_arbre_p/",
+      "attribution": "Bordeaux Métropole",
+      "license": "Licence Ouverte",
+      "licenseUrl": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "rennes",
+      "city": "Rennes",
+      "country": "France",
+      "center": [
+        -1.7120758477426514,
+        48.12897625352727
+      ],
+      "bounds": [
+        -1.949578154861684,
+        47.95781351707102,
+        -1.474573540623619,
+        48.30013898998353
+      ],
+      "map": {
+        "file": "releases/rennes-a80321e4cfab58e2/map.bin",
+        "sha256": "f1f4372bdec7348fddb9f086237afb5495222dbd50a7207398cdfa133f9d73ce"
+      },
+      "release": "rennes-a80321e4cfab58e2",
+      "file": "releases/rennes-a80321e4cfab58e2/rennes.json",
+      "sha256": "0811efda320cc461bc0d0a976af539baef100f4566f0b1cd0e661b061e51fe83",
+      "count": 192000,
+      "locatedCount": 192000,
+      "fetchedAt": "2026-10-26T23:41:40.752Z",
+      "sourceUrl": "https://data.rennesmetropole.fr/explore/dataset/arbre/",
+      "attribution": "Rennes Métropole",
+      "license": "Licence ODbL 1.0",
+      "licenseUrl": "http://opendatacommons.org/licenses/odbl/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "cascais",
+      "city": "Cascais",
+      "country": "Portugal",
+      "center": [
+        -9.39013,
+        38.7191675
+      ],
+      "bounds": [
+        -9.469707,
+        38.676807,
+        -9.310553,
+        38.761528
+      ],
+      "map": {
+        "file": "releases/cascais-3862d056075d460e/map.bin",
+        "sha256": "68189366dd0ce7fae3ebd11d5cee781f1409d2b5ac1899d34d2780561fa3adef"
+      },
+      "release": "cascais-3862d056075d460e",
+      "file": "releases/cascais-3862d056075d460e/cascais.json",
+      "sha256": "a9637ca73cdf1643b3d30f8f59c9d92be5cac61ab801ee88f605b86ee1547a11",
+      "count": 37944,
+      "locatedCount": 37944,
+      "fetchedAt": "2026-10-26T23:41:42.854Z",
+      "sourceUrl": "https://dadosabertos.cascais.pt/pt_BR/dataset/geocascais-arvore",
+      "attribution": "Cascais municipal open data",
+      "license": "Creative Commons Attribution (version not stated)",
+      "licenseUrl": "http://www.opendefinition.org/licenses/cc-by",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "toulouse",
+      "city": "Toulouse",
+      "country": "France",
+      "center": [
+        1.4202147915580086,
+        43.603283111359175
+      ],
+      "bounds": [
+        1.326795539111396,
+        43.533912373000675,
+        1.513634044004621,
+        43.672653849717676
+      ],
+      "map": {
+        "file": "releases/toulouse-274c431bab064d0b/map.bin",
+        "sha256": "c58dec88a7c3b4d08a9c8117045f479ee413906ef94dbd5e8c41b55e8dfbcc5b"
+      },
+      "release": "toulouse-274c431bab064d0b",
+      "file": "releases/toulouse-274c431bab064d0b/toulouse.json",
+      "sha256": "13af9af29212a3c1829e0b850ac5f30e33ef3411d34e122627a3fa348d2b2bb3",
+      "count": 124214,
+      "locatedCount": 124214,
+      "fetchedAt": "2026-10-26T23:42:01.007Z",
+      "sourceUrl": "https://data.toulouse-metropole.fr/explore/dataset/arbres-urbains/",
+      "attribution": "Toulouse Métropole; Toulouse Métropole; INSEE IGN",
+      "license": "Licence Ouverte v2.0 (Etalab)",
+      "licenseUrl": "https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "montpellier",
+      "city": "Montpellier",
+      "country": "France",
+      "center": [
+        3.8732875158,
+        43.6119639863
+      ],
+      "bounds": [
+        3.808715898,
+        43.5717483772,
+        3.9378591336,
+        43.6521795954
+      ],
+      "map": {
+        "file": "releases/montpellier-2c22345854081d69/map.bin",
+        "sha256": "ab252bde03de2e245888f7cdc282f397f44d751e4b4c80b7d278d311c70ff2b2"
+      },
+      "release": "montpellier-2c22345854081d69",
+      "file": "releases/montpellier-2c22345854081d69/montpellier.json",
+      "sha256": "ebcbbea60dc038cb21eafc7d0d39fe5f3181f0c979d26a44d40e7c0568068ac2",
+      "count": 60882,
+      "locatedCount": 60882,
+      "fetchedAt": "2026-10-26T23:42:03.991Z",
+      "sourceUrl": "https://data.montpellier3m.fr/dataset/arbres-de-montpellier",
+      "attribution": "Montpellier municipal open data",
+      "license": "ODbL 1.0",
+      "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "bern",
+      "city": "Bern",
+      "country": "Switzerland",
+      "center": [
+        7.405263772529387,
+        46.94731338793629
+      ],
+      "bounds": [
+        7.324567485775109,
+        46.91711228570491,
+        7.485960059283665,
+        46.97751449016767
+      ],
+      "map": {
+        "file": "releases/bern-c3e05d85f1483695/map.bin",
+        "sha256": "afe34197b5a32fb07c952304c728775ab905fb4fef09b2a88ba4b9d9842e34c0"
+      },
+      "release": "bern-c3e05d85f1483695",
+      "file": "releases/bern-c3e05d85f1483695/bern.json",
+      "sha256": "a2f3c794ba6e32bd235aa9cc014a71bb4eef8d3a95e305e1502c02b7c93631fd",
+      "count": 23984,
+      "locatedCount": 23984,
+      "fetchedAt": "2026-10-26T23:42:42.128Z",
+      "sourceUrl": "https://opendata.swiss/de/dataset/baumkataster1",
+      "attribution": "Bern municipal open data",
+      "license": "Open use",
+      "licenseUrl": "https://opendata.swiss/terms-of-use#terms_open",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "valencia",
+      "city": "Valencia",
+      "country": "Spain",
+      "center": [
+        -0.35263673599156375,
+        39.41467614666141
+      ],
+      "bounds": [
+        -0.429473799289653,
+        39.27903373877138,
+        -0.27579967269347444,
+        39.55031855455143
+      ],
+      "map": {
+        "file": "releases/valencia-03ff89a4e5877bc5/map.bin",
+        "sha256": "799517b67106d05ef984ef3200c2a4542436c350863f7e5132eacc016d9ea93f"
+      },
+      "release": "valencia-03ff89a4e5877bc5",
+      "file": "releases/valencia-03ff89a4e5877bc5/valencia.json",
+      "sha256": "5e64a8c610c646be5374e419320e4b70227819dbfba8dce70068974e6b27e535",
+      "count": 157649,
+      "locatedCount": 157649,
+      "fetchedAt": "2026-10-26T23:43:44.690Z",
+      "sourceUrl": "https://opendata.vlci.valencia.es/es/dataset/arbratge-arbolado",
+      "attribution": "Valencia municipal open data",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "barcelona",
+      "city": "Barcelona",
+      "country": "Spain",
+      "center": [
+        2.15763625,
+        41.40628635
+      ],
+      "bounds": [
+        2.0888374,
+        41.3447969,
+        2.2264351,
+        41.4677758
+      ],
+      "map": {
+        "file": "releases/barcelona-827f75c8127a8478/map.bin",
+        "sha256": "477305337a3ed225b292b335a0b737665f542c26f19074258db5ff40209e48e2"
+      },
+      "release": "barcelona-827f75c8127a8478",
+      "file": "releases/barcelona-827f75c8127a8478/barcelona.json",
+      "sha256": "9351f4559e0a7bcbf5f27617487c8cb3b36351046df0b7eaa1f83d929c100144",
+      "count": 222476,
+      "locatedCount": 222476,
+      "fetchedAt": "2026-10-26T23:43:55.131Z",
+      "sourceUrl": "https://opendata-ajuntament.barcelona.cat/data/en/dataset/arbrat-viari",
+      "attribution": "Barcelona municipal open data",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Combined official street, zone and park inventories; no proximity deduplication.",
+      "scope": "full"
+    },
+    {
+      "id": "lyon",
+      "city": "Lyon Métropole",
+      "country": "France",
+      "center": [
+        4.877712095,
+        45.75303205
+      ],
+      "bounds": [
+        4.69555156,
+        45.56772576,
+        5.05987263,
+        45.93833834
+      ],
+      "map": {
+        "file": "releases/lyon-8319810b2dca26ba/map.bin",
+        "sha256": "012bf652e0c6e37b4657bbe77438fddb575bbb2c98e27a3a95669a51b6b9cadf"
+      },
+      "release": "lyon-8319810b2dca26ba",
+      "file": "releases/lyon-8319810b2dca26ba/lyon.json",
+      "sha256": "25db5b15ce05a092cd26c2c9c1f228955c4a3bb14d310b41f87933c488823f3e",
+      "count": 112425,
+      "locatedCount": 112425,
+      "fetchedAt": "2026-10-26T23:44:17.978Z",
+      "sourceUrl": "https://data.grandlyon.com/portail/fr/jeux-de-donnees/arbres-alignement-metropole-lyon/info",
+      "attribution": "Lyon Métropole municipal open data",
+      "license": "Licence Ouverte",
+      "licenseUrl": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "lisbon",
+      "city": "Lisbon",
+      "country": "Portugal",
+      "center": [
+        -9.158916581217195,
+        38.7440129224263
+      ],
+      "bounds": [
+        -9.22679492801882,
+        38.6918611017697,
+        -9.09103823441557,
+        38.7961647430829
+      ],
+      "map": {
+        "file": "releases/lisbon-98fd8de08edbd175/map.bin",
+        "sha256": "f2ed1de3d9dc87fd45ba90304a39b2a16a947742761ca572f536c03175734cac"
+      },
+      "release": "lisbon-98fd8de08edbd175",
+      "file": "releases/lisbon-98fd8de08edbd175/lisbon.json",
+      "sha256": "7fdd865b24165ef4f856fdfd9127bc82b88168c4a7255316ede1fe248b6e637b",
+      "count": 80957,
+      "locatedCount": 80957,
+      "fetchedAt": "2026-10-26T23:44:50.738Z",
+      "sourceUrl": "https://dados.cm-lisboa.pt/dataset/arvoredo",
+      "attribution": "Lisbon municipal open data",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "turin",
+      "city": "Turin",
+      "country": "Italy",
+      "center": [
+        7.683425,
+        45.06743
+      ],
+      "bounds": [
+        7.57241,
+        44.99756,
+        7.79444,
+        45.1373
+      ],
+      "map": {
+        "file": "releases/turin-5d51413a6cacbca1/map.bin",
+        "sha256": "1d71342f712bb0d6c30b6f5af5f752b54854fd04a2e200decb0ec05f88e1c48e"
+      },
+      "release": "turin-5d51413a6cacbca1",
+      "file": "releases/turin-5d51413a6cacbca1/turin.json",
+      "sha256": "3e96db4314e3ffa7a581575748dc8538120ad198fb1fda23ba44a787949a41f7",
+      "count": 105476,
+      "locatedCount": 105476,
+      "fetchedAt": "2026-10-26T23:45:01.608Z",
+      "sourceUrl": "https://www.geoportale.piemonte.it/geonetwork/serv/api/records/c_l219:b0493156-2d45-4792-977c-c3ab2937f171",
+      "attribution": "Turin municipal open data",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Downloaded planting-site export; service count disagrees (105439 vs105476 rows). Completeness against live service is unverified.",
+      "scope": "full"
+    },
+    {
+      "id": "madrid",
+      "city": "Madrid",
+      "country": "Spain",
+      "center": [
+        -3.6890958485913523,
+        40.43536693931644
+      ],
+      "bounds": [
+        -3.8371551774155592,
+        40.33048152430125,
+        -3.5410365197671454,
+        40.54025235433163
+      ],
+      "map": {
+        "file": "releases/madrid-a6c3adb89d4d037e/map.bin",
+        "sha256": "691078015be6ba659b7e011d3782cd99b38f2571dd790c96f63a2dce8c01c0b1"
+      },
+      "release": "madrid-a6c3adb89d4d037e",
+      "file": "releases/madrid-a6c3adb89d4d037e/madrid.json",
+      "sha256": "71c3df78c5a91e13895cb7b0543f32d01e35b282b57d99766f69840bb35666ee",
+      "count": 799110,
+      "locatedCount": 799110,
+      "fetchedAt": "2026-10-26T23:46:09.701Z",
+      "sourceUrl": "https://datos.madrid.es/dataset/300761-0-arbolado-especies",
+      "attribution": "Madrid municipal open data",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "paris",
+      "city": "Paris",
+      "country": "France",
+      "center": [
+        2.339996739906552,
+        48.827224980424134
+      ],
+      "bounds": [
+        2.210241228788834,
+        48.74229030479285,
+        2.4697522510242704,
+        48.912159656055415
+      ],
+      "map": {
+        "file": "releases/paris-13cda4e16741ed2f/map.bin",
+        "sha256": "c4c11ae156448b481c75e44e0a4fd6797f74918abc53abe7885975954c93a560"
+      },
+      "release": "paris-13cda4e16741ed2f",
+      "file": "releases/paris-13cda4e16741ed2f/paris.json",
+      "sha256": "bb0e23e430f60f82b1e07f98b37eaa778ea7b0675e59090d81bceb0937df167e",
+      "count": 220112,
+      "locatedCount": 220112,
+      "fetchedAt": "2026-10-26T23:47:25.733Z",
+      "sourceUrl": "https://opendata.paris.fr/explore/dataset/les-arbres/",
+      "attribution": "Direction des Espaces Verts et de l'Environnement - Ville de Paris",
+      "license": "Open Database License (ODbL)",
+      "licenseUrl": "http://opendatacommons.org/licenses/odbl/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "florence",
+      "city": "Florence",
+      "country": "Italy",
+      "center": [
+        11.241834885,
+        43.78348614
+      ],
+      "bounds": [
+        11.15202701,
+        43.73235219,
+        11.33164276,
+        43.83462009
+      ],
+      "map": {
+        "file": "releases/florence-47ebe6da106bc6ce/map.bin",
+        "sha256": "748381bf307ef45c4bb2519f6553ddade5202e074646a748a649716d6d69856f"
+      },
+      "release": "florence-47ebe6da106bc6ce",
+      "file": "releases/florence-47ebe6da106bc6ce/florence.json",
+      "sha256": "4d961f33e1429efdd8fe9b803385c4df68bfb82a6a52cb5f5d634eeda04d82d7",
+      "count": 82269,
+      "locatedCount": 82269,
+      "fetchedAt": "2026-10-26T23:47:27.994Z",
+      "sourceUrl": "https://opendata.comune.fi.it/page_dataset_show?id=42cd1073-521f-4040-9491-e993d03663a4",
+      "attribution": "Florence municipal open data",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Complete selected official publisher export; not a census of all trees.",
+      "scope": "full"
+    },
+    {
+      "id": "milan",
+      "city": "Milan",
+      "country": "Italy",
+      "center": [
+        9.161668514810197,
+        45.46607787328469
+      ],
+      "bounds": [
+        9.04860426389547,
+        45.397169940832455,
+        9.274732765724924,
+        45.53498580573692
+      ],
+      "map": {
+        "file": "releases/milan-6af52df30bb51e47/map.bin",
+        "sha256": "ea0d08daa145f1f155774f6373395165aa7a497e9773a7f9dece48f8db21b9a4"
+      },
+      "release": "milan-6af52df30bb51e47",
+      "file": "releases/milan-6af52df30bb51e47/milan.json",
+      "sha256": "b40ef5ef4a4ab67cbaebb9e3116e1b14a043b4ebcdd07e2ae4945efc743f9de9",
+      "count": 247779,
+      "locatedCount": 247779,
+      "fetchedAt": "2026-10-26T23:47:34.664Z",
+      "sourceUrl": "https://dati.comune.milano.it/dataset/groups/ds2484_infogeo_alberi_localizzazione",
+      "attribution": "Milan municipal open data",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Complete official downloadable archive. Resource name says March 2025; archive member says March 2024. Observation vintage is unresolved.",
+      "scope": "full"
+    },
+    {
+      "id": "liege",
+      "city": "Liège",
+      "country": "Belgium",
+      "center": [
+        5.59708798555,
+        50.63620277935
+      ],
+      "bounds": [
+        5.5242089711,
+        50.587605755,
+        5.669967,
+        50.6847998037
+      ],
+      "map": {
+        "file": "releases/liege-3248e2d5896ad1db/map.bin",
+        "sha256": "768ca7e8317ff4ae61536cfb602cc2ab68c8b498914d512f3f1d356d2900beef"
+      },
+      "release": "liege-3248e2d5896ad1db",
+      "file": "releases/liege-3248e2d5896ad1db/liege.json",
+      "sha256": "a504426948265d36a75c7f1c2ff0b930bb8a02992cd495b2009a576cf4ac7d43",
+      "count": 28473,
+      "locatedCount": 28473,
+      "fetchedAt": "2026-10-26T23:41:34.071Z",
+      "sourceUrl": "https://www.odwb.be/explore/dataset/arbustum/",
+      "attribution": "Ville de Liège",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "All published tagged public trees; this excludes untagged trees.",
+      "scope": "full"
+    },
+    {
+      "id": "eindhoven",
+      "city": "Eindhoven",
+      "country": "Netherlands",
+      "center": [
+        5.51378334357784,
+        51.44832969647707
+      ],
+      "bounds": [
+        5.356030773123133,
+        51.399489880049664,
+        5.671535914032548,
+        51.49716951290447
+      ],
+      "map": {
+        "file": "releases/eindhoven-4d5c74beb56bedb3/map.bin",
+        "sha256": "c540a145930b063f67207b2e4b89a96a83de87e515f21f7e7c33351d1eab944b"
+      },
+      "release": "eindhoven-4d5c74beb56bedb3",
+      "file": "releases/eindhoven-4d5c74beb56bedb3/eindhoven.json",
+      "sha256": "b2765395d18bef831983494a56b59591340e8ad02e4c96b2961082b193808ea3",
+      "count": 128034,
+      "locatedCount": 128034,
+      "fetchedAt": "2026-10-26T23:42:03.051Z",
+      "sourceUrl": "https://data.eindhoven.nl/explore/dataset/bomen/",
+      "attribution": "Gemeente Eindhoven",
+      "license": "Public domain",
+      "licenseUrl": "https://data.overheid.nl/dataset/a265b796-2876-44bf-b74d-b4ccc4ad55a0",
+      "coverage": "Published municipal and selected valuable private trees; woodland trees are usually absent.",
+      "scope": "full"
+    },
+    {
+      "id": "arnhem",
+      "city": "Arnhem",
+      "country": "Netherlands",
+      "center": [
+        5.8922203146069005,
+        51.986929940344794
+      ],
+      "bounds": [
+        5.810581078859475,
+        51.93447934816876,
+        5.973859550354326,
+        52.03938053252083
+      ],
+      "map": {
+        "file": "releases/arnhem-8c88ace1a83bb94d/map.bin",
+        "sha256": "d3f233c2175ff5348ea768331d26b3ab97afecbb8dc72ce49e8e394adbac94fb"
+      },
+      "release": "arnhem-8c88ace1a83bb94d",
+      "file": "releases/arnhem-8c88ace1a83bb94d/arnhem.json",
+      "sha256": "f3f41ce4c7bc427379ee8f13c21ff2f24c1bfe9e8bcd578156a25a5a201d180a",
+      "count": 47423,
+      "locatedCount": 47423,
+      "fetchedAt": "2026-10-26T23:42:16.280Z",
+      "sourceUrl": "https://data.overheid.nl/dataset/bomenkaart-arnhem",
+      "attribution": "Gemeente Arnhem",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "Published managed freestanding trees and valuable trees; not every tree in woodland.",
+      "scope": "full"
+    },
+    {
+      "id": "leipzig",
+      "city": "Leipzig",
+      "country": "Germany",
+      "center": [
+        12.389129,
+        51.342292
+      ],
+      "bounds": [
+        12.245802,
+        51.247522,
+        12.532456,
+        51.437062
+      ],
+      "map": {
+        "file": "releases/leipzig-cb8ac9aa628ea1e7/map.bin",
+        "sha256": "39495996b056ecac25651256370f2e8222b5c8c0f6465b70337df72cbf059228"
+      },
+      "release": "leipzig-cb8ac9aa628ea1e7",
+      "file": "releases/leipzig-cb8ac9aa628ea1e7/leipzig.json",
+      "sha256": "53e3b2592076e1f2fc7706a03e21323e46d7769aff57868f0d4a3471378a46a4",
+      "count": 187989,
+      "locatedCount": 187989,
+      "fetchedAt": "2026-10-26T23:42:34.652Z",
+      "sourceUrl": "https://www.opendata.leipzig.de/dataset/baumkataster-stadt-leipzig1",
+      "attribution": "Stadt Leipzig",
+      "license": "Datenlizenz Deutschland — Namensnennung 2.0",
+      "licenseUrl": "https://www.govdata.de/dl-de/by-2-0",
+      "coverage": "All published municipal inventory records; field collection is incomplete. Removed and planned replacement information is retained.",
+      "scope": "full"
+    },
+    {
+      "id": "berlin",
+      "city": "Berlin",
+      "country": "Germany",
+      "center": [
+        13.424068495,
+        52.50056112
+      ],
+      "bounds": [
+        13.09137813,
+        52.34118366,
+        13.75675886,
+        52.65993858
+      ],
+      "map": {
+        "file": "releases/berlin-941581530feccafb/map.bin",
+        "sha256": "8bb9d78b1a9e69588d6bc0c0297d8ac8084263bda2fb7eaa9b59438912705a1a"
+      },
+      "release": "berlin-941581530feccafb",
+      "file": "releases/berlin-941581530feccafb/berlin.json",
+      "sha256": "4d7e2815378c3569e4e54b5be5de1369c7f35fa0b7e0529560b29b5c0ca1acd4",
+      "count": 962545,
+      "locatedCount": 962545,
+      "fetchedAt": "2026-10-26T23:45:20.752Z",
+      "sourceUrl": "https://daten.berlin.de/datensaetze/baumbestand-berlin-wfs-48ad3a23",
+      "attribution": "Senatsverwaltung für Mobilität, Verkehr, Klimaschutz und Umwelt Berlin",
+      "license": "Datenlizenz Deutschland — Zero 2.0",
+      "licenseUrl": "https://www.govdata.de/dl-de/zero-2-0",
+      "coverage": "All published street and park WFS tree records. The geographic service can omit inventory records without positions; private and separately managed trees are outside this source.",
+      "scope": "full"
+    },
+    {
+      "id": "rostock",
+      "city": "Rostock",
+      "country": "Germany",
+      "center": [
+        12.177124599999999,
+        54.1286949
+      ],
+      "bounds": [
+        12.0069906,
+        54.0048622,
+        12.3472586,
+        54.2525276
+      ],
+      "map": {
+        "file": "releases/rostock-f0e060805c21535a/map.bin",
+        "sha256": "e8ec2c8bdbd956ea4c9635835c22536ae3779952d58a5b45ce7df5849b478aed"
+      },
+      "release": "rostock-f0e060805c21535a",
+      "file": "releases/rostock-f0e060805c21535a/rostock.json",
+      "sha256": "3f5c74aa2ea7cbe5434ee8dc06009f41d704aa88f8f51b27a593caeb5f2e9d34",
+      "count": 70590,
+      "locatedCount": 70590,
+      "fetchedAt": "2026-10-26T23:45:48.479Z",
+      "sourceUrl": "https://geo.sv.rostock.de/geodienste",
+      "attribution": "Hanse- und Universitätsstadt Rostock",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "coverage": "All records in the published Bäume layer. This is not a census of all physical trees.",
+      "scope": "full"
+    },
+    {
+      "id": "luxembourgnational",
+      "city": "Luxembourg remarkable trees",
+      "country": "Luxembourg",
+      "center": [
+        6.13391904765,
+        49.81286507365
+      ],
+      "bounds": [
+        5.7676454924,
+        49.4613529411,
+        6.5001926029,
+        50.1643772062
+      ],
+      "map": {
+        "file": "releases/luxembourgnational-bb25f2eb9611f7ab/map.bin",
+        "sha256": "af884d58d2a8e9e12e225933b3784e26455de2768b9a3468069e6fad33df7b0e"
+      },
+      "release": "luxembourgnational-bb25f2eb9611f7ab",
+      "file": "releases/luxembourgnational-bb25f2eb9611f7ab/luxembourgnational.json",
+      "sha256": "7da73d421816f2dbb890d5eb49c6d939db34d2596f1055acb50598b4b814434c",
+      "count": 238,
+      "locatedCount": 238,
+      "fetchedAt": "2026-10-26T23:45:56.010Z",
+      "sourceUrl": "https://data.public.lu/fr/datasets/arbres-remarquables/",
+      "attribution": "Administration de la nature et des forêts — Luxembourg",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "coverage": "Selected remarkable trees across Luxembourg; this is not a national tree census.",
+      "scope": "full"
+    },
+    {
+      "id": "nantes",
+      "city": "Nantes",
+      "country": "France",
+      "center": [
+        -1.6526005876021177,
+        47.228735193763654
+      ],
+      "bounds": [
+        -1.9265422779048809,
+        47.11868706368256,
+        -1.3786588972993548,
+        47.33878332384475
+      ],
+      "map": {
+        "file": "releases/nantes-291e4746892a17f3/map.bin",
+        "sha256": "65c68e681a88a0f420db569cb522acbb22e96b93ed6d969ca2bf09001fd0a896"
+      },
+      "release": "nantes-291e4746892a17f3",
+      "file": "releases/nantes-291e4746892a17f3/nantes.json",
+      "sha256": "b1009a682c986f6357a4ee560ea7434e2e0872e4e8678342b2f00cad7906da57",
+      "count": 124583,
+      "locatedCount": 124583,
+      "fetchedAt": "2026-10-26T23:46:16.231Z",
+      "sourceUrl": "https://data.nantesmetropole.fr/explore/dataset/244400404_patrimoine-arbore-nantes-metropole/",
+      "attribution": "Nantes Métropole et Ville de Nantes — Direction Nature et Jardins",
+      "license": "Licence Ouverte",
+      "licenseUrl": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+      "coverage": "Published tree locations across Nantes Métropole and city-managed properties. Includes empty planting sites and source records awaiting qualification.",
+      "scope": "full"
+    },
+    {
+      "id": "ghent",
+      "city": "Ghent",
+      "country": "Belgium",
+      "center": [
+        3.71417692493598,
+        51.07188172493219
+      ],
+      "bounds": [
+        3.585254450554094,
+        50.98558081961212,
+        3.843099399317866,
+        51.15818263025226
+      ],
+      "map": {
+        "file": "releases/ghent-05f2236164f3f745/map.bin",
+        "sha256": "56f5f74d0deef0b86b10e9e5c21fe34c01bfd2b3447b38781aaebc680f9c66a6"
+      },
+      "release": "ghent-05f2236164f3f745",
+      "file": "releases/ghent-05f2236164f3f745/ghent.json",
+      "sha256": "cf5a949fc4af4644503a61b436f2930a45e72de4f48031749e14a51a0bacac3a",
+      "count": 68240,
+      "locatedCount": 68240,
+      "fetchedAt": "2026-10-26T23:46:26.722Z",
+      "sourceUrl": "https://data.stad.gent/explore/dataset/locaties-bomen-gent/",
+      "attribution": "Stad Gent — Groendienst",
+      "license": "Modellicentie Gratis Hergebruik",
+      "licenseUrl": "https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/open-data/voorwaarden-voor-het-hergebruik-van-overheidsinformatie/modellicentie-gratis-hergebruik",
+      "coverage": "Published tree locations; incomplete inventory and source updates paused during migration. Circumferences can be group averages.",
+      "scope": "full"
+    },
+    {
+      "id": "delft",
+      "city": "Delft",
+      "country": "Netherlands",
+      "center": [
+        4.36172245811605,
+        52.00034789610845
+      ],
+      "bounds": [
+        4.3203558972741,
+        51.9681415592475,
+        4.403089018958,
+        52.0325542329694
+      ],
+      "map": {
+        "file": "releases/delft-c4d2485981bc345f/map.bin",
+        "sha256": "0b54cb566d78baba3503bc3dbfdeef5eec8ac2f103a3a9a415b197bd3e0d4b20"
+      },
+      "release": "delft-c4d2485981bc345f",
+      "file": "releases/delft-c4d2485981bc345f/delft.json",
+      "sha256": "913e76fe7933b6fa41713dd3c070a530eaf4f15133c50882a2d9b2b3fb140934",
+      "count": 36763,
+      "locatedCount": 36763,
+      "fetchedAt": "2026-10-26T23:47:18.914Z",
+      "sourceUrl": "https://data.overheid.nl/dataset/bomen-in-beheer-door-gemeente-delft",
+      "attribution": "Gemeente Delft",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "coverage": "All published municipal tree rows. Inventory accuracy and update dates vary.",
+      "scope": "full"
+    },
+    {
+      "id": "utrecht",
+      "city": "Utrecht",
+      "country": "Netherlands",
+      "center": [
+        5.0853036735713655,
+        52.08329486455865
+      ],
+      "bounds": [
+        4.97555691254533,
+        52.0287019106562,
+        5.1950504345974,
+        52.1378878184611
+      ],
+      "map": {
+        "file": "releases/utrecht-cf0b5e7e62814f02/map.bin",
+        "sha256": "2ca3997464f6e44069ce7b889a463ff2df96810134377c453c7f564b68ee1853"
+      },
+      "release": "utrecht-cf0b5e7e62814f02",
+      "file": "releases/utrecht-cf0b5e7e62814f02/utrecht.json",
+      "sha256": "5d9d887761114d8cc46a24e5e37436106ea3bc39f0e135586666e5e455f5d5e9",
+      "count": 162653,
+      "locatedCount": 162653,
+      "fetchedAt": "2026-10-26T23:49:23.835Z",
+      "sourceUrl": "https://open.utrecht.nl/dataset/bomen/24462069-4993-4106-9e69-a52d5e56baac",
+      "attribution": "Gemeente Utrecht",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "coverage": "Current 2026 tree service: park/street trees and trees in wooded planting areas. Layer-qualified IDs preserve every source row.",
+      "scope": "full"
+    },
+    {
+      "id": "cologne",
+      "city": "Cologne",
+      "country": "Germany",
+      "center": [
+        6.967364213334048,
+        50.95261033701343
+      ],
+      "bounds": [
+        6.811860757943461,
+        50.8348605022176,
+        7.122867668724635,
+        51.07036017180926
+      ],
+      "map": {
+        "file": "releases/cologne-1568b96b8b8b7b00/map.bin",
+        "sha256": "ea4091120fd0f7832924b0b543635e0c8acdb61d5e1e44299f6a68ee460586d8"
+      },
+      "release": "cologne-1568b96b8b8b7b00",
+      "file": "releases/cologne-1568b96b8b8b7b00/cologne.json",
+      "sha256": "873d47968e4d7f26f621aeb7f88a8cc724a0563ff412ea6d91883a25d2c4b629",
+      "count": 108071,
+      "locatedCount": 108071,
+      "fetchedAt": "2026-10-26T23:49:46.284Z",
+      "sourceUrl": "https://data.gov.de/suche/daten/baumkataster-koln-fortlaufend-aktualisiert",
+      "attribution": "Stadt Köln",
+      "license": "Datenlizenz Deutschland — Zero 2.0",
+      "licenseUrl": "https://www.govdata.de/dl-de/zero-2-0",
+      "coverage": "All current published municipal individual trees; fields remain incomplete after system migration. Native GeoJSON coordinates are ETRS89 UTM32 despite the requested WGS84 output.",
+      "scope": "full"
+    },
+    {
+      "id": "antwerp",
+      "city": "Antwerp",
+      "country": "Belgium",
+      "center": [
+        4.397377877820427,
+        51.26231354160211
+      ],
+      "bounds": [
+        4.287381086011453,
+        51.148085496355556,
+        4.507374669629401,
+        51.37654158684866
+      ],
+      "map": {
+        "file": "releases/antwerp-731afa9f745f2fc7/map.bin",
+        "sha256": "8fa9805f60bc31f8b0a621f17abfc116fa8061887a213e343da09d99c0a0dc1c"
+      },
+      "release": "antwerp-731afa9f745f2fc7",
+      "file": "releases/antwerp-731afa9f745f2fc7/antwerp.json",
+      "sha256": "4a1e8fc46632818433dfb9390e7a5ad3482a6fb37b7cdc7ca95df09eec43145f",
+      "count": 135017,
+      "locatedCount": 135017,
+      "fetchedAt": "2026-10-26T23:51:29.551Z",
+      "sourceUrl": "https://ebesluit.antwerpen.be/zittingen/15.1003.2844.0208/agendapunten/21.0205.3821.6720",
+      "attribution": "bron stad Antwerpen",
+      "license": "Gratis Open Data Licentie Vlaanderen v1.0",
+      "licenseUrl": "https://www.antwerpen.be/info/gratis-open-data-licentie",
+      "coverage": "Published individually managed trees in public space. Woodland is represented separately as areas. The council approved release of Groeninventaris_BOOM as open data in 2015.",
+      "scope": "full"
+    },
+    {
+      "id": "rotterdam",
+      "city": "Rotterdam",
+      "country": "Netherlands",
+      "center": [
+        4.356244764779337,
+        51.91961309162778
+      ],
+      "bounds": [
+        4.112445703201812,
+        51.84536584104285,
+        4.600043826356862,
+        51.993860342212706
+      ],
+      "map": {
+        "file": "releases/rotterdam-c7e7373fa32c6b81/map.bin",
+        "sha256": "8bf756be5622d5c22375f54631bd88ce62f82cfee876432b3bd9b244a69de3ee"
+      },
+      "release": "rotterdam-c7e7373fa32c6b81",
+      "file": "releases/rotterdam-c7e7373fa32c6b81/rotterdam.json",
+      "sha256": "5edee42f716a82b8cb2b78e58cbca586486c5ce0a0b98fcc451b5fd994f4785c",
+      "count": 199558,
+      "locatedCount": 199558,
+      "fetchedAt": "2026-10-26T23:54:27.349Z",
+      "sourceUrl": "https://data.overheid.nl/dataset/6371060d-ebef-480f-939e-a07a678cf0b3",
+      "attribution": "Gemeente Rotterdam",
+      "license": "Public Domain Mark 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "coverage": "Published general, woodland and depot tree layers. Special-tree and genus-rendering layers are excluded as overlapping views. Woodland and depot layers were empty at acquisition.",
+      "scope": "full"
+    },
+    {
+      "id": "brussels",
+      "city": "Brussels remarkable trees",
+      "country": "Belgium",
+      "center": [
+        4.363656638509311,
+        50.83996252582548
+      ],
+      "bounds": [
+        4.25777365334335,
+        50.76862086731705,
+        4.469539623675272,
+        50.91130418433391
+      ],
+      "map": {
+        "file": "releases/brussels-b79c097eeb2858a8/map.bin",
+        "sha256": "3c5dfe8677cb192c7393f637f69930abc41ad49630e26b4897c2899f31930a07"
+      },
+      "release": "brussels-b79c097eeb2858a8",
+      "file": "releases/brussels-b79c097eeb2858a8/brussels.json",
+      "sha256": "3e5ec005fa921b5769327a793b9501756644aa5ab1a80f9be986ecbdf33dfcb1",
+      "count": 4789,
+      "locatedCount": 4789,
+      "fetchedAt": "2026-10-26T23:54:42.192Z",
+      "sourceUrl": "https://sites.heritage.brussels/fr/cartographie/",
+      "attribution": "Direction des Monuments et des Sites (DMS), Région de Bruxelles-Capitale (MRBC)",
+      "license": "Publisher information-reuse terms (attribution required)",
+      "licenseUrl": "https://sites.heritage.brussels/fr/legal/",
+      "coverage": "Factual extract from the official remarkable-tree map. Selected heritage trees, not a complete city census. Custom attribution terms apply; photographs and narrative descriptions are excluded.",
+      "scope": "full"
+    },
+    {
+      "id": "frankfurt",
+      "city": "Frankfurt",
+      "country": "Germany",
+      "center": [
+        8.64053228557978,
+        50.142128207809904
+      ],
+      "bounds": [
+        8.484958253632287,
+        50.0578609767729,
+        8.796106317527272,
+        50.2263954388469
+      ],
+      "map": {
+        "file": "releases/frankfurt-101a04e5457168ec/map.bin",
+        "sha256": "c393f43d5ef86fd630ed5e5fc623afe49ac7c08afe487ec1c1e2f0be79759b3f"
+      },
+      "release": "frankfurt-101a04e5457168ec",
+      "file": "releases/frankfurt-101a04e5457168ec/frankfurt.json",
+      "sha256": "11bdbd525c8a9be1c877ff3dbdc24b2cea2490af00d117884b5dd9aea79a0be2",
+      "count": 163569,
+      "locatedCount": 163566,
+      "fetchedAt": "2026-10-27T00:01:04.823Z",
+      "sourceUrl": "https://offenedaten.frankfurt.de/dcat/dataset/de-he-frankfurtam-baumkataster_op.html",
+      "attribution": "Stadt Frankfurt am Main — Grünflächenamt",
+      "license": "Datenlizenz Deutschland — Namensnennung 2.0",
+      "licenseUrl": "https://www.govdata.de/dl-de/by-2-0",
+      "coverage": "Complete official CSV snapshot dated 1 August 2024, published February 2025. Newer changes in the public map are not implied.",
       "scope": "full"
     }
   ]
