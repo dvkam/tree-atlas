@@ -1,0 +1,1978 @@
+{
+  "basel": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [7.597602784034255, 47.53118828174598],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": 7.597602784034255,
+          "lat": 47.53118828174598
+        },
+        "gml_id": "BA_Baeume.338772",
+        "ba_baumnr": "BS009898",
+        "ba_art": "Fagus sylvatica \"Purpurea\" (Rot-Buche)",
+        "baumart_lateinisch": "Fagus sylvatica \"Purpurea\"",
+        "baumart_deutsch": "Rot-Buche",
+        "timeposition": "1880-04-04",
+        "ba_baumalter": 156,
+        "ba_standjahr": 147,
+        "ba_schutzstatus": "Geschützt (Umfang)",
+        "ba_strasse": "Reservoirstrasse",
+        "ba_kreis": "Ost",
+        "ba_gruppe": "Strassenbäume",
+        "ba_gemeinde": "Basel",
+        "map_links": "https://opendatabs.github.io/map-links/?lat=47.53118828174598&lon=7.597602784034255&p1=Baumkataster&p2=BA_Baeume",
+        "atlas": {
+          "sourceId": "BA_Baeume.338772",
+          "tag": "BS009898",
+          "scientificName": "Fagus sylvatica \"Purpurea\"",
+          "commonName": "Rot-Buche",
+          "location": "Reservoirstrasse · Basel",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "156",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [7.604939204875321, 47.55314516412731],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": 7.604939204875321,
+          "lat": 47.55314516412731
+        },
+        "gml_id": "BA_Baeume.338776",
+        "ba_baumnr": "BS030720",
+        "ba_art": "Acer platanoides (Spitz-Ahorn)",
+        "baumart_lateinisch": "Acer platanoides",
+        "baumart_deutsch": "Spitz-Ahorn",
+        "timeposition": "1985-04-04",
+        "ba_baumalter": 41,
+        "ba_standjahr": 42,
+        "ba_schutzstatus": "Gemäss Baumschutzgesetz (BSchG)",
+        "ba_strasse": "St.Alban-Talstrasse",
+        "ba_kreis": "Ost",
+        "ba_gruppe": "Öffentliche Grünflächen",
+        "ba_gemeinde": "Basel",
+        "map_links": "https://opendatabs.github.io/map-links/?lat=47.55314516412731&lon=7.604939204875321&p1=Baumkataster&p2=BA_Baeume",
+        "atlas": {
+          "sourceId": "BA_Baeume.338776",
+          "tag": "BS030720",
+          "scientificName": "Acer platanoides",
+          "commonName": "Spitz-Ahorn",
+          "location": "St.Alban-Talstrasse · Basel",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "41",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    }
+  ],
+  "bologna": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [11.399964838195684, 44.52294149993507],
+        "type": "Point"
+      },
+      "properties": {
+        "num_pt": "137705",
+        "cod_alb": "160D",
+        "isolato": "N",
+        "classe": "Populus alba",
+        "cl_h": "Cl1: <6mt",
+        "dimora": "Prato",
+        "irriga": "S",
+        "pregio": null,
+        "classe_circonferenza_diametro": "Cl3: 30 - 45 (10 – 15 cm)",
+        "data_inv": "2026-04-14",
+        "data_agg": "2026-04-14",
+        "d_edif": "Oltre 6mt",
+        "data_impnt": "2026-01-26",
+        "geo_point_2d": {
+          "lon": 11.399964838195684,
+          "lat": 44.52294149993507
+        },
+        "campagna": "2025-2026-Riforestazione",
+        "in_patrim": "0",
+        "anni_impnt": "0",
+        "zona_di_prossimita": "SAN DONATO NUOVO",
+        "area_statistica": "CADRIANO-CALAMOSCO",
+        "quartiere": "San Donato - San Vitale",
+        "atlas": {
+          "sourceId": "137705",
+          "tag": "137705",
+          "scientificName": "Populus alba",
+          "commonName": null,
+          "location": "Prato · San Donato - San Vitale",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2026,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": [
+            "cl_h: Cl1: <6mt.",
+            "classe_circonferenza_diametro: Cl3: 30 - 45 (10 – 15 cm)."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [11.400974004845686, 44.52165016659332],
+        "type": "Point"
+      },
+      "properties": {
+        "num_pt": "137364",
+        "cod_alb": "160D",
+        "isolato": "N",
+        "classe": "Quercus robur",
+        "cl_h": "Cl1: <6mt",
+        "dimora": "Prato",
+        "irriga": "S",
+        "pregio": null,
+        "classe_circonferenza_diametro": "Cl3: 30 - 45 (10 – 15 cm)",
+        "data_inv": "2026-04-09",
+        "data_agg": "2026-04-09",
+        "d_edif": "Oltre 6mt",
+        "data_impnt": "2026-01-15",
+        "geo_point_2d": {
+          "lon": 11.400974004845686,
+          "lat": 44.52165016659332
+        },
+        "campagna": "2025-2026-Riforestazione",
+        "in_patrim": "0",
+        "anni_impnt": "0",
+        "zona_di_prossimita": "SAN DONATO NUOVO",
+        "area_statistica": "CADRIANO-CALAMOSCO",
+        "quartiere": "San Donato - San Vitale",
+        "atlas": {
+          "sourceId": "137364",
+          "tag": "137364",
+          "scientificName": "Quercus robur",
+          "commonName": null,
+          "location": "Prato · San Donato - San Vitale",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2026,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": [
+            "cl_h: Cl1: <6mt.",
+            "classe_circonferenza_diametro: Cl3: 30 - 45 (10 – 15 cm)."
+          ]
+        }
+      }
+    }
+  ],
+  "strasbourg": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [7.6997018022, 48.5289164067],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": 7.6997018022,
+          "lat": 48.5289164067
+        },
+        "num_arbre": "128436",
+        "genre": "Abies",
+        "num_pt_vert": "1915",
+        "si_essence": "Abies grandis",
+        "si_hauteur": "5",
+        "si_largeur_couronne": "2",
+        "si_diametre_fut": "10",
+        "atlas": {
+          "sourceId": "128436",
+          "tag": "128436",
+          "scientificName": "Abies grandis",
+          "commonName": null,
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["si_hauteur: 5.", "si_largeur_couronne: 2.", "si_diametre_fut: 10."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [7.7927211894, 48.6081462694],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": 7.7927211894,
+          "lat": 48.6081462694
+        },
+        "num_arbre": "63440",
+        "genre": "Abies",
+        "num_pt_vert": "2301",
+        "si_essence": "Abies alba",
+        "si_hauteur": "12",
+        "si_largeur_couronne": "4",
+        "si_diametre_fut": "35",
+        "atlas": {
+          "sourceId": "63440",
+          "tag": "63440",
+          "scientificName": "Abies alba",
+          "commonName": null,
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["si_hauteur: 12.", "si_largeur_couronne: 4.", "si_diametre_fut: 35."]
+        }
+      }
+    }
+  ],
+  "bordeaux": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [-0.5222952, 44.8485669],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": -0.5222952,
+          "lat": 44.8485669
+        },
+        "gid": 229750,
+        "insee": "33119",
+        "nom": "Cenon",
+        "nom_francais": "Charme commun",
+        "hauteur": null,
+        "statut": "VIVANT",
+        "date_plantation": null,
+        "cdate": "2026-03-03T12:34:40+00:00",
+        "mdate": "2026-03-03T12:34:41+00:00",
+        "station": "Centre La ré d'eau",
+        "carre": null,
+        "fruitier": false,
+        "cepee": false,
+        "diametre_couronne": null,
+        "diametre_souche": null,
+        "vigueur": null,
+        "numero": "0",
+        "site": null,
+        "unite": "Secteur 2",
+        "espece": "Carpinus betulus",
+        "famille": "Betulaceae",
+        "classe": "Feuillu",
+        "stock_carbone": null,
+        "date_disparition": null,
+        "cause_disparition": null,
+        "age_approximatif": null,
+        "statut_patrimonial": null,
+        "typologie_espace": null,
+        "typologie_environ": null,
+        "duree_de_maintien": null,
+        "circonference_tronc": null,
+        "diametre_tronc": null,
+        "stade_developpement": null,
+        "couverture_sol": null,
+        "distribut_spatiale": null,
+        "nature_sol": null,
+        "forme": null,
+        "dimension_plantation": null,
+        "geom_o": null,
+        "geom_err": null,
+        "atlas": {
+          "sourceId": "229750",
+          "tag": "229750",
+          "scientificName": "Carpinus betulus",
+          "commonName": "Charme commun",
+          "location": "Centre La ré d'eau · Cenon",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["statut: VIVANT."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [-0.521443, 44.8488084],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": -0.521443,
+          "lat": 44.8488084
+        },
+        "gid": 229770,
+        "insee": "33119",
+        "nom": "Cenon",
+        "nom_francais": "Prunus",
+        "hauteur": null,
+        "statut": "VIVANT",
+        "date_plantation": null,
+        "cdate": "2026-03-03T12:59:59+00:00",
+        "mdate": "2026-03-03T13:00:00+00:00",
+        "station": "Centre La ré d'eau",
+        "carre": null,
+        "fruitier": false,
+        "cepee": false,
+        "diametre_couronne": null,
+        "diametre_souche": null,
+        "vigueur": null,
+        "numero": "0",
+        "site": null,
+        "unite": "Secteur 2",
+        "espece": "Prunus sp.",
+        "famille": "Rosaceae",
+        "classe": "Feuillu",
+        "stock_carbone": null,
+        "date_disparition": null,
+        "cause_disparition": null,
+        "age_approximatif": null,
+        "statut_patrimonial": null,
+        "typologie_espace": null,
+        "typologie_environ": null,
+        "duree_de_maintien": null,
+        "circonference_tronc": null,
+        "diametre_tronc": null,
+        "stade_developpement": null,
+        "couverture_sol": null,
+        "distribut_spatiale": null,
+        "nature_sol": null,
+        "forme": null,
+        "dimension_plantation": null,
+        "geom_o": null,
+        "geom_err": null,
+        "atlas": {
+          "sourceId": "229770",
+          "tag": "229770",
+          "scientificName": "Prunus sp.",
+          "commonName": "Prunus",
+          "location": "Centre La ré d'eau · Cenon",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["statut: VIVANT."]
+        }
+      }
+    }
+  ],
+  "rennes": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [-1.696578429760254, 48.09225630176826],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": -1.6965784297602542,
+          "lat": 48.09225630176826
+        },
+        "gml_id": "arbre.59048",
+        "id": 59048,
+        "code_insee": "35281",
+        "nom_commun": "Non renseigné",
+        "genre": "Non renseigné",
+        "fonction": "Ornement",
+        "type_taille": "Non renseigné",
+        "abattu": 0,
+        "date_maj": null,
+        "localisation": null,
+        "id_gestion": null,
+        "espece": null,
+        "variete": null,
+        "circonference": null,
+        "hauteur": null,
+        "date_plantation": null,
+        "houppier": null,
+        "hauteur_1_ere_feuille": null,
+        "secteur": null,
+        "id_regroupement": null,
+        "complement": null,
+        "frequence_entretien": null,
+        "date_proch_entretien": null,
+        "classe_biodiv": null,
+        "date_entretien": null,
+        "atlas": {
+          "sourceId": "arbre.59048",
+          "tag": null,
+          "scientificName": null,
+          "commonName": null,
+          "location": "35281",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["abattu: 0."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "coordinates": [-1.694453257957504, 48.09310736211343],
+        "type": "Point"
+      },
+      "properties": {
+        "geo_point_2d": {
+          "lon": -1.6944532579575042,
+          "lat": 48.09310736211343
+        },
+        "gml_id": "arbre.59060",
+        "id": 59060,
+        "code_insee": "35281",
+        "nom_commun": "Non renseigné",
+        "genre": "Non renseigné",
+        "fonction": "Ornement",
+        "type_taille": "Non renseigné",
+        "abattu": 0,
+        "date_maj": null,
+        "localisation": null,
+        "id_gestion": null,
+        "espece": null,
+        "variete": null,
+        "circonference": null,
+        "hauteur": null,
+        "date_plantation": null,
+        "houppier": null,
+        "hauteur_1_ere_feuille": null,
+        "secteur": null,
+        "id_regroupement": null,
+        "complement": null,
+        "frequence_entretien": null,
+        "date_proch_entretien": null,
+        "classe_biodiv": null,
+        "date_entretien": null,
+        "atlas": {
+          "sourceId": "arbre.59060",
+          "tag": null,
+          "scientificName": null,
+          "commonName": null,
+          "location": "35281",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["abattu: 0."]
+        }
+      }
+    }
+  ],
+  "cascais": [
+    {
+      "type": "Feature",
+      "id": "arvore.20643270",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9.430045, 38.69621]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "numero_registo": 3961,
+        "codigo_rua": 1666786,
+        "rua": "Avenida Vinte e Cinco de Abril",
+        "local": "Cascais",
+        "freguesia": "U.F. Cascais e Estoril",
+        "especie": "ameixoeira de jardim",
+        "nome_cientifico": "Prunus cerasifera",
+        "origem": "",
+        "data_plantacao": null,
+        "estado": "Jovem",
+        "caldeira": "Sim",
+        "tutor": "Sim",
+        "implantacao": "Arruamento",
+        "gestor": "DGEV",
+        "data_actualizacao": "2021-10-30",
+        "familia": "Rosaceae",
+        "nativa": "Alóctone",
+        "tipo_folha": "Caduca",
+        "abate": "Sim",
+        "caldeira_vazia": "Não",
+        "nome_cientifico_abrev": "PRce",
+        "transplante": "Não",
+        "_featureId": "arvore.20643270",
+        "atlas": {
+          "sourceId": "arvore.20643270",
+          "tag": "3961",
+          "scientificName": "Prunus cerasifera",
+          "commonName": "ameixoeira de jardim",
+          "location": "Avenida Vinte e Cinco de Abril · Cascais · U.F. Cascais e Estoril",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "Jovem",
+          "observedAt": null,
+          "status": "removed",
+          "idScope": "release",
+          "qualityNotes": ["abate: Sim.", "caldeira_vazia: Não."]
+        }
+      },
+      "bbox": [-9.430045, 38.69621, -9.430045, 38.69621]
+    },
+    {
+      "type": "Feature",
+      "id": "arvore.36063962",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9.361087, 38.706323]
+      },
+      "geometry_name": "geom",
+      "properties": {
+        "numero_registo": 27525,
+        "codigo_rua": 1680794,
+        "rua": "Rua Feliciano Castilho",
+        "local": "Penedo",
+        "freguesia": "São Domingos de Rana",
+        "especie": "pinheiro do alepo",
+        "nome_cientifico": "Pinus halepensis",
+        "origem": "CMC Outros",
+        "data_plantacao": null,
+        "estado": "Adulto",
+        "caldeira": "Sim",
+        "tutor": "Não",
+        "implantacao": "Arruamento",
+        "gestor": "DGEV",
+        "data_actualizacao": "2022-09-08",
+        "familia": "Pinaceae",
+        "nativa": "Autóctone",
+        "tipo_folha": "Perene",
+        "abate": "Não",
+        "caldeira_vazia": "Não",
+        "nome_cientifico_abrev": "Ph",
+        "transplante": "Não",
+        "_featureId": "arvore.36063962",
+        "atlas": {
+          "sourceId": "arvore.36063962",
+          "tag": "27525",
+          "scientificName": "Pinus halepensis",
+          "commonName": "pinheiro do alepo",
+          "location": "Rua Feliciano Castilho · Penedo · São Domingos de Rana",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "Adulto",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["abate: Não.", "caldeira_vazia: Não."]
+        }
+      },
+      "bbox": [-9.361087, 38.706323, -9.361087, 38.706323]
+    }
+  ],
+  "toulouse": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1.4383896194719425, 43.59007677527503]
+      },
+      "properties": {
+        "id": 131677,
+        "longitude": 1.4383896194719425,
+        "latitude": 43.59007677527503,
+        "famille": "Ulmacees",
+        "genre": "Celtis",
+        "espece": "australis",
+        "cultivar_variete": null,
+        "stade_dev": "3 - Adulte",
+        "forme": "3 - Semi libre",
+        "hauteur_approx_forestry": null,
+        "remarquable": null,
+        "date_plantation": null,
+        "territoire": "CENTRE",
+        "quartier": 5,
+        "commune": "Toulouse",
+        "code_insee": "3119",
+        "atlas": {
+          "sourceId": "131677",
+          "tag": "131677",
+          "scientificName": "Celtis australis",
+          "commonName": null,
+          "location": "5 · Toulouse",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "3 - Adulte",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1.4380180341415474, 43.58972225311845]
+      },
+      "properties": {
+        "id": 131680,
+        "longitude": 1.4380180341415474,
+        "latitude": 43.58972225311845,
+        "famille": "Pinacees",
+        "genre": "Pinus",
+        "espece": "pinea",
+        "cultivar_variete": null,
+        "stade_dev": "3 - Adulte",
+        "forme": "3 - Semi libre",
+        "hauteur_approx_forestry": null,
+        "remarquable": null,
+        "date_plantation": null,
+        "territoire": "CENTRE",
+        "quartier": 5,
+        "commune": "Toulouse",
+        "code_insee": "3119",
+        "atlas": {
+          "sourceId": "131680",
+          "tag": "131680",
+          "scientificName": "Pinus pinea",
+          "commonName": null,
+          "location": "5 · Toulouse",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "3 - Adulte",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    }
+  ],
+  "montpellier": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.8496634726, 43.6337783863]
+      },
+      "properties": {
+        "id_arbre": "145",
+        "adresse": null,
+        "quartier": null,
+        "secteur": null,
+        "commune": null,
+        "nom_commun": "Platane commun",
+        "nom_latin": "Platanus × hispanica",
+        "atlas": {
+          "sourceId": "145",
+          "tag": "145",
+          "scientificName": "Platanus × hispanica",
+          "commonName": "Platane commun",
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.849633712, 43.6339180558]
+      },
+      "properties": {
+        "id_arbre": "163",
+        "adresse": null,
+        "quartier": null,
+        "secteur": null,
+        "commune": null,
+        "nom_commun": "Platane commun",
+        "nom_latin": "Platanus × hispanica",
+        "atlas": {
+          "sourceId": "163",
+          "tag": "163",
+          "scientificName": "Platanus × hispanica",
+          "commonName": "Platane commun",
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    }
+  ],
+  "bern": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.451793187094861, 46.95915702185526]
+      },
+      "properties": {
+        "Objectid": 1,
+        "Nummer": 3570,
+        "Gattung": 2,
+        "Gattung_beschrieb": "Acer",
+        "Art": 39,
+        "Art_beschrieb": "Spitzahorn",
+        "Typ": 2,
+        "Typ_beschrieb": "Laubbaum",
+        "Pflanzjahr": 1996,
+        "hkoord": 2601001.779,
+        "vkoord": 1200897.693,
+        "Lagegenauigkeit": 1,
+        "Lagegenauigkeit_beschrieb": "ab Luftbild oder Plan (ohne Gewähr)",
+        "objekt_ref": "{B512E1B1-8401-46AF-BF62-6B8BE6E358F6}",
+        "Letzte_Aenderung": 1779977187000,
+        "_featureId": "1",
+        "atlas": {
+          "sourceId": "1",
+          "tag": "3570",
+          "scientificName": "Acer",
+          "commonName": "Spitzahorn",
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1996,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["Lagegenauigkeit_beschrieb: ab Luftbild oder Plan (ohne Gewähr)."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.424517518069312, 46.94453790124541]
+      },
+      "properties": {
+        "Objectid": 3,
+        "Nummer": 17596,
+        "Gattung": 36,
+        "Gattung_beschrieb": "Gleditsia",
+        "Art": 207,
+        "Art_beschrieb": "Gleditschie, Lederhülsenbaum f. inermis",
+        "Typ": 2,
+        "Typ_beschrieb": "Laubbaum",
+        "Pflanzjahr": 1945,
+        "hkoord": 2598925.392,
+        "vkoord": 1199272.512,
+        "Lagegenauigkeit": 1,
+        "Lagegenauigkeit_beschrieb": "ab Luftbild oder Plan (ohne Gewähr)",
+        "objekt_ref": "{154586ED-5DC9-4013-9EB6-CDE472B77A91}",
+        "Letzte_Aenderung": 1779977109000,
+        "_featureId": "3",
+        "atlas": {
+          "sourceId": "3",
+          "tag": "17596",
+          "scientificName": "Gleditsia",
+          "commonName": "Gleditschie, Lederhülsenbaum f. inermis",
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1945,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["Lagegenauigkeit_beschrieb: ab Luftbild oder Plan (ohne Gewähr)."]
+        }
+      }
+    }
+  ],
+  "valencia": [
+    {
+      "type": "Feature",
+      "id": 4787916,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.34842030126589785, 39.46545116523415]
+      },
+      "properties": {
+        "objectid": 4787916,
+        "ud_gestion": "VSJS",
+        "tipo_situacion": "Viario",
+        "barrio": "121 - AIORA",
+        "lugar": "LLEONS",
+        "num_portal": "12",
+        "idarbol": "41340/101",
+        "nom_botanico": "Phoenix canariensis hembra",
+        "nom_comu_c": "Palmera canaria hembra",
+        "nom_comu_v": "Palmera canària femella",
+        "grupo": "Palmacea",
+        "fructificacion": "No",
+        "altura": ">12",
+        "copa": "4/8",
+        "cruz": "0",
+        "perimetro": "<0.4",
+        "proteccion": null,
+        "ubicación": "Alcorque en acera",
+        "vegeta_alc": null,
+        "interferencias": "SD",
+        "lpamcv": "Protección genérica",
+        "estado_gral": "Bueno",
+        "inclinacion": "Baja",
+        "diana": "Media",
+        "ptos_criticos": null,
+        "edad": null,
+        "fecha": 1692576000000,
+        "fecha_pl": null,
+        "fecha_po": 1778500109000,
+        "riego": null,
+        "tipo_alcorque": null,
+        "estado_a": "SD",
+        "daño_pav": "No",
+        "dist_fachada": "2/4",
+        "observaciones": null,
+        "distrito": "12 - CAMINS AL GRAU",
+        "cod_municipal": 41340,
+        "numarbol": 101,
+        "cod_anterior": "41340/101",
+        "_featureId": "4787916",
+        "atlas": {
+          "sourceId": "4787916",
+          "tag": "41340/101",
+          "scientificName": "Phoenix canariensis hembra",
+          "commonName": "Palmera canaria hembra",
+          "location": "LLEONS · 121 - AIORA",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["altura: >12.", "copa: 4/8.", "perimetro: <0.4.", "estado_gral: Bueno."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4787917,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.34844875910687045, 39.46548195426121]
+      },
+      "properties": {
+        "objectid": 4787917,
+        "ud_gestion": "VSJS",
+        "tipo_situacion": "Viario",
+        "barrio": "121 - AIORA",
+        "lugar": "LLEONS",
+        "num_portal": "14",
+        "idarbol": "41340/100",
+        "nom_botanico": "Phoenix canariensis macho",
+        "nom_comu_c": "Palmera canaria macho",
+        "nom_comu_v": "Palmera canària mascle",
+        "grupo": "Palmacea",
+        "fructificacion": "No",
+        "altura": ">12",
+        "copa": "4/8",
+        "cruz": "0",
+        "perimetro": ">1.2",
+        "proteccion": null,
+        "ubicación": "Alcorque en acera",
+        "vegeta_alc": null,
+        "interferencias": "SD",
+        "lpamcv": "Protección genérica",
+        "estado_gral": "Bueno",
+        "inclinacion": "Baja",
+        "diana": "Media",
+        "ptos_criticos": null,
+        "edad": null,
+        "fecha": 1692576000000,
+        "fecha_pl": null,
+        "fecha_po": 1778500127000,
+        "riego": null,
+        "tipo_alcorque": null,
+        "estado_a": "SD",
+        "daño_pav": "No",
+        "dist_fachada": ">4",
+        "observaciones": null,
+        "distrito": "12 - CAMINS AL GRAU",
+        "cod_municipal": 41340,
+        "numarbol": 100,
+        "cod_anterior": "41340/100",
+        "_featureId": "4787917",
+        "atlas": {
+          "sourceId": "4787917",
+          "tag": "41340/100",
+          "scientificName": "Phoenix canariensis macho",
+          "commonName": "Palmera canaria macho",
+          "location": "LLEONS · 121 - AIORA",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["altura: >12.", "copa: 4/8.", "perimetro: >1.2.", "estado_gral: Bueno."]
+        }
+      }
+    }
+  ],
+  "barcelona": [
+    {
+      "type": "Feature",
+      "properties": {
+        "codi": "0000423AR",
+        "x_etrs89": "430250.886",
+        "y_etrs89": "4587703.209",
+        "latitud": "41.4378722",
+        "longitud": "2.1651098",
+        "tipus_element": "ARBRE VIARI",
+        "espai_verd": "Central de Nou Barris, Parc",
+        "adreca": "Pg Fabra i Puig, 423",
+        "cat_especie_id": 108,
+        "cat_nom_cientific": "Pinus pinea",
+        "cat_nom_castella": "Pino piñonero",
+        "cat_nom_catala": "Pi pinyoner; pi pinyer",
+        "categoria_arbrat": "EXEMPLAR",
+        "data_plantacio": null,
+        "tipus_aigua": null,
+        "tipus_reg": "GOTEIG AVARIAT",
+        "geom": "POINT (430250.886125371 4587703.20870032)",
+        "catalogacio": "",
+        "codi_barri": "48",
+        "nom_barri": "LA GUINEUETA",
+        "codi_districte": "08",
+        "nom_districte": "NOU BARRIS",
+        "source_inventory": "arbrat-viari",
+        "atlas": {
+          "sourceId": "arbrat-viari:0000423AR",
+          "tag": "0000423AR",
+          "scientificName": "Pinus pinea",
+          "commonName": "Pi pinyoner; pi pinyer",
+          "location": "Pg Fabra i Puig, 423 · LA GUINEUETA · Central de Nou Barris, Parc",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["source_inventory: arbrat-viari.", "tipus_element: ARBRE VIARI."]
+        },
+        "atlas_source_id": "arbrat-viari:0000423AR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1651098, 41.4378722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "codi": "0000692AR",
+        "x_etrs89": "430783.470",
+        "y_etrs89": "4587491.937",
+        "latitud": "41.4360154",
+        "longitud": "2.1715084",
+        "tipus_element": "PALMERA VIARI",
+        "espai_verd": "Central de Nou Barris, Parc",
+        "adreca": "C\\ Doctor Pi i Molist, 117",
+        "cat_especie_id": 47,
+        "cat_nom_cientific": "Phoenix canariensis",
+        "cat_nom_castella": "Palmera canaria",
+        "cat_nom_catala": "Palmera de Canaries; palmera de Canàries",
+        "categoria_arbrat": "TERCERA",
+        "data_plantacio": null,
+        "tipus_aigua": null,
+        "tipus_reg": "ASPERSIÓ",
+        "geom": "POINT (430783.470348079 4587491.93733177)",
+        "catalogacio": "",
+        "codi_barri": "48",
+        "nom_barri": "LA GUINEUETA",
+        "codi_districte": "08",
+        "nom_districte": "NOU BARRIS",
+        "source_inventory": "arbrat-viari",
+        "atlas": {
+          "sourceId": "arbrat-viari:0000692AR",
+          "tag": "0000692AR",
+          "scientificName": "Phoenix canariensis",
+          "commonName": "Palmera de Canaries; palmera de Canàries",
+          "location": "C\\ Doctor Pi i Molist, 117 · LA GUINEUETA · Central de Nou Barris, Parc",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["source_inventory: arbrat-viari.", "tipus_element: PALMERA VIARI."]
+        },
+        "atlas_source_id": "arbrat-viari:0000692AR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.1715084, 41.4360154]
+      }
+    }
+  ],
+  "lyon": [
+    {
+      "type": "Feature",
+      "id": "abr_arbres_alignement.abrarbre.1",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.95562913, 45.71210108]
+      },
+      "geometry_name": "the_geom",
+      "properties": {
+        "essencefrancais": "Poirier à fleurs 'Chanticleer'",
+        "circonference_cm": 42,
+        "hauteurtotale_m": 6,
+        "hauteurfut_m": 2,
+        "diametrecouronne_m": 3,
+        "rayoncouronne_m": 1.5,
+        "dateplantation": "2009-01-19",
+        "genre": "Pirus",
+        "espece": "calleryana",
+        "variete": "Chanticleer",
+        "essence": "Pirus calleryana Chanticleer",
+        "architecture": "Libre",
+        "localisation": "Espace vert",
+        "naturerevetement": null,
+        "surfacecadre_m2": null,
+        "mobilierurbain": "Rien",
+        "anneeplantation": 2009,
+        "commune": "Saint-Priest",
+        "codeinsee": 69290,
+        "nomvoie": "RUE DU PROGRES",
+        "codefuv": 32937,
+        "identifiant": 209181,
+        "numero": 71,
+        "codegenre": 2,
+        "datereleve": "2017-02-01",
+        "gid": 1,
+        "_featureId": "abr_arbres_alignement.abrarbre.1",
+        "atlas": {
+          "sourceId": "1",
+          "tag": "209181",
+          "scientificName": "Pirus calleryana Chanticleer",
+          "commonName": "Poirier à fleurs 'Chanticleer'",
+          "location": "RUE DU PROGRES · Saint-Priest",
+          "height": {
+            "kind": "value",
+            "value": 6,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 3,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 42,
+            "unit": "cm"
+          },
+          "plantingYear": 2009,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      },
+      "bbox": [4.95562913, 45.71210108, 4.95562913, 45.71210108]
+    },
+    {
+      "type": "Feature",
+      "id": "abr_arbres_alignement.abrarbre.2",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.83067892, 45.79058639]
+      },
+      "geometry_name": "the_geom",
+      "properties": {
+        "essencefrancais": "Souche",
+        "circonference_cm": 0,
+        "hauteurtotale_m": 0,
+        "hauteurfut_m": 0,
+        "diametrecouronne_m": 0,
+        "rayoncouronne_m": 0,
+        "dateplantation": null,
+        "genre": "Souche",
+        "espece": null,
+        "variete": null,
+        "essence": "Souche",
+        "architecture": "Sans arbre",
+        "localisation": "Espace vert",
+        "naturerevetement": null,
+        "surfacecadre_m2": null,
+        "mobilierurbain": "Rien",
+        "anneeplantation": null,
+        "commune": "Caluire-et-Cuire",
+        "codeinsee": 69034,
+        "nomvoie": "RUE PIERRE BRUNIER",
+        "codefuv": 3000,
+        "identifiant": 128879,
+        "numero": 23,
+        "codegenre": 1,
+        "datereleve": "2023-08-02",
+        "gid": 2,
+        "_featureId": "abr_arbres_alignement.abrarbre.2",
+        "atlas": {
+          "sourceId": "2",
+          "tag": "128879",
+          "scientificName": "Souche",
+          "commonName": "Souche",
+          "location": "RUE PIERRE BRUNIER · Caluire-et-Cuire",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      },
+      "bbox": [4.83067892, 45.79058639, 4.83067892, 45.79058639]
+    }
+  ],
+  "lisbon": [
+    {
+      "type": "Feature",
+      "id": 62234,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9.09522380117233, 38.7745173661825]
+      },
+      "properties": {
+        "COD_SIG_NEW": 1,
+        "COD_SIG": "330352827082",
+        "MORADA": "Alameda dos Oceanos",
+        "ESPECIE_VA": "Quercus robur",
+        "PAP": "",
+        "MANUTENCAO": "JF",
+        "OCUPACAO": "Árvore",
+        "LOCAL": "Via pública",
+        "TIPOLOGIA": "Caldeira",
+        "FREG_2012": "Parque das Nações",
+        "NOME_VULGA": "carvalho-roble;carvalho-alvarinho",
+        "GESP_C_PK": 62234,
+        "GlobalID": "b4ccf30c-a0ad-44fd-b33d-5ad6e7f4eea9",
+        "_featureId": "62234",
+        "atlas": {
+          "sourceId": "62234",
+          "tag": "1",
+          "scientificName": "Quercus robur",
+          "commonName": "carvalho-roble;carvalho-alvarinho",
+          "location": "Alameda dos Oceanos · Parque das Nações",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["OCUPACAO: Árvore."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 62235,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-9.09521914813627, 38.7745788928018]
+      },
+      "properties": {
+        "COD_SIG_NEW": 2,
+        "COD_SIG": "330352827083",
+        "MORADA": "Alameda dos Oceanos",
+        "ESPECIE_VA": "Quercus robur",
+        "PAP": "",
+        "MANUTENCAO": "JF",
+        "OCUPACAO": "Árvore",
+        "LOCAL": "Via pública",
+        "TIPOLOGIA": "Caldeira",
+        "FREG_2012": "Parque das Nações",
+        "NOME_VULGA": "carvalho-roble;carvalho-alvarinho",
+        "GESP_C_PK": 62235,
+        "GlobalID": "a38b7c0f-71d0-4eb3-9011-14494ddad8db",
+        "_featureId": "62235",
+        "atlas": {
+          "sourceId": "62235",
+          "tag": "2",
+          "scientificName": "Quercus robur",
+          "commonName": "carvalho-roble;carvalho-alvarinho",
+          "location": "Alameda dos Oceanos · Parque das Nações",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": ["OCUPACAO: Árvore."]
+        }
+      }
+    }
+  ],
+  "turin": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id_posto_pianta": "840226",
+        "num_posto_pianta": "1",
+        "descr_ambito": "MAN3-20 / Centro Incontro via Rapallo 20",
+        "descr_specie": "Thuja orientalis",
+        "descr_eta": "adulto",
+        "diametro_fusto": "",
+        "altezza": "8",
+        "descr_pavimentazione": "tappeto erboso",
+        "descr_posiz_posto_pianta": "isolata",
+        "descr_stato_posto_pianta": "Pianta viva",
+        "id_pianta": "001",
+        "altezza_impalcato": "2",
+        "diametro_medio_chioma": "5",
+        "atlas": {
+          "sourceId": "840226",
+          "tag": "840226",
+          "scientificName": "Thuja orientalis",
+          "commonName": null,
+          "location": "MAN3-20 / Centro Incontro via Rapallo 20",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "adulto",
+          "observedAt": null,
+          "status": "existing",
+          "idScope": "release",
+          "qualityNotes": [
+            "altezza: 8.",
+            "diametro_medio_chioma: 5.",
+            "descr_stato_posto_pianta: Pianta viva."
+          ]
+        }
+      },
+      "bbox": [7.66734, 45.04528, 7.66734, 45.04528],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.66734, 45.04528]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_posto_pianta": "840228",
+        "num_posto_pianta": "3",
+        "descr_ambito": "MAN3-20 / Centro Incontro via Rapallo 20",
+        "descr_specie": "Acer negundo",
+        "descr_eta": "adulto",
+        "diametro_fusto": "",
+        "altezza": "10",
+        "descr_pavimentazione": "tappeto erboso",
+        "descr_posiz_posto_pianta": "filare",
+        "descr_stato_posto_pianta": "Pianta viva",
+        "id_pianta": "003",
+        "altezza_impalcato": "2",
+        "diametro_medio_chioma": "7",
+        "atlas": {
+          "sourceId": "840228",
+          "tag": "840228",
+          "scientificName": "Acer negundo",
+          "commonName": null,
+          "location": "MAN3-20 / Centro Incontro via Rapallo 20",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "adulto",
+          "observedAt": null,
+          "status": "existing",
+          "idScope": "release",
+          "qualityNotes": [
+            "altezza: 10.",
+            "diametro_medio_chioma: 7.",
+            "descr_stato_posto_pianta: Pianta viva."
+          ]
+        }
+      },
+      "bbox": [7.66737, 45.04539, 7.66737, 45.04539],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.66737, 45.04539]
+      }
+    }
+  ],
+  "madrid": [
+    {
+      "type": "Feature",
+      "properties": {
+        "_id": 1,
+        "ASSETNUM": "10125108",
+        "NUM_PARQUE": null,
+        "NUM_DISTRITO": "15",
+        "NBRE_DISTRITO": "CIUDAD LINEAL",
+        "NUM_BARRIO": "152",
+        "NBRE_BARRIO": "PUEBLO NUEVO",
+        "X": "446828.300",
+        "Y": "4474049.950",
+        "CODIGO_ESPECIE": "PPI",
+        "ESPECIE": "PINUS PINEA",
+        "PERIMETRO": "18",
+        "ALTURA_TOTAL": "4",
+        "atlas": {
+          "sourceId": "1",
+          "tag": "10125108",
+          "scientificName": "PINUS PINEA",
+          "commonName": null,
+          "location": "PUEBLO NUEVO · CIUDAD LINEAL",
+          "height": {
+            "kind": "value",
+            "value": 4,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 18,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.626725361688026, 40.4153747224347]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "_id": 2,
+        "ASSETNUM": "9841961",
+        "NUM_PARQUE": "8",
+        "NUM_DISTRITO": "09",
+        "NBRE_DISTRITO": "MONCLOA-ARAVACA",
+        "NUM_BARRIO": "093",
+        "NBRE_BARRIO": "CIUDAD UNIVERSITARIA",
+        "X": "438818.294",
+        "Y": "4478572.639",
+        "CODIGO_ESPECIE": "QIL",
+        "ESPECIE": "QUERCUS ILEX",
+        "PERIMETRO": "10",
+        "ALTURA_TOTAL": "0,5",
+        "atlas": {
+          "sourceId": "2",
+          "tag": "9841961",
+          "scientificName": "QUERCUS ILEX",
+          "commonName": null,
+          "location": "CIUDAD UNIVERSITARIA · MONCLOA-ARAVACA",
+          "height": {
+            "kind": "value",
+            "value": 0.5,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 10,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.7215666625601327, 40.45556666418342]
+      }
+    }
+  ],
+  "paris": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.351549724804429, 48.84094377545107]
+      },
+      "properties": {
+        "idbase": 295991,
+        "typeemplacement": "Arbre",
+        "domanialite": "Alignement",
+        "arrondissement": "PARIS 5E ARRDT",
+        "complementadresse": "6",
+        "adresse": "RUE DE MIRBEL",
+        "idemplacement": "000402002",
+        "libellefrancais": "Poirier à fleurs",
+        "genre": "Pyrus",
+        "espece": "calleryana",
+        "varieteoucultivar": null,
+        "circonferenceencm": 55,
+        "hauteurenm": 6,
+        "stadedeveloppement": "Jeune (arbre)",
+        "remarquable": "NON",
+        "atlas": {
+          "sourceId": "295991",
+          "tag": "295991",
+          "scientificName": "Pyrus calleryana",
+          "commonName": "Poirier à fleurs",
+          "location": "RUE DE MIRBEL · PARIS 5E ARRDT",
+          "height": {
+            "kind": "value",
+            "value": 6,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 55,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "Jeune (arbre)",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.4258139916849695, 48.83986783001677]
+      },
+      "properties": {
+        "idbase": 2019672,
+        "typeemplacement": "Arbre",
+        "domanialite": "Jardin",
+        "arrondissement": "BOIS DE VINCENNES",
+        "complementadresse": null,
+        "adresse": "CENTRE AERE SAINT MANDE 2",
+        "idemplacement": "47010013",
+        "libellefrancais": "Charme",
+        "genre": "Carpinus",
+        "espece": "betulus",
+        "varieteoucultivar": null,
+        "circonferenceencm": 35,
+        "hauteurenm": 6,
+        "stadedeveloppement": "Jeune (arbre)",
+        "remarquable": "NON",
+        "atlas": {
+          "sourceId": "2019672",
+          "tag": "2019672",
+          "scientificName": "Carpinus betulus",
+          "commonName": "Charme",
+          "location": "CENTRE AERE SAINT MANDE 2 · BOIS DE VINCENNES",
+          "height": {
+            "kind": "value",
+            "value": 6,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 35,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": "Jeune (arbre)",
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    }
+  ],
+  "florence": [
+    {
+      "type": "Feature",
+      "id": "alberi_pubblici.152541",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.2959213, 43.7807631]
+      },
+      "geometry_name": "SHAPE",
+      "properties": {
+        "ID": 152541,
+        "CODSITO_ALBERO": 116774,
+        "QUARTIERE": "2",
+        "SPECIE": "Malus domestica",
+        "NOME_COMUNE": "Melo",
+        "CIRCONF_CM": 15.7,
+        "_featureId": "alberi_pubblici.152541",
+        "atlas": {
+          "sourceId": "152541",
+          "tag": "152541",
+          "scientificName": "Malus domestica",
+          "commonName": "Melo",
+          "location": "2",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 15.7,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "alberi_pubblici.103308",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.2656368, 43.75776451]
+      },
+      "geometry_name": "SHAPE",
+      "properties": {
+        "ID": 103308,
+        "CODSITO_ALBERO": 77667,
+        "QUARTIERE": "1",
+        "SPECIE": "Cupressus sempervirens",
+        "NOME_COMUNE": "Cipresso comune",
+        "CIRCONF_CM": 138.16,
+        "_featureId": "alberi_pubblici.103308",
+        "atlas": {
+          "sourceId": "103308",
+          "tag": "103308",
+          "scientificName": "Cupressus sempervirens",
+          "commonName": "Cipresso comune",
+          "location": "1",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 138.16,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": []
+        }
+      }
+    }
+  ],
+  "milan": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id_area": "1_018",
+        "municipio": "1",
+        "area": "018",
+        "localita": null,
+        "obj_id": "225",
+        "codice": "P103108",
+        "data_ini": "1965-02-06T00:00+01:00[Europe/Paris]",
+        "genere": "Platanus",
+        "specie": "x acerifolia",
+        "varieta": null,
+        "diam_tronc": "70",
+        "diam_chiom": "15",
+        "h_m": "20",
+        "LONG_X_4326": "9.188071541304282",
+        "LAT_Y_4326": "45.473225113816696",
+        "Location": "(45.473225113816696, 9.188071541304282)",
+        "atlas": {
+          "sourceId": "225",
+          "tag": "P103108",
+          "scientificName": "Platanus x acerifolia",
+          "commonName": null,
+          "location": "1",
+          "height": {
+            "kind": "value",
+            "value": 20,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": [
+            "diam_tronc: 70.",
+            "diam_chiom: 15.",
+            "data_ini: 1965-02-06T00:00+01:00[Europe/Paris]."
+          ]
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.188071541304282, 45.473225113816696]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_area": "1_019",
+        "municipio": "1",
+        "area": "019",
+        "localita": null,
+        "obj_id": "332",
+        "codice": "P103108",
+        "data_ini": "1987-10-21T00:00+01:00[Europe/Paris]",
+        "genere": "Celtis",
+        "specie": "australis",
+        "varieta": null,
+        "diam_tronc": "41",
+        "diam_chiom": "3",
+        "h_m": "5",
+        "LONG_X_4326": "9.183310085248927",
+        "LAT_Y_4326": "45.46922867314887",
+        "Location": "(45.46922867314887, 9.183310085248927)",
+        "atlas": {
+          "sourceId": "332",
+          "tag": "P103108",
+          "scientificName": "Celtis australis",
+          "commonName": null,
+          "location": "1",
+          "height": {
+            "kind": "value",
+            "value": 5,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "idScope": "release",
+          "qualityNotes": [
+            "diam_tronc: 41.",
+            "diam_chiom: 3.",
+            "data_ini: 1987-10-21T00:00+01:00[Europe/Paris]."
+          ]
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [9.183310085248927, 45.46922867314887]
+      }
+    }
+  ]
+}

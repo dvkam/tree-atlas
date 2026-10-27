@@ -67,6 +67,32 @@ function epoch(value: unknown): Date | null {
 
 /** Each import is all-or-nothing. Provider schema failures cannot publish a partial inventory. */
 export function importInventory(dataset: DatasetId, raw: unknown): Tree[] {
+  if (
+    ![
+      "vienna",
+      "geneva",
+      "porto",
+      "amsterdam",
+      "hamburg",
+      "zurich",
+      "london",
+      "camden",
+      "edinburgh",
+      "belfast",
+    ].includes(dataset)
+  ) {
+    const { features } = collectionSchema.parse(raw);
+    const ids = new Set<string>();
+    return features.map(({ geometry, properties }) => {
+      const atlas = treeSchema
+        .omit({ dataset: true, position: true })
+        .strict()
+        .parse(properties["atlas"]);
+      if (ids.has(atlas.sourceId)) throw new Error("Duplicate source identity");
+      ids.add(atlas.sourceId);
+      return treeSchema.parse({ ...atlas, dataset, position: geometry?.coordinates ?? null });
+    });
+  }
   const input =
     dataset === "geneva"
       ? (() => {

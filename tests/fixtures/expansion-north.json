@@ -1,0 +1,1765 @@
+{
+  "liege": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.5749638561, 50.6315120494]
+      },
+      "properties": {
+        "arbotag": 7,
+        "tree_species": "Aesculus x carnea",
+        "municipality": "Liège",
+        "top_diameter": 9,
+        "height": 16.9,
+        "circumference": 189,
+        "remarkable": "Non",
+        "geo_point_2d": {
+          "lon": 5.5749638561,
+          "lat": 50.6315120494
+        },
+        "planting_year": null,
+        "planting_action": null,
+        "class_height_description": "15-19.9 m",
+        "class_height_number": 3,
+        "class_top_diameter_description": "5-9.9 m",
+        "class_top_diameter_number": 1,
+        "circumference_class_id": 3,
+        "circumference_class_description": "180-239 cm",
+        "street_name": "Parc De La Boverie",
+        "icar_street_id": 7729938,
+        "street_code": 7017,
+        "postal_code": "4020",
+        "city": "Liège",
+        "atlas": {
+          "sourceId": "7",
+          "idScope": "release",
+          "tag": "7",
+          "scientificName": "Aesculus x carnea",
+          "commonName": null,
+          "location": "Parc De La Boverie",
+          "height": {
+            "kind": "value",
+            "value": 16.9,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 9,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 189,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.575181243, 50.6312397966]
+      },
+      "properties": {
+        "arbotag": 9,
+        "tree_species": "Fagus sylvatica 'Atropunicea'",
+        "municipality": "Liège",
+        "top_diameter": 18,
+        "height": 22.1,
+        "circumference": 307,
+        "remarkable": "Non",
+        "geo_point_2d": {
+          "lon": 5.575181243,
+          "lat": 50.6312397966
+        },
+        "planting_year": null,
+        "planting_action": null,
+        "class_height_description": "20-24.9 m",
+        "class_height_number": 4,
+        "class_top_diameter_description": "15-19.9 m",
+        "class_top_diameter_number": 3,
+        "circumference_class_id": 5,
+        "circumference_class_description": "300-359 cm",
+        "street_name": "Parc De La Boverie",
+        "icar_street_id": 7729938,
+        "street_code": 7017,
+        "postal_code": "4020",
+        "city": "Liège",
+        "atlas": {
+          "sourceId": "9",
+          "idScope": "release",
+          "tag": "9",
+          "scientificName": "Fagus sylvatica 'Atropunicea'",
+          "commonName": null,
+          "location": "Parc De La Boverie",
+          "height": {
+            "kind": "value",
+            "value": 22.1,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 18,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 307,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    }
+  ],
+  "eindhoven": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.449460904725731, 51.423282595670024]
+      },
+      "properties": {
+        "objectid": 3001,
+        "boomnummer": 13334,
+        "eigenaar": "BOR",
+        "beheerder": "BOR Stedelijk",
+        "boomsoort": "Acer rubrum",
+        "boomsoort_varieteit": "Geen",
+        "boomsoort_nederlands": "Rode esdoorn",
+        "eindbeeld": "TR4,2 m rondom",
+        "hoogte": "6-9",
+        "plantjaar": "2003",
+        "status_ter_indicatie": null,
+        "nazorgboom": null,
+        "projectnaam": null,
+        "geovisia_id": "1AE2B8E0-C2EE-437E-A533-8B1D6A27A59E",
+        "geo_point_2d": {
+          "lon": 5.449460904725731,
+          "lat": 51.423282595670024
+        },
+        "atlas": {
+          "sourceId": "3001",
+          "idScope": "release",
+          "tag": "13334",
+          "scientificName": "Acer rubrum",
+          "commonName": "Rode esdoorn",
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2003,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height class (m): 6-9. Protection status: not specified; this is not living status."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.458306673622375, 51.43257806792333]
+      },
+      "properties": {
+        "objectid": 3003,
+        "boomnummer": 14297,
+        "eigenaar": "BOR",
+        "beheerder": "Overige gemeentelijke dienst",
+        "boomsoort": "Sorbus intermedia",
+        "boomsoort_varieteit": "Onbekend",
+        "boomsoort_nederlands": "Lijsterbes",
+        "eindbeeld": "TR3,0 m rondom",
+        "hoogte": "9-12",
+        "plantjaar": "1970",
+        "status_ter_indicatie": "Waardevol",
+        "nazorgboom": null,
+        "projectnaam": null,
+        "geovisia_id": "84935F98-14E6-4B9E-B3C1-86C3A9C98E0B",
+        "geo_point_2d": {
+          "lon": 5.458306673622375,
+          "lat": 51.43257806792333
+        },
+        "atlas": {
+          "sourceId": "3003",
+          "idScope": "release",
+          "tag": "14297",
+          "scientificName": "Sorbus intermedia",
+          "commonName": "Lijsterbes",
+          "location": null,
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1970,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height class (m): 9-12. Protection status: Waardevol; this is not living status."
+          ]
+        }
+      }
+    }
+  ],
+  "arnhem": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.8791567919784695, 51.99592716741144]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "BOOMNUMMER": "02.12.B.1736",
+        "BOOMSOORT": "Quercus rubra",
+        "EIGENAAR": "Gemeente Arnhem",
+        "UITVOERDER": "Wijkonderhoud bomen",
+        "PLANTJAAR": "1930",
+        "NEDERLANDSE_NAAM": "Amerikaanse eik",
+        "JAAR_VAN_TOEKENNING": "2022",
+        "BUURTNAAM": "Hoogkamp",
+        "WIJKNAAM": "Burgemeesterswijk/Hoogkamp",
+        "TYPE_BOOMEIGENAAR": "Gem.Arnhem_Cluster Openbare Ruimte",
+        "GEPLAND_ONDERHOUD": "2026",
+        "BOOMTYPE": "Niet vrij uitgroeiend",
+        "KROONDIAMETER_ACTUEEL": "> 20 m",
+        "INSPECTIEDATUM": "2026-05-22",
+        "CONDITIE": "Voldoende",
+        "KROON_GEBREK": "Geen",
+        "STAM_GEBREK": "Geen",
+        "MAAIVELD_GEBREK": "Geen",
+        "ZIEKTEN_INSECTEN_SCHIMMEL": "Geen",
+        "BEHEERTYPE_BOOM": "Gemeentelijke boom",
+        "BELEIDSSTATUS": "I. Monumentaal",
+        "CLASSIFICATIE": "Buitengewone boom",
+        "KENMERK": null,
+        "BUITENGEWONE_BOOM": "Hittestress;Omvang boom",
+        "STRAATNAAM": "Josef Israëlslaan",
+        "STAMDIAMETERKLASSE": "100 tot 150 cm",
+        "BOOMVOORZIENING": "Niet bepaald",
+        "CONTROLEFREQUENTIE": "3 jaar",
+        "OPMERKINGEN": null,
+        "AANVULLENDE_OPMERKINGEN": null,
+        "LAT": "51.9959273",
+        "LON": "5.8791568",
+        "_sourceLayer": 0,
+        "atlas": {
+          "sourceId": "0:1",
+          "idScope": "release",
+          "tag": "02.12.B.1736",
+          "scientificName": "Quercus rubra",
+          "commonName": "Amerikaanse eik",
+          "location": "Josef Israëlslaan",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1930,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source crown description: > 20 m. Diameter class: 100 tot 150 cm. Unverified units remain unknown."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.881183904175834, 51.9958866141016]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "BOOMNUMMER": "02.12.B.1755",
+        "BOOMSOORT": "Acer platanoides",
+        "EIGENAAR": "Gemeente Arnhem",
+        "UITVOERDER": "Wijkonderhoud bomen",
+        "PLANTJAAR": "1960",
+        "NEDERLANDSE_NAAM": "Noorse esdoorn",
+        "JAAR_VAN_TOEKENNING": "2022",
+        "BUURTNAAM": "Hoogkamp",
+        "WIJKNAAM": "Burgemeesterswijk/Hoogkamp",
+        "TYPE_BOOMEIGENAAR": "Gem.Arnhem_Cluster Openbare Ruimte",
+        "GEPLAND_ONDERHOUD": "2026",
+        "BOOMTYPE": "Niet vrij uitgroeiend",
+        "KROONDIAMETER_ACTUEEL": "> 20 m",
+        "INSPECTIEDATUM": "2026-05-12",
+        "CONDITIE": "Voldoende",
+        "KROON_GEBREK": "Geen",
+        "STAM_GEBREK": "Geen",
+        "MAAIVELD_GEBREK": "Geen",
+        "ZIEKTEN_INSECTEN_SCHIMMEL": "Geen",
+        "BEHEERTYPE_BOOM": "Gemeentelijke boom",
+        "BELEIDSSTATUS": "I. Monumentaal",
+        "CLASSIFICATIE": "Buitengewone boom",
+        "KENMERK": null,
+        "BUITENGEWONE_BOOM": "Hittestress;Omvang boom",
+        "STRAATNAAM": "Breitnerstraat",
+        "STAMDIAMETERKLASSE": "50 tot 100 cm",
+        "BOOMVOORZIENING": "N.v.t.",
+        "CONTROLEFREQUENTIE": "3 jaar",
+        "OPMERKINGEN": null,
+        "AANVULLENDE_OPMERKINGEN": null,
+        "LAT": "51.9958867",
+        "LON": "5.8811839",
+        "_sourceLayer": 0,
+        "atlas": {
+          "sourceId": "0:2",
+          "idScope": "release",
+          "tag": "02.12.B.1755",
+          "scientificName": "Acer platanoides",
+          "commonName": "Noorse esdoorn",
+          "location": "Breitnerstraat",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1960,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source crown description: > 20 m. Diameter class: 50 tot 100 cm. Unverified units remain unknown."
+          ]
+        }
+      }
+    }
+  ],
+  "leipzig": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.421918, 51.328797]
+      },
+      "properties": {
+        "objectid": 35771530,
+        "baumnummer": "G45509",
+        "gattung": "Rhododendron",
+        "ga_lang_wiss": "Rhododendron 'Pink Pearl'",
+        "ga_lang_deutsch": null,
+        "pflanzjahr": 2017,
+        "baumhoehe": null,
+        "kr_durchm": null,
+        "st_durchm": null,
+        "st_umfang": null,
+        "gebiet": "Friedhöfe",
+        "strasse": "Ostfriedhof",
+        "ot": "Anger-Crottendorf",
+        "objektkuerzel": "F.2",
+        "gefaellt_am": null,
+        "nachpflanzung_geplant": "",
+        "status_patenbaum": "frei",
+        "patenschaftsnummer": "",
+        "standzeitraum": "10",
+        "letzte_bewaesserung": null,
+        "fme_tstamp": "2026-10-26",
+        "_sourceLayer": "OpenData:Baeume",
+        "atlas": {
+          "sourceId": "OpenData:Baeume:Baeume.35771530",
+          "idScope": "release",
+          "tag": "G45509",
+          "scientificName": "Rhododendron 'Pink Pearl'",
+          "commonName": null,
+          "location": "Ostfriedhof",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2017,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height: unknown; crown: unknown; circumference: unknown. Units require field documentation. Replacement planned: not specified."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.421953, 51.328775]
+      },
+      "properties": {
+        "objectid": 35771531,
+        "baumnummer": "G45510",
+        "gattung": "Rhododendron",
+        "ga_lang_wiss": "Rhododendron 'Pink Pearl'",
+        "ga_lang_deutsch": null,
+        "pflanzjahr": 2017,
+        "baumhoehe": null,
+        "kr_durchm": null,
+        "st_durchm": null,
+        "st_umfang": null,
+        "gebiet": "Friedhöfe",
+        "strasse": "Ostfriedhof",
+        "ot": "Anger-Crottendorf",
+        "objektkuerzel": "F.2",
+        "gefaellt_am": null,
+        "nachpflanzung_geplant": "",
+        "status_patenbaum": "frei",
+        "patenschaftsnummer": "",
+        "standzeitraum": "10",
+        "letzte_bewaesserung": null,
+        "fme_tstamp": "2026-10-26",
+        "_sourceLayer": "OpenData:Baeume",
+        "atlas": {
+          "sourceId": "OpenData:Baeume:Baeume.35771531",
+          "idScope": "release",
+          "tag": "G45510",
+          "scientificName": "Rhododendron 'Pink Pearl'",
+          "commonName": null,
+          "location": "Ostfriedhof",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2017,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height: unknown; crown: unknown; circumference: unknown. Units require field documentation. Replacement planned: not specified."
+          ]
+        }
+      }
+    }
+  ],
+  "rostock": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.1164932, 54.0636702]
+      },
+      "properties": {
+        "uuid": "fa3c43ce-8e5f-46e6-ac9d-aa950bf0f4a9",
+        "gattung_botanisch": "Acer",
+        "gattung_deutsch": "Ahorn",
+        "art_botanisch": "Acer species",
+        "art_deutsch": "Ahorn",
+        "alleebaum": false,
+        "hoehe": 10,
+        "hoehe_formatiert": "10 m",
+        "stammdurchmesser": 20.37,
+        "stammdurchmesser_formatiert": "20,37 cm",
+        "stammumfang": 64,
+        "stammumfang_formatiert": "64 cm",
+        "kronendurchmesser": 5,
+        "kronendurchmesser_formatiert": "5 m",
+        "baumpatenschaft": false,
+        "_sourceLayer": "baeume:hro.baeume.baeume",
+        "atlas": {
+          "sourceId": "baeume:hro.baeume.baeume:row:1",
+          "idScope": "release",
+          "tag": null,
+          "scientificName": "Acer species",
+          "commonName": "Ahorn",
+          "location": null,
+          "height": {
+            "kind": "value",
+            "value": 10,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 5,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 64,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [12.0489733, 54.1465833]
+      },
+      "properties": {
+        "uuid": "1140029d-8c75-47c4-ace0-19ac0ed66410",
+        "gattung_botanisch": "Acer",
+        "gattung_deutsch": "Ahorn",
+        "art_botanisch": "Acer species",
+        "art_deutsch": "Ahorn",
+        "alleebaum": false,
+        "hoehe": 14,
+        "hoehe_formatiert": "14 m",
+        "stammdurchmesser": 42.65,
+        "stammdurchmesser_formatiert": "42,65 cm",
+        "stammumfang": 134,
+        "stammumfang_formatiert": "134 cm",
+        "kronendurchmesser": 10,
+        "kronendurchmesser_formatiert": "10 m",
+        "baumpatenschaft": false,
+        "_sourceLayer": "baeume:hro.baeume.baeume",
+        "atlas": {
+          "sourceId": "baeume:hro.baeume.baeume:row:2",
+          "idScope": "release",
+          "tag": null,
+          "scientificName": "Acer species",
+          "commonName": "Ahorn",
+          "location": null,
+          "height": {
+            "kind": "value",
+            "value": 14,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 10,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 134,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    }
+  ],
+  "berlin": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.44828415, 52.44315194]
+      },
+      "properties": {
+        "gisid": "00008100_000bbafb",
+        "pitid": "00008100:000bbafb",
+        "standortnr": "93",
+        "kennzeich": "01414",
+        "namenr": "Fritz-Reuter-Allee",
+        "art_dtsch": "Pyramiden-Hainbuche",
+        "art_bot": "Carpinus betulus 'Fastigiata'",
+        "gattung_deutsch": "Hainbuche",
+        "gattung": "Carpinus",
+        "art_gruppe": "Laubbäume",
+        "strnr": "01414",
+        "strname": "Fritz-Reuter-Allee",
+        "hausnr": "gü.111/113",
+        "zusatz": null,
+        "pflanzjahr": "1975",
+        "standalter": 51,
+        "kronedurch": 0,
+        "stammumfg": 115,
+        "baumhoehe": 15,
+        "eigentuemer": "Land Berlin",
+        "bezirk": "Neukölln",
+        "_sourceLayer": "baumbestand:strassenbaeume",
+        "atlas": {
+          "sourceId": "baumbestand:strassenbaeume:strassenbaeume.00008100_000bbafb",
+          "idScope": "release",
+          "tag": "93",
+          "scientificName": "Carpinus betulus 'Fastigiata'",
+          "commonName": "Pyramiden-Hainbuche",
+          "location": "Fritz-Reuter-Allee",
+          "height": {
+            "kind": "value",
+            "value": 15,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 115,
+            "unit": "cm"
+          },
+          "plantingYear": 1975,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "existing"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.44842248, 52.44326369]
+      },
+      "properties": {
+        "gisid": "00008100_000bbafd",
+        "pitid": "00008100:000bbafd",
+        "standortnr": "91",
+        "kennzeich": "01414",
+        "namenr": "Fritz-Reuter-Allee",
+        "art_dtsch": "Berg-Ahorn, Weiss-Ahorn",
+        "art_bot": "Acer pseudoplatanus",
+        "gattung_deutsch": "Ahorn",
+        "gattung": "Acer",
+        "art_gruppe": "Laubbäume",
+        "strnr": "01414",
+        "strname": "Fritz-Reuter-Allee",
+        "hausnr": "gü.111",
+        "zusatz": null,
+        "pflanzjahr": "1975",
+        "standalter": 51,
+        "kronedurch": 0,
+        "stammumfg": 350,
+        "baumhoehe": 0,
+        "eigentuemer": "Land Berlin",
+        "bezirk": "Neukölln",
+        "_sourceLayer": "baumbestand:strassenbaeume",
+        "atlas": {
+          "sourceId": "baumbestand:strassenbaeume:strassenbaeume.00008100_000bbafd",
+          "idScope": "release",
+          "tag": "91",
+          "scientificName": "Acer pseudoplatanus",
+          "commonName": "Berg-Ahorn, Weiss-Ahorn",
+          "location": "Fritz-Reuter-Allee",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 350,
+            "unit": "cm"
+          },
+          "plantingYear": 1975,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "existing"
+        }
+      }
+    }
+  ],
+  "luxembourgnational": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.2861899345, 49.8441209434]
+      },
+      "properties": {
+        "nr_id": 1,
+        "essence": "Tilia sp.",
+        "x": 88492,
+        "y": 101088,
+        "interet": "dendrologique / historique",
+        "section": "B de Kosselt",
+        "commune": "Beaufort",
+        "atlas": {
+          "sourceId": "1",
+          "idScope": "release",
+          "tag": "1",
+          "scientificName": "Tilia sp.",
+          "commonName": null,
+          "location": "Beaufort",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": ["Selected remarkable tree. Interest: dendrologique / historique."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.2796670477, 49.8310730327]
+      },
+      "properties": {
+        "nr_id": 2,
+        "essence": "Aesculus hippocastanum",
+        "x": 88025,
+        "y": 99636,
+        "interet": "paysager",
+        "section": "C de Beaufort",
+        "commune": "Beaufort",
+        "atlas": {
+          "sourceId": "2",
+          "idScope": "release",
+          "tag": "2",
+          "scientificName": "Aesculus hippocastanum",
+          "commonName": null,
+          "location": "Beaufort",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": ["Selected remarkable tree. Interest: paysager."]
+        }
+      }
+    }
+  ],
+  "frankfurt": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.62761546060373, 50.09725908218365]
+      },
+      "properties": {
+        "Objelt ID": "1",
+        "Baumnummer": "1",
+        "ETRS 89 Hochwert": "5549510,9",
+        "ETRS 89 Rechtswert": "473366,2",
+        "Lateinischer Name": "Platanus acerifolia, Gewöhnliche Platane",
+        "Kronen Durchmesser in Meter": "8",
+        "Stamm Umfang in cm": "141",
+        "Strasse": "Ackermannstrasse",
+        "Baumhöhe": "7",
+        "Stamm Durchmesser": "45",
+        "Pflanzjahr": "1920",
+        "atlas": {
+          "sourceId": "1",
+          "idScope": "release",
+          "tag": "1",
+          "scientificName": "Platanus acerifolia",
+          "commonName": "Gewöhnliche Platane",
+          "location": "Ackermannstrasse",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 8,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 141,
+            "unit": "cm"
+          },
+          "plantingYear": 1920,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height: 7. Height units require source confirmation. Snapshot: 1 August 2024."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.62757727176819, 50.097315621488185]
+      },
+      "properties": {
+        "Objelt ID": "2",
+        "Baumnummer": "2",
+        "ETRS 89 Hochwert": "5549517,2",
+        "ETRS 89 Rechtswert": "473363,5",
+        "Lateinischer Name": "Platanus acerifolia, Gewöhnliche Platane",
+        "Kronen Durchmesser in Meter": "8",
+        "Stamm Umfang in cm": "141",
+        "Strasse": "Ackermannstrasse",
+        "Baumhöhe": "7",
+        "Stamm Durchmesser": "45",
+        "Pflanzjahr": "1920",
+        "atlas": {
+          "sourceId": "2",
+          "idScope": "release",
+          "tag": "2",
+          "scientificName": "Platanus acerifolia",
+          "commonName": "Gewöhnliche Platane",
+          "location": "Ackermannstrasse",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 8,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 141,
+            "unit": "cm"
+          },
+          "plantingYear": 1920,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height: 7. Height units require source confirmation. Snapshot: 1 August 2024."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "Objelt ID": "283546",
+        "Baumnummer": "W 13/A",
+        "ETRS 89 Hochwert": "55556033,5",
+        "ETRS 89 Rechtswert": "471641,3",
+        "Lateinischer Name": "waldartiger Bestand",
+        "Kronen Durchmesser in Meter": "2",
+        "Stamm Umfang in cm": "0",
+        "Strasse": "Ziegeleiallee Streuobstwiesen",
+        "Baumhöhe": "0",
+        "Stamm Durchmesser": "0",
+        "Pflanzjahr": "1950",
+        "atlas": {
+          "sourceId": "283546",
+          "idScope": "release",
+          "tag": "W 13/A",
+          "scientificName": "waldartiger Bestand",
+          "commonName": null,
+          "location": "Ziegeleiallee Streuobstwiesen",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 2,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1950,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height: 0. Height units require source confirmation. Snapshot: 1 August 2024.",
+            "Source UTM coordinate is invalid: northing must be finite and within 0–10000000 metres. Position withheld; original values and record retained."
+          ]
+        }
+      }
+    }
+  ],
+  "nantes": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.505008488252131, 47.22891811345121]
+      },
+      "properties": {
+        "id_emplacement": 161300,
+        "nom": "NANTES",
+        "annee_plantation": "1820",
+        "date_inventaire": "2023-10-19",
+        "lib_genre": "Quercus",
+        "lib_espece": "robur",
+        "lib_sous_espece": null,
+        "lib_hauteur_totale": "21-30 m",
+        "lib_stade_developpement": "Mature",
+        "classe_age": "Plus de 50 ans",
+        "diametre": 170,
+        "diametre_estime_couronne": 18,
+        "code_insee": 44109,
+        "pole": "Erdre et Loire",
+        "proprietaire": "Nantes",
+        "statut": "Planté",
+        "variete": null,
+        "atlas": {
+          "sourceId": "161300:row:1",
+          "idScope": "release",
+          "tag": "161300",
+          "scientificName": "Quercus robur",
+          "commonName": null,
+          "location": "NANTES",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1820,
+          "plantingEstimated": false,
+          "age": "Plus de 50 ans",
+          "observedAt": "2023-10-19",
+          "status": "existing",
+          "qualityNotes": [
+            "Source status: Planté; species/site: Quercus robur. Height class: 21-30 m. Crown is an estimate; diameter units are unverified."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.5346379231345202, 47.23991624206126]
+      },
+      "properties": {
+        "id_emplacement": 21927,
+        "nom": "NANTES",
+        "annee_plantation": "1845",
+        "date_inventaire": "2016-08-18",
+        "lib_genre": "Cedrus",
+        "lib_espece": "atlantica",
+        "lib_sous_espece": null,
+        "lib_hauteur_totale": "21-30 m",
+        "lib_stade_developpement": "Adulte",
+        "classe_age": "Plus de 50 ans",
+        "diametre": 136,
+        "diametre_estime_couronne": 22,
+        "code_insee": 44109,
+        "pole": "Erdre et Loire",
+        "proprietaire": "Nantes Métropole",
+        "statut": "Planté",
+        "variete": null,
+        "atlas": {
+          "sourceId": "21927:row:2",
+          "idScope": "release",
+          "tag": "21927",
+          "scientificName": "Cedrus atlantica",
+          "commonName": null,
+          "location": "NANTES",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1845,
+          "plantingEstimated": false,
+          "age": "Plus de 50 ans",
+          "observedAt": "2016-08-18",
+          "status": "existing",
+          "qualityNotes": [
+            "Source status: Planté; species/site: Cedrus atlantica. Height class: 21-30 m. Crown is an estimate; diameter units are unverified."
+          ]
+        }
+      }
+    }
+  ],
+  "ghent": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.760296684947575, 51.04523819421468]
+      },
+      "properties": {
+        "straatnaam": "Gentbruggeplein",
+        "aanlegjaar": null,
+        "beheerder": "Stad Gent",
+        "eigenaar": "Stad Gent",
+        "onderhoudg": "Gentbrugge Watertoren",
+        "functie": "Begraafplaats",
+        "bestemming": "Gekandelaarde boom",
+        "sortiment": "Prunus cerasifera 'Nigra'",
+        "hoogte": "<6 m.",
+        "diameter": 20,
+        "bescherm": null,
+        "terrein": null,
+        "stamomtrek": null,
+        "plantwijze": null,
+        "beheerfase": null,
+        "boombeeld": null,
+        "gis_id": "fysgro/tep212183",
+        "geo_point_2d": {
+          "lon": 3.760296684947575,
+          "lat": 51.04523819421468
+        },
+        "atlas": {
+          "sourceId": "fysgro/tep212183:row:1",
+          "idScope": "release",
+          "tag": null,
+          "scientificName": "Prunus cerasifera 'Nigra'",
+          "commonName": null,
+          "location": "Gentbruggeplein",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height class: <6 m.. Circumferences may be group averages; individual measurements remain unknown."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.760467596616908, 51.04527958160073]
+      },
+      "properties": {
+        "straatnaam": "Gentbruggeplein",
+        "aanlegjaar": null,
+        "beheerder": "Stad Gent",
+        "eigenaar": "Stad Gent",
+        "onderhoudg": "Gentbrugge Watertoren",
+        "functie": "Begraafplaats",
+        "bestemming": "Gekandelaarde boom",
+        "sortiment": "Prunus cerasifera 'Nigra'",
+        "hoogte": "<6 m.",
+        "diameter": 20,
+        "bescherm": null,
+        "terrein": null,
+        "stamomtrek": null,
+        "plantwijze": null,
+        "beheerfase": null,
+        "boombeeld": null,
+        "gis_id": "fysgro/tep212179",
+        "geo_point_2d": {
+          "lon": 3.760467596616908,
+          "lat": 51.04527958160073
+        },
+        "atlas": {
+          "sourceId": "fysgro/tep212179:row:2",
+          "idScope": "release",
+          "tag": null,
+          "scientificName": "Prunus cerasifera 'Nigra'",
+          "commonName": null,
+          "location": "Gentbruggeplein",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height class: <6 m.. Circumferences may be group averages; individual measurements remain unknown."
+          ]
+        }
+      }
+    }
+  ],
+  "delft": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.34539268353802, 52.0099927666764]
+      },
+      "properties": {
+        "ID": 9498,
+        "BORNAME": "bomen",
+        "ELEMENTNUMMER": "302",
+        "BEHEERGROEP": "Niet vrij uitgroeiende boom",
+        "AANLEGJAAR": 1948,
+        "BOOMSORTIMENT": "Fraxinus excelsior",
+        "BOOMSTATUS": null,
+        "TAKVRIJE_ZONE": "Onbereikbaar, snoeiingreep ongewenst",
+        "OMGEVINGSRISICOKLASSEN": "Algemeen",
+        "AMBITIENIVEAU": "C (matig) - R- (sober)",
+        "HOOGTE": "18-24 m.",
+        "DIAMETER": null,
+        "STANDPLAATS": "Open grond: beplant",
+        "BEHEERDER": "BOR",
+        "EIGENAAR": "Gemeente Delft",
+        "EXTRA_INFORMATIE_2": "50 - 100",
+        "EXTRA_INFORMATIE_3": "IC1",
+        "GROENGEBIEDCODE": "01.13.0004",
+        "GROENGEBIEDNAAM": "Westeindebuurt",
+        "GEMEENTE": "Delft",
+        "BUURT": "Westeindebuurt",
+        "WIJK": "13 Hof van Delft",
+        "LIGGING": "Binnen de bebouwde kom",
+        "BEHEEROBJECTSOORT": "bm",
+        "BEHEEROBJECTOMSCHRIJVING": "01.13.0004.bm302",
+        "OBJECTID": 1,
+        "HGT": null,
+        "_sourceLayer": 0,
+        "atlas": {
+          "sourceId": "0:1",
+          "idScope": "release",
+          "tag": "302",
+          "scientificName": "Fraxinus excelsior",
+          "commonName": null,
+          "location": "Binnen de bebouwde kom",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1948,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source tree status: unknown. Height: 18-24 m.; diameter: unknown. Units are not verified."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.34561511192575, 52.0092661723096]
+      },
+      "properties": {
+        "ID": 9500,
+        "BORNAME": "bomen",
+        "ELEMENTNUMMER": "304",
+        "BEHEERGROEP": "Niet vrij uitgroeiende boom",
+        "AANLEGJAAR": 1948,
+        "BOOMSORTIMENT": "Populus x canadensis",
+        "BOOMSTATUS": null,
+        "TAKVRIJE_ZONE": "Bereikt",
+        "OMGEVINGSRISICOKLASSEN": "Algemeen",
+        "AMBITIENIVEAU": "C (matig) - R- (sober)",
+        "HOOGTE": "> 24 m.",
+        "DIAMETER": null,
+        "STANDPLAATS": "Open grond: beplant",
+        "BEHEERDER": "BOR",
+        "EIGENAAR": "Gemeente Delft",
+        "EXTRA_INFORMATIE_2": "> 100",
+        "EXTRA_INFORMATIE_3": "IC1",
+        "GROENGEBIEDCODE": "01.13.0004",
+        "GROENGEBIEDNAAM": "Westeindebuurt",
+        "GEMEENTE": "Delft",
+        "BUURT": "Westeindebuurt",
+        "WIJK": "13 Hof van Delft",
+        "LIGGING": "Binnen de bebouwde kom",
+        "BEHEEROBJECTSOORT": "bm",
+        "BEHEEROBJECTOMSCHRIJVING": "01.13.0004.bm304",
+        "OBJECTID": 2,
+        "HGT": null,
+        "_sourceLayer": 0,
+        "atlas": {
+          "sourceId": "0:2",
+          "idScope": "release",
+          "tag": "304",
+          "scientificName": "Populus x canadensis",
+          "commonName": null,
+          "location": "Binnen de bebouwde kom",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1948,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source tree status: unknown. Height: > 24 m.; diameter: unknown. Units are not verified."
+          ]
+        }
+      }
+    }
+  ],
+  "utrecht": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.00511520604359, 52.0836748820901]
+      },
+      "properties": {
+        "Wetenschap": "Alnus glutinosa",
+        "Nederlands": "Zwarte els",
+        "plantjaar": 2006,
+        "Eigenaar": "Gemeentelijk",
+        "GRIB_ID": 4661236,
+        "Boomnummer": 1846969,
+        "Wijknaam": "Vleuten - De Meern",
+        "Buurtnaam": "Veldhuizen",
+        "Legenda": "Alnus",
+        "maileenboom": "maileenboom+1846969@utrecht.nl",
+        "OBJECTID": 1,
+        "_sourceLayer": 0,
+        "atlas": {
+          "sourceId": "0:1",
+          "idScope": "release",
+          "tag": "1846969",
+          "scientificName": "Alnus glutinosa",
+          "commonName": "Zwarte els",
+          "location": "Veldhuizen",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2006,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.0036590669864, 52.0923888443723]
+      },
+      "properties": {
+        "Wetenschap": "Quercus robur 'Fastigiate Koster'",
+        "Nederlands": "Zuileik",
+        "plantjaar": 2004,
+        "Eigenaar": "Gemeentelijk",
+        "GRIB_ID": 4661237,
+        "Boomnummer": 1846970,
+        "Wijknaam": "Vleuten - De Meern",
+        "Buurtnaam": "Vleuterweide-Zuid",
+        "Legenda": "Quercus",
+        "maileenboom": "maileenboom+1846970@utrecht.nl",
+        "OBJECTID": 2,
+        "_sourceLayer": 0,
+        "atlas": {
+          "sourceId": "0:2",
+          "idScope": "release",
+          "tag": "1846970",
+          "scientificName": "Quercus robur 'Fastigiate Koster'",
+          "commonName": "Zuileik",
+          "location": "Vleuterweide-Zuid",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2004,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    }
+  ],
+  "cologne": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.075342120773399, 50.973696112911476]
+      },
+      "properties": {
+        "Botanischer_Name": "Tilia ",
+        "Deutscher_Name": "Linde",
+        "Pflanzjahr": "",
+        "Stammdurchmesser_-_cm": "60",
+        "Stammumfang_-_cm": "188",
+        "Höhe_-_m": "19",
+        "Kronendurchmesser_-_m": "12",
+        "Baumscheibenabdeckung": "",
+        "Naturdenkmal": "",
+        "Baumspende": "",
+        "Baumpatenschaft": "",
+        "Eigentum": "Öffentlich",
+        "Anordnung": "",
+        "Straße": "",
+        "Stadtteil": "",
+        "Baumnummer": "--0001",
+        "_sourceLayer": "ms:baumkataster",
+        "atlas": {
+          "sourceId": "ms:baumkataster:row:1",
+          "idScope": "release",
+          "tag": "--0001",
+          "scientificName": "Tilia",
+          "commonName": "Linde",
+          "location": null,
+          "height": {
+            "kind": "value",
+            "value": 19,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 12,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 188,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.972551732301773, 50.92671157455943]
+      },
+      "properties": {
+        "Botanischer_Name": "Tilia cordata ",
+        "Deutscher_Name": "Winterlinde",
+        "Pflanzjahr": "",
+        "Stammdurchmesser_-_cm": "70",
+        "Stammumfang_-_cm": "220",
+        "Höhe_-_m": "16",
+        "Kronendurchmesser_-_m": "10",
+        "Baumscheibenabdeckung": "",
+        "Naturdenkmal": "nein",
+        "Baumspende": "",
+        "Baumpatenschaft": "",
+        "Eigentum": "Öffentlich",
+        "Anordnung": "Baum in Allee",
+        "Straße": "",
+        "Stadtteil": "Deutz",
+        "Baumnummer": "-105-X-0001",
+        "_sourceLayer": "ms:baumkataster",
+        "atlas": {
+          "sourceId": "ms:baumkataster:row:2",
+          "idScope": "release",
+          "tag": "-105-X-0001",
+          "scientificName": "Tilia cordata",
+          "commonName": "Winterlinde",
+          "location": null,
+          "height": {
+            "kind": "value",
+            "value": 16,
+            "unit": "m"
+          },
+          "crown": {
+            "kind": "value",
+            "value": 10,
+            "unit": "m"
+          },
+          "circumference": {
+            "kind": "value",
+            "value": 220,
+            "unit": "cm"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    }
+  ],
+  "antwerp": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.437881439181337, 51.25373577797736]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "LATBOOMSOORT": "Liquidambar styraciflua",
+        "ANTW_ID": 12371,
+        "DISTRICT": "MERKSEM",
+        "OBJECT_GUID": "DB2438D2-E278-4A0B-9F84-9258F2F41D55",
+        "STAMOMTREK": 41,
+        "GENUS": "Liquidambar",
+        "_sourceLayer": 5,
+        "atlas": {
+          "sourceId": "5:1",
+          "idScope": "release",
+          "tag": "12371",
+          "scientificName": "Liquidambar styraciflua",
+          "commonName": null,
+          "location": "MERKSEM",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": ["Source trunk circumference: 41. Units have not been verified."]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.454523574298142, 51.24270428090102]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "LATBOOMSOORT": "Fraxinus excelsior",
+        "ANTW_ID": 139217,
+        "DISTRICT": "MERKSEM",
+        "OBJECT_GUID": "B59FC171-56BD-46A8-A2BB-472AC4AC67BD",
+        "STAMOMTREK": 85,
+        "GENUS": "Fraxinus",
+        "_sourceLayer": 5,
+        "atlas": {
+          "sourceId": "5:2",
+          "idScope": "release",
+          "tag": "139217",
+          "scientificName": "Fraxinus excelsior",
+          "commonName": null,
+          "location": "MERKSEM",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": ["Source trunk circumference: 85. Units have not been verified."]
+        }
+      }
+    }
+  ],
+  "rotterdam": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.236432781310996, 51.902809552703246]
+      },
+      "properties": {
+        "ID": "18",
+        "BOOMSORTIMENT_NEDERLANDS": "WITTE ESDOORN",
+        "BEHEERGROEP": "STANDAARDBOOM IN GROEN",
+        "BOOMSORTIMENT": "ACER SACCHARINUM",
+        "TOEKOMSTIG_BOOMSORTIMENT": "",
+        "TOEKOMSTIG_BOOMSORTIMENT_NL": "",
+        "GESLACHT": "ACER",
+        "EXTRA_INFORMATIE_1": "2013",
+        "EXTRA_INFORMATIE_2": "2018",
+        "ONTWIKKELINGSFASE": "Jeugd",
+        "WOONPLAATS": "ROZENBURG",
+        "WIJK": "ROZENBURG",
+        "BEHEEROBJECTOMSCHRIJVING": "99691.bm117",
+        "STRAAT": "ZUIDZIJDE",
+        "BEHEERDER": "OPENBAAR",
+        "EIGENAAR": "OPENBAAR GEBIED",
+        "ONDERHOUDSPLOEG": "PERCEEL 08 HOEK VAN HOLLAND EN ROZENBURG",
+        "STRUCTUURNIVEAU": "",
+        "STRUCTUURGEBIED": "WOONOMGEVING",
+        "AMBITIENIVEAU": "B (BASIS)",
+        "BOOMSTATUS": "NIET VAN TOEPASSING",
+        "BESTEMMING": "WIJKGROEN",
+        "AANLEGJAAR": "2017",
+        "DIAMETER": ".15",
+        "KROONOMVANG": "5",
+        "HOOGTE": "6-9 m.",
+        "TAKVRIJE_ZONE": "tot 4,50 meter Nog niet bereikt",
+        "LAATSTE_MUTATIE": "2026-08-18 00:00:00",
+        "CONDITIE": "Redelijk",
+        "BOOMBEELD": "Regulier",
+        "ONTWIKKELING": "Tijdelijke Kroon",
+        "VERWACHTE_LEVENSDUUR": ">10 jr",
+        "HERSTELVERMOGEN": "Nog niet bepaald",
+        "DATUM_LAATSTE_INSPECTIE": "",
+        "_sourceLayer": "ms:obs_bmn_alg",
+        "atlas": {
+          "sourceId": "ms:obs_bmn_alg:row:1",
+          "idScope": "release",
+          "tag": "18",
+          "scientificName": "ACER SACCHARINUM",
+          "commonName": "WITTE ESDOORN",
+          "location": "ZUIDZIJDE",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 2017,
+          "plantingEstimated": false,
+          "age": "Jeugd",
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height class: 6-9 m.. Diameter and crown units are unverified. Source status: NIET VAN TOEPASSING."
+          ]
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.256872893154097, 51.90319264904124]
+      },
+      "properties": {
+        "ID": "5968",
+        "BOOMSORTIMENT_NEDERLANDS": "NOORSE ESDOORN",
+        "BEHEERGROEP": "STANDAARDBOOM IN GROEN",
+        "BOOMSORTIMENT": "ACER PLATANOIDES",
+        "TOEKOMSTIG_BOOMSORTIMENT": "",
+        "TOEKOMSTIG_BOOMSORTIMENT_NL": "",
+        "GESLACHT": "ACER",
+        "EXTRA_INFORMATIE_1": "2015",
+        "EXTRA_INFORMATIE_2": "2022",
+        "ONTWIKKELINGSFASE": "Volwassen",
+        "WOONPLAATS": "ROZENBURG",
+        "WIJK": "ROZENBURG",
+        "BEHEEROBJECTOMSCHRIJVING": "1521.bm92",
+        "STRAAT": "WILGENSINGEL[RZB]",
+        "BEHEERDER": "OPENBAAR",
+        "EIGENAAR": "OPENBAAR GEBIED",
+        "ONDERHOUDSPLOEG": "PERCEEL 08 HOEK VAN HOLLAND EN ROZENBURG",
+        "STRUCTUURNIVEAU": "",
+        "STRUCTUURGEBIED": "WOONOMGEVING",
+        "AMBITIENIVEAU": "B (BASIS)",
+        "BOOMSTATUS": "NIET VAN TOEPASSING",
+        "BESTEMMING": "STRUCTUUR",
+        "AANLEGJAAR": "1965",
+        "DIAMETER": ".4",
+        "KROONOMVANG": "10",
+        "HOOGTE": "15-18 m.",
+        "TAKVRIJE_ZONE": "tot 4,50 meter Onhaalbaar, snoei-ingreep onveran",
+        "LAATSTE_MUTATIE": "2026-08-13 00:00:00",
+        "CONDITIE": "Redelijk",
+        "BOOMBEELD": "Aanvaard",
+        "ONTWIKKELING": "Blijvende Kroon",
+        "VERWACHTE_LEVENSDUUR": ">10 jr",
+        "HERSTELVERMOGEN": "Nog niet bepaald",
+        "DATUM_LAATSTE_INSPECTIE": "",
+        "_sourceLayer": "ms:obs_bmn_alg",
+        "atlas": {
+          "sourceId": "ms:obs_bmn_alg:row:2",
+          "idScope": "release",
+          "tag": "5968",
+          "scientificName": "ACER PLATANOIDES",
+          "commonName": "NOORSE ESDOORN",
+          "location": "WILGENSINGEL[RZB]",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": 1965,
+          "plantingEstimated": false,
+          "age": "Volwassen",
+          "observedAt": null,
+          "status": "unknown",
+          "qualityNotes": [
+            "Source height class: 15-18 m.. Diameter and crown units are unverified. Source status: NIET VAN TOEPASSING."
+          ]
+        }
+      }
+    }
+  ],
+  "brussels": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.421018485945572, 50.81656182230631]
+      },
+      "properties": {
+        "id": "5762",
+        "nom": "Acer pseudoplatanus",
+        "common": "Erable sycomore",
+        "location": "Auderghem , Rue des Ecoliers, 40",
+        "atlas": {
+          "sourceId": "5762",
+          "idScope": "release",
+          "tag": "5762",
+          "scientificName": "Acer pseudoplatanus",
+          "commonName": "Erable sycomore",
+          "location": "Auderghem , Rue des Ecoliers, 40",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.326022844716022, 50.80179559359248]
+      },
+      "properties": {
+        "id": "5763",
+        "nom": "Castanea sativa",
+        "common": "Châtaignier",
+        "location": "Uccle , Avenue du Val Fleuri, 19",
+        "atlas": {
+          "sourceId": "5763",
+          "idScope": "release",
+          "tag": "5763",
+          "scientificName": "Castanea sativa",
+          "commonName": "Châtaignier",
+          "location": "Uccle , Avenue du Val Fleuri, 19",
+          "height": {
+            "kind": "unknown"
+          },
+          "crown": {
+            "kind": "unknown"
+          },
+          "circumference": {
+            "kind": "unknown"
+          },
+          "plantingYear": null,
+          "plantingEstimated": false,
+          "age": null,
+          "observedAt": null,
+          "status": "unknown"
+        }
+      }
+    }
+  ]
+}

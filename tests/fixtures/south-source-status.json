@@ -1,0 +1,7 @@
+{
+  "id": "turin",
+  "upstreamCountVerified": false,
+  "exportCount": 105476,
+  "hitsCount": 105439,
+  "coverage": "Downloaded planting-site export; service count disagrees (105439 vs105476 rows). Completeness against live service is unverified."
+}

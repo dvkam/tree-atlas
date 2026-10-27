@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { datasetIdSchema } from "./datasets.ts";
+export { datasetIdSchema } from "./datasets.ts";
+export type { DatasetId } from "./datasets.ts";
 
 export const positionSchema = z.tuple([z.number().min(-180).max(180), z.number().min(-90).max(90)]);
 export const boundsSchema = z
@@ -9,19 +12,7 @@ export const boundsSchema = z
   );
 export type Position = z.infer<typeof positionSchema>;
 export type Bounds = z.infer<typeof boundsSchema>;
-export const datasetIdSchema = z.enum([
-  "vienna",
-  "geneva",
-  "porto",
-  "amsterdam",
-  "hamburg",
-  "zurich",
-  "london",
-  "camden",
-  "edinburgh",
-  "belfast",
-]);
-export type DatasetId = z.infer<typeof datasetIdSchema>;
+
 export const measurementSchema = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("unknown") }),
   z.object({ kind: z.literal("value"), value: z.number().positive(), unit: z.enum(["m", "cm"]) }),

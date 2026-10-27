@@ -1,5 +1,5 @@
 import { createReadStream } from "node:fs";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { importInventory } from "../src/import.ts";
 import type { DatasetId, Tree } from "../src/domain.ts";
@@ -62,7 +62,10 @@ export async function loadSourceTrees(
   path: string,
   expectedHash: string,
 ): Promise<Tree[]> {
-  if (dataset !== "london") {
+  if (
+    dataset !== "london" &&
+    (dataset === "geneva" || (await stat(path)).size < 128 * 1024 * 1024)
+  ) {
     const bytes = await readFile(path);
     if (createHash("sha256").update(bytes).digest("hex") !== expectedHash)
       throw new Error(`Raw checksum mismatch: ${dataset}`);
@@ -70,7 +73,7 @@ export async function loadSourceTrees(
   }
   const digest = createHash("sha256");
   for await (const bytes of createReadStream(path)) digest.update(bytes);
-  if (digest.digest("hex") !== expectedHash) throw new Error("Raw checksum mismatch: london");
+  if (digest.digest("hex") !== expectedHash) throw new Error(`Raw checksum mismatch: ${dataset}`);
   const trees: Tree[] = [];
   const ids = new Set<string>();
   let batch: unknown[] = [];
