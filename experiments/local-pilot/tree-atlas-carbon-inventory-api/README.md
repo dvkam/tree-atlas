@@ -4,8 +4,9 @@
 
 This local interoperability adapter reads the four validated PostgreSQL releases.
 It returns exact search results without sending a whole inventory to the client.
-The public apps, frozen contract and canonical records are unchanged. No frontend
-connection, active catalogue publication or deployment was performed.
+The separate local frontend connects to this adapter. The public apps, frozen
+contract and canonical records are unchanged. No public catalogue activation or
+deployment was performed.
 
 ## What runs where
 

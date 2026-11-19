@@ -19,9 +19,15 @@ physical server, security sandbox or hosted deployment.
 - Node 26.13.0, Carbon nightly `2026.11.07`, libpq 17.11, ICU 78.3 and pnpm 11.25.0
   are fetched anew with pinned checksums/lockfile verification. No dependency
   directories or host home directory are mounted into the new userspace.
-- Source and public data come from `git archive HEAD` of a **clean committed tree**.
+- Source and public data come from `git archive <recorded-commit>` of a **clean committed tree**.
   The exact commit and source archive SHA-256 are recorded. Uncommitted source,
   original sibling tools and ignored runtime files cannot leak into the snapshot.
+  For a Windows-mounted checkout, the source export uses the fixed installed
+  Windows Git executable with a separately converted repository argument; native
+  Linux checkouts use Linux Git. This avoids rehashing 62,000 files through WSL's
+  Windows filesystem bridge. Status checks have a 60-second limit, and archive
+  uses the exact recorded commit rather than a moving `HEAD`. Host Git exports
+  source only; application compilers and dependencies are still installed anew.
 - The host PostgreSQL database is read only for `pg_dump -Fc -Z6`. There are no
   host DROP/CREATE/UPDATE operations. The backup archive is private to the native
   workspace and its hash/size/duration are recorded.

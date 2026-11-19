@@ -84,21 +84,38 @@ def namespace_command(arguments, *, offline=False):
     return ["unshare", *flags, *map(str, arguments)]
 
 
+def source_git(repo):
+    """Use the installed native Git for a Windows checkout, never a caller command."""
+    windows_git = Path("/mnt/c/Program Files/Git/cmd/git.exe")
+    parts = repo.parts
+    windows_mount = len(parts) >= 4 and parts[:2] == ("/", "mnt") and len(parts[2]) == 1 and parts[2].lower() in "abcdefghijklmnopqrstuvwxyz"
+    if windows_mount and windows_git.is_file():
+        location = subprocess.check_output(["wslpath", "-w", str(repo)], text=True, timeout=10).strip()
+        if not location or "\n" in location or "\r" in location:
+            raise RuntimeError("Invalid Windows repository path from wslpath")
+        return [str(windows_git), "-c", f"safe.directory={location}", "-C", location], "Windows Git for Windows-mounted checkout"
+    return ["git", "-c", f"safe.directory={repo}", "-C", str(repo)], "Linux Git for native checkout"
+
+
 def snapshot(repo, rootfs, work):
     """Read committed source, never dereference original dependency symlinks."""
-    git = ["git", "-c", f"safe.directory={repo}", "-C", str(repo)]
-    head = subprocess.check_output([*git, "rev-parse", "HEAD"], text=True).strip()
-    if subprocess.check_output([*git, "status", "--porcelain"], text=True).strip():
+    git, transport = source_git(repo)
+    start = time.monotonic()
+    head = subprocess.check_output([*git, "rev-parse", "HEAD"], text=True, timeout=30).strip()
+    if len(head) != 40 or any(character not in "0123456789abcdef" for character in head):
+        raise RuntimeError("Expected the full committed SHA-1 source identity")
+    if subprocess.check_output([*git, "status", "--porcelain"], text=True, timeout=60).strip():
         raise RuntimeError("Commit the tested source first; clean-room snapshots require a clean tree")
     archive = work / "source.tar"
     with archive.open("wb") as stream:
-        subprocess.run([*git, "archive", "HEAD", "experiments/local-pilot",
-                        "public/data", "LICENSE", "NOTICE"], stdout=stream, check=True)
+        subprocess.run([*git, "archive", head, "experiments/local-pilot",
+                        "public/data", "LICENSE", "NOTICE"], stdout=stream, check=True, timeout=300)
     destination = rootfs / "work/tree-atlas"
     destination.mkdir(parents=True)
     with tarfile.open(archive) as source:
         source.extractall(destination, filter="data")
-    return {"commit": head, "archiveSha256": sha256(archive), "archiveBytes": archive.stat().st_size}
+    return {"commit": head, "archiveSha256": sha256(archive), "archiveBytes": archive.stat().st_size,
+            "gitTransport": transport, "seconds": round(time.monotonic() - start, 3)}
 
 
 def main():
@@ -197,6 +214,7 @@ def main():
     if rootfs.is_symlink() or not rootfs.is_dir():
         raise SystemExit("Invalid disposable rootfs")
     report["source"] = snapshot(REPO, rootfs, workspace)
+    report_path.write_text(json.dumps(report, indent=2) + "\n")
     dump = workspace / "inventory.dump"
     if dump.exists():
         raise SystemExit("Dump already exists; retain this evidence and use a newly prepared run")
@@ -214,6 +232,7 @@ def main():
     report["stages"]["dump"] = {"seconds": round(time.monotonic() - start, 3), "bytes": dump.stat().st_size,
                                 "sha256": sha256(dump), "sourceDatabaseWrites": False,
                                 "defaultTransactionReadOnly": True}
+    report_path.write_text(json.dumps(report, indent=2) + "\n")
     shutil.copyfile(dump, rootfs / "work/inventory.dump")
     # Fetch/build dependencies before isolating network; apt cannot start services.
     runtime = rootfs / "work/tree-atlas/experiments/local-pilot/scripts/clean-room-runtime.py"
