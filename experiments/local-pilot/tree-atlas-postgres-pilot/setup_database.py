@@ -22,11 +22,16 @@ def sql(text, database='postgres'):
     if result.returncode: raise RuntimeError('Local setup failed; private administrative diagnostics suppressed')
     return result.stdout.strip()
 if os.geteuid()!=0: raise SystemExit('Run as WSL root')
-if CONFIG.exists(): raise SystemExit('Private directory exists; refusing overwrite')
+if CONFIG.exists() or CONFIG.is_symlink(): raise SystemExit('Private directory exists; refusing overwrite')
+if CONFIG.parent.is_symlink() or (CONFIG.parent.exists() and not CONFIG.parent.is_dir()):
+    raise SystemExit('Private config parent must be a real directory')
 if sql("SELECT count(*) FROM pg_database WHERE datname='tree_atlas_pilot'")!='0': raise SystemExit('Database exists')
 for role in ROLES.values():
     if sql(f"SELECT count(*) FROM pg_roles WHERE rolname='{role}'")!='0': raise SystemExit('Role exists')
 user = pwd.getpwnam('david')
+if not CONFIG.parent.exists():
+    CONFIG.parent.mkdir(mode=0o700)
+    os.chown(CONFIG.parent,user.pw_uid,user.pw_gid)
 CONFIG.mkdir(mode=0o700)
 os.chown(CONFIG,user.pw_uid,user.pw_gid)
 configs = {}
