@@ -1,7 +1,5 @@
 import { decodeIndexColumns, decodeTextColumns } from "./index-codec.ts";
 import { readVerifiedAsset } from "./verified-asset.ts";
-import Supercluster from "supercluster";
-import type { PointFeature } from "supercluster";
 import { contains, releaseSchema, treeSchema } from "./domain.ts";
 import type { Dataset, Tree } from "./domain.ts";
 import { normalizeText } from "./catalog.ts";
@@ -141,149 +139,211 @@ function compactLegacy(trees: Tree[], dataset: Dataset): CompactIndex {
   };
 }
 
-type PointProperties = { row: number };
-type ClusterProperties = Record<string, never>;
+const MAX_GRID_WIDTH = 30;
+const GRID_CELLS = MAX_GRID_WIDTH * MAX_GRID_WIDTH;
+const CELL_PIXELS = 60;
+const MAX_MERCATOR_LATITUDE = 85.0511287798066;
+
+type GridLayout = { columns: number; rows: number; cells: number };
+
+function mercatorY(latitude: number): number {
+  const clamped = Math.max(-MAX_MERCATOR_LATITUDE, Math.min(MAX_MERCATOR_LATITUDE, latitude));
+  const sine = Math.sin((clamped * Math.PI) / 180);
+  return 0.5 - Math.log((1 + sine) / (1 - sine)) / (4 * Math.PI);
+}
+
+function gridLayout(query: InventoryQuery): GridLayout {
+  const [west, south, east, north] = query.viewport;
+  const worldPixels = 256 * 2 ** query.zoom;
+  const width = ((east - west) / 360) * worldPixels;
+  const height = (mercatorY(south) - mercatorY(north)) * worldPixels;
+  const columns = Math.max(1, Math.min(MAX_GRID_WIDTH, Math.floor(width / CELL_PIXELS)));
+  const rows = Math.max(1, Math.min(MAX_GRID_WIDTH, Math.floor(height / CELL_PIXELS)));
+  return { columns, rows, cells: columns * rows };
+}
+
+function gridCell(
+  viewport: InventoryQuery["viewport"],
+  layout: GridLayout,
+  lon: number,
+  lat: number,
+): number {
+  const [west, south, east, north] = viewport;
+  if (lon < west || lon > east || lat < south || lat > north) return -1;
+  // Divide first so valid subnormal viewport spans cannot overflow the scale.
+  const x = Math.min(
+    layout.columns - 1,
+    Math.floor(((lon - west) / (east - west)) * layout.columns),
+  );
+  const y = Math.min(layout.rows - 1, Math.floor(((lat - south) / (north - south)) * layout.rows));
+  return y * layout.columns + x;
+}
+
+type QueryEngine = {
+  session: InventorySession;
+  invalidateGeometry(): void;
+};
 
 function engine(
   index: CompactIndex,
   readDetail: (sourceId: string) => Promise<Tree | null>,
   controller: AbortController,
   detach: () => void,
-): InventorySession {
+): QueryEngine {
   const normalized = index.strings.map(normalizeText);
   const ids = index.rows.map((row) => normalizeText(row[0]));
   let cachedFilter: string | null = null;
-  let filtered: number[] = [];
-  let clusters: Supercluster<PointProperties, ClusterProperties> | null = null;
+  let filtered = new Uint32Array(index.rows.length);
+  let filteredCount = 0;
+  let cachedMap: string | null = null;
+  let generation = 0;
+  let layout: GridLayout = { columns: 1, rows: 1, cells: 1 };
+  const counts = new Uint32Array(GRID_CELLS);
+  const firstRows = new Uint32Array(GRID_CELLS);
+  const longitudes = new Float64Array(GRID_CELLS);
+  const latitudes = new Float64Array(GRID_CELLS);
+  let locatedTotal = 0;
+  let viewportLocatedTotal = 0;
+
   function open() {
     controller.signal.throwIfAborted();
   }
-  return {
-    query(input) {
-      open();
-      const started = performance.now();
-      const query = inventoryQuerySchema.parse(input);
-      validateFrozenQueryText(query.q);
-      const term = normalizeText(query.q);
-      const key = JSON.stringify([term, query.area]);
-      if (key !== cachedFilter) {
-        filtered = [];
-        for (let i = 0; i < index.rows.length; i++) {
-          const row = index.rows[i];
-          if (!row) continue;
-          if (
-            query.area !== null &&
-            (row[1] === null || row[2] === null || !contains(query.area, [row[1], row[2]]))
-          )
-            continue;
-          if (
-            term !== "" &&
-            !ids[i]?.includes(term) &&
-            ![row[3], row[4], row[5], row[6]].some((reference) =>
-              normalized[reference]?.includes(term),
-            )
-          )
-            continue;
-          filtered.push(i);
-        }
-        clusters = new Supercluster<PointProperties, ClusterProperties>({
-          maxZoom: 20,
-          radius: 60,
-        });
-        const points: PointFeature<PointProperties>[] = [];
-        for (const i of filtered) {
-          const row = index.rows[i];
-          if (row && row[1] !== null && row[2] !== null)
-            points.push({
-              type: "Feature",
-              geometry: { type: "Point", coordinates: [row[1], row[2]] },
-              properties: { row: i },
-            });
-        }
-        clusters.load(points);
-        cachedFilter = key;
-      }
-      if (clusters === null) throw new Error("Inventory index unavailable.");
-      const activeClusters = clusters;
-      let zoom = Math.min(20, Math.floor(query.zoom));
-      let features = clusters.getClusters(query.viewport, zoom);
-      while (features.length > 1000 && zoom > 0) {
-        zoom--;
-        features = clusters.getClusters(query.viewport, zoom);
-      }
-      // The bounded world has <1000 radius-60 clusters at zoom zero. Fail explicitly if that invariant changes.
-      if (features.length > 1000)
-        throw new Error("Map density exceeds the display budget. Narrow the search area.");
-      let mapAggregated = zoom < Math.floor(query.zoom);
-      const markers: MapItem[] = features.map((feature) => {
-        if ("cluster" in feature.properties) {
-          const [lon, lat] = feature.geometry.coordinates;
-          if (lon === undefined || lat === undefined) throw new Error("Invalid cluster position.");
-          const expansion = activeClusters.getClusterExpansionZoom(feature.properties.cluster_id);
-          if (expansion > 20) mapAggregated = true;
-          return {
-            kind: "cluster",
-            id: feature.properties.cluster_id,
-            position: [lon, lat],
-            count: feature.properties.point_count,
-            zoom: Math.min(20, expansion),
-          };
-        }
-        const row = index.rows[feature.properties.row];
-        if (!row) throw new Error("Invalid cluster record.");
-        return { kind: "tree", tree: summary(index, row) };
-      });
-      const items: Summary[] = [];
-      for (const i of filtered.slice(query.offset, query.offset + query.limit)) {
+  function matchingRow(position: number): IndexRow {
+    const ordinal = filtered[position];
+    const row = ordinal === undefined ? undefined : index.rows[ordinal];
+    if (ordinal === undefined || row === undefined) throw new Error("Invalid inventory ordinal.");
+    return row;
+  }
+  function prepare(input: InventoryQuery): InventoryQuery {
+    open();
+    const query = inventoryQuerySchema.parse(input);
+    validateFrozenQueryText(query.q);
+    const term = normalizeText(query.q);
+    const filterKey = JSON.stringify([term, query.area]);
+    if (filterKey !== cachedFilter) {
+      filteredCount = 0;
+      const area = query.area;
+      for (let i = 0; i < index.rows.length; i++) {
         const row = index.rows[i];
-        if (row) items.push(summary(index, row));
+        if (row === undefined) throw new Error("Invalid inventory ordinal.");
+        const lon = row[1];
+        const lat = row[2];
+        if (
+          area !== null &&
+          (lon === null ||
+            lat === null ||
+            lon < area[0] ||
+            lon > area[2] ||
+            lat < area[1] ||
+            lat > area[3])
+        )
+          continue;
+        if (
+          term !== "" &&
+          ids[i]?.includes(term) !== true &&
+          normalized[row[3]]?.includes(term) !== true &&
+          normalized[row[4]]?.includes(term) !== true &&
+          normalized[row[5]]?.includes(term) !== true &&
+          normalized[row[6]]?.includes(term) !== true
+        )
+          continue;
+        filtered[filteredCount++] = i;
       }
+      cachedFilter = filterKey;
+      cachedMap = null;
+    }
+    const mapKey = JSON.stringify([filterKey, query.viewport, query.zoom]);
+    if (mapKey !== cachedMap) {
+      if (generation >= Math.floor(Number.MAX_SAFE_INTEGER / GRID_CELLS) - 1)
+        throw new Error("Reopen this offline city to continue selecting clusters.");
+      generation++;
+      layout = gridLayout(query);
+      counts.fill(0);
+      firstRows.fill(0);
+      longitudes.fill(0);
+      latitudes.fill(0);
+      locatedTotal = 0;
+      viewportLocatedTotal = 0;
+      for (let i = 0; i < filteredCount; i++) {
+        const row = matchingRow(i);
+        const lon = row[1];
+        const lat = row[2];
+        if (lon === null || lat === null) continue;
+        locatedTotal++;
+        const cell = gridCell(query.viewport, layout, lon, lat);
+        if (cell < 0) continue;
+        viewportLocatedTotal++;
+        const count = counts[cell] ?? 0;
+        if (count === 0) {
+          const ordinal = filtered[i];
+          if (ordinal === undefined) throw new Error("Invalid inventory ordinal.");
+          firstRows[cell] = ordinal;
+        }
+        counts[cell] = count + 1;
+        longitudes[cell] = (longitudes[cell] ?? 0) + lon;
+        latitudes[cell] = (latitudes[cell] ?? 0) + lat;
+      }
+      cachedMap = mapKey;
+    }
+    return query;
+  }
+
+  const session: InventorySession = {
+    query(input) {
+      const started = performance.now();
+      const query = prepare(input);
+      const markers: MapItem[] = [];
+      let mapAggregated = false;
+      for (let cell = 0; cell < layout.cells; cell++) {
+        const count = counts[cell] ?? 0;
+        if (count === 0) continue;
+        if (count === 1) {
+          const ordinal = firstRows[cell];
+          const row = ordinal === undefined ? undefined : index.rows[ordinal];
+          if (row === undefined) throw new Error("Invalid inventory ordinal.");
+          markers.push({ kind: "tree", tree: summary(index, row) });
+        } else {
+          mapAggregated = true;
+          markers.push({
+            kind: "cluster",
+            id: generation * GRID_CELLS + cell,
+            position: [(longitudes[cell] ?? 0) / count, (latitudes[cell] ?? 0) / count],
+            count,
+            zoom: Math.min(24, Math.floor(query.zoom) + 1),
+          });
+        }
+      }
+      const items: Summary[] = [];
+      for (let i = query.offset; i < Math.min(filteredCount, query.offset + query.limit); i++)
+        items.push(summary(index, matchingRow(i)));
       return {
-        total: filtered.length,
-        locatedTotal: filtered.filter((i) => {
-          const row = index.rows[i];
-          return row !== undefined && row[1] !== null;
-        }).length,
-        viewportLocatedTotal: filtered.filter((i) => {
-          const row = index.rows[i];
-          return (
-            row !== undefined &&
-            row[1] !== null &&
-            row[2] !== null &&
-            contains(query.viewport, [row[1], row[2]])
-          );
-        }).length,
-        representedLocatedCount: markers.reduce(
-          (count, marker) => count + (marker.kind === "cluster" ? marker.count : 1),
-          0,
-        ),
+        total: filteredCount,
+        locatedTotal,
+        viewportLocatedTotal,
+        representedLocatedCount: viewportLocatedTotal,
         items,
         markers,
         mapAggregated,
         elapsedMs: performance.now() - started,
       };
     },
-    clusterMembers(query, clusterId) {
-      const result = this.query(query);
-      const marker = result.markers.find(
-        (item) => item.kind === "cluster" && item.id === clusterId,
-      );
-      if (marker?.kind !== "cluster" || clusters === null)
+    clusterMembers(input, clusterId) {
+      const query = prepare(input);
+      const cell = clusterId - generation * GRID_CELLS;
+      const total = counts[cell] ?? 0;
+      if (!Number.isSafeInteger(clusterId) || cell < 0 || cell >= layout.cells || total < 2)
         throw new Error("This cluster is not part of the requested map.");
-      const leaves = clusters
-        .getLeaves(clusterId, Infinity)
-        .map((leaf) => leaf.properties.row)
-        .sort((a, b) => a - b);
-      if (leaves.length !== marker.count)
-        throw new Error("Cluster membership does not match its count.");
-      return {
-        total: leaves.length,
-        items: leaves.slice(query.offset, query.offset + query.limit).map((i) => {
-          const row = index.rows[i];
-          if (row === undefined) throw new Error("Invalid cluster member.");
-          return summary(index, row);
-        }),
-      };
+      const items: Summary[] = [];
+      let visited = 0;
+      for (let i = 0; i < filteredCount && items.length < query.limit; i++) {
+        const row = matchingRow(i);
+        const lon = row[1];
+        const lat = row[2];
+        if (lon === null || lat === null || gridCell(query.viewport, layout, lon, lat) !== cell)
+          continue;
+        if (visited++ >= query.offset) items.push(summary(index, row));
+      }
+      return { total, items };
     },
     suggest(text) {
       open();
@@ -305,12 +365,20 @@ function engine(
     dispose() {
       controller.abort();
       detach();
-      clusters = null;
-      filtered = [];
+      filtered = new Uint32Array(0);
+      filteredCount = 0;
+      cachedFilter = null;
+      cachedMap = null;
+    },
+  };
+  return {
+    session,
+    invalidateGeometry() {
+      cachedFilter = null;
+      cachedMap = null;
     },
   };
 }
-
 /** The worker and conformance tests use this same verified catalogue interface. */
 export async function loadInventory(
   base: string,
@@ -357,7 +425,7 @@ export async function loadInventory(
         (id) => Promise.resolve(trees.get(id) ?? null),
         controller,
         detach,
-      );
+      ).session;
     }
     const descriptor = indexDescriptorSchema.parse(raw);
     if (descriptor.dataset !== dataset.id || descriptor.release !== dataset.release)
@@ -480,8 +548,8 @@ export async function loadInventory(
         pending.delete(shard);
       }
     };
-    let active = engine(index, readDetail, controller, detach);
-    if (!split) return active;
+    const active = engine(index, readDetail, controller, detach);
+    if (!split) return active.session;
     const spatialReady = (async () => {
       const asset = descriptor.geometry;
       if (asset === undefined) throw new Error("Missing geometry asset.");
@@ -541,7 +609,7 @@ export async function loadInventory(
         row[2] = lat === undefined || Number.isNaN(lat) ? null : lat;
       }
       geometryReady = true;
-      active = engine(index, readDetail, controller, detach);
+      active.invalidateGeometry();
     })();
     // Keep failures observable through the session promise without an unhandled rejection.
     void spatialReady.catch(() => undefined);
@@ -549,7 +617,7 @@ export async function loadInventory(
       query(query) {
         if (!geometryReady && query.area !== null)
           throw new Error("Exact area search is still loading.");
-        const result = active.query(query);
+        const result = active.session.query(query);
         return {
           ...result,
           items: geometryReady
@@ -558,13 +626,13 @@ export async function loadInventory(
           spatialReady: geometryReady,
         };
       },
-      suggest: (text) => active.suggest(text),
+      suggest: (text) => active.session.suggest(text),
       clusterMembers(query, clusterId) {
         if (!geometryReady) throw new Error("Exact cluster membership is still loading.");
-        return active.clusterMembers(query, clusterId);
+        return active.session.clusterMembers(query, clusterId);
       },
       detail: readDetail,
-      dispose: () => active.dispose(),
+      dispose: () => active.session.dispose(),
       spatialReady,
       hasGeometry: () => geometryReady,
     };
