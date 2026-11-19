@@ -1,0 +1,34 @@
+{
+  "scope": "bounded cancellation regression, localhost plaintext only",
+  "configured_request_deadline_ms": 200,
+  "query_sleep_ms": 1500,
+  "source": "https://www.postgresql.org/docs/17/libpq-cancel.html",
+  "http_completion_limit_ms": 900,
+  "mechanism": "Forward genuine CancelRequest; delay only its EOF, leaving normal SQL streams unchanged",
+  "elapsed_before_release_ms": 1210.41,
+  "http_pending_while_cancel_eof_held": false,
+  "observed_http_status": 504,
+  "observed_http_error": "timeout",
+  "observed_http_elapsed_ms": 351.28,
+  "recovery_while_eof_held": [
+    {
+      "status": 200,
+      "echo": "recovery-0",
+      "pid": "27820"
+    },
+    {
+      "status": 200,
+      "echo": "recovery-1",
+      "pid": "27715"
+    }
+  ],
+  "upstream_cancel_eof_observed": true,
+  "held_cancel_eof_ms": 1114.48,
+  "bounded_cancellation_passed": true,
+  "conclusion": "HTTP deadline response and both pool slots recovered before the stalled cancellation channel was released",
+  "owned_service_exit_code": 0,
+  "proxy_worker_threads_remaining": 0,
+  "proxy_sockets_remaining": 0,
+  "postgres_pool_sessions_remaining": 0,
+  "cleanup_passed": true
+}

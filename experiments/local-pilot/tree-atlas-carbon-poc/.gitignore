@@ -1,0 +1,9 @@
+/build/
+/tools/carbon_toolchain-*/
+/tools/*.tar.gz
+/tools/*.tar.bz2
+/tools/libpq-*/
+/tools/debs/
+/tools/sysroot/
+__pycache__/
+*.pyc

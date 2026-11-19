@@ -1,0 +1,8 @@
+{
+  "pool_sessions_remaining": 0,
+  "test_processes": {
+    "service": [],
+    "http_probe": []
+  },
+  "postgres_cluster": "Ver Cluster Port Status Owner    Data directory              Log file\n16  main    5432 online postgres /var/lib/postgresql/16/main /var/log/postgresql/postgresql-16-main.log"
+}
