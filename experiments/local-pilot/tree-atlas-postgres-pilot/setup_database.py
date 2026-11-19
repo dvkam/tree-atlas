@@ -7,6 +7,10 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# Read every required source artifact before creating configs, roles or a database.
+# A source-only checkout must fail without leaving a partial first-create setup.
+SCHEMA = (ROOT/'schema.sql').read_text(encoding='utf8')
+if not SCHEMA.strip(): raise SystemExit('Required schema.sql is empty; no setup changes made')
 CONFIG = Path('/home/david/.config/tree-atlas-postgres-pilot')
 DATABASE = 'tree_atlas_pilot'
 ROLES = {'loader': 'tree_atlas_loader', 'postgres': 'tree_atlas_verify', 'reader': 'tree_atlas_reader'}
@@ -32,7 +36,7 @@ for name,role in ROLES.items():
     configs[name] = {'host':'127.0.0.1','port':5432,'dbname':DATABASE,'user':role,'password':password}
 sql(f"CREATE DATABASE {DATABASE} OWNER postgres ENCODING 'UTF8' TEMPLATE template0;")
 sql(f"REVOKE ALL ON DATABASE {DATABASE} FROM PUBLIC; GRANT CONNECT ON DATABASE {DATABASE} TO {','.join(ROLES.values())};")
-sql((ROOT/'schema.sql').read_text(),DATABASE)
+sql(SCHEMA,DATABASE)
 for role in ['tree_atlas_verify','tree_atlas_reader']:
     sql(f"ALTER ROLE {role} SET default_transaction_read_only=on;")
 for name,config in configs.items():
