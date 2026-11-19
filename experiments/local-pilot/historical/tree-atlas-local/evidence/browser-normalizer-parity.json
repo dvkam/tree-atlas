@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "node": "v26.13.0",
+  "unicode": "17.0",
+  "cases": 1132086,
+  "allScalarCases": 1112064,
+  "randomContexts": 20000,
+  "explicitContexts": 22,
+  "elapsedMs": 1053,
+  "tableSource": "Pinned Node Unicode 17 mappings/properties and official ICU 78.3 canonical combining classes; runtime uses generated tables, not browser Unicode"
+}
