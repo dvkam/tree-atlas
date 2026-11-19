@@ -206,3 +206,4 @@ console.log(
     allocationSampledBytes: report.allocationSampledBytes ?? null,
   }),
 );
+if (!report.passed) process.exitCode = 1;
