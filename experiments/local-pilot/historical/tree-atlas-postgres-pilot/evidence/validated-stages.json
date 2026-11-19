@@ -1,0 +1,12 @@
+{
+  "scope": "local validated staging only; no active catalogue/API/deployment",
+  "verificationRunId": "1daa3e1b-e26a-4974-9c93-6935156efefb",
+  "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+  "validatedReleases": 4,
+  "validatedRecords": 1657347,
+  "databaseBytes": 1613061143,
+  "recordBytes": 1575632896,
+  "dictionaryBytes": 28942336,
+  "existingPocDatabaseChanged": false,
+  "deployment": false
+}

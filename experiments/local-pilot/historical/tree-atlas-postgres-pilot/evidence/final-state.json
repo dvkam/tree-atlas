@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "reader": {
+    "user": "tree_atlas_reader",
+    "readOnly": "on",
+    "releases": 4,
+    "records": 1657347,
+    "counts": [
+      {
+        "dataset": "geneva",
+        "count": 240827,
+        "first": 0,
+        "last": 240826
+      },
+      {
+        "dataset": "london",
+        "count": 1111784,
+        "first": 0,
+        "last": 1111783
+      },
+      {
+        "dataset": "porto",
+        "count": 71634,
+        "first": 0,
+        "last": 71633
+      },
+      {
+        "dataset": "vienna",
+        "count": 233102,
+        "first": 0,
+        "last": 233101
+      }
+    ],
+    "canReadBase": false,
+    "canWrite": false
+  },
+  "state": {
+    "openLoadingReleases": 0,
+    "unvalidatedReleases": 0,
+    "ownedSessions": 0,
+    "loaderCanUpdateRecords": false,
+    "loaderCanDeleteRecords": false,
+    "loaderCanValidate": false,
+    "verifierCanWrite": false
+  },
+  "originalPocFixtureUnchanged": true,
+  "deployment": false
+}

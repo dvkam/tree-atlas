@@ -1,0 +1,45 @@
+{
+  "scope": "local canonical staging imports, not source acquisition or deployment",
+  "database": "tree_atlas_pilot",
+  "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+  "baselineLockSha256": "c76207062bec197f00f3a46dcb8dfe20f0d513e9003896c2c045795ee00ad518",
+  "releases": [
+    {
+      "dataset": "london",
+      "release": "london-316fa121a19059da",
+      "result": "staged",
+      "count": 1111784,
+      "locatedCount": 1111784,
+      "dictionaryCount": 1441,
+      "elapsedMs": 46401
+    },
+    {
+      "dataset": "vienna",
+      "release": "vienna-2925984ab1dd6276",
+      "result": "staged",
+      "count": 233102,
+      "locatedCount": 233102,
+      "dictionaryCount": 21324,
+      "elapsedMs": 9469
+    },
+    {
+      "dataset": "geneva",
+      "release": "geneva-a3456b2d943dc57d",
+      "result": "staged",
+      "count": 240827,
+      "locatedCount": 240827,
+      "dictionaryCount": 73827,
+      "elapsedMs": 11209
+    },
+    {
+      "dataset": "porto",
+      "release": "porto-6be0471b6c303ac2",
+      "result": "staged",
+      "count": 71634,
+      "locatedCount": 71634,
+      "dictionaryCount": 583,
+      "elapsedMs": 3014
+    }
+  ],
+  "passed": true
+}
