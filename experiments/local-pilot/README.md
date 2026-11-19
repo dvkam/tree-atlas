@@ -12,6 +12,8 @@ The five sibling directories retain their original interfaces:
 - `tree-atlas-carbon-inventory-api`: read-only Carbon/native query application.
 - `tree-atlas-local`: separate frontend, remote client and complete offline packs.
 
+Read [the fresh branch validation](BRANCH-VALIDATION.md) and [next steps](NEXT-STEPS.md). Source checks and six browser journeys pass; fresh quick HTTP conformance currently fails on London query deadlines. This branch does not claim a new full HTTP pass.
+
 The pilot preserves London, Vienna, Geneva and Porto: **1,657,347 records**.
 Offline city downloads contain complete searchable fields and exact positions;
 full details work offline only when explicitly saved. Street tiles are separate.
@@ -98,6 +100,6 @@ from the public application's lint/format program. The pilot has its own checks.
 TypeScript, Vitest and the public build already use explicit public source paths.
 This also prevents a public format command from rewriting the sealed oracle.
 
-No hosting, source refresh, commit push, or deployment is authorized by these
-local run instructions. A successful push to public `main` would trigger Pages;
+These local run instructions do not publish source or data, refresh municipal
+sources, purchase hosting, or deploy the app. A successful push to public `main` would trigger Pages;
 keep this experiment on its separate local branch until publication is requested.

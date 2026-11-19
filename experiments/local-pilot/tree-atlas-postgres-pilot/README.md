@@ -163,4 +163,3 @@ validation remain separate work. Local browser timings do not prove the
 accepted three-second hosted performance gate.
 
 No hosting, purchase, repository push or deployment was performed.
-

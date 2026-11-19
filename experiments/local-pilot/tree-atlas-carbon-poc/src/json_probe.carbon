@@ -12,4 +12,3 @@ fn Run() -> i32 {
   Cpp.json_object_put(document);
   return 0;
 }
-

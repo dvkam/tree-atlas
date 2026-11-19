@@ -182,6 +182,6 @@ This PoC creates no schedule, automation or monthly import job.
 - https://www.postgresql.org/docs/16/libpq-exec.html
 - https://json-c.github.io/json-c/json-c-0.17/doc/html/index.html
 
-Upstream example files retained under `evidence/` include their original licence
-notices. The Carbon compiler remains experimental. No hosting or deployment was
+Upstream examples were consulted in the original experiment but are not vendored
+in this branch; see [the third-party note](../THIRD-PARTY.md). The Carbon compiler remains experimental. No hosting or deployment was
 performed, and the existing Tree Atlas and Vienna applications were not modified.
