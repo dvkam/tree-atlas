@@ -70,6 +70,8 @@ LANGUAGE plpgsql STABLE PARALLEL SAFE SECURITY INVOKER SET search_path=pg_catalo
 SET jit=off SET max_parallel_workers_per_gather=0 SET plan_cache_mode=force_custom_plan AS $$
 DECLARE metadata jsonb; total bigint; located bigint; visible bigint; markers jsonb; aggregated boolean;
         area jsonb:=p->'area'; viewport jsonb:=p->'viewport'; pattern text:=atlas_api.like_pattern(term);
+        global_empty boolean:=term='' AND (area IS NULL OR area='null'::jsonb);
+        scanned_total bigint; scanned_located bigint;
 BEGIN
   metadata:=atlas_api.require_release(p);
   IF COALESCE((p->>'containsNul')::boolean,false) THEN
@@ -77,40 +79,44 @@ BEGIN
       'markers','[]'::jsonb,'representedLocatedCount',0,'mapAggregated',false,'spatialReady',true,
       'releaseFingerprint',metadata->'expected_content_sha256');
   END IF;
-  IF term='' AND (area IS NULL OR area='null'::jsonb) THEN
-    total:=(metadata->>'expected_count')::bigint;
-    located:=(metadata->>'expected_located_count')::bigint;
-  ELSE
-    SELECT count(*),count(t.lon) INTO total,located FROM atlas.validated_records t
-      WHERE t.dataset=p->>'dataset' AND t.release=p->>'release'
-      AND (area IS NULL OR area='null'::jsonb OR atlas_api.inside(area,t.lon,t.lat))
-      AND (term='' OR t.search_id LIKE pattern ESCAPE E'\\' OR t.search_tag LIKE pattern ESCAPE E'\\'
-        OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
-        OR t.search_location LIKE pattern ESCAPE E'\\');
-  END IF;
+  -- One membership scan supplies full counts and viewport aggregates. The -1
+  -- bucket retains unlocated/outside-viewport matches in list totals without
+  -- exposing them as map markers. Global empty queries keep the index-only
+  -- viewport path and use immutable release counts for the full inventory.
   WITH grouped AS (
-    SELECT atlas_api.cell_x(viewport,t.lon) AS gx,atlas_api.cell_y(viewport,t.lat) AS gy,
-      count(*) AS members,avg(t.lon) AS lon,avg(t.lat) AS lat,min(t.ordinal) AS first_ordinal
+    SELECT CASE WHEN atlas_api.inside(viewport,t.lon,t.lat) THEN atlas_api.cell_x(viewport,t.lon) ELSE -1 END AS gx,
+      CASE WHEN atlas_api.inside(viewport,t.lon,t.lat) THEN atlas_api.cell_y(viewport,t.lat) ELSE -1 END AS gy,
+      count(*) AS members,count(t.lon) AS located_members,
+      avg(t.lon) AS lon,avg(t.lat) AS lat,min(t.ordinal) AS first_ordinal
     FROM atlas.validated_records t
     WHERE t.dataset=p->>'dataset' AND t.release=p->>'release'
-      AND atlas_api.inside(viewport,t.lon,t.lat)
+      AND (NOT global_empty OR atlas_api.inside(viewport,t.lon,t.lat))
       AND (area IS NULL OR area='null'::jsonb OR atlas_api.inside(area,t.lon,t.lat))
       AND (term='' OR t.search_id LIKE pattern ESCAPE E'\\' OR t.search_tag LIKE pattern ESCAPE E'\\'
         OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
         OR t.search_location LIKE pattern ESCAPE E'\\')
     GROUP BY 1,2
   ), objects AS (
-    SELECT g.gx,g.gy,g.members,
-      CASE WHEN g.members=1 THEN jsonb_build_object('kind','tree','tree',
+    SELECT g.gx,g.gy,g.members,g.located_members,
+      CASE WHEN g.gx<0 THEN NULL
+        WHEN g.members=1 THEN jsonb_build_object('kind','tree','tree',
           (SELECT atlas_api.summary_tree(t.canonical) FROM atlas.validated_records t
            WHERE t.dataset=p->>'dataset' AND t.release=p->>'release' AND t.ordinal=g.first_ordinal))
         ELSE jsonb_build_object('kind','cluster','cell',g.gx::text||':'||g.gy::text,
           'position',jsonb_build_array(g.lon,g.lat),'count',g.members,
           'zoom',least(24,floor((p->>'zoom')::float8)::integer+1)) END AS marker
       FROM grouped g
-  ) SELECT COALESCE(sum(members),0)::bigint,
-      COALESCE(jsonb_agg(marker ORDER BY gx,gy),'[]'::jsonb),COALESCE(bool_or(members>1),false)
-    INTO visible,markers,aggregated FROM objects;
+  ) SELECT COALESCE(sum(members),0)::bigint,COALESCE(sum(located_members),0)::bigint,
+      COALESCE(sum(members) FILTER (WHERE gx>=0),0)::bigint,
+      COALESCE(jsonb_agg(marker ORDER BY gx,gy) FILTER (WHERE gx>=0),'[]'::jsonb),
+      COALESCE(bool_or(members>1) FILTER (WHERE gx>=0),false)
+    INTO scanned_total,scanned_located,visible,markers,aggregated FROM objects;
+  IF global_empty THEN
+    total:=(metadata->>'expected_count')::bigint;
+    located:=(metadata->>'expected_located_count')::bigint;
+  ELSE
+    total:=scanned_total;located:=scanned_located;
+  END IF;
   RETURN jsonb_build_object('total',total,'locatedTotal',located,'viewportLocatedTotal',visible,
     'markers',markers,'representedLocatedCount',visible,'mapAggregated',aggregated,'spatialReady',true,
     'releaseFingerprint',metadata->'expected_content_sha256');
@@ -131,15 +137,19 @@ BEGIN
       FROM atlas.validated_records t WHERE t.dataset=p->>'dataset' AND t.release=p->>'release'
       AND t.ordinal>=start_at AND t.ordinal<start_at+page_limit;
   ELSE
-    SELECT COALESCE(jsonb_agg(atlas_api.summary_tree(t.canonical) ORDER BY t.ordinal),'[]'::jsonb) INTO result FROM (
-      SELECT t.ordinal,t.canonical FROM atlas.validated_records t
+    -- Filter/page only the narrow indexed columns; fetch canonical JSON for
+    -- the selected identities afterwards, not for every skipped OFFSET row.
+    WITH selected AS MATERIALIZED (
+      SELECT t.dataset,t.release,t.ordinal FROM atlas.validated_records t
       WHERE t.dataset=p->>'dataset' AND t.release=p->>'release'
       AND (area IS NULL OR area='null'::jsonb OR atlas_api.inside(area,t.lon,t.lat))
       AND (term='' OR t.search_id LIKE pattern ESCAPE E'\\' OR t.search_tag LIKE pattern ESCAPE E'\\'
         OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
         OR t.search_location LIKE pattern ESCAPE E'\\')
       ORDER BY t.ordinal OFFSET start_at LIMIT page_limit
-    ) t;
+    ) SELECT COALESCE(jsonb_agg(atlas_api.summary_tree(t.canonical) ORDER BY s.ordinal),'[]'::jsonb) INTO result
+      FROM selected s JOIN atlas.validated_records t
+        ON t.dataset=s.dataset AND t.release=s.release AND t.ordinal=s.ordinal;
   END IF;
   RETURN jsonb_build_object('items',result,'releaseFingerprint',atlas_api.fingerprint(p));
 END $$;
@@ -167,15 +177,17 @@ BEGIN
         OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
         OR t.search_location LIKE pattern ESCAPE E'\\');
   END IF;
-  SELECT COALESCE(jsonb_agg(atlas_api.summary_tree(t.canonical) ORDER BY t.ordinal),'[]'::jsonb) INTO result FROM (
-    SELECT t.ordinal,t.canonical FROM atlas.validated_records t
+  WITH selected AS MATERIALIZED (
+    SELECT t.dataset,t.release,t.ordinal FROM atlas.validated_records t
     WHERE t.dataset=p->>'dataset' AND t.release=p->>'release' AND atlas_api.inside(viewport,t.lon,t.lat)
       AND (area IS NULL OR area='null'::jsonb OR atlas_api.inside(area,t.lon,t.lat))
       AND (term='' OR t.search_id LIKE pattern ESCAPE E'\\' OR t.search_tag LIKE pattern ESCAPE E'\\'
         OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
         OR t.search_location LIKE pattern ESCAPE E'\\')
       ORDER BY t.ordinal OFFSET (p->>'offset')::bigint LIMIT (p->>'limit')::integer
-  ) t;
+  ) SELECT COALESCE(jsonb_agg(atlas_api.summary_tree(t.canonical) ORDER BY s.ordinal),'[]'::jsonb) INTO result
+    FROM selected s JOIN atlas.validated_records t
+      ON t.dataset=s.dataset AND t.release=s.release AND t.ordinal=s.ordinal;
   RETURN jsonb_build_object('items',result,'total',total,'releaseFingerprint',metadata->'expected_content_sha256');
 END $$;
 
@@ -204,17 +216,19 @@ BEGIN
     RETURN atlas_api.page(p,term)||jsonb_build_object('total',metadata->'expected_count','memberCount',metadata->'expected_count');
   END IF;
   WITH matching AS NOT MATERIALIZED (
-    SELECT t.ordinal,t.canonical FROM atlas.validated_records t
+    SELECT t.dataset,t.release,t.ordinal FROM atlas.validated_records t
     WHERE t.dataset=p->>'dataset' AND t.release=p->>'release' AND atlas_api.inside(viewport,t.lon,t.lat)
       AND atlas_api.cell_x(viewport,t.lon)=x AND atlas_api.cell_y(viewport,t.lat)=y
       AND (area IS NULL OR area='null'::jsonb OR atlas_api.inside(area,t.lon,t.lat))
       AND (term='' OR t.search_id LIKE pattern ESCAPE E'\\' OR t.search_tag LIKE pattern ESCAPE E'\\'
         OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
         OR t.search_location LIKE pattern ESCAPE E'\\')
-  ), stats AS (SELECT count(*) AS members FROM matching)
+  ), stats AS (SELECT count(*) AS members FROM matching),
+  selected AS MATERIALIZED (SELECT * FROM matching ORDER BY ordinal OFFSET (p->>'offset')::bigint LIMIT (p->>'limit')::integer)
     SELECT jsonb_build_object('memberCount',stats.members,'total',stats.members,
-      'items',COALESCE((SELECT jsonb_agg(atlas_api.summary_tree(t.canonical) ORDER BY t.ordinal) FROM
-        (SELECT * FROM matching ORDER BY ordinal OFFSET (p->>'offset')::bigint LIMIT (p->>'limit')::integer)t),'[]'::jsonb),
+      'items',COALESCE((SELECT jsonb_agg(atlas_api.summary_tree(t.canonical) ORDER BY s.ordinal)
+        FROM selected s JOIN atlas.validated_records t
+          ON t.dataset=s.dataset AND t.release=s.release AND t.ordinal=s.ordinal),'[]'::jsonb),
       'releaseFingerprint',atlas_api.fingerprint(p)) INTO result FROM stats;
   RETURN result;
 END $$;

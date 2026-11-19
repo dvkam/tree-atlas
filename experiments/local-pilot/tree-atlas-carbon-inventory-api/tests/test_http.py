@@ -229,6 +229,45 @@ class HttpInventoryProof(unittest.TestCase):
         self.assertLessEqual(len(result['markers']), 1000)
         self.assertEqual(result['releaseFingerprint'], expected['contentSha256'])
 
+    def test_empty_and_out_of_range_query_pages_do_not_rescan_records(self):
+        before = self.stats()
+        request = self.query('porto', q='no-such-tree-frozen-page-regression')
+        status, result = self.call('/v1/query', request)
+        self.assertEqual(status, 200, result)
+        self.assertEqual((result['total'], result['items']), (0, []))
+        after_empty = self.stats()
+        self.assertEqual(after_empty['queryPageSqlCalls'], before['queryPageSqlCalls'])
+        self.assertEqual(after_empty['querySummarySqlCalls'], before['querySummarySqlCalls'] + 1)
+        status, result = self.call('/v1/query', self.query('porto', offset=DATASETS['porto']['count']))
+        self.assertEqual(status, 200, result)
+        self.assertEqual((result['total'], result['items']), (DATASETS['porto']['count'], []))
+        self.assertEqual(self.stats()['queryPageSqlCalls'], before['queryPageSqlCalls'])
+        status, result = self.call('/v1/query', self.query('porto', offset=DATASETS['porto']['count'] - 1))
+        self.assertEqual(status, 200, result)
+        self.assertEqual(len(result['items']), 1)
+        self.assertEqual(self.stats()['queryPageSqlCalls'], before['queryPageSqlCalls'] + 1)
+
+    def test_london_short_and_rare_searches_complete_under_unchanged_deadline(self):
+        dataset = next(row for row in REFERENCE['datasets'] if row['dataset'] == 'london')
+        for name in ['one-character', 'rare-genus']:
+            definition = next(row for row in dataset['queries'] if row['name'] == name)
+            before = self.stats()
+            for iteration in range(7):
+                # Fractional zoom changes the immutable summary key, preserving
+                # the exact frozen list/count predicate and defeating API cache.
+                request = self.query('london', q=definition['q'], area=definition['area'],
+                    viewport=definition['viewport'], zoom=definition['zoom'] + (iteration + 1) / 1000)
+                with self.subTest(case=name, uncachedIteration=iteration):
+                    status, result = self.call('/v1/query', request)
+                    self.assertEqual(status, 200, result)
+                    self.assertEqual(result['total'], definition['total'])
+                    self.assertEqual(result['locatedTotal'], definition['locatedTotal'])
+                    self.assertEqual(result['viewportLocatedTotal'], definition['viewportLocatedTotal'])
+                    self.assertEqual([item['sourceId'] for item in result['items']], definition['pages'][0]['ids'])
+            after = self.stats()
+            self.assertEqual(after['querySummarySqlCalls'] - before['querySummarySqlCalls'], 7)
+            self.assertEqual(after['queryPageSqlCalls'] - before['queryPageSqlCalls'], 0 if definition['total'] == 0 else 7)
+
     def test_invalid_input_does_not_become_success(self):
         invalid = [{'q': 'x' * 501}, {'q': 42}, {'offset': -1}, {'offset': 9007199254740992},
                    {'offset': 0.5}, {'limit': 0}, {'limit': 101}, {'zoom': 25},

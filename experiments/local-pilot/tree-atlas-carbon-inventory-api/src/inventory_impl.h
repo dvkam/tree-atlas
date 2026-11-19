@@ -30,6 +30,12 @@ bool inventory_json_escapes_valid(const std::string& text) {
 namespace inventory {
 using Json=std::unique_ptr<json_object,decltype(&json_object_put)>;
 Json own(json_object* value){return Json(value,&json_object_put);}
+std::atomic<uint64_t> query_summary_calls{0},query_page_calls{0},query_summary_us{0},query_page_us{0},sql_pool_wait_us{0};
+struct PhaseTimer {
+  std::atomic<uint64_t>& micros;Clock::time_point started{Clock::now()};
+  PhaseTimer(std::atomic<uint64_t>& calls,std::atomic<uint64_t>& time):micros(time){calls.fetch_add(1,std::memory_order_relaxed);}
+  ~PhaseTimer(){micros.fetch_add(std::chrono::duration_cast<std::chrono::microseconds>(Clock::now()-started).count(),std::memory_order_relaxed);}
+};
 struct Failure:std::runtime_error {int status;Failure(int s,const char* e):runtime_error(e),status(s){}};
 void require(bool value){if(!value)throw Failure(400,"invalid_input");}
 json_object* field(json_object* doc,const char* name){json_object* value=nullptr;json_object_object_get_ex(doc,name,&value);return value;}
@@ -76,7 +82,9 @@ void check(ServiceRequest* request,const std::shared_ptr<QueryState>& state,Cloc
 Json sql(ServiceRequest* request,const std::shared_ptr<QueryState>& state,const char* command,
          const std::string& parameters,const std::string& term,Clock::time_point deadline){
   check(request,state,deadline);
+  auto waiting=Clock::now();
   int index=pool->acquire(state,deadline,request->transport.get());
+  sql_pool_wait_us.fetch_add(std::chrono::duration_cast<std::chrono::microseconds>(Clock::now()-waiting).count(),std::memory_order_relaxed);
   if(index<0){check(request,state,deadline);throw Failure(503,"busy");}
   Lease lease{index};
   auto* connection=pool->connection(index,deadline,request->transport.get());
@@ -202,10 +210,18 @@ ServiceResult* inventory_execute(ServiceRequest* request,const char* primary,con
     auto run=[&](const char* sql){return inventory::sql(request,registration.state,sql,parameters,bound_term,deadline);};
     Json result=own(nullptr);
     if(op=="query"){
-      result=summary(request,registration.state,cluster_scope,deadline,[&]{return run(primary);});
-      auto page=run(secondary);
-      auto* items=field(page.get(),"items");if(!items||!json_object_is_type(items,json_type_array))throw Failure(503,"database");
-      json_object_object_add(result.get(),"items",json_object_get(items));
+      result=summary(request,registration.state,cluster_scope,deadline,[&]{PhaseTimer timer(query_summary_calls,query_summary_us);return run(primary);});
+      auto* total=field(result.get(),"total");
+      if(!total||!json_object_is_type(total,json_type_int)||json_object_get_int64(total)<0)throw Failure(503,"database");
+      // The immutable exact summary already proves an empty/out-of-range page.
+      // Avoid another full filtered scan without changing paging semantics.
+      if(offset>=json_object_get_int64(total))json_object_object_add(result.get(),"items",json_object_new_array());
+      else {
+        PhaseTimer timer(query_page_calls,query_page_us);
+        auto page=run(secondary);
+        auto* items=field(page.get(),"items");if(!items||!json_object_is_type(items,json_type_array))throw Failure(503,"database");
+        json_object_object_add(result.get(),"items",json_object_get(items));
+      }
       auto* markers=field(result.get(),"markers");
       if(markers)for(size_t i=0;i<json_object_array_length(markers);i++){
         auto* marker=json_object_array_get_idx(markers,i);
@@ -226,6 +242,11 @@ ServiceResult* inventory_execute(ServiceRequest* request,const char* primary,con
   return output.release();
 }
 void inventory_add_stats(json_object* value){
+  json_object_object_add(value,"querySummarySqlCalls",json_object_new_int64(inventory::query_summary_calls.load(std::memory_order_relaxed)));
+  json_object_object_add(value,"queryPageSqlCalls",json_object_new_int64(inventory::query_page_calls.load(std::memory_order_relaxed)));
+  json_object_object_add(value,"querySummarySqlUs",json_object_new_int64(inventory::query_summary_us.load(std::memory_order_relaxed)));
+  json_object_object_add(value,"queryPageSqlUs",json_object_new_int64(inventory::query_page_us.load(std::memory_order_relaxed)));
+  json_object_object_add(value,"sqlPoolWaitUs",json_object_new_int64(inventory::sql_pool_wait_us.load(std::memory_order_relaxed)));
   std::lock_guard lock(inventory::cache_mutex);
   json_object_object_add(value,"cacheEntries",json_object_new_int64(inventory::cache.size()));
   json_object_object_add(value,"cacheBytes",json_object_new_int64(inventory::cache_bytes));
