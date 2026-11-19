@@ -51,28 +51,34 @@ export async function blockExternalTiles(context: BrowserContext) {
   await context.route("https://tile.openstreetmap.org/**", (route) => route.abort());
   await context.route("https://mapserver.dataspace.copernicus.eu/**", (route) => route.abort());
 }
-export async function ready(page: Page, id: string, count = city(id).count) {
+export async function ready(page: Page, id: string, count = city(id).count, timeout = 20_000) {
   await expect(page.getByRole("region", { name: "Tree map", exact: true })).toHaveAttribute(
     "data-city",
     id,
+    { timeout },
   );
   await expect
-    .poll(async () =>
-      Number((await page.locator(".results-heading h2").innerText()).replace(/\D/gu, "")),
+    .poll(
+      async () =>
+        Number((await page.locator(".results-heading h2").innerText()).replace(/\D/gu, "")),
+      { timeout },
     )
     .toBe(count);
-  await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible();
+  await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible({ timeout });
   await expect(page.getByRole("region", { name: "Tree map", exact: true })).toHaveAttribute(
     "aria-busy",
     "false",
+    { timeout },
   );
   await expect(page.getByRole("region", { name: "Tree map", exact: true })).toHaveAttribute(
     "data-filter-ready",
     "true",
+    { timeout },
   );
   await expect(page.getByRole("region", { name: "Tree map", exact: true })).toHaveAttribute(
     "data-marker-count",
     /^[1-9]\d*$/u,
+    { timeout },
   );
 }
 export async function chooseCity(page: Page, id: string) {

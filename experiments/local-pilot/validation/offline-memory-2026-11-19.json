@@ -1,0 +1,399 @@
+{
+  "passed": true,
+  "date": "2026-11-19",
+  "browserJourneysPassed": 4,
+  "newCityJourneys": 3,
+  "scope": "Real local bundled Chromium, complete pinned city packs and offline refresh; owned Linux browser process-tree RSS includes renderer/dedicated-worker native memory but double-counts shared pages; PSS only where all process samples are readable; 250 ms sampled peaks can miss transients; no physical-phone, shaped-network, cold-OS, hard-memory-budget or basemap claim.",
+  "notRun": [
+    "physical Android/iOS",
+    "shaped/shared mobile network",
+    "full browser-process restart with persistent profile",
+    "hard phone-memory-budget acceptance",
+    "API/PostgreSQL/OS total memory"
+  ],
+  "cities": [
+    {
+      "city": "london",
+      "release": "london-316fa121a19059da",
+      "records": 1111784,
+      "passed": true,
+      "chromiumVersion": "156.0.8078.4",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true
+      },
+      "timings": {
+        "downloadValidateCommitMs": 3481.595657,
+        "offlineModeInitializeMs": 5050.151462999998,
+        "offlineRefreshReadyMs": 5291.799389999998,
+        "common-genusMs": 1062.3730429999996,
+        "leading-zerosMs": 485.1728489999987,
+        "areaReloadReadyMs": 4280.009124
+      },
+      "packContentBytes": 16139261,
+      "storageEstimate": {
+        "quota": 10754435011,
+        "usage": 17016771,
+        "usageDetails": {
+          "caches": 2364093,
+          "indexedDB": 14651392,
+          "serviceWorkerRegistrations": 1286
+        }
+      },
+      "workerCountAtOfflineReady": 1,
+      "ownedBrowserExited": true,
+      "offlineApiRequests": [],
+      "pageErrors": [],
+      "memory": {
+        "intervalMs": 250,
+        "maximumObservedSampleGapMs": 342.44525200000044,
+        "sampledPeakRssKiB": 1359352,
+        "sampledPeakPssKiB": 1091671,
+        "availableSamplePssPeakKiB": 1091671,
+        "completePssSamples": 120,
+        "byPhase": [
+          {
+            "phase": "launch",
+            "samples": 1,
+            "sampledPeakRssKiB": 407244,
+            "sampledPeakPssKiB": 171957,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "online-open",
+            "samples": 5,
+            "sampledPeakRssKiB": 534472,
+            "sampledPeakPssKiB": 271939,
+            "completePssSamples": 5
+          },
+          {
+            "phase": "download-and-validate",
+            "samples": 13,
+            "sampledPeakRssKiB": 971288,
+            "sampledPeakPssKiB": 702923,
+            "completePssSamples": 13
+          },
+          {
+            "phase": "offline-worker-initialization",
+            "samples": 19,
+            "sampledPeakRssKiB": 1310076,
+            "sampledPeakPssKiB": 1034818,
+            "completePssSamples": 19
+          },
+          {
+            "phase": "offline-refresh",
+            "samples": 20,
+            "sampledPeakRssKiB": 1341256,
+            "sampledPeakPssKiB": 1074455,
+            "completePssSamples": 20
+          },
+          {
+            "phase": "offline-common-genus",
+            "samples": 4,
+            "sampledPeakRssKiB": 1249676,
+            "sampledPeakPssKiB": 979583,
+            "completePssSamples": 4
+          },
+          {
+            "phase": "offline-leading-zeros",
+            "samples": 1,
+            "sampledPeakRssKiB": 1189176,
+            "sampledPeakPssKiB": 918443,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-area-reload",
+            "samples": 16,
+            "sampledPeakRssKiB": 1287380,
+            "sampledPeakPssKiB": 1020195,
+            "completePssSamples": 16
+          },
+          {
+            "phase": "offline-details",
+            "samples": 39,
+            "sampledPeakRssKiB": 1359352,
+            "sampledPeakPssKiB": 1091671,
+            "completePssSamples": 39
+          },
+          {
+            "phase": "offline-eviction",
+            "samples": 2,
+            "sampledPeakRssKiB": 964016,
+            "sampledPeakPssKiB": 696459,
+            "completePssSamples": 2
+          }
+        ],
+        "errors": [],
+        "samples": 120,
+        "processCountRange": {
+          "min": 6,
+          "max": 6
+        },
+        "observedProcessRoles": [
+          "browser",
+          "gpu-process",
+          "renderer",
+          "utility",
+          "zygote"
+        ]
+      },
+      "workerKinds": [
+        "/assets/offline-validation.worker.js",
+        "/assets/offline.worker.js"
+      ]
+    },
+    {
+      "city": "vienna",
+      "release": "vienna-2925984ab1dd6276",
+      "records": 233102,
+      "passed": true,
+      "chromiumVersion": "156.0.8078.4",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true
+      },
+      "timings": {
+        "downloadValidateCommitMs": 1012.7058529999995,
+        "offlineModeInitializeMs": 2013.2854759999973,
+        "offlineRefreshReadyMs": 2149.5366520000025,
+        "common-genusMs": 455.75265400000353,
+        "leading-zerosMs": 206.42358399999648,
+        "areaReloadReadyMs": 2202.9183519999933
+      },
+      "packContentBytes": 4092520,
+      "storageEstimate": {
+        "quota": 10743924675,
+        "usage": 6506435,
+        "usageDetails": {
+          "caches": 2364093,
+          "indexedDB": 4141056,
+          "serviceWorkerRegistrations": 1286
+        }
+      },
+      "workerCountAtOfflineReady": 1,
+      "ownedBrowserExited": true,
+      "offlineApiRequests": [],
+      "pageErrors": [],
+      "memory": {
+        "intervalMs": 250,
+        "maximumObservedSampleGapMs": 285.11255900000106,
+        "sampledPeakRssKiB": 895316,
+        "sampledPeakPssKiB": 623067,
+        "availableSamplePssPeakKiB": 623067,
+        "completePssSamples": 52,
+        "byPhase": [
+          {
+            "phase": "launch",
+            "samples": 1,
+            "sampledPeakRssKiB": 399952,
+            "sampledPeakPssKiB": 162692,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "online-open",
+            "samples": 3,
+            "sampledPeakRssKiB": 546732,
+            "sampledPeakPssKiB": 274334,
+            "completePssSamples": 3
+          },
+          {
+            "phase": "download-and-validate",
+            "samples": 4,
+            "sampledPeakRssKiB": 758688,
+            "sampledPeakPssKiB": 484342,
+            "completePssSamples": 4
+          },
+          {
+            "phase": "offline-worker-initialization",
+            "samples": 8,
+            "sampledPeakRssKiB": 869468,
+            "sampledPeakPssKiB": 590175,
+            "completePssSamples": 8
+          },
+          {
+            "phase": "offline-refresh",
+            "samples": 8,
+            "sampledPeakRssKiB": 854552,
+            "sampledPeakPssKiB": 581891,
+            "completePssSamples": 8
+          },
+          {
+            "phase": "offline-common-genus",
+            "samples": 2,
+            "sampledPeakRssKiB": 874864,
+            "sampledPeakPssKiB": 600003,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "offline-area-reload",
+            "samples": 9,
+            "sampledPeakRssKiB": 882024,
+            "sampledPeakPssKiB": 595971,
+            "completePssSamples": 9
+          },
+          {
+            "phase": "offline-details",
+            "samples": 16,
+            "sampledPeakRssKiB": 895316,
+            "sampledPeakPssKiB": 623067,
+            "completePssSamples": 16
+          },
+          {
+            "phase": "offline-eviction",
+            "samples": 1,
+            "sampledPeakRssKiB": 760964,
+            "sampledPeakPssKiB": 486942,
+            "completePssSamples": 1
+          }
+        ],
+        "errors": [],
+        "samples": 52,
+        "processCountRange": {
+          "min": 6,
+          "max": 6
+        },
+        "observedProcessRoles": [
+          "browser",
+          "gpu-process",
+          "renderer",
+          "utility",
+          "zygote"
+        ]
+      },
+      "workerKinds": [
+        "/assets/offline-validation.worker.js",
+        "/assets/offline.worker.js"
+      ]
+    },
+    {
+      "city": "geneva",
+      "release": "geneva-a3456b2d943dc57d",
+      "records": 240827,
+      "passed": true,
+      "chromiumVersion": "156.0.8078.4",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true
+      },
+      "timings": {
+        "downloadValidateCommitMs": 974.7205099999992,
+        "offlineModeInitializeMs": 1995.0941070000044,
+        "offlineRefreshReadyMs": 2211.0090280000004,
+        "common-genusMs": 229.77818199999456,
+        "leading-zerosMs": 196.5481690000015,
+        "areaReloadReadyMs": 1177.1105040000039
+      },
+      "packContentBytes": 3845514,
+      "storageEstimate": {
+        "quota": 10743678915,
+        "usage": 6260675,
+        "usageDetails": {
+          "caches": 2364093,
+          "indexedDB": 3895296,
+          "serviceWorkerRegistrations": 1286
+        }
+      },
+      "workerCountAtOfflineReady": 1,
+      "ownedBrowserExited": true,
+      "offlineApiRequests": [],
+      "pageErrors": [],
+      "memory": {
+        "intervalMs": 250,
+        "maximumObservedSampleGapMs": 314.67735600000015,
+        "sampledPeakRssKiB": 829672,
+        "sampledPeakPssKiB": 560106,
+        "availableSamplePssPeakKiB": 560106,
+        "completePssSamples": 47,
+        "byPhase": [
+          {
+            "phase": "launch",
+            "samples": 1,
+            "sampledPeakRssKiB": 399524,
+            "sampledPeakPssKiB": 164179,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "online-open",
+            "samples": 3,
+            "sampledPeakRssKiB": 540072,
+            "sampledPeakPssKiB": 271314,
+            "completePssSamples": 3
+          },
+          {
+            "phase": "download-and-validate",
+            "samples": 4,
+            "sampledPeakRssKiB": 723108,
+            "sampledPeakPssKiB": 452493,
+            "completePssSamples": 4
+          },
+          {
+            "phase": "offline-worker-initialization",
+            "samples": 7,
+            "sampledPeakRssKiB": 828472,
+            "sampledPeakPssKiB": 553037,
+            "completePssSamples": 7
+          },
+          {
+            "phase": "offline-refresh",
+            "samples": 9,
+            "sampledPeakRssKiB": 814384,
+            "sampledPeakPssKiB": 545078,
+            "completePssSamples": 9
+          },
+          {
+            "phase": "offline-common-genus",
+            "samples": 1,
+            "sampledPeakRssKiB": 773200,
+            "sampledPeakPssKiB": 500954,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-area-reload",
+            "samples": 5,
+            "sampledPeakRssKiB": 792916,
+            "sampledPeakPssKiB": 523314,
+            "completePssSamples": 5
+          },
+          {
+            "phase": "offline-details",
+            "samples": 16,
+            "sampledPeakRssKiB": 829672,
+            "sampledPeakPssKiB": 560106,
+            "completePssSamples": 16
+          },
+          {
+            "phase": "offline-eviction",
+            "samples": 1,
+            "sampledPeakRssKiB": 747364,
+            "sampledPeakPssKiB": 478190,
+            "completePssSamples": 1
+          }
+        ],
+        "errors": [],
+        "samples": 47,
+        "processCountRange": {
+          "min": 6,
+          "max": 6
+        },
+        "observedProcessRoles": [
+          "browser",
+          "gpu-process",
+          "renderer",
+          "utility",
+          "zygote"
+        ]
+      },
+      "workerKinds": [
+        "/assets/offline-validation.worker.js",
+        "/assets/offline.worker.js"
+      ]
+    }
+  ],
+  "sourceReportSha256": "1eb0011dd69329ac09dbffe146fc1d6b062d1a027d38464caf062a827bcb7ceb"
+}
