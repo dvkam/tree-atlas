@@ -2,7 +2,7 @@
 
 Branch: `pilot/carbon-postgres-local`. Public base: `8fb090145c0852a83dec1038fa663e7ba15e0de3`.
 
-This branch contains the local Carbon/native, PostgreSQL and separate frontend pilot. Both public application implementations, release assets and deployment workflows remain unchanged. New root lint/format exclusions keep pilot checks separate. There has been no push, hosting purchase or deployment.
+This branch contains the local Carbon/native, PostgreSQL and separate frontend pilot. Both public application implementations, release assets and deployment workflows remain unchanged. New root lint/format exclusions keep pilot checks separate. The [publication review](PUBLICATION-REVIEW.md) gates a pilot-branch push and draft PR. Hosting, main-branch merge and deployment remain outside that publication scope.
 
 ## London query fixes
 

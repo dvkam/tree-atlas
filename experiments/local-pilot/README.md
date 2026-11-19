@@ -18,8 +18,9 @@ Read [the current branch validation](BRANCH-VALIDATION.md) and [next steps](NEXT
 draft PR recommendation, local issue drafts, database storage and server gates.
 The current Carbon/native build is x86-64. A complete ARM64 stack needs its own
 qualification before Pi deployment. Database/client security updates also need
-qualification before network exposure. No GitHub or server changes are part of
-this local work.
+qualification before network exposure. The runtime stays local. Publishing this
+source branch for review does not activate the backend or change either public
+app. See [the publication review](PUBLICATION-REVIEW.md) for its scope and gates.
 
 The pilot preserves London, Vienna, Geneva and Porto: **1,657,347 records**.
 Offline city downloads contain complete searchable fields and exact positions;
@@ -109,4 +110,6 @@ This also prevents a public format command from rewriting the sealed oracle.
 
 These local run instructions do not publish source or data, refresh municipal
 sources, purchase hosting, or deploy the app. A successful push to public `main` would trigger Pages;
-keep this experiment on its separate local branch until publication is requested.
+publish this experiment through its separate pilot branch and a draft PR after
+the publication review passes. Keep `main` unmerged. Source publication does not
+authorize Pages deployment, server provisioning or backend activation.

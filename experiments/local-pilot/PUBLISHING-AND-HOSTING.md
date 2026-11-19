@@ -2,12 +2,13 @@
 
 Research and local inspection date: 19 November 2026.
 
-Keep the present work local. The recommended next publication step is a push of
-`pilot/carbon-postgres-local` followed by a draft pull request into `main`, after
-the final source and secret review. A draft PR gives this experiment a review
-record without merging it. It does not make the backend production-ready.
-No push, PR, issue, server configuration or deployment was performed for this
-assessment.
+The initial assessment recommended publishing `pilot/carbon-postgres-local`
+through a draft pull request into `main`, after a full source and secret review.
+The subsequent request authorizes that branch push and draft PR if the review
+has no publication blocker. See [the publication review](PUBLICATION-REVIEW.md).
+A draft PR provides a review record. The runtime remains local, and this source
+publication does not authorize a merge, issue creation, server configuration or
+deployment. GitHub records the actual branch and PR state.
 
 ## Branch publication and review
 
