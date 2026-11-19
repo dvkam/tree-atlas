@@ -48,8 +48,17 @@ def verify(index=False):
         data = blobs[contract + entry["file"]]
         if len(data) != entry["bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
             raise ValueError(f"Git blob violates frozen seal: {entry['file']}")
+    history = PREFIX + "historical/"
+    historical_count = 0
+    if history + "index.json" in blobs:
+        for entry in json.loads(blobs[history + "index.json"])["files"]:
+            data = blobs[history + entry["file"]]
+            if len(data) != entry["bytes"] or hashlib.sha256(data).hexdigest() != entry["sha256"]:
+                raise ValueError(f"Git blob differs from archived evidence hash: {entry['file']}")
+            historical_count += 1
     return {"passed": True, "target": "index" if index else "HEAD", "base": BASE,
             "sourceFiles": len(objects), "sealedGitBlobsVerified": len(seal["files"]),
+            "historicalGitBlobsVerified": historical_count,
             "existingPublicFilesChanged": 0, "symlinksOrBinariesCommitted": 0}
 
 
