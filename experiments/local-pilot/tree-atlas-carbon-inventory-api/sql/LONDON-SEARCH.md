@@ -1,4 +1,4 @@
-# London search deadline investigation — 19 November 2026
+# London search deadline investigation, 19 November 2026
 
 The fresh branch checks reproduced 504 responses for London's `one-character`
 (`a`) and `rare-genus` (`torreya`) cases under the unchanged 2,500 ms SQL-work
@@ -57,8 +57,8 @@ Ordinary VACUUM/ANALYZE maintains visibility/statistics without changing records
 
 After the single summary scan, before the search-cover index, direct summary
 observations were about 1,000 ms for `a` and 612 ms for `torreya`. With the narrow
-cover, valid once-per-phase measurements observed `a` at 771–1,045 ms and
-`torreya` at 409–427 ms. The absent page is now skipped entirely for `torreya`.
+cover, valid once-per-phase measurements observed `a` at 771 to 1,045 ms and
+`torreya` at 409 to 427 ms. The absent page is now skipped entirely for `torreya`.
 These are small local observations, not cold-database or hosted guarantees.
 
 An intermediate compact profiler mistakenly projected three fields from a

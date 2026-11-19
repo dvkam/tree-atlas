@@ -15,7 +15,10 @@ physical server, security sandbox or hosted deployment.
   choosing a newer image.
 - Native packages are installed from that image's signed Ubuntu package sources;
   the resulting exact `dpkg-query` manifest is retained. `policy-rc.d` prevents
-  package scripts from starting services during installation.
+  package scripts from starting services during installation. The helper checks
+  that installed PostgreSQL clusters are down and no image processes remain.
+  The package manifest records this run's versions. Future `apt` resolution can
+  change because the package repositories are not locked to a snapshot.
 - Node 26.13.0, Carbon nightly `2026.11.07`, libpq 17.11, ICU 78.3 and pnpm 11.25.0
   are fetched anew with pinned checksums/lockfile verification. No dependency
   directories or host home directory are mounted into the new userspace.
@@ -42,6 +45,13 @@ physical server, security sandbox or hosted deployment.
   that no test-owned long-lived child remains.
 
 ## Run in WSL
+
+The host runner needs WSL root access, Python 3.12 or later, `unshare`, `mount`,
+`chroot`, `ip`, and Git. A Windows-mounted checkout also needs WSL Windows
+executable support and the installed Git at `C:\Program Files\Git\cmd\git.exe`.
+The existing validated PostgreSQL database must accept local peer administration
+for its read-only backup. The helper installs application prerequisites only
+inside the new filesystem.
 
 Complete ordinary source checks and commit the tested source first. Keep timing
 benchmarks and other inventory tests quiescent during package builds, the dump and
@@ -101,8 +111,74 @@ and later application checks are timed separately.
 
 ## Evidence status
 
-The scripts and input/timeout regressions are implemented. Actual clean-image
-installation, restore and application results must be read from the completed
-report; an input-test pass or a `prepared:true` report is not a recovery pass.
-Never report a partial/failed run as a clean setup result. This document will
-record the executed source commit and measured result after the run completes.
+The fresh userspace and isolated restore passed on 19 November 2026. The run
+executed committed source `06015e5d21e9a0cf16f2a14f8f53618a223abcb8`. It began at
+07:22:21 UTC and completed at 07:26:19 UTC. The [sanitized qualification record](validation/clean-room-2026-11-19.json)
+contains exact timestamps, source and archive hashes, package versions, test
+counts and the SHA-256 of the private raw report.
+
+| Phase | Observed time |
+| --- | ---: |
+| Download and extract Ubuntu image | 14.328 s |
+| Install fresh native packages | 42.421 s |
+| Export and extract committed source | 18.502 s |
+| Read-only database backup | 7.739 s |
+| Fetch and build fresh tools and frontend dependencies | 43.481 s |
+| Set up and restore database, apply current SQL and indexes, VACUUM/ANALYZE | 47.255 s |
+| Check every canonical record with the independent verifier | 78.222 s |
+| Run quick HTTP conformance | 17.485 s |
+| Run frontend source checks | 5.765 s |
+| Exercise frontend launcher, including its build | 2.465 s |
+
+The second command took 237.344 seconds in total. That includes source export,
+backup, fresh dependencies and application checks. Preparation ran separately.
+The phase table does not include every subprocess or measurement overhead.
+
+The restored database contained all 1,657,347 records. London had 1,111,784,
+Vienna 233,102, Geneva 240,827 and Porto 71,634. Every release retained its
+validated status. The independent checker verified all normalized records,
+identity and content digests, dictionary digests, 48 query sets, 192 page slices,
+16 suggestion cases and 22 literal SQL cases.
+
+The fresh Carbon build passed quick HTTP conformance with 192 selected pages,
+16 suggestion cases, eight detail checks and the small complete-filter and map
+membership cases. The frontend passed its six source checks, including all 63
+regressions. Its Vite build and documented launcher passed. The final reader
+session count was zero, the isolated cluster stopped, and the host process scan
+found no process left inside the disposable filesystem.
+
+This run installed PostgreSQL `16.15-0ubuntu0.24.04.1`, libmicrohttpd
+`1.0.0-2.1ubuntu2`, json-c `0.17-1build1`, OpenSSL development libraries
+`3.0.13-0ubuntu3.16` and GCC/G++ 13 `13.3.0-6ubuntu2~24.04.1`.
+It fetched Node 26.13.0, Carbon nightly `2026.11.07+ca18985`, libpq 17.11,
+ICU 78.3 and pnpm 11.25.0 anew. The frozen lockfile installed 157 frontend
+packages with no reused packages.
+
+The completed directory occupied 7,602,938,645 bytes, about 7.08 GiB. It includes
+the retained image, source archive, copied public assets, downloads, dependencies,
+backup, logs and stopped database. The restored database itself occupied
+1,914,035,223 bytes. These are directory-size checkpoints, not peak disk or memory
+measurements.
+
+Earlier attempts found two setup defects. Linux Git took several minutes to
+check the Windows-mounted checkout. The exporter now uses the fixed Windows Git
+executable there, retains the full clean-tree check, limits its duration, and
+archives the recorded commit. A genuinely fresh user also lacked `.config`.
+The first database setup stopped at that missing parent before creating roles or
+importing records. Setup now creates the missing parent with the correct owner
+and private permissions. It preserves an existing real directory and rejects a
+symlink or file. Executable regressions cover those cases. The successful run
+used another new filesystem, new downloads, new credentials and a new cluster.
+The failed workspace remains private and stopped.
+
+The official Ubuntu HTTP mirror also timed out during the first preparation.
+The helper uses the same signed official sources over HTTPS with bounded IPv4
+retries. No package installation changed the host system.
+
+The independent verifier retains a historical `date` label in its output. The
+outer report records the actual execution timestamps above. The exported source
+has no `.git` directory, so the outer commit and archive hash identify the HTTP
+source as well. This run repeated quick HTTP checks. Full HTTP enumeration and
+browser offline and memory checks have separate evidence. It did not repeat
+those browser tests inside this filesystem or test a fresh VM, physical device,
+hosted cold load, encrypted cancellation fault or production traffic.

@@ -1,4 +1,4 @@
-# Local branch validation — 19 November 2026
+# Local branch validation, 19 November 2026
 
 Branch: `pilot/carbon-postgres-local`. Public base: `8fb090145c0852a83dec1038fa663e7ba15e0de3`.
 
@@ -14,7 +14,7 @@ The 2,500 ms SQL-work budget, complete membership, order, status and missing-pos
 
 | Check | Result |
 | --- | --- |
-| API source setup | Restored the omitted API/staging SQL inputs. Missing/empty staging schema fails before database or private-config actions; two regressions pass. |
+| API source setup | Restored the omitted API/staging SQL inputs. Missing/empty schema fails before setup actions; a missing user config parent is created with correct ownership/modes. Five setup regressions pass. |
 | Summary and index regressions | Five literal summary cases pass against the actual SQL body; index-definition validation rejects conflicting, invalid and unready definitions. |
 | Actual HTTP regressions | All 24 tests pass with zero skips, including 14 distinct uncached London attempts and the four opt-in administrative lock/cancel/deadline/disconnect faults. |
 | Full HTTP conformance | All **1,657,347 records** reconcile with independent ordered identity digests across **16,576 pages**. All 48 frozen cases/192 selected pages, 16 suggestions, eight details and sampled viewport/member unions pass. |
@@ -31,7 +31,13 @@ The [offline method and measurements](tree-atlas-local/verification/offline-memo
 
 [CLEAN-ROOM.md](CLEAN-ROOM.md) defines the fresh-dependency setup and independent restore check. It uses a checked official Ubuntu image, fresh pinned downloads, a committed Git archive and a private PostgreSQL cluster in separate mount/PID/network namespaces. The existing database is read only for its backup. This is fresh userspace on the shared WSL kernel, not a new VM or physical server.
 
-The procedure and its input/timeout regressions are implemented. Actual installation, restore and application proof is pending completion; a prepared image or passing bootstrap unit tests alone must not be called a recovery pass. The completed report must establish exact restored release digests, source/tool identities, HTTP/source/launcher results, zero remaining readers and a stopped private cluster.
+The executed clean-userspace qualification **passed** from commit `06015e5d21e9a0cf16f2a14f8f53618a223abcb8`. Fresh Node, Carbon, libpq, ICU and frontend dependencies installed without the original tools, caches or credentials. Restore, current SQL/index installation and VACUUM took 47.255 seconds. Independent readback took 78.222 seconds and checked all canonical records, normalized fields, identity/content/dictionary digests, 48 query sets, 192 slices, 16 suggestions and 22 literal SQL cases.
+
+The fresh Carbon/native build, quick HTTP conformance, all six frontend source checks, 63 regressions, Vite build and documented launcher passed. The private cluster stopped with zero reader sessions. A separate host process scan found no surviving test-owned runtime process. The existing database remains online with all 1,657,347 records and zero reader sessions after cleanup. [Recovery evidence](validation/clean-room-2026-11-19.json) binds the source archive and raw report hashes. Full HTTP enumeration and browser memory tests are separate runs documented above.
+
+This exercise found and fixed two setup defects. WSL Git repeatedly re-read the Windows-mounted checkout; source export now uses fixed-path Windows Git there with bounded checks and the recorded commit SHA. A fresh user home lacked `.config`; setup now creates the missing private parent with correct ownership and preserves an existing real parent. Twenty bootstrap/path/timeout regressions and five staging setup regressions pass. The failed attempt stays labelled as failed evidence. The successful run used another new filesystem and fresh downloads.
+
+The completed private directory occupies about 7.08 GiB, including retained inputs, tools, logs, backup and stopped database. The restored database occupies 1,914,035,223 bytes. These are disk checkpoints. Peak WAL/temp space and whole-service memory remain unmeasured. Native package versions are recorded; future apt resolution is not fully version-locked. The independent verifier's embedded legacy date is labelled in the summary; the outer report supplies actual execution timestamps.
 
 ## Reproduce
 

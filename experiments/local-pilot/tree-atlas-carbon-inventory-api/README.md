@@ -39,7 +39,7 @@ Other checks cover:
 - 16 suggestion cases, eight full canonical details and small filtered sets.
 - Complete sampled cluster unions and viewport pages; a real pair of coincident
   Geneva trees remains individually reachable at zoom 24.
-- 22 HTTP regressions, including real blocked-SQL cancellation, deadline expiry,
+- 24 current HTTP regressions, including real blocked-SQL cancellation, deadline expiry,
   client reset, delayed legitimate half-close, malformed Unicode, embedded NUL,
   large escaped valid text, exact composite IDs and missing-release behavior.
 - 1,132,108 native normalization parity cases against pinned Node Unicode 17,

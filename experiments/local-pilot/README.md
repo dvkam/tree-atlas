@@ -12,7 +12,7 @@ The five sibling directories retain their original interfaces:
 - `tree-atlas-carbon-inventory-api`: read-only Carbon/native query application.
 - `tree-atlas-local`: separate frontend, remote client and complete offline packs.
 
-Read [the current branch validation](BRANCH-VALIDATION.md) and [next steps](NEXT-STEPS.md). London query fixes pass full four-city HTTP conformance. Complete offline browser journeys pass for all four cities, with a substantial London memory risk. The [clean userspace and restore procedure](CLEAN-ROOM.md) tests fresh dependencies separately from the tool-reuse setup below.
+Read [the current branch validation](BRANCH-VALIDATION.md) and [next steps](NEXT-STEPS.md). London query fixes pass full four-city HTTP conformance. Complete offline browser journeys pass for all four cities, with a substantial London memory risk. The [clean userspace and restore procedure](CLEAN-ROOM.md) passed with fresh dependencies and a separately restored database. That proof uses fresh Ubuntu userspace on the shared WSL kernel.
 
 The pilot preserves London, Vienna, Geneva and Porto: **1,657,347 records**.
 Offline city downloads contain complete searchable fields and exact positions;
