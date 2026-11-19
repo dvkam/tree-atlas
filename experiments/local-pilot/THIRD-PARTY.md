@@ -2,6 +2,8 @@
 
 The pilot's project code is covered by the repository's root [MIT licence](../../LICENSE). The [root NOTICE](../../NOTICE) keeps source-data attribution and dataset terms separate from that code licence. The isolated frontend is copied from this repository at baseline commit `8fb090145c0852a83dec1038fa663e7ba15e0de3`; it does not import another author's Git history.
 
+The [source publication review](PUBLICATION-LICENCE-REVIEW.md) records the history checks, source permissions and dependency licence evidence reviewed on 19 November 2026.
+
 ## Generated Unicode tables
 
 `tree-atlas-local/src/frozen-normalizer-data.json` contains generated Unicode 17 mappings and properties. Its generator uses pinned Node 26.13.0 and canonical-combining-class data from the official ICU 78.3 client. The runtime table preserves the frozen search contract; it is not authored tree inventory data.
