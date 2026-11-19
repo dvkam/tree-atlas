@@ -1,0 +1,38 @@
+{
+  "contract": "tree-atlas-search-release-v1",
+  "date": "2026-11-08",
+  "verdict": "accept-local-contract-freeze",
+  "reviewers": [
+    {"seat":"search-contract","model":"available inherited model","rounds":2,"final":"accept","remainingBlockers":[]},
+    {"seat":"release-offline-contract","model":"available inherited model","rounds":2,"final":"accept","remainingBlockers":[]}
+  ],
+  "resolved": [
+    "Reference offset validation now enforces safe integers",
+    "Query and suggestion text share scalar/length validation",
+    "Literal removed/coincident records and mutation sentinels added",
+    "Query-key literal hashes checked independently with Python",
+    "Real canonical dictionary suggestion cases recorded for all four releases",
+    "Cohort midpoint page labels no longer imply filtered-match midpoint"
+  ],
+  "intentionalContractChoices": [
+    "Locale-independent Unicode 17 search replaces host-locale lowercase",
+    "Exact viewport totals are separate from represented cluster membership",
+    "Canonical dictionary ordering is normative; old binary dictionary parity is not claimed",
+    "Legacy historical import-normalizer versions remain unknown",
+    "Complete offline packs are required future implementation, not the existing evictable cache"
+  ],
+  "verification": {
+    "literalAssertions":99,
+    "semanticMutantsDetected":9,
+    "candidateResponseMutantsRejected":7,
+    "canonicalRecordsRead":1657347,
+    "detailAssetsVerified":3239,
+    "queryCases":48,
+    "selectedPageExpectations":192,
+    "suggestionCases":16,
+    "sourceAssetsAudited":10961,
+    "pythonLiteralQueryHashes":3
+  },
+  "notRun": ["source re-acquisition", "database import", "PostgreSQL/PostGIS inventory conformance", "remote adapter conformance", "map-member expansion conformance", "offline implementation", "browser journeys", "performance pilot", "deployment"],
+  "reviewScopeNote": "Independent subagent runs of the available model; not cross-provider model consensus. Acceptance covers local contract/reference readiness, not implementation readiness."
+}

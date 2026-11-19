@@ -1,0 +1,2 @@
+# Keep the isolated pilot out of the public application's lint program.
+/experiments/local-pilot/

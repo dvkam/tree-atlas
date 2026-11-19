@@ -1,0 +1,2 @@
+# The pilot has its own formatting checks; the frozen contract must stay byte-exact.
+/experiments/local-pilot/
