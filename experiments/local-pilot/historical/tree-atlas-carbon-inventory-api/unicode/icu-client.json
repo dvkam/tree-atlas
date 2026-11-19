@@ -1,0 +1,7 @@
+{
+  "source": "https://github.com/unicode-org/icu/releases/download/release-78.3/icu4c-78.3-Ubuntu22.04-x64.tgz",
+  "sha256": "9c8abe58a20cf82ea22341d8125272094f7fca2414173cbc2d8742feb84566a2",
+  "officialAssetDigest": "sha256:9c8abe58a20cf82ea22341d8125272094f7fca2414173cbc2d8742feb84566a2",
+  "scope": "Isolated ICU client binary only; no system package/server changes",
+  "archiveBytes": 17261169
+}
