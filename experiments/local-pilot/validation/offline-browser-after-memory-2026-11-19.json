@@ -1,0 +1,382 @@
+{
+  "passed": true,
+  "date": "2026-11-19",
+  "candidateCommit": "ebcd6dcf4a29d4efda82cb126812855d75895500",
+  "recordedAt": "2026-11-19T08:40:24.836Z",
+  "browserJourneysPassed": 4,
+  "totalPinnedRecords": 1657347,
+  "scope": "Complete London, Vienna and Geneva mobile-emulated browser offline journeys with process memory sampling, plus the existing Porto browser offline journey. Offline refresh, not retained-profile browser-process restart or physical-phone acceptance.",
+  "rawCitiesReportSha256": "9f51ab9996d0aff138798d0d62d3154891c490d4c67fa2cf0992d1c3c5ca6c56",
+  "rawPlaywrightReportSha256": "31b5b323ba66aefed5a3dbba4d0dcd41e8310409a1ba058d1796a7a30183870d",
+  "playwrightStats": {
+    "startTime": "2026-11-19T08:39:31.830Z",
+    "duration": 59125.489,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "memoryMeasuredCities": [
+    {
+      "city": "london",
+      "release": "london-316fa121a19059da",
+      "records": 1111784,
+      "passed": true,
+      "chromiumVersion": "156.0.8078.4",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true
+      },
+      "timings": {
+        "downloadValidateCommitMs": 3924.6681450000005,
+        "offlineModeInitializeMs": 3063.883794000001,
+        "offlineRefreshReadyMs": 3376.8008789999985,
+        "common-genusMs": 507.34176300000036,
+        "leading-zerosMs": 485.4710379999997,
+        "areaReloadReadyMs": 3402.4817079999993
+      },
+      "packContentBytes": 16139261,
+      "storageEstimate": {
+        "quota": 10754391315,
+        "usage": 16973075,
+        "usageDetails": {
+          "caches": 2320397,
+          "indexedDB": 14651392,
+          "serviceWorkerRegistrations": 1286
+        }
+      },
+      "workerCountAtOfflineReady": 1,
+      "ownedBrowserExited": true,
+      "offlineApiRequests": [],
+      "pageErrors": [],
+      "memory": {
+        "intervalMs": 250,
+        "maximumObservedSampleGapMs": 312.3523019999993,
+        "sampledPeakRssKiB": 1075068,
+        "sampledPeakPssKiB": 804285,
+        "completePssSamples": 83,
+        "byPhase": [
+          {
+            "phase": "launch",
+            "samples": 1,
+            "sampledPeakRssKiB": 409456,
+            "sampledPeakPssKiB": 169821,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "online-open",
+            "samples": 2,
+            "sampledPeakRssKiB": 518164,
+            "sampledPeakPssKiB": 251741,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "download-and-validate",
+            "samples": 15,
+            "sampledPeakRssKiB": 914460,
+            "sampledPeakPssKiB": 623809,
+            "completePssSamples": 15
+          },
+          {
+            "phase": "offline-worker-initialization",
+            "samples": 11,
+            "sampledPeakRssKiB": 1015812,
+            "sampledPeakPssKiB": 738913,
+            "completePssSamples": 11
+          },
+          {
+            "phase": "offline-refresh",
+            "samples": 12,
+            "sampledPeakRssKiB": 1075068,
+            "sampledPeakPssKiB": 804285,
+            "completePssSamples": 12
+          },
+          {
+            "phase": "offline-common-genus",
+            "samples": 2,
+            "sampledPeakRssKiB": 994968,
+            "sampledPeakPssKiB": 722129,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "offline-leading-zeros",
+            "samples": 2,
+            "sampledPeakRssKiB": 1001568,
+            "sampledPeakPssKiB": 727809,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "offline-area-reload",
+            "samples": 12,
+            "sampledPeakRssKiB": 1020300,
+            "sampledPeakPssKiB": 749048,
+            "completePssSamples": 12
+          },
+          {
+            "phase": "offline-details",
+            "samples": 24,
+            "sampledPeakRssKiB": 1065916,
+            "sampledPeakPssKiB": 795228,
+            "completePssSamples": 24
+          },
+          {
+            "phase": "offline-eviction",
+            "samples": 2,
+            "sampledPeakRssKiB": 787896,
+            "sampledPeakPssKiB": 514794,
+            "completePssSamples": 2
+          }
+        ],
+        "errors": [],
+        "observedSamples": 83
+      }
+    },
+    {
+      "city": "vienna",
+      "release": "vienna-2925984ab1dd6276",
+      "records": 233102,
+      "passed": true,
+      "chromiumVersion": "156.0.8078.4",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true
+      },
+      "timings": {
+        "downloadValidateCommitMs": 1094.5286300000007,
+        "offlineModeInitializeMs": 1009.6273790000014,
+        "offlineRefreshReadyMs": 1251.9463700000051,
+        "common-genusMs": 241.70855900000606,
+        "leading-zerosMs": 219.0407720000003,
+        "areaReloadReadyMs": 1220.6551619999955
+      },
+      "packContentBytes": 4092520,
+      "storageEstimate": {
+        "quota": 10743880979,
+        "usage": 6462739,
+        "usageDetails": {
+          "caches": 2320397,
+          "indexedDB": 4141056,
+          "serviceWorkerRegistrations": 1286
+        }
+      },
+      "workerCountAtOfflineReady": 1,
+      "ownedBrowserExited": true,
+      "offlineApiRequests": [],
+      "pageErrors": [],
+      "memory": {
+        "intervalMs": 250,
+        "maximumObservedSampleGapMs": 303.8528890000016,
+        "sampledPeakRssKiB": 821496,
+        "sampledPeakPssKiB": 545356,
+        "completePssSamples": 32,
+        "byPhase": [
+          {
+            "phase": "launch",
+            "samples": 1,
+            "sampledPeakRssKiB": 408168,
+            "sampledPeakPssKiB": 167785,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "online-open",
+            "samples": 2,
+            "sampledPeakRssKiB": 550020,
+            "sampledPeakPssKiB": 276994,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "download-and-validate",
+            "samples": 5,
+            "sampledPeakRssKiB": 730560,
+            "sampledPeakPssKiB": 452405,
+            "completePssSamples": 5
+          },
+          {
+            "phase": "offline-worker-initialization",
+            "samples": 3,
+            "sampledPeakRssKiB": 818436,
+            "sampledPeakPssKiB": 539663,
+            "completePssSamples": 3
+          },
+          {
+            "phase": "offline-refresh",
+            "samples": 5,
+            "sampledPeakRssKiB": 810288,
+            "sampledPeakPssKiB": 535648,
+            "completePssSamples": 5
+          },
+          {
+            "phase": "offline-common-genus",
+            "samples": 1,
+            "sampledPeakRssKiB": 783152,
+            "sampledPeakPssKiB": 507950,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-leading-zeros",
+            "samples": 1,
+            "sampledPeakRssKiB": 726320,
+            "sampledPeakPssKiB": 446747,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-area-reload",
+            "samples": 4,
+            "sampledPeakRssKiB": 815292,
+            "sampledPeakPssKiB": 539424,
+            "completePssSamples": 4
+          },
+          {
+            "phase": "offline-details",
+            "samples": 9,
+            "sampledPeakRssKiB": 821496,
+            "sampledPeakPssKiB": 545356,
+            "completePssSamples": 9
+          },
+          {
+            "phase": "offline-eviction",
+            "samples": 1,
+            "sampledPeakRssKiB": 719564,
+            "sampledPeakPssKiB": 446715,
+            "completePssSamples": 1
+          }
+        ],
+        "errors": [],
+        "observedSamples": 32
+      }
+    },
+    {
+      "city": "geneva",
+      "release": "geneva-a3456b2d943dc57d",
+      "records": 240827,
+      "passed": true,
+      "chromiumVersion": "156.0.8078.4",
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "isMobile": true,
+        "hasTouch": true
+      },
+      "timings": {
+        "downloadValidateCommitMs": 1068.9360919999963,
+        "offlineModeInitializeMs": 1031.9025970000002,
+        "offlineRefreshReadyMs": 1277.089893999997,
+        "common-genusMs": 223.7222529999999,
+        "leading-zerosMs": 219.97765500000241,
+        "areaReloadReadyMs": 1181.9811099999934
+      },
+      "packContentBytes": 3845514,
+      "storageEstimate": {
+        "quota": 10743635219,
+        "usage": 6216979,
+        "usageDetails": {
+          "caches": 2320397,
+          "indexedDB": 3895296,
+          "serviceWorkerRegistrations": 1286
+        }
+      },
+      "workerCountAtOfflineReady": 1,
+      "ownedBrowserExited": true,
+      "offlineApiRequests": [],
+      "pageErrors": [],
+      "memory": {
+        "intervalMs": 250,
+        "maximumObservedSampleGapMs": 307.7726240000047,
+        "sampledPeakRssKiB": 821632,
+        "sampledPeakPssKiB": 546211,
+        "completePssSamples": 32,
+        "byPhase": [
+          {
+            "phase": "launch",
+            "samples": 1,
+            "sampledPeakRssKiB": 411992,
+            "sampledPeakPssKiB": 172483,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "online-open",
+            "samples": 2,
+            "sampledPeakRssKiB": 539616,
+            "sampledPeakPssKiB": 268382,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "download-and-validate",
+            "samples": 5,
+            "sampledPeakRssKiB": 718128,
+            "sampledPeakPssKiB": 443997,
+            "completePssSamples": 5
+          },
+          {
+            "phase": "offline-worker-initialization",
+            "samples": 3,
+            "sampledPeakRssKiB": 784776,
+            "sampledPeakPssKiB": 507483,
+            "completePssSamples": 3
+          },
+          {
+            "phase": "offline-refresh",
+            "samples": 5,
+            "sampledPeakRssKiB": 767216,
+            "sampledPeakPssKiB": 493152,
+            "completePssSamples": 5
+          },
+          {
+            "phase": "offline-common-genus",
+            "samples": 1,
+            "sampledPeakRssKiB": 756992,
+            "sampledPeakPssKiB": 481587,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-leading-zeros",
+            "samples": 1,
+            "sampledPeakRssKiB": 760996,
+            "sampledPeakPssKiB": 484027,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-area-reload",
+            "samples": 4,
+            "sampledPeakRssKiB": 790472,
+            "sampledPeakPssKiB": 515275,
+            "completePssSamples": 4
+          },
+          {
+            "phase": "offline-details",
+            "samples": 9,
+            "sampledPeakRssKiB": 821632,
+            "sampledPeakPssKiB": 546211,
+            "completePssSamples": 9
+          },
+          {
+            "phase": "offline-eviction",
+            "samples": 1,
+            "sampledPeakRssKiB": 764684,
+            "sampledPeakPssKiB": 492220,
+            "completePssSamples": 1
+          }
+        ],
+        "errors": [],
+        "observedSamples": 32
+      }
+    }
+  ],
+  "porto": {
+    "passed": true,
+    "records": 71634,
+    "memoryMeasured": false,
+    "scope": "Existing complete Porto offline journey with frozen counts/search/area/saved-details/eviction; default desktop Chromium context."
+  },
+  "notRun": [
+    "physical Android/iOS",
+    "retained-profile browser-process restart",
+    "hard phone-memory-budget acceptance",
+    "shaped mobile network",
+    "API/PostgreSQL total process memory"
+  ]
+}

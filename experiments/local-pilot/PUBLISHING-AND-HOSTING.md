@@ -130,8 +130,8 @@ Pi 5 power requirements. Check SSD and adapter power demand as well.
 
 The 32 GB free-space recommendation allows room beyond today's roughly 2 GB
 database. Peak restore/import/WAL space is still unmeasured. It is not a promise
-that every future inventory will fit. The 1 GB browser-memory observation is a
-client-side measurement, not PostgreSQL's server RAM requirement.
+that every future inventory will fit. The offline browser-memory measurements
+belong to the client. They do not measure PostgreSQL's server RAM requirement.
 
 ## The current Carbon build has an ARM64 gate
 
@@ -167,11 +167,27 @@ behind carrier-grade NAT. A tunnel changes reachability, not the application's
 security requirements. [Tailscale Serve](https://tailscale.com/docs/features/tailscale-serve),
 [Tailscale Funnel](https://tailscale.com/docs/features/tailscale-funnel).
 
+The offline app also needs a secure browser origin. Use trusted HTTPS when
+opening it from a phone through the Pi's LAN address or VPN hostname. Plain
+`http://192.168.x.x` does not receive the localhost exception that lets our
+current `http://127.0.0.1` test register a service worker. A private network does
+not make an HTTP origin secure. Test app-shell installation and offline refresh
+from the actual phone URL. [MDN service worker requirements](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API),
+[MDN secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Secure_Contexts).
+
 For a later public service, use an HTTPS reverse proxy in front of the local
 backend. Caddy can obtain and renew certificates for a configured public domain.
 Verify the chosen challenge, DNS and network path. Prefer a common origin for
 frontend and API; a public static page cannot fetch a private tailnet backend
 for visitors who are outside that tailnet. [Caddy automatic HTTPS](https://caddyserver.com/docs/automatic-https).
+
+Serve the Pi's API over HTTPS too when an HTTPS page accesses its LAN address.
+HTTP LAN requests can face mixed-content blocks and local-network permission
+checks. Current Chrome documents permission-gated exceptions; this pilot has
+not qualified that route across its target browsers. Prefer a common trusted
+HTTPS origin with a reverse proxy. A browser's network permission does not
+authenticate the user to the backend. [MDN mixed content](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content),
+[Chrome Local Network Access](https://developer.chrome.com/docs/modern-web-guidance/guides/security/local-network-access).
 
 Required work before network exposure:
 

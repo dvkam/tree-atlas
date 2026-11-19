@@ -12,7 +12,14 @@ The five sibling directories retain their original interfaces:
 - `tree-atlas-carbon-inventory-api`: read-only Carbon/native query application.
 - `tree-atlas-local`: separate frontend, remote client and complete offline packs.
 
-Read [the current branch validation](BRANCH-VALIDATION.md) and [next steps](NEXT-STEPS.md). London query fixes pass full four-city HTTP conformance. Complete offline browser journeys pass for all four cities, with a substantial London memory risk. The [clean userspace and restore procedure](CLEAN-ROOM.md) passed with fresh dependencies and a separately restored database. That proof uses fresh Ubuntu userspace on the shared WSL kernel.
+Read [the current branch validation](BRANCH-VALIDATION.md) and [next steps](NEXT-STEPS.md). London query fixes pass full four-city HTTP conformance. The [offline memory follow-up](tree-atlas-local/verification/offline-memory.md) cut median sampled London browser PSS by 40.5% in five matched runs per build. All four offline journeys pass; physical-phone memory acceptance remains open. The [clean userspace and restore procedure](CLEAN-ROOM.md) passed with fresh dependencies and a separately restored database at its recorded source revision. That proof uses fresh Ubuntu userspace on the shared WSL kernel.
+
+[Publishing and Raspberry Pi planning](PUBLISHING-AND-HOSTING.md) explains the
+draft PR recommendation, local issue drafts, database storage and server gates.
+The current Carbon/native build is x86-64. A complete ARM64 stack needs its own
+qualification before Pi deployment. Database/client security updates also need
+qualification before network exposure. No GitHub or server changes are part of
+this local work.
 
 The pilot preserves London, Vienna, Geneva and Porto: **1,657,347 records**.
 Offline city downloads contain complete searchable fields and exact positions;
