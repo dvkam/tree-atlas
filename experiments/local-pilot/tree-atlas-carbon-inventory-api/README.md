@@ -58,6 +58,17 @@ Query keys use explicit ECMAScript number formatting, including negative zero,
 subnormal numbers and decimal/scientific notation thresholds. json-c's default
 double formatting is not used for this key. Source IDs remain exact strings.
 
+## London filtered-query follow-up — 19 November
+
+The current read path uses one exact summary membership scan, skips SQL for
+provably empty/out-of-range list pages, and filters/pages a covering search
+projection before retrieving only the selected canonical records. The search
+cover adds about 262 MB. [Investigation and regression scope](sql/LONDON-SEARCH.md)
+records the reproduced timeouts, phase observations and unchanged deadline.
+Apply `sql/apply_search_index.py` after staging/restoring; it validates an existing
+index definition and performs ordinary VACUUM/ANALYZE. Full current HTTP, offline
+and clean-room evidence is recorded at the workspace level.
+
 ## Performance changes and measurements
 
 `sql/PROFILE.md` records the actual nested plans and counterfactual measurements.
@@ -128,6 +139,7 @@ validated staging would use:
 ```sh
 sudo python3 tools/install_sql.py
 sudo python3 sql/apply_spatial_index.py
+sudo python3 sql/apply_search_index.py
 sudo python3 sql/vacuum_after_import.py
 ```
 

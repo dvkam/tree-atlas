@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFile, writeFile, mkdir, rename } from 'node:fs/promises';
 import { createHash, randomUUID } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { gunzipSync } from 'node:zlib';
 import { resolve } from 'node:path';
 import { ROOT,FROZEN,startService } from './http-client.mjs';
@@ -22,7 +23,15 @@ const quick=process.argv.includes('--quick');
 const output=resolve(ROOT,'evidence',quick?'http-conformance-quick.json':'http-conformance.json');
 await mkdir(resolve(ROOT,'evidence'),{recursive:true});
 async function save(value){const temporary=output+'.tmp';await writeFile(temporary,JSON.stringify(value,null,2)+'\n');await rename(temporary,output);}
-const report={passed:false,state:'running',date:'2026-11-08',freezeSha256:hash(sealBytes),
+const executionStartedAt=new Date();
+let sourceCommit=null;
+try { sourceCommit=execFileSync('git',['-C',ROOT,'rev-parse','HEAD'],{encoding:'utf8',stdio:['ignore','pipe','ignore']}).trim(); }
+catch { /* A clean-room git archive has no .git; its outer report binds the source commit. */ }
+const report={passed:false,state:'running',
+  date:new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Vienna',year:'numeric',month:'2-digit',day:'2-digit'}).format(executionStartedAt),
+  executionStartedAt:executionStartedAt.toISOString(),sourceCommit,
+  runtime:{node:process.version,unicode:process.versions.unicode,platform:process.platform,arch:process.arch},
+  freezeSha256:hash(sealBytes),
   scope:'Actual local Carbon HTTP list/count/correlation/detail/suggestion/map member checks; no browser, offline or hosted performance claim',
   selectedPageChecks:0,suggestionChecks:0,detailChecks:0,smallFullFilterSets:[],fullEmptyInventories:[],
   markerPartitionChecks:[],viewportPageChecks:0,quick,profiles:[]};

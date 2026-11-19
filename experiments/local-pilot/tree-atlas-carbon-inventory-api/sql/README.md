@@ -46,6 +46,16 @@ sanitizes PostgreSQL-inexpressible U+0000 text to a `containsNul:true` request
 flag and an empty bound term. All relevant functions explicitly return zero
 matches for that flag; they must not mistake it for empty-query/all-records.
 
+## Current filtered-query read path
+
+See [the London deadline investigation](LONDON-SEARCH.md). `apply_search_index.py`
+installs/validates the narrow covering B-tree used by membership scans. Summary
+counts and marker groups share one scan; outside-viewport/unlocated matches stay
+in totals through an undisplayed bucket. Exact empty/out-of-range query pages
+avoid a second SQL operation. Filtered list/viewport/member paging selects
+identities before fetching canonical JSON for requested rows. Diagnostic counters
+expose actual query-summary/page calls and aggregate times without query content.
+
 ## Performance behavior to measure
 
 Summary and page are separate SQL operations so the native adapter can cache
