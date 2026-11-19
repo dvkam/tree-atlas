@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium, expect, test } from "@playwright/test";
-import type { Page } from "@playwright/test";
+import type { Browser, BrowserContext, BrowserServer, Page } from "@playwright/test";
 import { browserMemory } from "./browser-memory.ts";
 import { blockExternalTiles, city, ready, reference, url } from "./helpers.ts";
 
@@ -42,19 +42,32 @@ async function checkFirstIds(page: Page, id: string, name: string) {
   expect(ids.slice(0, expected.length)).toEqual(expected);
 }
 
-test.beforeAll(async () => persist());
+async function closeOwnedBrowser(
+  server: BrowserServer,
+  browser: Browser | null,
+  context: BrowserContext | null,
+) {
+  try {
+    await context?.close();
+  } finally {
+    try {
+      await browser?.close();
+    } finally {
+      await server.close();
+    }
+  }
+}
 
-for (const id of cities) {
-  test(`${id} complete offline pack, offline refresh, queries and process memory`, async ({
-    baseURL,
-  }) => {
-    test.setTimeout(600_000);
-    if (baseURL === undefined) throw new Error("A local production preview URL is required");
-    const server = await chromium.launchServer();
+async function openOwnedBrowser(baseURL: string) {
+  const server = await chromium.launchServer();
+  let browser: Browser | null = null;
+  let context: BrowserContext | null = null;
+  // Ownership begins immediately after launch, before connection, page or sampler setup.
+  try {
     const processId = server.process().pid;
     if (processId === undefined) throw new Error("The owned Chromium PID is unavailable");
-    const browser = await chromium.connect(server.wsEndpoint());
-    const context = await browser.newContext({
+    browser = await chromium.connect(server.wsEndpoint());
+    context = await browser.newContext({
       baseURL,
       serviceWorkers: "allow",
       viewport: { width: 390, height: 844 },
@@ -63,6 +76,28 @@ for (const id of cities) {
     });
     const page = await context.newPage();
     const memory = await browserMemory(processId);
+    return { server, browser, context, page, memory };
+  } catch (error) {
+    try {
+      await closeOwnedBrowser(server, browser, context);
+    } catch (cleanupError) {
+      throw new AggregateError([error, cleanupError], "Owned browser startup and cleanup failed.", {
+        cause: cleanupError,
+      });
+    }
+    throw error;
+  }
+}
+
+test.beforeAll(async () => persist());
+
+for (const id of cities) {
+  test(`${id} complete offline pack, offline refresh, queries and process memory`, async ({
+    baseURL,
+  }) => {
+    test.setTimeout(600_000);
+    if (baseURL === undefined) throw new Error("A local production preview URL is required");
+    const { server, browser, context, page, memory } = await openOwnedBrowser(baseURL);
     const timings: Record<string, number> = {};
     const workerKinds = new Set<string>();
     const pageErrors: string[] = [];
@@ -198,6 +233,7 @@ for (const id of cities) {
       await expect(page.getByRole("list", { name: "Tree records" })).toHaveCount(0);
       await expect(page.locator(".results-heading h2")).not.toHaveText("0 records");
       expect(offlineApiRequests).toEqual([]);
+      expect(pageErrors).toEqual([]);
       passed = true;
     } catch (error) {
       errorText = error instanceof Error ? error.message : String(error);
@@ -209,22 +245,14 @@ for (const id of cities) {
       try {
         memoryResult = await memory.finish();
       } finally {
-        try {
-          await context.close();
-        } finally {
-          try {
-            await browser.close();
-          } finally {
-            await server.close();
-          }
-        }
+        await closeOwnedBrowser(server, browser, context);
       }
       const measured =
         memoryResult.errors.length === 0 &&
         memoryResult.samples.some((sample) => sample.roles["renderer"] !== undefined);
       const browserExited =
         server.process().exitCode !== null || server.process().signalCode !== null;
-      passed &&= measured && browserExited;
+      passed &&= measured && browserExited && pageErrors.length === 0;
       if (passed) completed.add(id);
       const report = {
         recordedAt: new Date().toISOString(),
@@ -253,6 +281,7 @@ for (const id of cities) {
       await persist();
     }
     expect(memoryResult.errors).toEqual([]);
+    expect(pageErrors).toEqual([]);
     expect(server.process().exitCode !== null || server.process().signalCode !== null).toBe(true);
     expect(memoryResult.samples.some((sample) => sample.roles["renderer"] !== undefined)).toBe(
       true,

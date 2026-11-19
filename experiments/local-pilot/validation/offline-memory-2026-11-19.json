@@ -4,6 +4,10 @@
   "browserJourneysPassed": 4,
   "newCityJourneys": 3,
   "scope": "Real local bundled Chromium, complete pinned city packs and offline refresh; owned Linux browser process-tree RSS includes renderer/dedicated-worker native memory but double-counts shared pages; PSS only where all process samples are readable; 250 ms sampled peaks can miss transients; no physical-phone, shaped-network, cold-OS, hard-memory-budget or basemap claim.",
+  "reviewFixes": [
+    "Owned Chromium cleanup covers startup failures before connection/context/page/sampler readiness.",
+    "Page errors are checked after eviction and cleanup; they prevent successful report activation."
+  ],
   "notRun": [
     "physical Android/iOS",
     "shaped/shared mobile network",
@@ -25,12 +29,12 @@
         "hasTouch": true
       },
       "timings": {
-        "downloadValidateCommitMs": 3481.595657,
-        "offlineModeInitializeMs": 5050.151462999998,
-        "offlineRefreshReadyMs": 5291.799389999998,
-        "common-genusMs": 1062.3730429999996,
-        "leading-zerosMs": 485.1728489999987,
-        "areaReloadReadyMs": 4280.009124
+        "downloadValidateCommitMs": 3982.6566199999997,
+        "offlineModeInitializeMs": 6077.665037000001,
+        "offlineRefreshReadyMs": 5327.784253000002,
+        "common-genusMs": 980.5789330000007,
+        "leading-zerosMs": 461.9658640000016,
+        "areaReloadReadyMs": 4304.909412000001
       },
       "packContentBytes": 16139261,
       "storageEstimate": {
@@ -46,87 +50,91 @@
       "ownedBrowserExited": true,
       "offlineApiRequests": [],
       "pageErrors": [],
+      "workerKinds": [
+        "/assets/offline-validation.worker.js",
+        "/assets/offline.worker.js"
+      ],
       "memory": {
         "intervalMs": 250,
-        "maximumObservedSampleGapMs": 342.44525200000044,
-        "sampledPeakRssKiB": 1359352,
-        "sampledPeakPssKiB": 1091671,
-        "availableSamplePssPeakKiB": 1091671,
-        "completePssSamples": 120,
+        "maximumObservedSampleGapMs": 310.2723509999996,
+        "sampledPeakRssKiB": 1324952,
+        "sampledPeakPssKiB": 1060406,
+        "availableSamplePssPeakKiB": 1060406,
+        "completePssSamples": 128,
         "byPhase": [
           {
             "phase": "launch",
             "samples": 1,
-            "sampledPeakRssKiB": 407244,
-            "sampledPeakPssKiB": 171957,
+            "sampledPeakRssKiB": 405932,
+            "sampledPeakPssKiB": 169804,
             "completePssSamples": 1
           },
           {
             "phase": "online-open",
-            "samples": 5,
-            "sampledPeakRssKiB": 534472,
-            "sampledPeakPssKiB": 271939,
-            "completePssSamples": 5
+            "samples": 9,
+            "sampledPeakRssKiB": 546504,
+            "sampledPeakPssKiB": 275151,
+            "completePssSamples": 9
           },
           {
             "phase": "download-and-validate",
-            "samples": 13,
-            "sampledPeakRssKiB": 971288,
-            "sampledPeakPssKiB": 702923,
-            "completePssSamples": 13
+            "samples": 15,
+            "sampledPeakRssKiB": 961308,
+            "sampledPeakPssKiB": 687574,
+            "completePssSamples": 15
           },
           {
             "phase": "offline-worker-initialization",
-            "samples": 19,
-            "sampledPeakRssKiB": 1310076,
-            "sampledPeakPssKiB": 1034818,
-            "completePssSamples": 19
+            "samples": 22,
+            "sampledPeakRssKiB": 1310432,
+            "sampledPeakPssKiB": 1034765,
+            "completePssSamples": 22
           },
           {
             "phase": "offline-refresh",
             "samples": 20,
-            "sampledPeakRssKiB": 1341256,
-            "sampledPeakPssKiB": 1074455,
+            "sampledPeakRssKiB": 1309928,
+            "sampledPeakPssKiB": 1040910,
             "completePssSamples": 20
           },
           {
             "phase": "offline-common-genus",
-            "samples": 4,
-            "sampledPeakRssKiB": 1249676,
-            "sampledPeakPssKiB": 979583,
-            "completePssSamples": 4
+            "samples": 3,
+            "sampledPeakRssKiB": 1210364,
+            "sampledPeakPssKiB": 938798,
+            "completePssSamples": 3
           },
           {
             "phase": "offline-leading-zeros",
-            "samples": 1,
-            "sampledPeakRssKiB": 1189176,
-            "sampledPeakPssKiB": 918443,
-            "completePssSamples": 1
+            "samples": 2,
+            "sampledPeakRssKiB": 1192920,
+            "sampledPeakPssKiB": 920858,
+            "completePssSamples": 2
           },
           {
             "phase": "offline-area-reload",
-            "samples": 16,
-            "sampledPeakRssKiB": 1287380,
-            "sampledPeakPssKiB": 1020195,
-            "completePssSamples": 16
+            "samples": 15,
+            "sampledPeakRssKiB": 1297428,
+            "sampledPeakPssKiB": 1027942,
+            "completePssSamples": 15
           },
           {
             "phase": "offline-details",
             "samples": 39,
-            "sampledPeakRssKiB": 1359352,
-            "sampledPeakPssKiB": 1091671,
+            "sampledPeakRssKiB": 1324952,
+            "sampledPeakPssKiB": 1060406,
             "completePssSamples": 39
           },
           {
             "phase": "offline-eviction",
             "samples": 2,
-            "sampledPeakRssKiB": 964016,
-            "sampledPeakPssKiB": 696459,
+            "sampledPeakRssKiB": 931516,
+            "sampledPeakPssKiB": 659302,
             "completePssSamples": 2
           }
         ],
         "errors": [],
-        "samples": 120,
+        "samples": 128,
         "processCountRange": {
           "min": 6,
           "max": 6
@@ -138,11 +146,7 @@
           "utility",
           "zygote"
         ]
-      },
-      "workerKinds": [
-        "/assets/offline-validation.worker.js",
-        "/assets/offline.worker.js"
-      ]
+      }
     },
     {
       "city": "vienna",
@@ -157,12 +161,12 @@
         "hasTouch": true
       },
       "timings": {
-        "downloadValidateCommitMs": 1012.7058529999995,
-        "offlineModeInitializeMs": 2013.2854759999973,
-        "offlineRefreshReadyMs": 2149.5366520000025,
-        "common-genusMs": 455.75265400000353,
-        "leading-zerosMs": 206.42358399999648,
-        "areaReloadReadyMs": 2202.9183519999933
+        "downloadValidateCommitMs": 1052.9739860000045,
+        "offlineModeInitializeMs": 2056.7553069999994,
+        "offlineRefreshReadyMs": 2390.3345289999997,
+        "common-genusMs": 474.45052600000054,
+        "leading-zerosMs": 209.97429700000066,
+        "areaReloadReadyMs": 2223.2357800000027
       },
       "packContentBytes": 4092520,
       "storageEstimate": {
@@ -178,80 +182,91 @@
       "ownedBrowserExited": true,
       "offlineApiRequests": [],
       "pageErrors": [],
+      "workerKinds": [
+        "/assets/offline-validation.worker.js",
+        "/assets/offline.worker.js"
+      ],
       "memory": {
         "intervalMs": 250,
-        "maximumObservedSampleGapMs": 285.11255900000106,
-        "sampledPeakRssKiB": 895316,
-        "sampledPeakPssKiB": 623067,
-        "availableSamplePssPeakKiB": 623067,
-        "completePssSamples": 52,
+        "maximumObservedSampleGapMs": 295.92864499999996,
+        "sampledPeakRssKiB": 876504,
+        "sampledPeakPssKiB": 602087,
+        "availableSamplePssPeakKiB": 602087,
+        "completePssSamples": 53,
         "byPhase": [
           {
             "phase": "launch",
             "samples": 1,
-            "sampledPeakRssKiB": 399952,
-            "sampledPeakPssKiB": 162692,
+            "sampledPeakRssKiB": 411712,
+            "sampledPeakPssKiB": 173453,
             "completePssSamples": 1
           },
           {
             "phase": "online-open",
             "samples": 3,
-            "sampledPeakRssKiB": 546732,
-            "sampledPeakPssKiB": 274334,
+            "sampledPeakRssKiB": 546776,
+            "sampledPeakPssKiB": 274959,
             "completePssSamples": 3
           },
           {
             "phase": "download-and-validate",
-            "samples": 4,
-            "sampledPeakRssKiB": 758688,
-            "sampledPeakPssKiB": 484342,
-            "completePssSamples": 4
+            "samples": 5,
+            "sampledPeakRssKiB": 726016,
+            "sampledPeakPssKiB": 447800,
+            "completePssSamples": 5
           },
           {
             "phase": "offline-worker-initialization",
-            "samples": 8,
-            "sampledPeakRssKiB": 869468,
-            "sampledPeakPssKiB": 590175,
-            "completePssSamples": 8
+            "samples": 7,
+            "sampledPeakRssKiB": 865548,
+            "sampledPeakPssKiB": 587427,
+            "completePssSamples": 7
           },
           {
             "phase": "offline-refresh",
-            "samples": 8,
-            "sampledPeakRssKiB": 854552,
-            "sampledPeakPssKiB": 581891,
-            "completePssSamples": 8
+            "samples": 9,
+            "sampledPeakRssKiB": 855588,
+            "sampledPeakPssKiB": 583281,
+            "completePssSamples": 9
           },
           {
             "phase": "offline-common-genus",
-            "samples": 2,
-            "sampledPeakRssKiB": 874864,
-            "sampledPeakPssKiB": 600003,
-            "completePssSamples": 2
+            "samples": 1,
+            "sampledPeakRssKiB": 874064,
+            "sampledPeakPssKiB": 600067,
+            "completePssSamples": 1
+          },
+          {
+            "phase": "offline-leading-zeros",
+            "samples": 1,
+            "sampledPeakRssKiB": 876504,
+            "sampledPeakPssKiB": 602087,
+            "completePssSamples": 1
           },
           {
             "phase": "offline-area-reload",
-            "samples": 9,
-            "sampledPeakRssKiB": 882024,
-            "sampledPeakPssKiB": 595971,
-            "completePssSamples": 9
+            "samples": 8,
+            "sampledPeakRssKiB": 832252,
+            "sampledPeakPssKiB": 560655,
+            "completePssSamples": 8
           },
           {
             "phase": "offline-details",
             "samples": 16,
-            "sampledPeakRssKiB": 895316,
-            "sampledPeakPssKiB": 623067,
+            "sampledPeakRssKiB": 868072,
+            "sampledPeakPssKiB": 596096,
             "completePssSamples": 16
           },
           {
             "phase": "offline-eviction",
-            "samples": 1,
-            "sampledPeakRssKiB": 760964,
-            "sampledPeakPssKiB": 486942,
-            "completePssSamples": 1
+            "samples": 2,
+            "sampledPeakRssKiB": 750372,
+            "sampledPeakPssKiB": 476992,
+            "completePssSamples": 2
           }
         ],
         "errors": [],
-        "samples": 52,
+        "samples": 53,
         "processCountRange": {
           "min": 6,
           "max": 6
@@ -263,11 +278,7 @@
           "utility",
           "zygote"
         ]
-      },
-      "workerKinds": [
-        "/assets/offline-validation.worker.js",
-        "/assets/offline.worker.js"
-      ]
+      }
     },
     {
       "city": "geneva",
@@ -282,12 +293,12 @@
         "hasTouch": true
       },
       "timings": {
-        "downloadValidateCommitMs": 974.7205099999992,
-        "offlineModeInitializeMs": 1995.0941070000044,
-        "offlineRefreshReadyMs": 2211.0090280000004,
-        "common-genusMs": 229.77818199999456,
-        "leading-zerosMs": 196.5481690000015,
-        "areaReloadReadyMs": 1177.1105040000039
+        "downloadValidateCommitMs": 1057.0012410000054,
+        "offlineModeInitializeMs": 2019.6015010000046,
+        "offlineRefreshReadyMs": 2299.9149649999963,
+        "common-genusMs": 470.8625680000041,
+        "leading-zerosMs": 227.4035770000046,
+        "areaReloadReadyMs": 2238.3459240000084
       },
       "packContentBytes": 3845514,
       "storageEstimate": {
@@ -303,80 +314,91 @@
       "ownedBrowserExited": true,
       "offlineApiRequests": [],
       "pageErrors": [],
+      "workerKinds": [
+        "/assets/offline-validation.worker.js",
+        "/assets/offline.worker.js"
+      ],
       "memory": {
         "intervalMs": 250,
-        "maximumObservedSampleGapMs": 314.67735600000015,
-        "sampledPeakRssKiB": 829672,
-        "sampledPeakPssKiB": 560106,
-        "availableSamplePssPeakKiB": 560106,
-        "completePssSamples": 47,
+        "maximumObservedSampleGapMs": 302.84368299999915,
+        "sampledPeakRssKiB": 834924,
+        "sampledPeakPssKiB": 563690,
+        "availableSamplePssPeakKiB": 563690,
+        "completePssSamples": 53,
         "byPhase": [
           {
             "phase": "launch",
             "samples": 1,
-            "sampledPeakRssKiB": 399524,
-            "sampledPeakPssKiB": 164179,
+            "sampledPeakRssKiB": 408760,
+            "sampledPeakPssKiB": 172295,
             "completePssSamples": 1
           },
           {
             "phase": "online-open",
             "samples": 3,
-            "sampledPeakRssKiB": 540072,
-            "sampledPeakPssKiB": 271314,
+            "sampledPeakRssKiB": 540560,
+            "sampledPeakPssKiB": 270260,
             "completePssSamples": 3
           },
           {
             "phase": "download-and-validate",
             "samples": 4,
-            "sampledPeakRssKiB": 723108,
-            "sampledPeakPssKiB": 452493,
+            "sampledPeakRssKiB": 720800,
+            "sampledPeakPssKiB": 448513,
             "completePssSamples": 4
           },
           {
             "phase": "offline-worker-initialization",
-            "samples": 7,
-            "sampledPeakRssKiB": 828472,
-            "sampledPeakPssKiB": 553037,
-            "completePssSamples": 7
+            "samples": 8,
+            "sampledPeakRssKiB": 832600,
+            "sampledPeakPssKiB": 556629,
+            "completePssSamples": 8
           },
           {
             "phase": "offline-refresh",
-            "samples": 9,
-            "sampledPeakRssKiB": 814384,
-            "sampledPeakPssKiB": 545078,
-            "completePssSamples": 9
+            "samples": 8,
+            "sampledPeakRssKiB": 808312,
+            "sampledPeakPssKiB": 537932,
+            "completePssSamples": 8
           },
           {
             "phase": "offline-common-genus",
+            "samples": 2,
+            "sampledPeakRssKiB": 815424,
+            "sampledPeakPssKiB": 543264,
+            "completePssSamples": 2
+          },
+          {
+            "phase": "offline-leading-zeros",
             "samples": 1,
-            "sampledPeakRssKiB": 773200,
-            "sampledPeakPssKiB": 500954,
+            "sampledPeakRssKiB": 771372,
+            "sampledPeakPssKiB": 497379,
             "completePssSamples": 1
           },
           {
             "phase": "offline-area-reload",
-            "samples": 5,
-            "sampledPeakRssKiB": 792916,
-            "sampledPeakPssKiB": 523314,
-            "completePssSamples": 5
+            "samples": 8,
+            "sampledPeakRssKiB": 792636,
+            "sampledPeakPssKiB": 521806,
+            "completePssSamples": 8
           },
           {
             "phase": "offline-details",
             "samples": 16,
-            "sampledPeakRssKiB": 829672,
-            "sampledPeakPssKiB": 560106,
+            "sampledPeakRssKiB": 834924,
+            "sampledPeakPssKiB": 563690,
             "completePssSamples": 16
           },
           {
             "phase": "offline-eviction",
-            "samples": 1,
-            "sampledPeakRssKiB": 747364,
-            "sampledPeakPssKiB": 478190,
-            "completePssSamples": 1
+            "samples": 2,
+            "sampledPeakRssKiB": 765772,
+            "sampledPeakPssKiB": 493002,
+            "completePssSamples": 2
           }
         ],
         "errors": [],
-        "samples": 47,
+        "samples": 53,
         "processCountRange": {
           "min": 6,
           "max": 6
@@ -388,12 +410,8 @@
           "utility",
           "zygote"
         ]
-      },
-      "workerKinds": [
-        "/assets/offline-validation.worker.js",
-        "/assets/offline.worker.js"
-      ]
+      }
     }
   ],
-  "sourceReportSha256": "1eb0011dd69329ac09dbffe146fc1d6b062d1a027d38464caf062a827bcb7ceb"
+  "sourceReportSha256": "dbfa6cd3af6d0bf9865b5a52d7fe3f88a2565855a6ca8b1d82a1a8f29773568d"
 }

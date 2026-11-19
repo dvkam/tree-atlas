@@ -33,17 +33,17 @@ Raw evidence is regenerated at `verification/offline-cities.json` and dated per-
 
 ## Recorded execution
 
-On **19 November 2026**, all **four browser journeys passed**: London (35.6 s), Vienna (15.3 s), Geneva (13.9 s), and the existing Porto regression (5.6 s). Each added city retained its complete record count and matched the frozen first-page IDs for the selected full-city/genus/leading-zero/area queries. Saved and unsaved details, refresh, eviction, and zero offline API requests passed. All owned browser processes exited.
+On **19 November 2026**, all **four browser journeys passed**: London (38.1 s), Vienna (16.0 s), Geneva (15.7 s), and the existing Porto regression (5.7 s). Each added city retained its complete record count and matched the frozen first-page IDs for the selected full-city/genus/leading-zero/area queries. Saved and unsaved details, refresh, eviction, and zero offline API requests passed. All owned browser processes exited. This final rerun includes the reviewed startup-ownership cleanup and post-eviction/page-error success guards. The earlier cohort remains in the ignored prior-run directory; the dated summary now binds this final raw report.
 
 | City   |   Records | Download + validate + commit | Offline initialize | Offline refresh ready | Sampled browser-tree RSS peak | Sampled browser-tree PSS peak | Browser storage estimate |
 | ------ | --------: | ---------------------------: | -----------------: | --------------------: | ----------------------------: | ----------------------------: | -----------------------: |
-| London | 1,111,784 |                       3.48 s |             5.05 s |                5.29 s |                     1,327 MiB |                     1,066 MiB |         17,016,771 bytes |
-| Vienna |   233,102 |                       1.01 s |             2.01 s |                2.15 s |                       874 MiB |                       608 MiB |          6,506,435 bytes |
-| Geneva |   240,827 |                       0.97 s |             2.00 s |                2.21 s |                       810 MiB |                       547 MiB |          6,260,675 bytes |
+| London | 1,111,784 |                       3.98 s |             6.08 s |                5.33 s |                     1,294 MiB |                     1,036 MiB |         17,016,771 bytes |
+| Vienna |   233,102 |                       1.05 s |             2.06 s |                2.39 s |                       856 MiB |                       588 MiB |          6,506,435 bytes |
+| Geneva |   240,827 |                       1.06 s |             2.02 s |                2.30 s |                       815 MiB |                       550 MiB |          6,260,675 bytes |
 
-These are **one journey per city**, not latency percentiles. There were 120/52/47 memory samples respectively; the largest observed sampling gaps were 342/285/315 ms. PSS was readable for every observed process in every sample. The browser/renderer/worker tree is included; API, PostgreSQL and test-runner memory are excluded. Storage estimates include shell overhead and browser accounting; they are separate from the immutable compressed package sizes.
+These are **one journey per city**, not latency percentiles. There were 128/53/53 memory samples respectively; the largest observed sampling gaps were 310/296/303 ms. PSS was readable for every observed process in every sample. The browser/renderer/worker tree is included; API, PostgreSQL and test-runner memory are excluded. Storage estimates include shell overhead and browser accounting; they are separate from the immutable compressed package sizes.
 
-London already reached about **1,011 MiB PSS during first offline initialization**, before the repeated deep-link navigations. Its overall sampled PSS peak was 1,066 MiB. This is a material unresolved large-city memory risk, not a physical-phone acceptance pass. Allocation/heap profiling and representative memory-constrained devices are the next checks; do not reduce complete search coverage to make a test pass.
+London already reached about **1,011 MiB PSS during first offline initialization**, before the repeated deep-link navigations. Its overall sampled PSS peak was 1,036 MiB. This is a material unresolved large-city memory risk, not a physical-phone acceptance pass. Allocation/heap profiling and representative memory-constrained devices are the next checks; do not reduce complete search coverage to make a test pass.
 
 The accepted three-second target applies to complete **online** first search including backend wake-up. These offline initialization/refresh timings are a different operation and do not pass or fail that hosted target.
 
