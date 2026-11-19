@@ -591,18 +591,25 @@ export async function loadInventory(
       const earlyDetails = new Map<string, Tree>();
       for (const shard of cache.values())
         for (const [id, tree] of shard) earlyDetails.set(id, tree);
-      for (const [i, row] of index.rows.entries()) {
-        const tree = earlyDetails.get(row[0]);
-        if (tree === undefined) continue;
-        const lon = coordinates[i * 2];
-        const lat = coordinates[i * 2 + 1];
-        if (
-          (tree.position?.[0] ?? null) !== (lon === undefined || Number.isNaN(lon) ? null : lon) ||
-          (tree.position?.[1] ?? null) !== (lat === undefined || Number.isNaN(lat) ? null : lat)
-        )
-          throw new Error("Cached detail does not match exact geometry.");
+      if (earlyDetails.size > 0) {
+        for (let i = 0; i < count; i++) {
+          const row = index.rows[i];
+          if (row === undefined) throw new Error("Invalid inventory ordinal.");
+          const tree = earlyDetails.get(row[0]);
+          if (tree === undefined) continue;
+          const lon = coordinates[i * 2];
+          const lat = coordinates[i * 2 + 1];
+          if (
+            (tree.position?.[0] ?? null) !==
+              (lon === undefined || Number.isNaN(lon) ? null : lon) ||
+            (tree.position?.[1] ?? null) !== (lat === undefined || Number.isNaN(lat) ? null : lat)
+          )
+            throw new Error("Cached detail does not match exact geometry.");
+        }
       }
-      for (const [i, row] of index.rows.entries()) {
+      for (let i = 0; i < count; i++) {
+        const row = index.rows[i];
+        if (row === undefined) throw new Error("Invalid inventory ordinal.");
         const lon = coordinates[i * 2];
         const lat = coordinates[i * 2 + 1];
         row[1] = lon === undefined || Number.isNaN(lon) ? null : lon;

@@ -4,6 +4,7 @@ import { http, HttpResponse } from "msw";
 import { setupServer } from "msw/node";
 import { beforeAll, afterAll, afterEach, describe, expect, it } from "vitest";
 import { loadInventory } from "./inventory.ts";
+import { encodeTextColumns } from "./index-codec.ts";
 import type { Dataset, Tree } from "./domain.ts";
 import type { CompactIndex, IndexDescriptor, InventoryQuery, IndexRow } from "./index-format.ts";
 
@@ -103,7 +104,114 @@ function serve(input: CompactIndex = index) {
   return { dataset, descriptor, detailRequests: () => detailRequests };
 }
 
+function serveSplit(conflictingGeometry: boolean) {
+  const original = serve();
+  const textIndex: CompactIndex = {
+    ...index,
+    rows: index.rows.map((row): IndexRow => [
+      row[0],
+      null,
+      null,
+      row[3],
+      row[4],
+      row[5],
+      row[6],
+      row[7],
+    ]),
+  };
+  const textBytes = gzipSync(encodeTextColumns(textIndex));
+  const geometry = new Uint8Array(index.rows.length * 16);
+  const value = new DataView(new ArrayBuffer(8));
+  for (let column = 0; column < 2; column++) {
+    for (let i = 0; i < index.rows.length; i++) {
+      const row = index.rows[i];
+      if (row === undefined) throw new Error("Missing geometry fixture row");
+      const coordinate = column === 0 ? row[1] : row[2];
+      value.setFloat64(
+        0,
+        conflictingGeometry && i === 0 && column === 0 ? 16.45 : (coordinate ?? Number.NaN),
+        true,
+      );
+      for (let lane = 0; lane < 8; lane++)
+        geometry[column * index.rows.length * 8 + lane * index.rows.length + i] =
+          value.getUint8(lane);
+    }
+  }
+  const geometryBytes = gzipSync(geometry);
+  const descriptor: IndexDescriptor = {
+    ...original.descriptor,
+    version: 3,
+    index: {
+      file: "releases/r2/text.bin",
+      sha256: hash(textBytes),
+      count: index.rows.length,
+      encoding: "text-columns-v1",
+    },
+    geometry: {
+      file: "releases/r2/geometry.bin",
+      sha256: hash(geometryBytes),
+      count: index.rows.length,
+    },
+  };
+  const descriptorText = JSON.stringify(descriptor);
+  let releaseGeometry: (() => void) | undefined;
+  const held = new Promise<void>((accept) => {
+    releaseGeometry = accept;
+  });
+  server.use(
+    http.get(`${base}${original.dataset.file}`, () => new HttpResponse(descriptorText)),
+    http.get(`${base}${descriptor.index.file}`, () => new HttpResponse(new Uint8Array(textBytes))),
+    http.get(`${base}${descriptor.geometry?.file}`, async () => {
+      await held;
+      return new HttpResponse(new Uint8Array(geometryBytes));
+    }),
+  );
+  return {
+    dataset: { ...original.dataset, sha256: hash(descriptorText) },
+    releaseGeometry() {
+      if (releaseGeometry === undefined) throw new Error("Missing geometry fixture gate");
+      releaseGeometry();
+    },
+  };
+}
+
 describe("full inventory published catalogue", () => {
+  it("checks details cached before exact geometry finishes loading", async () => {
+    const fixture = serveSplit(false);
+    const catalogue = await loadInventory(base, fixture.dataset);
+    try {
+      expect(catalogue.hasGeometry?.()).toBe(false);
+      expect(catalogue.query(query).items[0]?.positionPending).toBe(true);
+      expect((await catalogue.detail("one"))?.position).toEqual([16.4, 48.2]);
+      fixture.releaseGeometry();
+      await catalogue.spatialReady;
+      expect(catalogue.hasGeometry?.()).toBe(true);
+      expect(catalogue.query(query).items.map((item) => item.position)).toEqual([
+        [16.4, 48.2],
+        [16.5, 48.3],
+        [16.6, 48.4],
+      ]);
+      expect((await catalogue.detail("one"))?.position).toEqual([16.4, 48.2]);
+    } finally {
+      fixture.releaseGeometry();
+      catalogue.dispose();
+    }
+  });
+  it("rejects valid-hash geometry that conflicts with an already cached canonical detail", async () => {
+    const fixture = serveSplit(true);
+    const catalogue = await loadInventory(base, fixture.dataset);
+    try {
+      expect((await catalogue.detail("one"))?.position).toEqual([16.4, 48.2]);
+      fixture.releaseGeometry();
+      await expect(catalogue.spatialReady).rejects.toThrow(
+        "Cached detail does not match exact geometry",
+      );
+      expect(catalogue.hasGeometry?.()).toBe(false);
+    } finally {
+      fixture.releaseGeometry();
+      catalogue.dispose();
+    }
+  });
   it("rejects malformed and oversized queries without truncation, while preserving NUL", async () => {
     const fixture = serve();
     const catalogue = await loadInventory(base, fixture.dataset);
