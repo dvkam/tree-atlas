@@ -26,6 +26,22 @@ The pilot preserves London, Vienna, Geneva and Porto: **1,657,347 records**.
 Offline city downloads contain complete searchable fields and exact positions;
 full details work offline only when explicitly saved. Street tiles are separate.
 
+## Draft PR checks
+
+The separate [Verify local pilot workflow](../../.github/workflows/verify-local-pilot.yml)
+runs on PR updates from this repository's `pilot/carbon-postgres-local` branch.
+It verifies the frozen assets, runs the frontend source checks, and builds the
+pinned Carbon adapter on Ubuntu 24.04. It imports all four releases into the
+runner's PostgreSQL instance and independently checks all canonical records.
+SQL guard and HTTP tests exercise the installed adapter, followed by online
+search and four complete offline browser journeys.
+
+The HTTP conformance step checks the selected frozen pages and smaller matching
+sets. [Branch validation](BRANCH-VALIDATION.md) records the separate exhaustive
+HTTP run, restore drill and memory measurements. CI uses fresh runner-local
+database credentials and reports results in its logs. The job has read-only
+repository permissions and publishes no artifacts.
+
 ## Prepare the asset input
 
 From the repository root, in WSL:

@@ -98,7 +98,9 @@ The final check must verify those values again after creating the draft PR.
 The push uses a single explicit pilot-branch refspec, with tag following disabled.
 There is no force push, tag publication, main update or merge.
 
-Current PR CI checks the public root package. Exact pnpm workspace discovery and
+At the initial publication review, PR CI checked the public root package.
+See the [current pilot CI scope](README.md#draft-pr-checks). The public workflow's
+pnpm workspace discovery and
 TypeScript/Vitest/Playwright paths exclude the isolated pilot. Failure artifacts
 only upload root `test-results`, not pilot profiles, credentials or database
 artifacts. A green public CI run is not fresh pilot qualification. The local
