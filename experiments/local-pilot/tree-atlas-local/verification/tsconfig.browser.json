@@ -1,0 +1,4 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["../tests/local-browser", "./playwright.local.config.ts"]
+}

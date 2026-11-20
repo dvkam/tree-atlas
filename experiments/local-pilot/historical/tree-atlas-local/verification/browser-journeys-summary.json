@@ -1,0 +1,15 @@
+{
+  "historical": true,
+  "sourceDate": "2026-11-08",
+  "scope": "Summary of six final local production browser correctness journeys; not a fresh branch test. Full raw report/trace remains outside Git.",
+  "originalSha256": "30b40b341e460b8337cf3fb2114177bf34ace31e841a24e0a5233dcd035b2937",
+  "stats": {
+    "startTime": "2026-11-08T08:47:37.457Z",
+    "duration": 21463.434999999998,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": []
+}

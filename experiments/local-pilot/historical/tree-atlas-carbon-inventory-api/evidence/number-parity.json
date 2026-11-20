@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "node": "v26.13.0",
+  "cases": 20012,
+  "scope": "Native shortest number serialization vs ECMAScript JSON.stringify, including finite subnormal and geographic inputs"
+}

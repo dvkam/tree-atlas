@@ -1,0 +1,134 @@
+{
+  "passed": true,
+  "date": "2026-11-08",
+  "scope": "Local Carbon/native read-only adapter; no frontend, offline or hosted conformance claim",
+  "verifiedHttpRecords": 1657347,
+  "completeEmptyQueryPages": 16576,
+  "selectedPageChecks": 192,
+  "httpRegressionTests": 22,
+  "coldFreshProcessP95Ms": 1032.9617160000003,
+  "warmTenClientErrors": 0,
+  "stress25ClientBusy": 9,
+  "normalizer": {
+    "passed": true,
+    "node": "v26.13.0",
+    "icu": "78.3",
+    "unicode": "17.0",
+    "allUnicodeScalars": 1112064,
+    "randomContextCases": 20000,
+    "literalCases": 10,
+    "explicitContextCases": 22,
+    "invalidCases": 12,
+    "totalCases": 1132108,
+    "elapsedMs": 4721,
+    "scope": "Native ICU C wrapper compared with frozen Node normalization, plus literal goldens; no query/API performance claim"
+  },
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "e57da9a9aa8322abc5a9bc9c04f899bdbd03555a40522ea9700e68d73f800a83",
+      "bytes": 11914
+    },
+    {
+      "file": "src/service.carbon",
+      "sha256": "7e83213180ea0dcf6f4445fb50a4f6854cbb5c3bcf9aa56ad46090bf284823c1",
+      "bytes": 3960
+    },
+    {
+      "file": "src/service_runtime.cpp",
+      "sha256": "fdf78c5bfb504ab20b8ef938dab16e35bf71477aea7565bb7e48a1540830fbf9",
+      "bytes": 21098
+    },
+    {
+      "file": "src/service_runtime.h",
+      "sha256": "e65eb5414832265378c7b40c72aa1b04aa49e077f06af9745e463f833c15df22",
+      "bytes": 1333
+    },
+    {
+      "file": "src/inventory_impl.h",
+      "sha256": "ed0dfafe98c1e0ab0abe7708c4d7e4eaf1d620e41b88e8290572026ab7b5ff33",
+      "bytes": 15850
+    },
+    {
+      "file": "src/request_registry.h",
+      "sha256": "644cd600de44f9729f7f4acc28d86114e838dce58d60bc783869bf4fa2816e8b",
+      "bytes": 4492
+    },
+    {
+      "file": "sql/api.sql",
+      "sha256": "3c31cec32473729358f627d20585af9eb517b007ac3396f77823d50485e9be9c",
+      "bytes": 17542
+    },
+    {
+      "file": "unicode/normalizer.cpp",
+      "sha256": "31a2d411499c6aba917bc10a7499b9a1299e17ae651172a9bcda17e3c199088e",
+      "bytes": 4863
+    },
+    {
+      "file": "unicode/normalizer.h",
+      "sha256": "a3b3e57e628bb19d68749ada8fd87c046e8ba904654490c0aa3a909334cc8b3e",
+      "bytes": 511
+    },
+    {
+      "file": "build/service",
+      "sha256": "70ab105039e409957686066816ddae1a502caaadcdce05f3e6b6d1fda7b3fe2d",
+      "bytes": 855960
+    },
+    {
+      "file": "evidence/http-final-binding.json",
+      "sha256": "6295936b48c2dda1f19dd0161127e10b844e825dbc3a7e9688e919114012271e",
+      "bytes": 3117
+    },
+    {
+      "file": "evidence/http-conformance.json",
+      "sha256": "4446dfbb5978c32fd4d5321116198fdc359621d693e25883fa8726199bbf7943",
+      "bytes": 3487439
+    },
+    {
+      "file": "evidence/http-performance.json",
+      "sha256": "8ba4981ef925d36edab54d9b62ce4a7cc5ac05e5ddba64172f6d9da650d0199e",
+      "bytes": 63132
+    },
+    {
+      "file": "evidence/http-performance-before-queue.json",
+      "sha256": "1124348bc7ab96ec070837e79f8eba6b7e26c7bf846b22175d3eda000119a0f8",
+      "bytes": 63033
+    },
+    {
+      "file": "evidence/http-tests.log",
+      "sha256": "45289b851078f5ab00afa2235a8c33659887abbe3d8b77b654f0b5ec8c0ac699",
+      "bytes": 3033
+    },
+    {
+      "file": "evidence/sql-guard-tests.json",
+      "sha256": "cb08763de5af48ace08d8e18ed86abaa3fb9b7e55ebe620316541cdf63e968b8",
+      "bytes": 145
+    },
+    {
+      "file": "evidence/coincident-maxzoom.json",
+      "sha256": "5f4997754bdeac6bf189ec52c009602bb4f8e76ab7023478fddd75beea5abfd8",
+      "bytes": 363
+    },
+    {
+      "file": "evidence/number-parity.json",
+      "sha256": "6348a72c7b683fbc48ccd13b77ba0276f57222f200d1005fc3c6933e8fd8cde9",
+      "bytes": 191
+    },
+    {
+      "file": "unicode/parity-results.json",
+      "sha256": "07a092c9a9e55394b15c96051c81a829f4698f952ebac715fb822fd4e710a306",
+      "bytes": 393
+    },
+    {
+      "file": "evidence/final-state.json",
+      "sha256": "9d95e845f6a8ca2d6c88adc235eb16864870daa82f8d03c313d013122fde7037",
+      "bytes": 364
+    },
+    {
+      "file": "evidence/review.md",
+      "sha256": "9531c1b87b6bf4dc36312698788fcd65f3d944d055cc1e30034f4d6f577ee1b8",
+      "bytes": 4883
+    }
+  ],
+  "deployment": false
+}

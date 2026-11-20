@@ -1,0 +1,195 @@
+{
+  "passed": true,
+  "date": "2026-11-19",
+  "executionStartedAt": "2026-11-19T07:02:18.262Z",
+  "sourceCommit": "4efb11a76eb76d2b1151ba8c2a6351cbb52d31f3",
+  "runtime": {
+    "node": "v26.13.0",
+    "unicode": "17.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+  "rawReportSha256": "af3d981727ab31ad26a7170f1975b3cfa56face40e4c2fe6b77c60a025ebdf3c",
+  "scope": "Actual local Carbon HTTP list/count/correlation/detail/suggestion/map member checks; no browser, offline or hosted performance claim",
+  "elapsedMs": 168202,
+  "frozenCases": 48,
+  "selectedPageChecks": 192,
+  "suggestionChecks": 16,
+  "detailChecks": 8,
+  "viewportPageChecks": 5,
+  "completeInventories": [
+    {
+      "dataset": "london",
+      "case": "all",
+      "records": 1111784,
+      "pages": 11118,
+      "identitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+      "scope": "complete unfiltered inventory"
+    },
+    {
+      "dataset": "vienna",
+      "case": "all",
+      "records": 233102,
+      "pages": 2332,
+      "identitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+      "scope": "complete unfiltered inventory"
+    },
+    {
+      "dataset": "geneva",
+      "case": "all",
+      "records": 240827,
+      "pages": 2409,
+      "identitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+      "scope": "complete unfiltered inventory"
+    },
+    {
+      "dataset": "porto",
+      "case": "all",
+      "records": 71634,
+      "pages": 717,
+      "identitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+      "scope": "complete unfiltered inventory"
+    }
+  ],
+  "smallFullFilterSets": [
+    {
+      "dataset": "london",
+      "case": "leading-zeros",
+      "records": 310,
+      "pages": 4,
+      "identitySha256": "21cf89e0b484e97961ec22380b0b96b12ff0c989f169f3bc5ed228bd822e011d",
+      "scope": "small filtered full membership"
+    },
+    {
+      "dataset": "vienna",
+      "case": "literal-underscore",
+      "records": 2,
+      "pages": 1,
+      "identitySha256": "b97c82bbc74ad4254bd1ab8893cc4ee388bbf8a386e730a35dc12c8fbf645c7b",
+      "scope": "small filtered full membership"
+    },
+    {
+      "dataset": "vienna",
+      "case": "leading-zeros",
+      "records": 73,
+      "pages": 1,
+      "identitySha256": "48e2d8376a0896af73e85107a0491ede6f9f953ffd72d7972a2835ed6b00189d",
+      "scope": "small filtered full membership"
+    },
+    {
+      "dataset": "geneva",
+      "case": "rare-genus",
+      "records": 13,
+      "pages": 1,
+      "identitySha256": "3902f279ac6c78bb80d5f3c89f8697f558e10c457ed880e5ddb095a7f8499416",
+      "scope": "small filtered full membership"
+    },
+    {
+      "dataset": "geneva",
+      "case": "leading-zeros",
+      "records": 57,
+      "pages": 1,
+      "identitySha256": "36181b692bf98695dfa399f4f172e9fbd1fb51b1b7deffacd2cc857f4d4f4f53",
+      "scope": "small filtered full membership"
+    },
+    {
+      "dataset": "porto",
+      "case": "leading-zeros",
+      "records": 5,
+      "pages": 1,
+      "identitySha256": "1b34e470b75f5dd08a77996d10fd5fef9126ba7ac37b2c19d36efb8364fb444b",
+      "scope": "small filtered full membership"
+    }
+  ],
+  "markerPartitionChecks": [
+    {
+      "dataset": "geneva",
+      "case": "rare-genus",
+      "records": 13,
+      "markers": 1,
+      "clusters": 1
+    },
+    {
+      "dataset": "porto",
+      "case": "leading-zeros",
+      "records": 5,
+      "markers": 1,
+      "clusters": 1
+    },
+    {
+      "dataset": "vienna",
+      "case": "literal-underscore",
+      "records": 2,
+      "markers": 1,
+      "clusters": 1
+    }
+  ],
+  "londonFirstPageObservations": [
+    {
+      "dataset": "london",
+      "case": "one-character",
+      "path": "/v1/query",
+      "offset": 0,
+      "requestMs": 833.241,
+      "withAttemptMs": 833.906,
+      "bytes": 108024
+    },
+    {
+      "dataset": "london",
+      "case": "rare-genus",
+      "path": "/v1/query",
+      "offset": 0,
+      "requestMs": 369.143,
+      "withAttemptMs": 369.43,
+      "bytes": 446
+    }
+  ],
+  "timingLimits": "Local uncontrolled warm database/OS caches; observations include attempt reservation; not hosted, cold-OS, mobile-network or percentile proof for filtered searches.",
+  "httpRegressionTests": {
+    "optInRealLockFaults": true,
+    "skipped": 0,
+    "cases": [
+      "explicit cancellation",
+      "deadline",
+      "client reset",
+      "legitimate delayed half-close"
+    ],
+    "seconds": 12.628,
+    "passed": 24
+  },
+  "cleanup": {
+    "serviceExit": 0,
+    "poolSessionsRemaining": 0
+  },
+  "stats": {
+    "capacity": 2,
+    "active": 0,
+    "waiting": 0,
+    "waiterLimit": 16,
+    "max_active": 1,
+    "available": 2,
+    "connections": 2,
+    "cancellations": 0,
+    "cancel_acknowledged": 0,
+    "reconnects": 0,
+    "attempts_tracked": 0,
+    "attempts_pending": 0,
+    "querySummarySqlCalls": 51,
+    "queryPageSqlCalls": 16669,
+    "querySummarySqlUs": 8947749,
+    "queryPageSqlUs": 93807056,
+    "sqlPoolWaitUs": 1615,
+    "cacheEntries": 51,
+    "cacheBytes": 1323727,
+    "cacheLimitBytes": 33554432,
+    "cacheEntryLimit": 64
+  },
+  "notRun": [
+    "full broad-filter HTTP enumeration",
+    "full viewport/cluster expansion across every city",
+    "browser/offline pack",
+    "network-shaped physical mobile",
+    "hosted cold performance"
+  ]
+}

@@ -1,0 +1,35 @@
+# Generated input alias for the frozen pilot's sibling-directory layout.
+/tree-atlas/
+/tree-atlas-carbon-poc/tools/carbon_toolchain-0.0.0-0.nightly.2026.11.07
+/tree-atlas-carbon-poc/tools/libpq-17.11
+/tree-atlas-carbon-inventory-api/unicode/tools
+/tree-atlas-local/node_modules
+/.verification/
+__pycache__/
+*.pyc
+
+# Runtime evidence is regenerated; original reports are archived under historical/.
+/tree-atlas-carbon-poc/evidence/*
+!/tree-atlas-carbon-poc/evidence/.gitkeep
+/tree-atlas-postgres-pilot/evidence/*
+!/tree-atlas-postgres-pilot/evidence/.gitkeep
+/tree-atlas-carbon-inventory-api/evidence/*
+!/tree-atlas-carbon-inventory-api/evidence/.gitkeep
+/tree-atlas-local/evidence/*
+!/tree-atlas-local/evidence/.gitkeep
+/tree-atlas-postgres-pilot/verification/*.json
+/tree-atlas-local/verification/*.json
+!/tree-atlas-local/verification/tsconfig.browser.json
+/tree-atlas-local/verification/*.log
+/tree-atlas-local/verification/*.png
+/tree-atlas-local/verification/initial-offline-failure
+/tree-atlas-carbon-inventory-api/unicode/icu-client.json
+/tree-atlas-carbon-inventory-api/unicode/parity-results.json
+/tree-atlas-carbon-inventory-api/unicode/build-result.json
+/tree-atlas-carbon-inventory-api/unicode/runtime-libraries.txt
+/tree-atlas-carbon-poc/experiments/callbacks/*.json
+/tree-atlas-carbon-poc/experiments/callbacks/*.o
+/tree-atlas-carbon-poc/experiments/callbacks/callback
+/tree-atlas-carbon-poc/experiments/callbacks/context
+/tree-atlas-carbon-poc/experiments/callbacks/opaque
+/tree-atlas-carbon-poc/experiments/callbacks/thread

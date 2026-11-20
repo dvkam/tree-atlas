@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "dataset": "geneva",
+  "release": "geneva-a3456b2d943dc57d",
+  "coordinates": [
+    6.118538645727521,
+    46.208396950661125
+  ],
+  "zoom": 24,
+  "exactViewportCount": 2,
+  "memberPages": 2,
+  "allIdentitiesReachableExactlyOnce": true,
+  "scope": "Actual validated-record SQL coordinates/IDs versus public HTTP; no canonical data changes"
+}

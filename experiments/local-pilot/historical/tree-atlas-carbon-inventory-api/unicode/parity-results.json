@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "node": "v26.13.0",
+  "icu": "78.3",
+  "unicode": "17.0",
+  "allUnicodeScalars": 1112064,
+  "randomContextCases": 20000,
+  "literalCases": 10,
+  "explicitContextCases": 22,
+  "invalidCases": 12,
+  "totalCases": 1132108,
+  "elapsedMs": 4721,
+  "scope": "Native ICU C wrapper compared with frozen Node normalization, plus literal goldens; no query/API performance claim"
+}

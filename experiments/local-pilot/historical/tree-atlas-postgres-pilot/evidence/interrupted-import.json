@@ -1,0 +1,7 @@
+{
+  "fault": "producer exits after 10 real canonical rows",
+  "import_exit_code": 1,
+  "retained_release_rows": 0,
+  "retained_record_rows": 0,
+  "passed": true
+}

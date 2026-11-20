@@ -1,0 +1,141 @@
+{
+  "scope": "local read-only SQL summary profile; fresh backend, not cold OS/database cache",
+  "samples": [
+    {
+      "city": "vienna",
+      "jit": "on",
+      "freshSession": 0,
+      "queryTimesMs": [
+        282.171,
+        240.72,
+        240.092
+      ],
+      "connectionInclusiveMs": 798.74,
+      "exitCode": 0,
+      "markers": [
+        "467",
+        "467",
+        "467"
+      ]
+    },
+    {
+      "city": "vienna",
+      "jit": "on",
+      "freshSession": 1,
+      "queryTimesMs": [
+        287.676,
+        242.453,
+        245.279
+      ],
+      "connectionInclusiveMs": 812.52,
+      "exitCode": 0,
+      "markers": [
+        "467",
+        "467",
+        "467"
+      ]
+    },
+    {
+      "city": "vienna",
+      "jit": "off",
+      "freshSession": 0,
+      "queryTimesMs": [
+        294.71,
+        244.854,
+        251.859
+      ],
+      "connectionInclusiveMs": 828.41,
+      "exitCode": 0,
+      "markers": [
+        "467",
+        "467",
+        "467"
+      ]
+    },
+    {
+      "city": "vienna",
+      "jit": "off",
+      "freshSession": 1,
+      "queryTimesMs": [
+        316.91,
+        263.359,
+        257.485
+      ],
+      "connectionInclusiveMs": 878.21,
+      "exitCode": 0,
+      "markers": [
+        "467",
+        "467",
+        "467"
+      ]
+    },
+    {
+      "city": "london",
+      "jit": "on",
+      "freshSession": 0,
+      "queryTimesMs": [
+        2399.441,
+        1702.327,
+        1737.871
+      ],
+      "connectionInclusiveMs": 5876.45,
+      "exitCode": 0,
+      "markers": [
+        "596",
+        "596",
+        "596"
+      ]
+    },
+    {
+      "city": "london",
+      "jit": "on",
+      "freshSession": 1,
+      "queryTimesMs": [
+        2004.708,
+        1707.168,
+        1708.022
+      ],
+      "connectionInclusiveMs": 5465.56,
+      "exitCode": 0,
+      "markers": [
+        "596",
+        "596",
+        "596"
+      ]
+    },
+    {
+      "city": "london",
+      "jit": "off",
+      "freshSession": 0,
+      "queryTimesMs": [
+        1660.543,
+        1737.565,
+        1651.304
+      ],
+      "connectionInclusiveMs": 5085.32,
+      "exitCode": 0,
+      "markers": [
+        "596",
+        "596",
+        "596"
+      ]
+    },
+    {
+      "city": "london",
+      "jit": "off",
+      "freshSession": 1,
+      "queryTimesMs": [
+        1691.462,
+        1685.633,
+        1691.161
+      ],
+      "connectionInclusiveMs": 5105.24,
+      "exitCode": 0,
+      "markers": [
+        "596",
+        "596",
+        "596"
+      ]
+    }
+  ]
+}

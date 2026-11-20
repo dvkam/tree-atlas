@@ -1,0 +1,77 @@
+{
+  "scope": "session-only planner counterfactuals, warm OS cache",
+  "samples": [
+    {
+      "city": "vienna",
+      "profile": "serial-jitoff",
+      "timesMs": [
+        276.213,
+        237.359
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "vienna",
+      "profile": "hash-serial-jitoff",
+      "timesMs": [
+        221.998,
+        180.784
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "vienna",
+      "profile": "hash-defaultparallel-jitoff",
+      "timesMs": [
+        216.023,
+        176.714
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "vienna",
+      "profile": "hash-serial-jiton",
+      "timesMs": [
+        482.675,
+        397.043
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "london",
+      "profile": "serial-jitoff",
+      "timesMs": [
+        1017.582,
+        1013.805
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "london",
+      "profile": "hash-serial-jitoff",
+      "timesMs": [
+        1009.539,
+        1021.887
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "london",
+      "profile": "hash-defaultparallel-jitoff",
+      "timesMs": [
+        1031.096,
+        1003.662
+      ],
+      "exitCode": 0
+    },
+    {
+      "city": "london",
+      "profile": "hash-serial-jiton",
+      "timesMs": [
+        1134.726,
+        1065.709
+      ],
+      "exitCode": 0
+    }
+  ]
+}

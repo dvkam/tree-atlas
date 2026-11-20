@@ -1,0 +1,79 @@
+[
+  {
+    "dataset": "london",
+    "release": "london-316fa121a19059da",
+    "descriptorSha256": "63a8261dedec574e97d799a3db56c376dfec0e82137e704159936d45a140c861",
+    "bytes": 16139261,
+    "assets": [
+      {
+        "file": "releases/london-316fa121a19059da/london.json",
+        "sha256": "63a8261dedec574e97d799a3db56c376dfec0e82137e704159936d45a140c861",
+        "bytes": 320768
+      },
+      {
+        "file": "releases/london-316fa121a19059da/text.bin",
+        "sha256": "90fe2af0373ddb5de886e70698d6d22c385b4fe1d05a100344034e4915cf3d2d",
+        "bytes": 2784314
+      },
+      {
+        "file": "releases/london-316fa121a19059da/geometry.bin",
+        "sha256": "422c59eabdb32a363a7bbda55230d0b122150ffc6bedcbc1316ae179374ec90a",
+        "bytes": 13034179
+      }
+    ]
+  },
+  {
+    "dataset": "vienna",
+    "release": "vienna-2925984ab1dd6276",
+    "descriptorSha256": "903cf91a74554405381a76bafda6a029216725570b9f5f2506db85b5d80206d9",
+    "bytes": 4092520,
+    "assets": [
+      {
+        "file": "releases/vienna-2925984ab1dd6276/vienna.json",
+        "sha256": "903cf91a74554405381a76bafda6a029216725570b9f5f2506db85b5d80206d9",
+        "bytes": 67155
+      },
+      {
+        "file": "releases/vienna-2925984ab1dd6276/index.bin",
+        "sha256": "380a5e53a20dcf881ffed7a36c002a9ad02d82beb9bca6652034932535fe8efd",
+        "bytes": 4025365
+      }
+    ]
+  },
+  {
+    "dataset": "geneva",
+    "release": "geneva-a3456b2d943dc57d",
+    "descriptorSha256": "3f86ef219778dc48e910f26470d5d128ef2656ec592420a0f1f924b9486cf093",
+    "bytes": 3845514,
+    "assets": [
+      {
+        "file": "releases/geneva-a3456b2d943dc57d/geneva.json",
+        "sha256": "3f86ef219778dc48e910f26470d5d128ef2656ec592420a0f1f924b9486cf093",
+        "bytes": 69384
+      },
+      {
+        "file": "releases/geneva-a3456b2d943dc57d/index.bin",
+        "sha256": "7a8d611a8d86da6d5c260829c022e6a691ee0315b24fcf0c787bdd765d713b24",
+        "bytes": 3776130
+      }
+    ]
+  },
+  {
+    "dataset": "porto",
+    "release": "porto-6be0471b6c303ac2",
+    "descriptorSha256": "222c6f4b4c2de4293e440036256587d9928ad1733fe055793c618761158cbaa8",
+    "bytes": 1042189,
+    "assets": [
+      {
+        "file": "releases/porto-6be0471b6c303ac2/porto.json",
+        "sha256": "222c6f4b4c2de4293e440036256587d9928ad1733fe055793c618761158cbaa8",
+        "bytes": 20583
+      },
+      {
+        "file": "releases/porto-6be0471b6c303ac2/index.bin",
+        "sha256": "330a331f4f1f18842d44bacdb3674db51333e5650284c8cd5e67de8e82df4189",
+        "bytes": 1021606
+      }
+    ]
+  }
+]

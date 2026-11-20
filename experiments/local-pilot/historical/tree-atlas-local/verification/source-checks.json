@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "scope": "Local source/regression/reference checks; browser evidence is separate.",
+  "checks": [
+    {
+      "name": "types",
+      "exitCode": 0,
+      "seconds": 4.375,
+      "log": "check-types.log"
+    },
+    {
+      "name": "lint",
+      "exitCode": 0,
+      "seconds": 6.185,
+      "log": "check-lint.log"
+    },
+    {
+      "name": "format",
+      "exitCode": 0,
+      "seconds": 0.488,
+      "log": "check-format.log"
+    },
+    {
+      "name": "regression",
+      "exitCode": 0,
+      "seconds": 15.107,
+      "log": "check-regression.log"
+    },
+    {
+      "name": "normalizer",
+      "exitCode": 0,
+      "seconds": 1.783,
+      "log": "check-normalizer.log"
+    },
+    {
+      "name": "freeze",
+      "exitCode": 0,
+      "seconds": 0.298,
+      "log": "check-freeze.log"
+    }
+  ]
+}

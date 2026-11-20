@@ -1,0 +1,5 @@
+{"dataset":"london","count":1111784,"identitySha256":"7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464"}
+{"dataset":"vienna","count":233102,"identitySha256":"0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415"}
+{"dataset":"geneva","count":240827,"identitySha256":"897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0"}
+{"dataset":"porto","count":71634,"identitySha256":"a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d"}
+{"passed":true,"totalRecords":1657347,"elapsedMs":32156}

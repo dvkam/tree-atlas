@@ -1,0 +1,218 @@
+{
+  "scope": "Selected original 7\u20138 November 2026 reports, copied on 19 November; historical, not relocated branch validation.",
+  "contract": "The sealed contract remains untouched at ../tree-atlas-contract-v1; it is not duplicated here.",
+  "files": [
+    {
+      "file": "tree-atlas-carbon-poc/evidence/cancel-transport-blocker.json",
+      "bytes": 865,
+      "sha256": "55b27bb1bdb3b81866582376fb0c417c0eefc7e910dcf9eea45e4b3feca6084e"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/cancel-transport-nonblocking-before.json",
+      "bytes": 898,
+      "sha256": "51f20d3d49e4867c2b220f7cbd81b28f19756e2f6d90a4ec7d3cbee187ebe50d"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/cancel-transport-nonblocking.json",
+      "bytes": 1150,
+      "sha256": "bdafa319acc8439e96854ea454209726b77a4ed778f1e95c76d1361c59ba9e1b"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/cancel-transport-tls.json",
+      "bytes": 1615,
+      "sha256": "b853343256e7c64f3de97244425eb982beef956c32f5e4266bc420bf92c23da7"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/final-service-state.json",
+      "bytes": 301,
+      "sha256": "8e1c16ab61ab166df0bbdd4036414366a3f50706b9b24e46388f858b2b34d673"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/libpq-source.sha256",
+      "bytes": 91,
+      "sha256": "f9208b5775f150824186dd2597fb14e7a44d2323253904e5903c6f1be8e09d8e"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/lifecycle-review.md",
+      "bytes": 3115,
+      "sha256": "de9fee4239ceba1bfc66c812c23b4c3dd3465a09a0e15331f4fbe898238e6349"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/nonblocking-review.md",
+      "bytes": 1875,
+      "sha256": "388dcdb4915c0f99772dd9b27c95a56e8456b25590e58fc9f71f17ab01e1e12f"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/releases.json",
+      "bytes": 16558,
+      "sha256": "69e489bebc72de14c72daa3980d5af65a530c14e249aaa7cee1e07d0843b72a3"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/request-id-lifetime.json",
+      "bytes": 268,
+      "sha256": "8761d5a61ff19941a8e884e869d23c509a06b12bb0c6c5a3f3a20d256acb04e6"
+    },
+    {
+      "file": "tree-atlas-carbon-poc/evidence/verification.json",
+      "bytes": 5330,
+      "sha256": "e1fbe7f7f93c336f5d38664f7630e584dbce7d465a64c0cc42ec762f0f8375ae"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/final-state.json",
+      "bytes": 962,
+      "sha256": "ad7733a0149d3fed8bf7d69f2b5ae1f754940f41a2398565c43dd2fdcae3a56d"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/idempotency-results.json",
+      "bytes": 979,
+      "sha256": "9088538ea5947d6fdcb80250c4c163f3a0f69f9ef9e186a5ca58ddc7aaacc425"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/import-results.json",
+      "bytes": 1210,
+      "sha256": "f56f78d376913fad64f9183f4bd4666cad34b7cd32eb7dab65fff72db1c57619"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/interrupted-import.json",
+      "bytes": 162,
+      "sha256": "4ac549ad3753ebe2eaeb19df35951cc6fef348fee6e273f505fb65e8744686a0"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/postgres-independent-verification.json",
+      "bytes": 20474,
+      "sha256": "219108a5746f8b7bad8c6b018d86003754083109515363cfb64f3bf7dbb3dfd9"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/review.md",
+      "bytes": 3559,
+      "sha256": "9be9853caa1d27fc5bebc888238c65d35869c720d448e4b5e108284a869fadcd"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/evidence/validated-stages.json",
+      "bytes": 440,
+      "sha256": "e57e103ebdf563775dc8af2e73b08fa155cb7e6ca277984e7ea0d71d3a805849"
+    },
+    {
+      "file": "tree-atlas-postgres-pilot/verification/selftest-results.json",
+      "bytes": 371,
+      "sha256": "d6ec7eaab9db9151c3355d4388424d99b4c08733c41b4319736e7995e55ea29f"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/coincident-maxzoom.json",
+      "bytes": 363,
+      "sha256": "5f4997754bdeac6bf189ec52c009602bb4f8e76ab7023478fddd75beea5abfd8"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/final-state.json",
+      "bytes": 364,
+      "sha256": "9d95e845f6a8ca2d6c88adc235eb16864870daa82f8d03c313d013122fde7037"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/final-summary.json",
+      "bytes": 4187,
+      "sha256": "c21aa97d1f4ca7e9ae3ed8c00732a953dd4b413782c8d7cbfa0ef852d1ac504d"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/http-final-binding.json",
+      "bytes": 3117,
+      "sha256": "6295936b48c2dda1f19dd0161127e10b844e825dbc3a7e9688e919114012271e"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/http-performance.json",
+      "bytes": 63132,
+      "sha256": "8ba4981ef925d36edab54d9b62ce4a7cc5ac05e5ddba64172f6d9da650d0199e"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/number-parity.json",
+      "bytes": 191,
+      "sha256": "6348a72c7b683fbc48ccd13b77ba0276f57222f200d1005fc3c6933e8fd8cde9"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/review.md",
+      "bytes": 4883,
+      "sha256": "9531c1b87b6bf4dc36312698788fcd65f3d944d055cc1e30034f4d6f577ee1b8"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/spatial-index.json",
+      "bytes": 110,
+      "sha256": "d1efd77687cb2d124fd72a2791008f16ee21d40510354837f9a9668aa1475549"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/sql-guard-tests.json",
+      "bytes": 145,
+      "sha256": "cb08763de5af48ace08d8e18ed86abaa3fb9b7e55ebe620316541cdf63e968b8"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/sql-planner-profile.json",
+      "bytes": 1357,
+      "sha256": "551e04b098cdb2574a736a779e08a793a8d9d5b27eb124d4c48c33aa7da52a6a"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/sql-summary-profile-after.json",
+      "bytes": 1832,
+      "sha256": "1f8d278af6a1882a9981f5cc0992c0c275ed787fba6bf4886cb5897c6a95256b"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/sql-summary-profile-final.json",
+      "bytes": 1816,
+      "sha256": "88c3bfbc3c4d4c75ae5326d95470068e4a20dae6caf07d441f367243104c521b"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/sql-summary-profile.json",
+      "bytes": 2491,
+      "sha256": "7fd61480d1a4a24e0cca7ea202548b1856ddbb7fd597b77cda3f48968bc239c3"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/unicode/icu-client.json",
+      "bytes": 403,
+      "sha256": "5e4195e97c5c3f1ec2a97ac25aec6d3b51ae18630c797efbf6a214befce7b964"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/unicode/parity-results.json",
+      "bytes": 393,
+      "sha256": "07a092c9a9e55394b15c96051c81a829f4698f952ebac715fb822fd4e710a306"
+    },
+    {
+      "file": "tree-atlas-local/evidence/bootstrap.json",
+      "bytes": 644,
+      "sha256": "20230a4fe16e6b3c67a6122ec31c3772f8374571540ea77384ec1fba9accfc56"
+    },
+    {
+      "file": "tree-atlas-local/evidence/browser-normalizer-parity.json",
+      "bytes": 352,
+      "sha256": "e5c09677e8f9c09817298f1f4c77cb32fe4ee830486a05f18f5232752bb2542e"
+    },
+    {
+      "file": "tree-atlas-local/verification/browser-loading.json",
+      "bytes": 87383,
+      "sha256": "8000a6d497cccc906a5454220e4dee29278e5889fec9d45dcb8080b5e9056ba6"
+    },
+    {
+      "file": "tree-atlas-local/verification/cleanup.json",
+      "bytes": 106,
+      "sha256": "4f1530839cab21f48054dd8240d88c74c8dbc465d232cecfc46a2e4f840636fa"
+    },
+    {
+      "file": "tree-atlas-local/verification/launcher.json",
+      "bytes": 186,
+      "sha256": "015cb1f001e5195eac49565efcca66590ce9effbfac4737ab0b5f8ba6f35121e"
+    },
+    {
+      "file": "tree-atlas-local/verification/source-checks.json",
+      "bytes": 820,
+      "sha256": "09214eb6fa51a85d4c6e0e85d143d98ff758c57d235ce8fa7db49b81ece562b8"
+    },
+    {
+      "file": "tree-atlas-local/verification/browser-journeys-summary.json",
+      "bytes": 496,
+      "sha256": "d893958bb3ab3e007bfb282ce503d0b446bbc9ba21e5a14207724c10792418a7",
+      "kind": "explicit compact summary created during branch import"
+    },
+    {
+      "file": "tree-atlas-carbon-inventory-api/evidence/http-conformance-summary.json",
+      "bytes": 1062,
+      "sha256": "ecc6ced372287e9746ee2a1fbe1cb169158ea366aeb74f524d1c9a11aecc6248",
+      "kind": "explicit compact summary created during branch import"
+    }
+  ]
+}

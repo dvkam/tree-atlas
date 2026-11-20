@@ -1,0 +1,4154 @@
+{
+  "contract": "tree-atlas-search-release-v1",
+  "baselineLockSha256": "c76207062bec197f00f3a46dcb8dfe20f0d513e9003896c2c045795ee00ad518",
+  "appCommit": "8fb090145c0852a83dec1038fa663e7ba15e0de3",
+  "runtime": {
+    "node": "v26.13.0",
+    "unicode": "17.0",
+    "icu": "78.3"
+  },
+  "scope": "Read-only canonical-detail oracle; no upstream completeness, importer, database or backend conformance claim",
+  "digestEncoding": {
+    "identity": "UTF-8 JSON([dataset,release,sourceId]) + LF, in prepared ordinal order",
+    "content": "UTF-8 JSON fixed record tuple (see oracle.mjs contentLine), recursively UTF-16-key-sorted objects + LF"
+  },
+  "datasets": [
+    {
+      "dataset": "london",
+      "release": "london-316fa121a19059da",
+      "count": 1111784,
+      "locatedCount": 1111784,
+      "unlocatedCount": 0,
+      "idScopes": {
+        "release": 1111784
+      },
+      "statuses": {
+        "unknown": 1111784
+      },
+      "uniqueIds": 1111784,
+      "identitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+      "contentSha256": "2441b4fa218c75e441d50812732704cf4860349d9742e82afffa87c17df50bb5",
+      "detailAssetsVerified": 2172,
+      "suggestions": {
+        "dictionaryOrder": "first raw occurrence in prepared ordinal, then tag/scientificName/commonName/location order; exact raw deduplication",
+        "dictionaryCount": 1441,
+        "dictionarySha256": "ca68e8d8dfbe90e9b5fe900c674cba3f1b7b1b96eb1606d6d960a5f45d522e08",
+        "cases": [
+          {
+            "q": "a",
+            "values": []
+          },
+          {
+            "q": "acer",
+            "values": [
+              "Acer",
+              "Acer campestre",
+              "Acer platanoides",
+              "Acer pseudoplatanus",
+              "Acer cappadocicum",
+              "Acer davidii",
+              "Acer griseum",
+              "Acer japonicum"
+            ]
+          },
+          {
+            "q": "pl",
+            "values": [
+              "Maple",
+              "Field Maple",
+              "A Flowering Plant",
+              "Thuja plicata",
+              "Tilia platyphyllos",
+              "Plant",
+              "Acer platanoides",
+              "Norway Maple"
+            ]
+          },
+          {
+            "q": "Ér",
+            "values": [
+              "European Silver-fir",
+              "Barnet · LB Barnet · Other",
+              "Acer",
+              "Acer campestre",
+              "Quercus robur",
+              "Richmond upon Thames · The Royal Parks · Other",
+              "Camden · City of Westminster · Highways",
+              "Camden · The Royal Parks · Other"
+            ]
+          }
+        ]
+      },
+      "queries": [
+        {
+          "name": "all",
+          "q": "",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 1111784,
+          "locatedTotal": 1111784,
+          "viewportLocatedTotal": 1111784,
+          "orderedIdentitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+          "viewportIdentitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "100",
+                "1000",
+                "10000",
+                "1000000",
+                "1000001",
+                "1000002",
+                "1000003",
+                "1000004",
+                "1000005",
+                "1000006",
+                "1000007",
+                "1000008",
+                "1000009",
+                "1000010",
+                "1000011",
+                "1000012",
+                "1000013",
+                "1000014",
+                "1000015",
+                "1000016",
+                "1000017",
+                "1000018",
+                "1000019"
+              ],
+              "queryKey": "0776fa0aba0ef661dcc74f98aa1ec24920146b725934ee57d494e744fa0d3ee3"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [
+                "494358",
+                "494359",
+                "49436",
+                "494360",
+                "494361",
+                "494362",
+                "494363",
+                "494364",
+                "494365",
+                "494366",
+                "494367",
+                "494368",
+                "494369",
+                "49437",
+                "494370",
+                "494371",
+                "494372",
+                "494373",
+                "494374",
+                "494375",
+                "494376",
+                "494377",
+                "494378",
+                "494379",
+                "49438"
+              ],
+              "queryKey": "293b2652b195e7c9955b93157c7ee4d7b0a13c885f73d14e71fa0c358128894c"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 1111775,
+              "limit": 25,
+              "ids": [
+                "999991",
+                "999992",
+                "999993",
+                "999994",
+                "999995",
+                "999996",
+                "999997",
+                "999998",
+                "999999"
+              ],
+              "queryKey": "ec130c93b47f4ee2acdec9ff6f95bb3529ef7d2d216bbe7538d230dc3e7292cb"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1111785,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "917e28fd70afaeda9c9701d7bf804431c084b47277189925179446d9912bae55"
+            }
+          ]
+        },
+        {
+          "name": "one-character",
+          "q": "a",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 1104371,
+          "locatedTotal": 1104371,
+          "viewportLocatedTotal": 1104371,
+          "orderedIdentitySha256": "faaa32ad03afd59f29e766c2ea8bf8c26b9c43a66235ed73b2a478302f2cef98",
+          "viewportIdentitySha256": "faaa32ad03afd59f29e766c2ea8bf8c26b9c43a66235ed73b2a478302f2cef98",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "100",
+                "1000",
+                "10000",
+                "1000000",
+                "1000001",
+                "1000002",
+                "1000003",
+                "1000004",
+                "1000005",
+                "1000006",
+                "1000007",
+                "1000008",
+                "1000009",
+                "1000010",
+                "1000011",
+                "1000012",
+                "1000013",
+                "1000014",
+                "1000015",
+                "1000016",
+                "1000017",
+                "1000018",
+                "1000019"
+              ],
+              "queryKey": "b5bc48712e0c067e2286f78bb272648e2ce11e439b0893d57fd7516a0cb3d0ed"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [
+                "497365",
+                "497366",
+                "497367",
+                "497368",
+                "497369",
+                "49737",
+                "497370",
+                "497371",
+                "497372",
+                "497373",
+                "497374",
+                "497375",
+                "497376",
+                "497377",
+                "497378",
+                "497379",
+                "49738",
+                "497380",
+                "497381",
+                "497382",
+                "497383",
+                "497384",
+                "497385",
+                "497386",
+                "497387"
+              ],
+              "queryKey": "ed6147e2645d0e1a504002ec6d430e765c96324e7581a1cc752360c92c0e370d"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 1104350,
+              "limit": 25,
+              "ids": [
+                "999979",
+                "999980",
+                "999981",
+                "999982",
+                "999983",
+                "999984",
+                "999985",
+                "999986",
+                "999987",
+                "999988",
+                "999989",
+                "999990",
+                "999991",
+                "999992",
+                "999993",
+                "999994",
+                "999995",
+                "999996",
+                "999997",
+                "999998",
+                "999999"
+              ],
+              "queryKey": "403a6b4ad5d006d2961b093b63dd6483d5b54929053db94d3bc3010ab9d65519"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1104372,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "5a5e3b0b0f4d955cb754b571390e49e4f36dc53e38f2759a70b2e5188a2f671e"
+            }
+          ]
+        },
+        {
+          "name": "common-genus",
+          "q": "acer",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 150303,
+          "locatedTotal": 150303,
+          "viewportLocatedTotal": 150303,
+          "orderedIdentitySha256": "4bbaec29e9e32803e7c83a20cb5f4a74c7467b2d0330eddd2e5de0d712e4624d",
+          "viewportIdentitySha256": "4bbaec29e9e32803e7c83a20cb5f4a74c7467b2d0330eddd2e5de0d712e4624d",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "100",
+                "1000",
+                "1001",
+                "1002",
+                "1003",
+                "1004",
+                "1005",
+                "1006",
+                "1007",
+                "1008",
+                "1009",
+                "101",
+                "1010",
+                "1011",
+                "1012",
+                "1013",
+                "1014",
+                "1014783",
+                "1014784",
+                "1014785",
+                "1014786",
+                "1014787",
+                "1014788",
+                "1014789",
+                "1014790"
+              ],
+              "queryKey": "b5736f95eca268c58382857f13ece761f04680ad1e52eab6eafffc216d3dbbe6"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "4de5593ebffd0fcf74591add558783ef0fac6035a981ab8eb7c25f34c403c44a"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 150300,
+              "limit": 25,
+              "ids": [
+                "997",
+                "998",
+                "999"
+              ],
+              "queryKey": "832309c956926c1b6abf15d0c439ce8c0497dfb106a003d0f00e51acf67a2bc2"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 150304,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "c91d3f072165a23f361a26b2e2892376f9ad4181a20346dcb079f7a5c39d90a2"
+            }
+          ]
+        },
+        {
+          "name": "rare-genus",
+          "q": "torreya",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "2359dfb66ca01f260aae5b276bcf7f41c22974a74f9183cf4d93c3c3a5749495"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "f466d9709eaad7b7a63987f5bc3c4ffcfb4a94e987b3c005e1e062b0ecd393f0"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "2359dfb66ca01f260aae5b276bcf7f41c22974a74f9183cf4d93c3c3a5749495"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "749b27a185d59f75c3e33ce82bba2f033844ece8673bc95c2470af49b4e0ab5c"
+            }
+          ]
+        },
+        {
+          "name": "literal-percent",
+          "q": "%",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "ce158d2b8a0fde60c77ec905d9a582f3b8a4e126bf2d751bfbf863e0d0215cda"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "e36abb027a805c805cc2738463b3a24b6f0c53bd1c44b9436bc1e7563be5bf2b"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "ce158d2b8a0fde60c77ec905d9a582f3b8a4e126bf2d751bfbf863e0d0215cda"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a3d75f5d3594fa5986e4405930f1fa7cbf3d07a248cb3911614ad0c7b51ed35c"
+            }
+          ]
+        },
+        {
+          "name": "literal-underscore",
+          "q": "_",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "db06356be3b4cf2fc702a061226a58b63edab89c2121fe69a9ee701303b9eb0f"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "1441081a99a14734bd62d3a7490b032c01914fba6142c7d927b6ecbdbe6f9158"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "db06356be3b4cf2fc702a061226a58b63edab89c2121fe69a9ee701303b9eb0f"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "d9a128c6742c5101cd86d2f5b4f33c36da6ffcee5747eb32fcd4c445e9f46ed3"
+            }
+          ]
+        },
+        {
+          "name": "literal-backslash",
+          "q": "\\",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "970585b62012e53cc3766b49535b85cbaa1b71ca4c4524a248eabaf8402ff7be"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "dc5bbbf48c21b8630ba03e959de72c628badc3a78eb637861bc4ba4b7c9c3662"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "970585b62012e53cc3766b49535b85cbaa1b71ca4c4524a248eabaf8402ff7be"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "871b00386c3180bebb61b2263131ecd80ee41eed1e77604de19b36074a7b6776"
+            }
+          ]
+        },
+        {
+          "name": "leading-zeros",
+          "q": "0007",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 310,
+          "locatedTotal": 310,
+          "viewportLocatedTotal": 310,
+          "orderedIdentitySha256": "21cf89e0b484e97961ec22380b0b96b12ff0c989f169f3bc5ed228bd822e011d",
+          "viewportIdentitySha256": "21cf89e0b484e97961ec22380b0b96b12ff0c989f169f3bc5ed228bd822e011d",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1000007",
+                "1000070",
+                "1000071",
+                "1000072",
+                "1000073",
+                "1000074",
+                "1000075",
+                "1000076",
+                "1000077",
+                "1000078",
+                "1000079",
+                "10007",
+                "1000700",
+                "1000701",
+                "1000702",
+                "1000703",
+                "1000704",
+                "1000705",
+                "1000706",
+                "1000707",
+                "1000708",
+                "1000709",
+                "1000710",
+                "1000711",
+                "1000712"
+              ],
+              "queryKey": "341fe1c37df29d5e4b7c458b26a80350e36b57743c30f0ecd7621d18e8178069"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "be106906c590f8c97e1efbd5469733be09036b8b2ce743105003cb64e4892479"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 300,
+              "limit": 25,
+              "ids": [
+                "900079",
+                "910007",
+                "920007",
+                "930007",
+                "940007",
+                "950007",
+                "960007",
+                "970007",
+                "980007",
+                "990007"
+              ],
+              "queryKey": "73f15ce48031228ba666e911d3c39a5757bd1bc91cd595bd478bb8933f220dab"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 311,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "2d87bd2e1118bbb8d695dc9d9fa92aa2ef0b77ada7569f8b5711c6ac509376b9"
+            }
+          ]
+        },
+        {
+          "name": "no-match-sentinel",
+          "q": "__tree_atlas_no_match_☃__",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "27ee786d631bb08756b090d2bd4175555098aac14d0f524466ef7e3bce23b89b"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "95c5e15d448d457017192d4a3b2622fe5f88d540371552c8f8a6074cdf4c4a52"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "27ee786d631bb08756b090d2bd4175555098aac14d0f524466ef7e3bce23b89b"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "35ebf4f283ee901500228432701d256ff31450bc1acf120ac2dc4a0703722b03"
+            }
+          ]
+        },
+        {
+          "name": "full-inclusive-area",
+          "q": "",
+          "area": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 1111784,
+          "locatedTotal": 1111784,
+          "viewportLocatedTotal": 1111784,
+          "orderedIdentitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+          "viewportIdentitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "100",
+                "1000",
+                "10000",
+                "1000000",
+                "1000001",
+                "1000002",
+                "1000003",
+                "1000004",
+                "1000005",
+                "1000006",
+                "1000007",
+                "1000008",
+                "1000009",
+                "1000010",
+                "1000011",
+                "1000012",
+                "1000013",
+                "1000014",
+                "1000015",
+                "1000016",
+                "1000017",
+                "1000018",
+                "1000019"
+              ],
+              "queryKey": "ab7abfe9baff32bccb3a584212ee314c1be96937d9b94c88021fd68fdd78ffbe"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [
+                "494358",
+                "494359",
+                "49436",
+                "494360",
+                "494361",
+                "494362",
+                "494363",
+                "494364",
+                "494365",
+                "494366",
+                "494367",
+                "494368",
+                "494369",
+                "49437",
+                "494370",
+                "494371",
+                "494372",
+                "494373",
+                "494374",
+                "494375",
+                "494376",
+                "494377",
+                "494378",
+                "494379",
+                "49438"
+              ],
+              "queryKey": "e7560cb11f1817c753fb65828c13d699194b1c347aefabeb2d5523276e32680e"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 1111775,
+              "limit": 25,
+              "ids": [
+                "999991",
+                "999992",
+                "999993",
+                "999994",
+                "999995",
+                "999996",
+                "999997",
+                "999998",
+                "999999"
+              ],
+              "queryKey": "56b990d2b6ffe5d2c0c33d7e4d003bebd7c7996a0bae06d39c3650f65bb14bdb"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1111785,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "ba6072662f540b501119c03b27e0b0ed3df769c9c51e8cf3f19cef74321ef27e"
+            }
+          ]
+        },
+        {
+          "name": "central-area",
+          "q": "",
+          "area": [
+            -0.3016266292294134,
+            51.396914814729804,
+            0.0904834201802622,
+            51.589241700452995
+          ],
+          "zoom": 12,
+          "viewport": [
+            -0.4976816539342512,
+            51.30075137186821,
+            0.2865384448851,
+            51.68540514331459
+          ],
+          "total": 613658,
+          "locatedTotal": 613658,
+          "viewportLocatedTotal": 613658,
+          "orderedIdentitySha256": "ac0e08f471d46672563024f1b9ae38fd56c6cee15d51bc1edd93fcf436a759c2",
+          "viewportIdentitySha256": "ac0e08f471d46672563024f1b9ae38fd56c6cee15d51bc1edd93fcf436a759c2",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1000000",
+                "1000001",
+                "1000002",
+                "1000003",
+                "1000004",
+                "1000005",
+                "1000006",
+                "1000007",
+                "1000008",
+                "1000009",
+                "1000010",
+                "1000011",
+                "1000012",
+                "1000013",
+                "1000014",
+                "1000015",
+                "1000016",
+                "1000017",
+                "1000018",
+                "1000019",
+                "1000020",
+                "1000021",
+                "1000022",
+                "1000023",
+                "1000024"
+              ],
+              "queryKey": "2ccb5fb614568de762d4399f88b75c221db4d71ea9d6faae1010df00ad467091"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [
+                "918793",
+                "918794",
+                "918795",
+                "918796",
+                "918797",
+                "918798",
+                "918799",
+                "91880",
+                "918800",
+                "918801",
+                "918802",
+                "918803",
+                "918804",
+                "918805",
+                "918806",
+                "918807",
+                "918808",
+                "918809",
+                "91881",
+                "918810",
+                "918811",
+                "918812",
+                "918813",
+                "918814",
+                "918815"
+              ],
+              "queryKey": "f7f6707a9f87eab2e07df945e32ffad5ea494576fef1613df2165b023478e2fc"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 613650,
+              "limit": 25,
+              "ids": [
+                "999992",
+                "999993",
+                "999994",
+                "999995",
+                "999996",
+                "999997",
+                "999998",
+                "999999"
+              ],
+              "queryKey": "fb1da932693b6dac2678a5f999f3472f0f362f55be9ab9f4b237dad13473cef3"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 613659,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "cbb1cae3ef56ac606bd117526747c5151e3b97a63a4f31a5d55c1ada538e93e1"
+            }
+          ]
+        },
+        {
+          "name": "viewport-independent-list",
+          "q": "",
+          "viewport": [
+            -0.3016266292294134,
+            51.396914814729804,
+            0.0904834201802622,
+            51.589241700452995
+          ],
+          "area": null,
+          "zoom": 12,
+          "total": 1111784,
+          "locatedTotal": 1111784,
+          "viewportLocatedTotal": 613658,
+          "orderedIdentitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+          "viewportIdentitySha256": "ac0e08f471d46672563024f1b9ae38fd56c6cee15d51bc1edd93fcf436a759c2",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "100",
+                "1000",
+                "10000",
+                "1000000",
+                "1000001",
+                "1000002",
+                "1000003",
+                "1000004",
+                "1000005",
+                "1000006",
+                "1000007",
+                "1000008",
+                "1000009",
+                "1000010",
+                "1000011",
+                "1000012",
+                "1000013",
+                "1000014",
+                "1000015",
+                "1000016",
+                "1000017",
+                "1000018",
+                "1000019"
+              ],
+              "queryKey": "98f5d0df5939eeff217ec6fbb23c84a08788cee9b2821a591fa8050b52a9f4a8"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 555892,
+              "limit": 25,
+              "ids": [
+                "494358",
+                "494359",
+                "49436",
+                "494360",
+                "494361",
+                "494362",
+                "494363",
+                "494364",
+                "494365",
+                "494366",
+                "494367",
+                "494368",
+                "494369",
+                "49437",
+                "494370",
+                "494371",
+                "494372",
+                "494373",
+                "494374",
+                "494375",
+                "494376",
+                "494377",
+                "494378",
+                "494379",
+                "49438"
+              ],
+              "queryKey": "6078ab9cc32e1eb0860f736348bad57a223a3d4c4eac72b1fc996d8aaea624df"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 1111775,
+              "limit": 25,
+              "ids": [
+                "999991",
+                "999992",
+                "999993",
+                "999994",
+                "999995",
+                "999996",
+                "999997",
+                "999998",
+                "999999"
+              ],
+              "queryKey": "6c64d547afdc161fae1bb71b602ef3d6256abf4c76d40121a3664c3c37fb77b0"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1111785,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "f2c2d329901aaafc96eecb9002e151da42b5a342b4b05331e36b4a6396a799e0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "vienna",
+      "release": "vienna-2925984ab1dd6276",
+      "count": 233102,
+      "locatedCount": 233102,
+      "unlocatedCount": 0,
+      "idScopes": {
+        "release": 233102
+      },
+      "statuses": {
+        "unknown": 233102
+      },
+      "uniqueIds": 233102,
+      "identitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+      "contentSha256": "08fc05cbcc0e07b672d1e0bc7c877604e65263b0e430f3119429ce0afb3a7d50",
+      "detailAssetsVerified": 456,
+      "suggestions": {
+        "dictionaryOrder": "first raw occurrence in prepared ordinal, then tag/scientificName/commonName/location order; exact raw deduplication",
+        "dictionaryCount": 21324,
+        "dictionarySha256": "c53e829f2183411dd751805c7227e97448e9bf5d6d642db6b87619d6d5dcbf45",
+        "cases": [
+          {
+            "q": "a",
+            "values": []
+          },
+          {
+            "q": "acer",
+            "values": [
+              "Acer campestre",
+              "Acer pseudoplatanus",
+              "Acer pseudoplatanus 'Purpurascens'",
+              "Acer platanoides",
+              "Acer negundo",
+              "Platanus x acerifolia",
+              "Acer rubrum",
+              "Acer platanoides 'Globosum'"
+            ]
+          },
+          {
+            "q": "pl",
+            "values": [
+              "Acer pseudoplatanus",
+              "Acer pseudoplatanus 'Purpurascens'",
+              "Acer platanoides",
+              "Pius-Parsch-Platz",
+              "Tilia platyphyllos",
+              "Platanus orientalis 'Minaret'",
+              "Orientalische Säulenplatane",
+              "10., Parkanlage Ober-Laaer Platz, MA42"
+            ]
+          },
+          {
+            "q": "Ér",
+            "values": [
+              "Acer campestre",
+              "02., Prater - Spenadlwiese, MA42",
+              "Simmeringer Lände",
+              "Acer pseudoplatanus",
+              "Bergahorn",
+              "Acer pseudoplatanus 'Purpurascens'",
+              "Bergahorn 'Purpurascens'",
+              "Österreichische Schwarzkiefer"
+            ]
+          }
+        ]
+      },
+      "queries": [
+        {
+          "name": "all",
+          "q": "",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 233102,
+          "locatedTotal": 233102,
+          "viewportLocatedTotal": 233102,
+          "orderedIdentitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+          "viewportIdentitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831570825",
+                "831570826",
+                "831570827",
+                "831570828",
+                "831570829",
+                "831570830",
+                "831570831",
+                "831570832",
+                "831570833",
+                "831570834",
+                "831570835",
+                "831570836",
+                "831570837",
+                "831570838",
+                "831570839",
+                "831570840",
+                "831570841",
+                "831570842",
+                "831570843",
+                "831570844",
+                "831570845",
+                "831570846",
+                "831570847",
+                "831570848",
+                "831570849"
+              ],
+              "queryKey": "9cd5cd0e162f531d471583b4eee8086ecdea11311bc8a276b9b37e1fcae0ea46"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [
+                "831690136",
+                "831690137",
+                "831690138",
+                "831690139",
+                "831690140",
+                "831690141",
+                "831690142",
+                "831690143",
+                "831690144",
+                "831690145",
+                "831690146",
+                "831690147",
+                "831690148",
+                "831690149",
+                "831690150",
+                "831690151",
+                "831690152",
+                "831690153",
+                "831690154",
+                "831690155",
+                "831690156",
+                "831690157",
+                "831690158",
+                "831690159",
+                "831690160"
+              ],
+              "queryKey": "30d1e541723986f510e0e31224094cadf6b80fd07b93c54ef135d4628d6e334f"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 233100,
+              "limit": 25,
+              "ids": [
+                "831809263",
+                "831809264"
+              ],
+              "queryKey": "289a89e274f73faa91a36419607320074384b85bfbd5ef5eae96fe674c28b431"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 233103,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "3549dd62b6f2d7f173d050b556620ecc58a3e372744cb98d031728645535e861"
+            }
+          ]
+        },
+        {
+          "name": "one-character",
+          "q": "a",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 233018,
+          "locatedTotal": 233018,
+          "viewportLocatedTotal": 233018,
+          "orderedIdentitySha256": "2fd98231efdd44576ab1cdfe4dfb4cb770c5215e0ea45a5d942d1dd141902465",
+          "viewportIdentitySha256": "2fd98231efdd44576ab1cdfe4dfb4cb770c5215e0ea45a5d942d1dd141902465",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831570825",
+                "831570826",
+                "831570827",
+                "831570828",
+                "831570829",
+                "831570830",
+                "831570831",
+                "831570832",
+                "831570833",
+                "831570834",
+                "831570835",
+                "831570836",
+                "831570837",
+                "831570838",
+                "831570839",
+                "831570840",
+                "831570841",
+                "831570842",
+                "831570843",
+                "831570844",
+                "831570845",
+                "831570846",
+                "831570847",
+                "831570848",
+                "831570849"
+              ],
+              "queryKey": "793d98f9c62a8dc817a03696ef21c9737a95d7c9d05fa06bcb3a8dbff0986612"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [
+                "831690162",
+                "831690163",
+                "831690165",
+                "831690166",
+                "831690167",
+                "831690168",
+                "831690169",
+                "831690170",
+                "831690171",
+                "831690173",
+                "831690174",
+                "831690175",
+                "831690176",
+                "831690177",
+                "831690178",
+                "831690179",
+                "831690180",
+                "831690181",
+                "831690182",
+                "831690183",
+                "831690184",
+                "831690185",
+                "831690186",
+                "831690187",
+                "831690188"
+              ],
+              "queryKey": "42bd3364eea2b98578f7227671c16fa4f08948900612873ffcc9fe51df7184e9"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 233000,
+              "limit": 25,
+              "ids": [
+                "831809247",
+                "831809248",
+                "831809249",
+                "831809250",
+                "831809251",
+                "831809252",
+                "831809253",
+                "831809254",
+                "831809255",
+                "831809256",
+                "831809257",
+                "831809258",
+                "831809259",
+                "831809260",
+                "831809261",
+                "831809262",
+                "831809263",
+                "831809264"
+              ],
+              "queryKey": "a69f28b418e306ff0bdff6dae8893c1c1647dd349bb82af482e43bda271ae481"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 233019,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "02e8dac77841a6b5d7ea84b2e576ef6be89fb1f323741921bb7c5704e3e4628b"
+            }
+          ]
+        },
+        {
+          "name": "common-genus",
+          "q": "acer",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 58579,
+          "locatedTotal": 58579,
+          "viewportLocatedTotal": 58579,
+          "orderedIdentitySha256": "7a93c2a7656137063c7290b7e599d4d6a48958bfc51a2429abbbcd17360a00dd",
+          "viewportIdentitySha256": "7a93c2a7656137063c7290b7e599d4d6a48958bfc51a2429abbbcd17360a00dd",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831570826",
+                "831570829",
+                "831570830",
+                "831570831",
+                "831570832",
+                "831570840",
+                "831570844",
+                "831570850",
+                "831570851",
+                "831570853",
+                "831570856",
+                "831570886",
+                "831570889",
+                "831570902",
+                "831570903",
+                "831570906",
+                "831570907",
+                "831570909",
+                "831570910",
+                "831570913",
+                "831570926",
+                "831570929",
+                "831570938",
+                "831570940",
+                "831570941"
+              ],
+              "queryKey": "fa659bc2c50d1418bc8d61aeb5979678359617084525bd29e4ded3cd4b44bc61"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "5713ec8a9bff2548fd7fa2030adcb11bfe2ab2bb7f2b8b3ea81313c8ccf73f83"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 58575,
+              "limit": 25,
+              "ids": [
+                "831809242",
+                "831809244",
+                "831809245",
+                "831809260"
+              ],
+              "queryKey": "12887cd299571f0af631ad7b5959a8aa7190c00a8079c9382c43a25e1601c486"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 58580,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "ea8404192dca02684a820da5bee22eea86a6f590ddff0675a0a33b159e480266"
+            }
+          ]
+        },
+        {
+          "name": "rare-genus",
+          "q": "torreya",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "12fa3f688e598e86c268b501eb13a19ec57540d81396fa8d7ac0d35aab1e0083"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "68017af9542e2ebda5541db6831049b049a96ab44dbc0f7d9ecc3f1c787aaf01"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "12fa3f688e598e86c268b501eb13a19ec57540d81396fa8d7ac0d35aab1e0083"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "4a092cdcf7c855efede3eefaa18fb435b0fedc20b24c8fa255dd8d79eaf61c76"
+            }
+          ]
+        },
+        {
+          "name": "literal-percent",
+          "q": "%",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "30636314636feaf61b45c35fb1c86c20a04f4a76896d3e2b9b3c4aa062f0e9d0"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "c17c85615d993559ae46b698270d5fdea60a888df6ccb5c70ed3ed36a15aa687"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "30636314636feaf61b45c35fb1c86c20a04f4a76896d3e2b9b3c4aa062f0e9d0"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "c7611f7ba1c21417aa49117938d6bdef652a16c366074dd6d5bf0d9b2714262c"
+            }
+          ]
+        },
+        {
+          "name": "literal-underscore",
+          "q": "_",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 2,
+          "locatedTotal": 2,
+          "viewportLocatedTotal": 2,
+          "orderedIdentitySha256": "b97c82bbc74ad4254bd1ab8893cc4ee388bbf8a386e730a35dc12c8fbf645c7b",
+          "viewportIdentitySha256": "b97c82bbc74ad4254bd1ab8893cc4ee388bbf8a386e730a35dc12c8fbf645c7b",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831692646",
+                "831730192"
+              ],
+              "queryKey": "7ed9de0c8814fe3504aa7cf3bfaa102fbf09d8db5f916d8973e10835ff174993"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "3e31c0171aa1a5e872d8587cff06bf8aebcbb12d9395a0280a4066e8294253e5"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831692646",
+                "831730192"
+              ],
+              "queryKey": "7ed9de0c8814fe3504aa7cf3bfaa102fbf09d8db5f916d8973e10835ff174993"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 3,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a13bed605f7d4e757860555953df62de3e4ea220d2fcdcc5cea9da97497646b4"
+            }
+          ]
+        },
+        {
+          "name": "literal-backslash",
+          "q": "\\",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a8b42a28cf689b96b793ec2dc9df59dfefdd9f313ddc2e96e2fd332a019b78c1"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "1b569295c4ba5922b026fe6a6720f7e668672619115310f4ddb0e1edcba55d38"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a8b42a28cf689b96b793ec2dc9df59dfefdd9f313ddc2e96e2fd332a019b78c1"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "25c5f7028539ffeadb697bc622d4d02f5f24928234e4fd4fa3971c287e1d3222"
+            }
+          ]
+        },
+        {
+          "name": "leading-zeros",
+          "q": "0007",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 73,
+          "locatedTotal": 73,
+          "viewportLocatedTotal": 73,
+          "orderedIdentitySha256": "48e2d8376a0896af73e85107a0491ede6f9f953ffd72d7972a2835ed6b00189d",
+          "viewportIdentitySha256": "48e2d8376a0896af73e85107a0491ede6f9f953ffd72d7972a2835ed6b00189d",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831574618",
+                "831580007",
+                "831590007",
+                "831600007",
+                "831600070",
+                "831600071",
+                "831600072",
+                "831600073",
+                "831600074",
+                "831600075",
+                "831600076",
+                "831600077",
+                "831600078",
+                "831600079",
+                "831610007",
+                "831612488",
+                "831620007",
+                "831620257",
+                "831620841",
+                "831621156",
+                "831626569",
+                "831630007",
+                "831640007",
+                "831640987",
+                "831641717"
+              ],
+              "queryKey": "3ee0b6544a5d8864c9ebf759172f2672bdadcfbe23bcaec01cf5863a446b4560"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "c1d7b5200714c715358807e04abb76a41ce62d9b05c267af158577ef36023a5c"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 50,
+              "limit": 25,
+              "ids": [
+                "831729857",
+                "831730007",
+                "831740007",
+                "831740650",
+                "831750007",
+                "831760007",
+                "831770007",
+                "831774012",
+                "831780007",
+                "831790007",
+                "831792029",
+                "831799410",
+                "831800007",
+                "831800070",
+                "831800071",
+                "831800072",
+                "831800073",
+                "831800074",
+                "831800075",
+                "831800076",
+                "831800077",
+                "831800078",
+                "831800079"
+              ],
+              "queryKey": "70c829704b2f7e7fd7cde6363b47dbdfad800480a9e6f0b5b3b90170b5816f1a"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 74,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "42e1061e9ae7c139fa28cd137e1bb8dd002c45906b9c458f74329f6897559eaf"
+            }
+          ]
+        },
+        {
+          "name": "no-match-sentinel",
+          "q": "__tree_atlas_no_match_☃__",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "3df5ceae6863c7c1bd8ec907d8f05b337ebd71e651427b830bb04756687f286d"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "17e4ea374c140f3b351a8c34d58287f49e2aad9550336cfca73fce223f1a1b76"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "3df5ceae6863c7c1bd8ec907d8f05b337ebd71e651427b830bb04756687f286d"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "53a986e33e704698391cc7dc5f86ddf41070b6201982d103ab4a31ec89435780"
+            }
+          ]
+        },
+        {
+          "name": "full-inclusive-area",
+          "q": "",
+          "area": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 233102,
+          "locatedTotal": 233102,
+          "viewportLocatedTotal": 233102,
+          "orderedIdentitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+          "viewportIdentitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831570825",
+                "831570826",
+                "831570827",
+                "831570828",
+                "831570829",
+                "831570830",
+                "831570831",
+                "831570832",
+                "831570833",
+                "831570834",
+                "831570835",
+                "831570836",
+                "831570837",
+                "831570838",
+                "831570839",
+                "831570840",
+                "831570841",
+                "831570842",
+                "831570843",
+                "831570844",
+                "831570845",
+                "831570846",
+                "831570847",
+                "831570848",
+                "831570849"
+              ],
+              "queryKey": "f95cfb401594ef9f3d2913af672576d4c6dca868376b8afb606ab771edecf919"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [
+                "831690136",
+                "831690137",
+                "831690138",
+                "831690139",
+                "831690140",
+                "831690141",
+                "831690142",
+                "831690143",
+                "831690144",
+                "831690145",
+                "831690146",
+                "831690147",
+                "831690148",
+                "831690149",
+                "831690150",
+                "831690151",
+                "831690152",
+                "831690153",
+                "831690154",
+                "831690155",
+                "831690156",
+                "831690157",
+                "831690158",
+                "831690159",
+                "831690160"
+              ],
+              "queryKey": "06c60d3ec4b96c4b9340ea8add7944c0b5282c54d8e76ec7b7149d77c9eeea5b"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 233100,
+              "limit": 25,
+              "ids": [
+                "831809263",
+                "831809264"
+              ],
+              "queryKey": "6b30ef59be1442324671f77efdd1151da28b17c768e544c53e9b331fe84f65f7"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 233103,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "8bc1acdd5d5acf3c15046c9fab7be4ff58e0c261565198637d43c09abfbc7694"
+            }
+          ]
+        },
+        {
+          "name": "central-area",
+          "q": "",
+          "area": [
+            16.235384605,
+            48.172086019999995,
+            16.458159695,
+            48.270559680000005
+          ],
+          "zoom": 12,
+          "viewport": [
+            16.12399706,
+            48.12284919,
+            16.56954724,
+            48.31979651
+          ],
+          "total": 154202,
+          "locatedTotal": 154202,
+          "viewportLocatedTotal": 154202,
+          "orderedIdentitySha256": "c1f0e1a4364a7037ee4599d6faee86e691ef5e106548a8ba233803bd0a49bb09",
+          "viewportIdentitySha256": "c1f0e1a4364a7037ee4599d6faee86e691ef5e106548a8ba233803bd0a49bb09",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831570826",
+                "831570828",
+                "831570834",
+                "831570835",
+                "831570837",
+                "831570839",
+                "831570841",
+                "831570842",
+                "831570845",
+                "831570846",
+                "831570849",
+                "831570852",
+                "831570857",
+                "831570860",
+                "831570863",
+                "831570864",
+                "831570867",
+                "831570868",
+                "831570871",
+                "831570872",
+                "831570875",
+                "831570876",
+                "831570878",
+                "831570880",
+                "831570882"
+              ],
+              "queryKey": "f2d7835aa035be990f77bed8711a78f1f72914cdf626e31147da99402bd2d8de"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [
+                "831750863",
+                "831750864",
+                "831750865",
+                "831750866",
+                "831750867",
+                "831750869",
+                "831750871",
+                "831750872",
+                "831750873",
+                "831750875",
+                "831750876",
+                "831750878",
+                "831750879",
+                "831750880",
+                "831750881",
+                "831750882",
+                "831750884",
+                "831750885",
+                "831750886",
+                "831750887",
+                "831750889",
+                "831750891",
+                "831750892",
+                "831750893",
+                "831750894"
+              ],
+              "queryKey": "85a89f68afa5a274410334520687f2b072e09ca6813b7a714d8ff20aa0220206"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 154200,
+              "limit": 25,
+              "ids": [
+                "831808640",
+                "831808641"
+              ],
+              "queryKey": "c9c9a797fa8a492f934ef926d9fac514161e7e4d20e475ead830458e1e4f2483"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 154203,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "d39669feaf1e1027e161b9be0ef0a0244c4485e016e2052cc0052c011c2e0fe0"
+            }
+          ]
+        },
+        {
+          "name": "viewport-independent-list",
+          "q": "",
+          "viewport": [
+            16.235384605,
+            48.172086019999995,
+            16.458159695,
+            48.270559680000005
+          ],
+          "area": null,
+          "zoom": 12,
+          "total": 233102,
+          "locatedTotal": 233102,
+          "viewportLocatedTotal": 154202,
+          "orderedIdentitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+          "viewportIdentitySha256": "c1f0e1a4364a7037ee4599d6faee86e691ef5e106548a8ba233803bd0a49bb09",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "831570825",
+                "831570826",
+                "831570827",
+                "831570828",
+                "831570829",
+                "831570830",
+                "831570831",
+                "831570832",
+                "831570833",
+                "831570834",
+                "831570835",
+                "831570836",
+                "831570837",
+                "831570838",
+                "831570839",
+                "831570840",
+                "831570841",
+                "831570842",
+                "831570843",
+                "831570844",
+                "831570845",
+                "831570846",
+                "831570847",
+                "831570848",
+                "831570849"
+              ],
+              "queryKey": "23543551c33a4866cb44fe00900498d8c3a1605cf1fddec3654823a06b994421"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 116551,
+              "limit": 25,
+              "ids": [
+                "831690136",
+                "831690137",
+                "831690138",
+                "831690139",
+                "831690140",
+                "831690141",
+                "831690142",
+                "831690143",
+                "831690144",
+                "831690145",
+                "831690146",
+                "831690147",
+                "831690148",
+                "831690149",
+                "831690150",
+                "831690151",
+                "831690152",
+                "831690153",
+                "831690154",
+                "831690155",
+                "831690156",
+                "831690157",
+                "831690158",
+                "831690159",
+                "831690160"
+              ],
+              "queryKey": "73e3ccaec7c0ec4eaa970d51264eef01d221da434678e5115992cd322954b2af"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 233100,
+              "limit": 25,
+              "ids": [
+                "831809263",
+                "831809264"
+              ],
+              "queryKey": "9dc5dfea10ea30604fd502841e8b3e76f375e515e03dbe8ee2740262f9ab484f"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 233103,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "bd73f27761bb8e7ddc1e3a0d66c77ec22663c345d581678dacc1d54902bc88f6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "geneva",
+      "release": "geneva-a3456b2d943dc57d",
+      "count": 240827,
+      "locatedCount": 240827,
+      "unlocatedCount": 0,
+      "idScopes": {
+        "stable": 240821,
+        "release": 6
+      },
+      "statuses": {
+        "existing": 240762,
+        "removed": 65
+      },
+      "uniqueIds": 240827,
+      "identitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+      "contentSha256": "8bfc111e9396f84e246d927513cf381d4e1a84226068f99c2576b621a16edde1",
+      "detailAssetsVerified": 471,
+      "suggestions": {
+        "dictionaryOrder": "first raw occurrence in prepared ordinal, then tag/scientificName/commonName/location order; exact raw deduplication",
+        "dictionaryCount": 73827,
+        "dictionarySha256": "fdc08a7ddc9ae0bfef994ddbb97fae69d042fbcb923c439c028badd863c090a3",
+        "cases": [
+          {
+            "q": "a",
+            "values": []
+          },
+          {
+            "q": "acer",
+            "values": [
+              "Acer",
+              "Acer platanoides",
+              "Acer pseudoplatanus",
+              "Acer platanoides subsp. platanoides",
+              "Acer saccharinum",
+              "Acer pseudoplatanus var. pseudoplatanus",
+              "Acer campestre subsp. campestre",
+              "Acer campestre"
+            ]
+          },
+          {
+            "q": "pl",
+            "values": [
+              "Acer platanoides",
+              "Tilia platyphyllos",
+              "Acer pseudoplatanus",
+              "Acer platanoides subsp. platanoides",
+              "PLO_10027",
+              "PLO_10029",
+              "PLO_10031",
+              "Acer pseudoplatanus var. pseudoplatanus"
+            ]
+          },
+          {
+            "q": "Ér",
+            "values": [
+              "Acer",
+              "Quercus",
+              "Parc, square, espace vert",
+              "Quercus robur",
+              "Acer platanoides",
+              "Acer pseudoplatanus",
+              "Acer platanoides subsp. platanoides",
+              "Acer saccharinum"
+            ]
+          }
+        ]
+      },
+      "queries": [
+        {
+          "name": "all",
+          "q": "",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 240827,
+          "locatedTotal": 240827,
+          "viewportLocatedTotal": 240827,
+          "orderedIdentitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+          "viewportIdentitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "100000",
+                "100002",
+                "100003",
+                "100004",
+                "100005",
+                "100006",
+                "100007",
+                "100008",
+                "10001",
+                "100010",
+                "100011",
+                "100012",
+                "100013",
+                "100014",
+                "100015",
+                "100016",
+                "100017",
+                "100019",
+                "10002",
+                "100020",
+                "100021",
+                "100022"
+              ],
+              "queryKey": "af4438a7cb1c5c9c623caebe8f48e3e72990e5f6611fcccfdae3173e3ec597d6"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [
+                "279666",
+                "279667",
+                "279668",
+                "279669",
+                "27967",
+                "279670",
+                "279671",
+                "279672",
+                "279673",
+                "279674",
+                "279675",
+                "279676",
+                "279677",
+                "279678",
+                "279679",
+                "27968",
+                "279680",
+                "279681",
+                "279682",
+                "279683",
+                "279684",
+                "279685",
+                "279686",
+                "279687",
+                "279688"
+              ],
+              "queryKey": "85aa793eec1913304b6692fbc405c78040c8f82c705928e50204779d608e7be3"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 240825,
+              "limit": 25,
+              "ids": [
+                "99997",
+                "99998"
+              ],
+              "queryKey": "ac10d11b4c63afd88b92fe8112ee4ffb86a6f59a657681534313d0dd7fd78549"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 240828,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "22303e126965bb98b7055a54a0a4aba432829fae132f8f8f232591391e069c7f"
+            }
+          ]
+        },
+        {
+          "name": "one-character",
+          "q": "a",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 200435,
+          "locatedTotal": 200435,
+          "viewportLocatedTotal": 200435,
+          "orderedIdentitySha256": "85c673e04025f4a3e04ffe6e7b23d1f4f15993a71aea94407360860ed934953d",
+          "viewportIdentitySha256": "85c673e04025f4a3e04ffe6e7b23d1f4f15993a71aea94407360860ed934953d",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "1000",
+                "100000",
+                "100002",
+                "100004",
+                "100006",
+                "100007",
+                "100008",
+                "100010",
+                "100011",
+                "100012",
+                "100013",
+                "100014",
+                "100015",
+                "100016",
+                "100017",
+                "100019",
+                "100020",
+                "100021",
+                "100023",
+                "100024",
+                "100025",
+                "100026",
+                "100027",
+                "100028"
+              ],
+              "queryKey": "04d2463b2e2a0f717d3f8c88811d213e7809744ad4ae8ce748088a451174b09d"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [
+                "308283",
+                "308284",
+                "308285",
+                "308286",
+                "308287",
+                "308288",
+                "308289",
+                "308290",
+                "308291",
+                "308292",
+                "308293",
+                "308294",
+                "308295",
+                "308296",
+                "308297",
+                "308298",
+                "308299",
+                "308300",
+                "308301",
+                "308302",
+                "308303",
+                "308304",
+                "308305",
+                "308306",
+                "308307"
+              ],
+              "queryKey": "0bf1d8226b91f7c8cae567b3eeaa7a1df315f306d15bb85ba25eddc7ef6362e0"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 200425,
+              "limit": 25,
+              "ids": [
+                "99984",
+                "99985",
+                "99986",
+                "99987",
+                "99989",
+                "9999",
+                "99990",
+                "99991",
+                "99995",
+                "99997"
+              ],
+              "queryKey": "679d9ba1baa6cfba4e63975aedac3e1c1ed8f6cdd547fb68c13ce8df43ab22b8"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 200436,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "c3e980ed15fa570c5a8342855637b0b7024686cd3e6e5fe02f3595fd8f6b5946"
+            }
+          ]
+        },
+        {
+          "name": "common-genus",
+          "q": "acer",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 27315,
+          "locatedTotal": 27315,
+          "viewportLocatedTotal": 27315,
+          "orderedIdentitySha256": "4debf33c80a2bed4f0a60dc932d74af3b2857187b0c144fc19f864756e7f3c6e",
+          "viewportIdentitySha256": "4debf33c80a2bed4f0a60dc932d74af3b2857187b0c144fc19f864756e7f3c6e",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "100026",
+                "100049",
+                "100053",
+                "100074",
+                "100093",
+                "100109",
+                "100229",
+                "100253",
+                "100256",
+                "100261",
+                "10033",
+                "100330",
+                "100398",
+                "100402",
+                "100419",
+                "100433",
+                "10046",
+                "100462",
+                "100501",
+                "100537",
+                "100558",
+                "100615",
+                "100616",
+                "100622"
+              ],
+              "queryKey": "3c933f48f5ea9d227535db5040b5641b66d28cba5048adb05b0144e884776d85"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "21527ed50754aabfb99098b6a0865f63479360c8516632a37667deec5a717530"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 27300,
+              "limit": 25,
+              "ids": [
+                "99519",
+                "99521",
+                "99546",
+                "99547",
+                "99554",
+                "99557",
+                "99561",
+                "99581",
+                "99627",
+                "99648",
+                "99684",
+                "99703",
+                "99772",
+                "99970",
+                "99980"
+              ],
+              "queryKey": "5a4ca8c4a1154c4ae3b0edb5434e4b9722ede48ac75bbe678c9322c5c58a853c"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 27316,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "c8b9839b0a8716036f1a568a170dbf601209a3378d706010e3843e063e378944"
+            }
+          ]
+        },
+        {
+          "name": "rare-genus",
+          "q": "torreya",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 13,
+          "locatedTotal": 13,
+          "viewportLocatedTotal": 13,
+          "orderedIdentitySha256": "3902f279ac6c78bb80d5f3c89f8697f558e10c457ed880e5ddb095a7f8499416",
+          "viewportIdentitySha256": "3902f279ac6c78bb80d5f3c89f8697f558e10c457ed880e5ddb095a7f8499416",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "112572",
+                "182724",
+                "191355",
+                "214893",
+                "235904",
+                "260135",
+                "260353",
+                "294018",
+                "324493",
+                "326855",
+                "327616",
+                "345851",
+                "86312"
+              ],
+              "queryKey": "dbe2718f8941266b04b1406bddb569da3bd867137c4db3c2f97742a9f72ec5a7"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "bee2c6468ef6388af9ad0b9821399f501a738a93fe224a3910780264dbe839f4"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "112572",
+                "182724",
+                "191355",
+                "214893",
+                "235904",
+                "260135",
+                "260353",
+                "294018",
+                "324493",
+                "326855",
+                "327616",
+                "345851",
+                "86312"
+              ],
+              "queryKey": "dbe2718f8941266b04b1406bddb569da3bd867137c4db3c2f97742a9f72ec5a7"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 14,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "f80093ee55653c8c4be6c3cb11754e2121195c9bccfb9ad4e4ef59abd8ca9204"
+            }
+          ]
+        },
+        {
+          "name": "literal-percent",
+          "q": "%",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "84218c35043c8c592f60298221a4caf7a3feab5d9c9c78927c9057438ac5daa8"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "115c5ad6b6c4c9e8a40d53157f842e322c8ba6199f3c7cbfee255acf4b095df9"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "84218c35043c8c592f60298221a4caf7a3feab5d9c9c78927c9057438ac5daa8"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "5f4a7c36dab0f9c42b4d9b15e00ca4d83ab3444c7efa7efda28f5a0542649429"
+            }
+          ]
+        },
+        {
+          "name": "literal-underscore",
+          "q": "_",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 53758,
+          "locatedTotal": 53758,
+          "viewportLocatedTotal": 53758,
+          "orderedIdentitySha256": "7c6da83b1ecae2f0135542e5be197b74147ac1849ee2e9759371cea67de4d054",
+          "viewportIdentitySha256": "7c6da83b1ecae2f0135542e5be197b74147ac1849ee2e9759371cea67de4d054",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "100069",
+                "100099",
+                "100108",
+                "100109",
+                "100209",
+                "100240",
+                "100252",
+                "100253",
+                "10027",
+                "10029",
+                "10031",
+                "100316",
+                "100327",
+                "10034",
+                "100344",
+                "1004",
+                "10046",
+                "1005",
+                "10073",
+                "100938",
+                "1010",
+                "101062",
+                "1012",
+                "1013",
+                "101407"
+              ],
+              "queryKey": "0a6d578a9e90e048b7077db802131690fe2adcab7e4777282d165a4fd84b08dc"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "51f47da96859529eb153f8cdf13e0c727a1d1c640ded1e6946394fada01d514c"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 53750,
+              "limit": 25,
+              "ids": [
+                "99369",
+                "9942",
+                "99561",
+                "99607",
+                "99609",
+                "99735",
+                "99780",
+                "99858"
+              ],
+              "queryKey": "12b0f19a09d6f116d3f04dcb382dbab187f5589c19d8442827d3eee391e7fcc3"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 53759,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "2d868b9b93fa3962f79b51dbb0e09c568463882140de2cad27ef309065adc717"
+            }
+          ]
+        },
+        {
+          "name": "literal-backslash",
+          "q": "\\",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "d09a40afeb3057fed4e859645780739500276b2b47030c9d2ef4c912f88158a1"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "e210978d84280911818f071a3e30d0c0169882654fbeeca1a619b9bc58cf836b"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "d09a40afeb3057fed4e859645780739500276b2b47030c9d2ef4c912f88158a1"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "6997e270e07f45640510cf0e3faaecb8de3eb71ccdafa7917f774db54d360333"
+            }
+          ]
+        },
+        {
+          "name": "leading-zeros",
+          "q": "0007",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 57,
+          "locatedTotal": 57,
+          "viewportLocatedTotal": 57,
+          "orderedIdentitySha256": "36181b692bf98695dfa399f4f172e9fbd1fb51b1b7deffacd2cc857f4d4f4f53",
+          "viewportIdentitySha256": "36181b692bf98695dfa399f4f172e9fbd1fb51b1b7deffacd2cc857f4d4f4f53",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "100007",
+                "10007",
+                "100070",
+                "100071",
+                "100072",
+                "100073",
+                "100074",
+                "100079",
+                "103556",
+                "110007",
+                "130007",
+                "140007",
+                "150007",
+                "160007",
+                "162932",
+                "180007",
+                "190007",
+                "200007",
+                "20007",
+                "200070",
+                "200071",
+                "200072",
+                "200073",
+                "200074",
+                "200075"
+              ],
+              "queryKey": "c102deace19e974ca3a6f0f549fe7e30a2eab3615f3985ee6c5a5ec7b153fe1b"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "1fed755041c6b74ff46b6d92966e18b27b32c55bbd76c2e9797d77181d704583"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 50,
+              "limit": 25,
+              "ids": [
+                "385567",
+                "390007",
+                "391641",
+                "40007",
+                "60007",
+                "70007",
+                "80007"
+              ],
+              "queryKey": "62d5936b68ff3e00360cf9db2faaf7ccce35c32629f0e9c8aa5746c469c3f0f0"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 58,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "cc82a8e5cfde509df01415a41e9c240f63629503c9ab8993c3658524b847e880"
+            }
+          ]
+        },
+        {
+          "name": "no-match-sentinel",
+          "q": "__tree_atlas_no_match_☃__",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "52eb2be79c7179720a0773a0e1d472cf43d45994d851df2fa9ed5d33a951a816"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "f3ac9fd1f21e618ec4d365aa9c87e73bbc127997c3ee9134ddc25a239685e65b"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "52eb2be79c7179720a0773a0e1d472cf43d45994d851df2fa9ed5d33a951a816"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "015403104c5281a9c91a1a6901e9fbc5aa6a5a3d37eaf845d850fdbcc1e9ef07"
+            }
+          ]
+        },
+        {
+          "name": "full-inclusive-area",
+          "q": "",
+          "area": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 240827,
+          "locatedTotal": 240827,
+          "viewportLocatedTotal": 240827,
+          "orderedIdentitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+          "viewportIdentitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "100000",
+                "100002",
+                "100003",
+                "100004",
+                "100005",
+                "100006",
+                "100007",
+                "100008",
+                "10001",
+                "100010",
+                "100011",
+                "100012",
+                "100013",
+                "100014",
+                "100015",
+                "100016",
+                "100017",
+                "100019",
+                "10002",
+                "100020",
+                "100021",
+                "100022"
+              ],
+              "queryKey": "c1f070a4817a02cef02dbdec068c12ff6a0a02bac8e3f4c0579bed7a53647f18"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [
+                "279666",
+                "279667",
+                "279668",
+                "279669",
+                "27967",
+                "279670",
+                "279671",
+                "279672",
+                "279673",
+                "279674",
+                "279675",
+                "279676",
+                "279677",
+                "279678",
+                "279679",
+                "27968",
+                "279680",
+                "279681",
+                "279682",
+                "279683",
+                "279684",
+                "279685",
+                "279686",
+                "279687",
+                "279688"
+              ],
+              "queryKey": "662ce5cb8f865f3dcd63a9367ea0bb2f80ba3a1c9fbfa8b42d78bbc43b03975e"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 240825,
+              "limit": 25,
+              "ids": [
+                "99997",
+                "99998"
+              ],
+              "queryKey": "1f6736ee859e0022adff8d0735a518fcca36899a1fc82b6a03fd6196a729446f"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 240828,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "6034825a8194cfdf03ada2199036e3158216d0a08682b586b0934d938c423375"
+            }
+          ]
+        },
+        {
+          "name": "central-area",
+          "q": "",
+          "area": [
+            6.047099226909529,
+            46.18890906297886,
+            6.222212518293691,
+            46.30563827561585
+          ],
+          "zoom": 12,
+          "viewport": [
+            5.9595425812174465,
+            46.13054445666036,
+            6.309769163985774,
+            46.36400288193435
+          ],
+          "total": 154264,
+          "locatedTotal": 154264,
+          "viewportLocatedTotal": 154264,
+          "orderedIdentitySha256": "954e2928e2cee5b837f7ef939b68f1f94d4e4619c812457b8cb73e5cca46becc",
+          "viewportIdentitySha256": "954e2928e2cee5b837f7ef939b68f1f94d4e4619c812457b8cb73e5cca46becc",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "100156",
+                "100246",
+                "100248",
+                "100249",
+                "100305",
+                "100306",
+                "100308",
+                "100309",
+                "100310",
+                "100312",
+                "100334",
+                "100335",
+                "100337",
+                "100338",
+                "100339",
+                "100340",
+                "100341",
+                "100342",
+                "100343",
+                "100364",
+                "100369",
+                "100370",
+                "100371"
+              ],
+              "queryKey": "c538c772c1e9452e9c4ba5ba2d486e9b359c8337e3fdecfdc9caca9410743bc1"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [
+                "387550",
+                "387551",
+                "387552",
+                "387553",
+                "387554",
+                "38756",
+                "387560",
+                "387561",
+                "387562",
+                "387563",
+                "38757",
+                "387570",
+                "387573",
+                "38759",
+                "3876",
+                "38760",
+                "38761",
+                "38762",
+                "38763",
+                "387631",
+                "387632",
+                "387633",
+                "387634",
+                "387636",
+                "387637"
+              ],
+              "queryKey": "ad4a2ab1b736b4f0e29010dcf361580fefe438b1bc12d136641624f35f180399"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 154250,
+              "limit": 25,
+              "ids": [
+                "99708",
+                "99761",
+                "99762",
+                "99763",
+                "99764",
+                "99765",
+                "99766",
+                "99767",
+                "99768",
+                "99772",
+                "99773",
+                "99774",
+                "99780",
+                "99793"
+              ],
+              "queryKey": "14cc3124d8121c1c758fdc718bfb5f506879a2a7e73a56f07c955457af0a8c43"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 154265,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "47b835be06c72675c2c57d3ed6ff3b08882b6278126392c863589745d477a983"
+            }
+          ]
+        },
+        {
+          "name": "viewport-independent-list",
+          "q": "",
+          "viewport": [
+            6.047099226909529,
+            46.18890906297886,
+            6.222212518293691,
+            46.30563827561585
+          ],
+          "area": null,
+          "zoom": 12,
+          "total": 240827,
+          "locatedTotal": 240827,
+          "viewportLocatedTotal": 154264,
+          "orderedIdentitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+          "viewportIdentitySha256": "954e2928e2cee5b837f7ef939b68f1f94d4e4619c812457b8cb73e5cca46becc",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "100000",
+                "100002",
+                "100003",
+                "100004",
+                "100005",
+                "100006",
+                "100007",
+                "100008",
+                "10001",
+                "100010",
+                "100011",
+                "100012",
+                "100013",
+                "100014",
+                "100015",
+                "100016",
+                "100017",
+                "100019",
+                "10002",
+                "100020",
+                "100021",
+                "100022"
+              ],
+              "queryKey": "bdef21f53163fe64950da48047d53e65b60817152df16c791628b887bb588497"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 120413,
+              "limit": 25,
+              "ids": [
+                "279666",
+                "279667",
+                "279668",
+                "279669",
+                "27967",
+                "279670",
+                "279671",
+                "279672",
+                "279673",
+                "279674",
+                "279675",
+                "279676",
+                "279677",
+                "279678",
+                "279679",
+                "27968",
+                "279680",
+                "279681",
+                "279682",
+                "279683",
+                "279684",
+                "279685",
+                "279686",
+                "279687",
+                "279688"
+              ],
+              "queryKey": "ce825ff8df114ca4fa87826d78544c1b4748b867927a2f89035a84dfad8f021f"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 240825,
+              "limit": 25,
+              "ids": [
+                "99997",
+                "99998"
+              ],
+              "queryKey": "ff37e0fdff38f4f146920c78f0428f8a118470d6b5f42632047d142abfbf8468"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 240828,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "2419bc64bebf5ac1d70e7f6ee2ec22b2ff7a4d1810c2d04a507c5bf4e47e9e95"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dataset": "porto",
+      "release": "porto-6be0471b6c303ac2",
+      "count": 71634,
+      "locatedCount": 71634,
+      "unlocatedCount": 0,
+      "idScopes": {
+        "release": 71634
+      },
+      "statuses": {
+        "unknown": 71634
+      },
+      "uniqueIds": 71634,
+      "identitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+      "contentSha256": "79f2d4faf1cc4cebb72363e9f321f4d4ae6b7f3b985e5a4be4bdb9f09ee9dc10",
+      "detailAssetsVerified": 140,
+      "suggestions": {
+        "dictionaryOrder": "first raw occurrence in prepared ordinal, then tag/scientificName/commonName/location order; exact raw deduplication",
+        "dictionaryCount": 583,
+        "dictionarySha256": "a4af1273d6947fb694c0f029f8f87f67d652c8a599e9c7492da9876da4afd931",
+        "cases": [
+          {
+            "q": "a",
+            "values": []
+          },
+          {
+            "q": "acer",
+            "values": [
+              "Platanus x acerifolia",
+              "Acer negundo",
+              "Acer pseudoplatanus",
+              "Acer rubrum",
+              "Ácer-prata",
+              "Acer negundo var. variegatum",
+              "Acer palmatum",
+              "Acer platanoides var. crimson king"
+            ]
+          },
+          {
+            "q": "pl",
+            "values": [
+              "Tilia platyphyllos",
+              "Platanus x hispanica",
+              "Plátano-híbrido",
+              "Platanus x acerifolia",
+              "Plataneiro",
+              "Acer pseudoplatanus",
+              "Plátano-bastardo",
+              "Thuja plicata"
+            ]
+          },
+          {
+            "q": "Ér",
+            "values": [
+              "Quercus robur",
+              "Zelkova serrata",
+              "Lagerstroemia indica",
+              "Prunus cerasifera var. atropurpureum",
+              "Castanheiro-das-flores-vermelhas",
+              "Quercus coccinea",
+              "Carvalho-vermelho",
+              "Platanus x acerifolia"
+            ]
+          }
+        ]
+      },
+      "queries": [
+        {
+          "name": "all",
+          "q": "",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 71634,
+          "locatedTotal": 71634,
+          "viewportLocatedTotal": 71634,
+          "orderedIdentitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+          "viewportIdentitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "10000",
+                "10001",
+                "10002",
+                "10003",
+                "10004",
+                "10006",
+                "10009",
+                "10010",
+                "10011",
+                "10012",
+                "10013",
+                "10014",
+                "10016",
+                "1002",
+                "10020",
+                "10021",
+                "10026",
+                "10027",
+                "10028",
+                "10029",
+                "1003",
+                "10030"
+              ],
+              "queryKey": "7d56b8c3de514e9423fd96b62ad5fb7b1805293d33353e019a424f2a86ce7e43"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [
+                "53833",
+                "53834",
+                "53835",
+                "53836",
+                "53837",
+                "53838",
+                "53839",
+                "5384",
+                "53840",
+                "53841",
+                "53843",
+                "53844",
+                "53845",
+                "53846",
+                "53848",
+                "5385",
+                "53853",
+                "53854",
+                "53858",
+                "53859",
+                "5386",
+                "53860",
+                "53861",
+                "53862",
+                "53868"
+              ],
+              "queryKey": "179bfc4f1cc82f0a7f2dd61b6e8bc298094ab1dbc8cca04de24468781d3bc9a2"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 71625,
+              "limit": 25,
+              "ids": [
+                "9990",
+                "9991",
+                "9992",
+                "9993",
+                "9994",
+                "9995",
+                "9996",
+                "9998",
+                "9999"
+              ],
+              "queryKey": "b2dd936c574395b4695a9d2696b2fad449434062f5bff679c1f54542bc2221ca"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 71635,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "138c5e398000de6a9102063ec55e2a43d08ea1d4f9300183b5a3d381c54b5619"
+            }
+          ]
+        },
+        {
+          "name": "one-character",
+          "q": "a",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 65270,
+          "locatedTotal": 65270,
+          "viewportLocatedTotal": 65270,
+          "orderedIdentitySha256": "c38a9f3b55feaac83afe1575f8b5bc3bbabef46091afa0dd99cdf44d3a0faad6",
+          "viewportIdentitySha256": "c38a9f3b55feaac83afe1575f8b5bc3bbabef46091afa0dd99cdf44d3a0faad6",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "10000",
+                "10001",
+                "10002",
+                "10003",
+                "10004",
+                "10006",
+                "10009",
+                "10010",
+                "10011",
+                "10012",
+                "10013",
+                "10014",
+                "10016",
+                "1002",
+                "10020",
+                "10021",
+                "10026",
+                "10027",
+                "10028",
+                "10029",
+                "1003",
+                "10030"
+              ],
+              "queryKey": "889b443b40a922baafed47293294b1cdd53f7b5af2bda30aa039207053b96d0e"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [
+                "5755",
+                "57557",
+                "57558",
+                "57560",
+                "57561",
+                "57563",
+                "57564",
+                "57565",
+                "57566",
+                "57568",
+                "57569",
+                "57570",
+                "57571",
+                "57572",
+                "57573",
+                "57574",
+                "57576",
+                "57577",
+                "57578",
+                "5758",
+                "57581",
+                "57582",
+                "57583",
+                "57584",
+                "57585"
+              ],
+              "queryKey": "5eb79e53787a42b45325fad356790f6a9c5311b114f172837c026f62797a56db"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 65250,
+              "limit": 25,
+              "ids": [
+                "9980",
+                "9981",
+                "9982",
+                "9983",
+                "9984",
+                "9985",
+                "9986",
+                "9987",
+                "9988",
+                "9989",
+                "999",
+                "9990",
+                "9991",
+                "9992",
+                "9993",
+                "9994",
+                "9995",
+                "9996",
+                "9998",
+                "9999"
+              ],
+              "queryKey": "0197cc0734ffea25d4d4f7203ac996948fdbcfaa7dad7f87aee88e02d0b7714d"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 65271,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "e6685a3a2a280e4324e3594d33846627e371592e32553d4ad3054ff7ba462dd4"
+            }
+          ]
+        },
+        {
+          "name": "common-genus",
+          "q": "acer",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 8639,
+          "locatedTotal": 8639,
+          "viewportLocatedTotal": 8639,
+          "orderedIdentitySha256": "a036af4fd20f2605017bb84dd704b19942f37c29ffca8768e16bf337dbdd3268",
+          "viewportIdentitySha256": "a036af4fd20f2605017bb84dd704b19942f37c29ffca8768e16bf337dbdd3268",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "10045",
+                "10061",
+                "10062",
+                "10064",
+                "10065",
+                "10066",
+                "10100",
+                "10116",
+                "10121",
+                "10134",
+                "10159",
+                "10175",
+                "10232",
+                "10298",
+                "10299",
+                "10300",
+                "10302",
+                "10306",
+                "10308",
+                "10309",
+                "10310",
+                "10397",
+                "10398",
+                "10399",
+                "10400"
+              ],
+              "queryKey": "c9ec95e65187adf9e68730be793fc714a98a78b5d2a07cfa0ac6122b00164de4"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a04d5c05864d01e3b7849c66ea627b062661e472b705f0067d9fcb54a7c91f4e"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 8625,
+              "limit": 25,
+              "ids": [
+                "9667",
+                "9668",
+                "9669",
+                "9670",
+                "9690",
+                "9691",
+                "9696",
+                "9697",
+                "9700",
+                "9705",
+                "9729",
+                "9738",
+                "9774",
+                "9787"
+              ],
+              "queryKey": "cb30532e4c0ffaa00fae5246c2ca852d5ac7cae94dad758bf1a21c67afb921c2"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 8640,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a1894a0b0dd5052789c6ba5290959dd7de1b83f6167f29b051e825d439e48c75"
+            }
+          ]
+        },
+        {
+          "name": "rare-genus",
+          "q": "torreya",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "0498a072737626b57aeb1dc4d2ef1713321446e693e2ee48c7f0d6508bf0e287"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "8a4ebb02dc0df521c7889d7addd570f9288873c05c725af409bae86f84d0d1f7"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "0498a072737626b57aeb1dc4d2ef1713321446e693e2ee48c7f0d6508bf0e287"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "593db3bce3e23561dccaa52f1360f211ad2988ad180da58c8d0037dd48d27994"
+            }
+          ]
+        },
+        {
+          "name": "literal-percent",
+          "q": "%",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "f5a0183aa39b79943ce8bdb9b699c588a24e323c5c55107ad132049c51cd7be1"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "1b84b38d83394858d8833b519b6e27ea67115eaf88704f457ed7d90f95b55d37"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "f5a0183aa39b79943ce8bdb9b699c588a24e323c5c55107ad132049c51cd7be1"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "39d29099916cfc4adf08d81614b993c4e6a05160a6b5dd5c2dd6da182f9b6ed4"
+            }
+          ]
+        },
+        {
+          "name": "literal-underscore",
+          "q": "_",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "cc9a002fe14780dfbe826b840e2acf974e3710e4b1e993788527427699ca33d5"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "39625c0d9178cbf3009e55e3d356696966f5bb95b0b8ecddda93b94dac32b4fb"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "cc9a002fe14780dfbe826b840e2acf974e3710e4b1e993788527427699ca33d5"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "2801c68f44f7a2c184ef45c01d835942c2b038de3e0335f87ae89f2c8aae00ed"
+            }
+          ]
+        },
+        {
+          "name": "literal-backslash",
+          "q": "\\",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "538a581d6b090b3e33ad66df6432fddf210d1fc1360c15355aa50deaaedeefd1"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "0a5f971eea9e8010ca3fe5d96829c40d34a596753afb5979a1aebfccff2e1dba"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "538a581d6b090b3e33ad66df6432fddf210d1fc1360c15355aa50deaaedeefd1"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "9b2d5f86f2f6506a84d6c26aad66e5ebdcfa7e33e383339f44f8e2d956158b53"
+            }
+          ]
+        },
+        {
+          "name": "leading-zeros",
+          "q": "0007",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 5,
+          "locatedTotal": 5,
+          "viewportLocatedTotal": 5,
+          "orderedIdentitySha256": "1b34e470b75f5dd08a77996d10fd5fef9126ba7ac37b2c19d36efb8364fb444b",
+          "viewportIdentitySha256": "1b34e470b75f5dd08a77996d10fd5fef9126ba7ac37b2c19d36efb8364fb444b",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "20007",
+                "50007",
+                "70007",
+                "80007",
+                "90007"
+              ],
+              "queryKey": "f8b3435110381ec1ac5c51a48e1b3a79fa8334223ea322777f5e3ef71f55db49"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "8dd160d84ef09099b99bbc37a0355c1a67ab30705c999a7893212e177975340d"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "20007",
+                "50007",
+                "70007",
+                "80007",
+                "90007"
+              ],
+              "queryKey": "f8b3435110381ec1ac5c51a48e1b3a79fa8334223ea322777f5e3ef71f55db49"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 6,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "172de1b1210126c08f9a4bba8d7648d10c3e5a18acf7784ccbd11c45c34a2533"
+            }
+          ]
+        },
+        {
+          "name": "no-match-sentinel",
+          "q": "__tree_atlas_no_match_☃__",
+          "area": null,
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 0,
+          "locatedTotal": 0,
+          "viewportLocatedTotal": 0,
+          "orderedIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "viewportIdentitySha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "831df352645dbe41ff17d0bc16e577c30799fc5b969dbf59c6abef933370b5b5"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "a81bc285bc812cda47eb692c1e1bb6ea1fd2f6e405754a04746745fd00aa8e9f"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 0,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "831df352645dbe41ff17d0bc16e577c30799fc5b969dbf59c6abef933370b5b5"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 1,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "4f01e1f5c118f713885eb80166bc29cb3f8232a07af2db04ad15c500513cafe5"
+            }
+          ]
+        },
+        {
+          "name": "full-inclusive-area",
+          "q": "",
+          "area": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 71634,
+          "locatedTotal": 71634,
+          "viewportLocatedTotal": 71634,
+          "orderedIdentitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+          "viewportIdentitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "10000",
+                "10001",
+                "10002",
+                "10003",
+                "10004",
+                "10006",
+                "10009",
+                "10010",
+                "10011",
+                "10012",
+                "10013",
+                "10014",
+                "10016",
+                "1002",
+                "10020",
+                "10021",
+                "10026",
+                "10027",
+                "10028",
+                "10029",
+                "1003",
+                "10030"
+              ],
+              "queryKey": "71a5536edc18546770d134d302e116c1fca56322ef322b826b285d2b2d9bf065"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [
+                "53833",
+                "53834",
+                "53835",
+                "53836",
+                "53837",
+                "53838",
+                "53839",
+                "5384",
+                "53840",
+                "53841",
+                "53843",
+                "53844",
+                "53845",
+                "53846",
+                "53848",
+                "5385",
+                "53853",
+                "53854",
+                "53858",
+                "53859",
+                "5386",
+                "53860",
+                "53861",
+                "53862",
+                "53868"
+              ],
+              "queryKey": "e0d7718f65b625972873a586af9a36c4b17d8b0a5cafd7ab370532ce152fe275"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 71625,
+              "limit": 25,
+              "ids": [
+                "9990",
+                "9991",
+                "9992",
+                "9993",
+                "9994",
+                "9995",
+                "9996",
+                "9998",
+                "9999"
+              ],
+              "queryKey": "9ffbc848c0bc122a8dfac306d29f0b59dad901e42cb85c3d3018c71027c3a469"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 71635,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "4e59cc797758d22368c8553460cd75a95fba26b7a5f44a4a9faa75c93e21385b"
+            }
+          ]
+        },
+        {
+          "name": "central-area",
+          "q": "",
+          "area": [
+            -8.65632212091823,
+            41.15151374039185,
+            -8.589619548644293,
+            41.17440785778261
+          ],
+          "zoom": 12,
+          "viewport": [
+            -8.689673407055196,
+            41.140066681696474,
+            -8.556268262507327,
+            41.185854916477986
+          ],
+          "total": 19421,
+          "locatedTotal": 19421,
+          "viewportLocatedTotal": 19421,
+          "orderedIdentitySha256": "80841fb29027364ad451ef8f75169d390f0964d9b95ed3b18676c1fc30b4c520",
+          "viewportIdentitySha256": "80841fb29027364ad451ef8f75169d390f0964d9b95ed3b18676c1fc30b4c520",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "10004",
+                "10006",
+                "10009",
+                "10010",
+                "10011",
+                "10012",
+                "10013",
+                "10014",
+                "10020",
+                "10021",
+                "10035",
+                "10036",
+                "10037",
+                "10038",
+                "10039",
+                "10040",
+                "10041",
+                "10044",
+                "10060",
+                "10061",
+                "10077",
+                "10079",
+                "10082",
+                "10083",
+                "10084"
+              ],
+              "queryKey": "2ac4c8fc814287e02d9a75dc4e24e3d1ce16ccf38ad35403fef940a3334409e3"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "5b4fa5030118c25cd261c806a7ca99973a73409c9e600e59abf7d936f5fc1b50"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 19400,
+              "limit": 25,
+              "ids": [
+                "9740",
+                "9767",
+                "9768",
+                "9770",
+                "9772",
+                "9789",
+                "9790",
+                "9791",
+                "9792",
+                "9793",
+                "9794",
+                "9796",
+                "9797",
+                "9855",
+                "9856",
+                "9857",
+                "9858",
+                "9859",
+                "9865",
+                "9948",
+                "9949"
+              ],
+              "queryKey": "77821bc729518e2102d3390d6d5c64e472120cfea196d8de2993cce54dde69ae"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 19422,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "121a2c6eacffc9995c0688a04b090147da04fb59ede8c2646ae58c5902b1b68f"
+            }
+          ]
+        },
+        {
+          "name": "viewport-independent-list",
+          "q": "",
+          "viewport": [
+            -8.65632212091823,
+            41.15151374039185,
+            -8.589619548644293,
+            41.17440785778261
+          ],
+          "area": null,
+          "zoom": 12,
+          "total": 71634,
+          "locatedTotal": 71634,
+          "viewportLocatedTotal": 19421,
+          "orderedIdentitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+          "viewportIdentitySha256": "80841fb29027364ad451ef8f75169d390f0964d9b95ed3b18676c1fc30b4c520",
+          "pages": [
+            {
+              "kind": "first",
+              "offset": 0,
+              "limit": 25,
+              "ids": [
+                "1",
+                "10",
+                "1000",
+                "10000",
+                "10001",
+                "10002",
+                "10003",
+                "10004",
+                "10006",
+                "10009",
+                "10010",
+                "10011",
+                "10012",
+                "10013",
+                "10014",
+                "10016",
+                "1002",
+                "10020",
+                "10021",
+                "10026",
+                "10027",
+                "10028",
+                "10029",
+                "1003",
+                "10030"
+              ],
+              "queryKey": "021cb99689aa01c578c803060543ef357dd45cc87dbf155945ec0bf81502c690"
+            },
+            {
+              "kind": "cohort-midpoint-offset",
+              "offset": 35817,
+              "limit": 25,
+              "ids": [
+                "53833",
+                "53834",
+                "53835",
+                "53836",
+                "53837",
+                "53838",
+                "53839",
+                "5384",
+                "53840",
+                "53841",
+                "53843",
+                "53844",
+                "53845",
+                "53846",
+                "53848",
+                "5385",
+                "53853",
+                "53854",
+                "53858",
+                "53859",
+                "5386",
+                "53860",
+                "53861",
+                "53862",
+                "53868"
+              ],
+              "queryKey": "076a059306304b3506672812081cc8b3eae0164ee980264ebfad3b2d1b45e547"
+            },
+            {
+              "kind": "last-aligned",
+              "offset": 71625,
+              "limit": 25,
+              "ids": [
+                "9990",
+                "9991",
+                "9992",
+                "9993",
+                "9994",
+                "9995",
+                "9996",
+                "9998",
+                "9999"
+              ],
+              "queryKey": "40c5eaec3612619c997805f2655c917280c97e04630a3c44c4f4b2ef2818fe8d"
+            },
+            {
+              "kind": "beyond-end",
+              "offset": 71635,
+              "limit": 25,
+              "ids": [],
+              "queryKey": "fc20127fb52dfeb70c0b14210778d4682c3af5512331b3c0f1abad33e6708de7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "totalRecords": 1657347,
+  "elapsedMs": 32156,
+  "passed": true
+}

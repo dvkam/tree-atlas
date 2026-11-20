@@ -1,0 +1,95 @@
+{
+  "passed": true,
+  "date": "2026-11-08",
+  "scope": "Current local Carbon binary/native/SQL/test artifacts bound to successful final public HTTP evidence; not a digital signature or hosted/offline conformance",
+  "httpSemanticAndFaultTests": 22,
+  "selectedPageChecks": 192,
+  "fullEmptyPages": 16576,
+  "fullEmptyRecords": 1657347,
+  "suggestionChecks": 16,
+  "canonicalDetailChecks": 8,
+  "actualCoincidentMaxZoomPassed": true,
+  "finalHttpElapsedMs": 206881,
+  "cleanup": {
+    "serviceExit": 0,
+    "poolSessionsRemaining": 0
+  },
+  "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+  "files": [
+    {
+      "file": "build/service",
+      "sha256": "70ab105039e409957686066816ddae1a502caaadcdce05f3e6b6d1fda7b3fe2d",
+      "bytes": 855960
+    },
+    {
+      "file": "src/service.carbon",
+      "sha256": "7e83213180ea0dcf6f4445fb50a4f6854cbb5c3bcf9aa56ad46090bf284823c1",
+      "bytes": 3960
+    },
+    {
+      "file": "src/service_runtime.cpp",
+      "sha256": "fdf78c5bfb504ab20b8ef938dab16e35bf71477aea7565bb7e48a1540830fbf9",
+      "bytes": 21098
+    },
+    {
+      "file": "src/service_runtime.h",
+      "sha256": "e65eb5414832265378c7b40c72aa1b04aa49e077f06af9745e463f833c15df22",
+      "bytes": 1333
+    },
+    {
+      "file": "src/inventory_impl.h",
+      "sha256": "ed0dfafe98c1e0ab0abe7708c4d7e4eaf1d620e41b88e8290572026ab7b5ff33",
+      "bytes": 15850
+    },
+    {
+      "file": "src/request_registry.h",
+      "sha256": "644cd600de44f9729f7f4acc28d86114e838dce58d60bc783869bf4fa2816e8b",
+      "bytes": 4492
+    },
+    {
+      "file": "sql/api.sql",
+      "sha256": "3c31cec32473729358f627d20585af9eb517b007ac3396f77823d50485e9be9c",
+      "bytes": 17542
+    },
+    {
+      "file": "sql/indexes.sql",
+      "sha256": "f27b832900bcb878bbfdd88a36c48f864ca980937bae36bfbc6d0535765324e3",
+      "bytes": 891
+    },
+    {
+      "file": "tests/test_http.py",
+      "sha256": "e3141e2e161bc7a0a54fd619dab28b14dc9c2c272942d0d8ee7b488c3ce0971d",
+      "bytes": 24811
+    },
+    {
+      "file": "verification/http-client.mjs",
+      "sha256": "40820863a81882893b8250334210fbe41834d8224bf796d7d75b42f7174a6756",
+      "bytes": 5124
+    },
+    {
+      "file": "verification/http-conformance.mjs",
+      "sha256": "8bbbd49ba34d490e9229bc29f948367ac1bc74113fc5ff30a101022ebb67f256",
+      "bytes": 12117
+    },
+    {
+      "file": "evidence/http-tests.log",
+      "sha256": "45289b851078f5ab00afa2235a8c33659887abbe3d8b77b654f0b5ec8c0ac699",
+      "bytes": 3033
+    },
+    {
+      "file": "evidence/http-conformance.json",
+      "sha256": "4446dfbb5978c32fd4d5321116198fdc359621d693e25883fa8726199bbf7943",
+      "bytes": 3487439
+    },
+    {
+      "file": "evidence/coincident-maxzoom.json",
+      "sha256": "5f4997754bdeac6bf189ec52c009602bb4f8e76ab7023478fddd75beea5abfd8",
+      "bytes": 363
+    },
+    {
+      "file": "../tree-atlas-contract-v1/freeze-v1.json",
+      "sha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+      "bytes": 3798
+    }
+  ]
+}

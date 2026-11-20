@@ -1,0 +1,151 @@
+{
+  "scope": "local persistent HTTP lifecycle, bounded attempts, pooling and plaintext/TLS cancellation faults",
+  "archive_sha256": "5ba8e554dfec058bdad8eace18591125d1f06857005de6f4ed3706a735245c22",
+  "toolchain": "Carbon Language toolchain version: 0.0.0-0.nightly.2026.11.07+ca18985",
+  "hello_runs": [
+    {
+      "stdout": "42\n",
+      "binary_sha256": "5a8d85d0f06362c35e22e4f08a414d4f29e4322072aa9a71c1bfc3b52ecb4bd9"
+    },
+    {
+      "stdout": "42\n",
+      "binary_sha256": "5a8d85d0f06362c35e22e4f08a414d4f29e4322072aa9a71c1bfc3b52ecb4bd9"
+    }
+  ],
+  "invalid_source_rejected": true,
+  "json_round_trip": true,
+  "parameterized_postgres_round_trip": true,
+  "http_and_native_postgres_checks": "63 tests passed",
+  "service_libpq_version": 170011,
+  "cancel_fault_test": {
+    "scope": "bounded cancellation regression, localhost plaintext only",
+    "configured_request_deadline_ms": 200,
+    "query_sleep_ms": 1500,
+    "source": "https://www.postgresql.org/docs/17/libpq-cancel.html",
+    "http_completion_limit_ms": 900,
+    "mechanism": "Forward genuine CancelRequest; delay only its EOF, leaving normal SQL streams unchanged",
+    "elapsed_before_release_ms": 1210.41,
+    "http_pending_while_cancel_eof_held": false,
+    "observed_http_status": 504,
+    "observed_http_error": "timeout",
+    "observed_http_elapsed_ms": 351.28,
+    "recovery_while_eof_held": [
+      {
+        "status": 200,
+        "echo": "recovery-0",
+        "pid": "27820"
+      },
+      {
+        "status": 200,
+        "echo": "recovery-1",
+        "pid": "27715"
+      }
+    ],
+    "upstream_cancel_eof_observed": true,
+    "held_cancel_eof_ms": 1114.48,
+    "bounded_cancellation_passed": true,
+    "conclusion": "HTTP deadline response and both pool slots recovered before the stalled cancellation channel was released",
+    "owned_service_exit_code": 0,
+    "proxy_worker_threads_remaining": 0,
+    "proxy_sockets_remaining": 0,
+    "postgres_pool_sessions_remaining": 0,
+    "cleanup_passed": true
+  },
+  "tls_cancel_fault_test": {
+    "scope": "localhost TLS-verified libpq cancellation-EOF regression",
+    "configured_request_deadline_ms": 200,
+    "http_completion_limit_ms": 900,
+    "sslmode": "verify-full",
+    "mechanism": "Hold TLS cancel-channel EOF after forwarding genuine CancelRequest to real PostgreSQL",
+    "upstream_proxy_leg": "plaintext localhost, unchanged server configuration",
+    "untrusted_certificate_rejected": true,
+    "http_pending_while_tls_eof_held": false,
+    "observed_http_status": 504,
+    "observed_http_error": "timeout",
+    "observed_http_elapsed_ms": 351.78,
+    "recovery_while_tls_eof_held": [
+      {
+        "status": 200,
+        "echo": "tls-recovery-0",
+        "pid": "27917"
+      },
+      {
+        "status": 200,
+        "echo": "tls-recovery-1",
+        "pid": "27997"
+      }
+    ],
+    "cancel_acknowledgements_added": 1,
+    "fault_still_held_after_recovery": true,
+    "tls_connections": [
+      {
+        "version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      },
+      {
+        "version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      },
+      {
+        "version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      },
+      {
+        "version": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384"
+      }
+    ],
+    "encrypted_sql_connections": 3,
+    "encrypted_cancel_connections": 1,
+    "held_tls_eof_ms": 1164.89,
+    "upstream_cancel_eof_observed": true,
+    "passed": true,
+    "owned_service_exit_code": 0,
+    "proxy_worker_threads_remaining": 0,
+    "proxy_listener_thread_remaining": false,
+    "proxy_sockets_remaining": 0,
+    "postgres_pool_sessions_remaining": 0,
+    "cleanup_passed": true,
+    "temporary_tls_material_removed": true
+  },
+  "request_id_lifetime": {
+    "completed_public_http_queries": 4097,
+    "elapsed_ms": 2502.84,
+    "tracked_after_completion": 0,
+    "oldest_id_replay_status": 409,
+    "oldest_id_cancel_status": 404,
+    "scope": "actual HTTP responses and real PostgreSQL synthetic fixture; no imported inventories"
+  },
+  "persistent_service": {
+    "http_library": "1.0.0",
+    "pool_capacity": 2,
+    "max_waiters": 4,
+    "wait_ms": 250,
+    "http_connection_limit": 32,
+    "live_attempt_limit": 4096,
+    "unused_attempt_ttl_seconds": 30,
+    "http_header_phase_ms": 1500,
+    "http_body_phase_ms": 1500,
+    "handler_response_cutoff_ms_from_headers": 2100,
+    "disconnect": "observable fatal error/RST cancels work; FIN/write-half-close preserved",
+    "cancel": "explicit request/deadline; SQLSTATE 57014 observed; cancelled sessions retired",
+    "cancel_transport_budget_ms": 150,
+    "cancel_drain_budget_ms": 300
+  },
+  "reviews": "independent available-model lifecycle and attempt-policy reviews; see evidence/lifecycle-review.md",
+  "not_verified": [
+    "production HTTP completeness",
+    "unobservable FIN abandonment beyond deadlines",
+    "arbitrary network and TLS fault matrix",
+    "full inventories",
+    "mobile latency",
+    "three-second target",
+    "hosted deployment"
+  ],
+  "remaining_expansion_gates": [
+    "inventory search/release contract and independent oracle",
+    "inventory-scale conformance/performance",
+    "production admission/rate limiting and packaging"
+  ],
+  "historical_blocker_evidence": "evidence/cancel-transport-blocker.json"
+}

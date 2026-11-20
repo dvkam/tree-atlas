@@ -1,0 +1,4 @@
+# Keep the reviewed contract seal and every frozen input byte-exact in Git.
+/tree-atlas-contract-v1/** -text
+# Archived reports retain the byte hashes recorded by the import inventory.
+/historical/** -text
