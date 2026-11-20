@@ -9,6 +9,7 @@ PILOT = Path(__file__).resolve().parents[1]
 REPO = PILOT.parents[1]
 BASE = "8fb090145c0852a83dec1038fa663e7ba15e0de3"
 PREFIX = "experiments/local-pilot/"
+ALLOWED_ADDITIONS = {".eslintignore", ".prettierignore", ".github/workflows/verify-local-pilot.yml"}
 
 
 def git(*args):
@@ -22,7 +23,7 @@ def verify(index=False):
     changes = git(*diff_args, "--name-status", "--no-renames").decode().splitlines()
     for row in changes:
         status, path = row.split("\t", 1)
-        if status != "A" or not (path.startswith(PREFIX) or path in (".eslintignore", ".prettierignore")):
+        if status != "A" or not (path.startswith(PREFIX) or path in ALLOWED_ADDITIONS):
             raise ValueError(f"Existing public file changed or unexpected path: {row}")
     if index:
         entries = git("ls-files", "--stage", "--", PREFIX).decode().splitlines()
