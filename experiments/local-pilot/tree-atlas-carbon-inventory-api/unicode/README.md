@@ -15,10 +15,10 @@ must not truncate it when passing query parameters to PostgreSQL.
 implementation uses only ICU's C API, so ICU's system libstdc++ internals do not
 cross the service's bundled Carbon C++ string ABI.
 
-The official Ubuntu 22.04 x64 ICU client archive is SHA-256 pinned and checked
-against its official GitHub release digest. `icu-client.json` records the URL,
-digest and archive size. It is extracted under `tools/icu/usr/local`; no system
-library is replaced. The ICU licence remains with the isolated distribution.
+The Ubuntu 22.04 x64 ICU client archive is checked against the SHA-256 recorded
+from the official GitHub release. Each run verifies that pin before extracting
+to `tools/icu/usr/local`. `icu-client.json` records the URL, digest and archive
+size. The ICU licence remains with the isolated distribution.
 
 From this directory in WSL:
 
