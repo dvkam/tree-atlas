@@ -317,8 +317,8 @@ test("complete London text search does not depend on detail downloads", async ({
     const list = page.getByRole("list", { name: "Tree records" });
     await expect(list).toBeVisible();
     for (const text of ["Acer", "Quercus", ""]) {
-      await page.getByRole("searchbox").fill(text);
-      await page.getByRole("searchbox").press("Enter");
+      await page.getByRole("combobox", { name: "Find a tree or place" }).fill(text);
+      await page.getByRole("combobox", { name: "Find a tree or place" }).press("Enter");
       await expect(list).toBeVisible();
     }
     expect(detailRequests).toBe(0);
