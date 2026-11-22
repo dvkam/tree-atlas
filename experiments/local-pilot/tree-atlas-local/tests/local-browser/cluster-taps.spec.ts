@@ -79,12 +79,10 @@ for (const profile of [
       await page.goto(url("london"));
       await ready(page, "london");
       const online = await openLargestLondonCluster(page, profile.touch);
-      test
-        .info()
-        .annotations.push({
-          type: "London cluster hit test",
-          description: `${online.clusters} cluster targets, five points each. Largest group: ${online.largest} records.`,
-        });
+      test.info().annotations.push({
+        type: "London cluster hit test",
+        description: `${online.clusters} cluster targets, five points each. Largest group: ${online.largest} records.`,
+      });
       if (!profile.touch) return;
       await page
         .getByRole("button", { name: "Download city for offline use", exact: true })
