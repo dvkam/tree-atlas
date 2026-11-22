@@ -2,8 +2,8 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import type { Plugin } from "vite";
 import { createReadStream } from "node:fs";
-import { readFile, stat } from "node:fs/promises";
-import { createHash } from "node:crypto";
+import { stat } from "node:fs/promises";
+import { offlineShell } from "./scripts/offline-shell-plugin.ts";
 import { resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { IncomingMessage, ServerResponse } from "node:http";
@@ -65,48 +65,6 @@ function staticSources(): Plugin {
     },
     configurePreviewServer(server) {
       server.middlewares.use(serve);
-    },
-  };
-}
-function offlineShell(): Plugin {
-  return {
-    name: "local-offline-shell",
-    async generateBundle(_options, bundle) {
-      const files = [
-        "/",
-        "/index.html",
-        "/data/manifest.json",
-        "/data/local-config.json",
-        ...Object.keys(bundle)
-          .filter((name) => /\.(?:js|css|json|woff2|png|svg)$/u.test(name))
-          .map((name) => `/${name}`),
-      ];
-      const version = createHash("sha256").update(
-        JSON.stringify(
-          Object.values(bundle).map((item) =>
-            item.type === "chunk" ? item.code : String(item.source),
-          ),
-        ),
-      );
-      for (const name of [
-        "index.html",
-        "public/data/manifest.json",
-        "public/data/local-config.json",
-      ])
-        version.update(await readFile(fileURLToPath(new URL(name, import.meta.url))));
-      const id = version.digest("hex").slice(0, 16);
-      this.emitFile({
-        type: "asset",
-        fileName: "sw.js",
-        source: `
-const CACHE='tree-atlas-local-shell-${id}';const FILES=${JSON.stringify(files)};
-self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);try{await cache.addAll(FILES);}catch(error){await caches.delete(CACHE);throw error;}})()));
-self.addEventListener('activate',event=>event.waitUntil((async()=>{await self.clients.claim();for(const name of await caches.keys())if(name.startsWith('tree-atlas-local-shell-')&&name!==CACHE)await caches.delete(name);})()));
-self.addEventListener('fetch',event=>{const url=new URL(event.request.url);if(event.request.method!=='GET'||url.origin!==self.location.origin||url.pathname.startsWith('/api/'))return;
-if(event.request.mode==='navigate'){event.respondWith((async()=>{const cache=await caches.open(CACHE);return(await cache.match('/index.html'))||fetch(event.request);})());return;}
-if(FILES.includes(url.pathname))event.respondWith((async()=>{const cache=await caches.open(CACHE);return(await cache.match(url.pathname))||fetch(event.request);})());});
-`,
-      });
     },
   };
 }
