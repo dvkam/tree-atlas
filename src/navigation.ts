@@ -2,6 +2,8 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { boundsSchema, datasetIdSchema } from "./domain.ts";
 import type { Bounds, DatasetId } from "./domain.ts";
 
+export const maxQueryLength = 160;
+
 export type ViewState = {
   city: DatasetId;
   q: string;
@@ -18,7 +20,7 @@ export function parseView(raw: Record<string, unknown>): ViewState {
   );
   return {
     city: city.success ? city.data : "vienna",
-    q: typeof raw["q"] === "string" ? raw["q"].slice(0, 160) : "",
+    q: typeof raw["q"] === "string" ? raw["q"].slice(0, maxQueryLength) : "",
     area: area.success ? area.data : null,
     tree: typeof raw["tree"] === "string" ? raw["tree"].slice(0, 200) : null,
     release:

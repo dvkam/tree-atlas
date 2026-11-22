@@ -25,7 +25,7 @@ test.afterEach(() => {
 test("selection, closing details and browser history retain the filtered map context", async ({
   page,
 }) => {
-  const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+  const search = page.getByRole("combobox", { name: "Find a tree or place" });
   await search.fill("Acer");
   await expect(page.locator("#search-suggestions")).toBeVisible();
   await search.press("Enter");
@@ -91,7 +91,7 @@ test("a missing saved release is explicit and never substituted silently", async
 test("mobile layout remains usable without horizontal scrolling", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.getByRole("region", { name: "Tree map" })).toBeVisible();
-  await expect(page.getByRole("searchbox")).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Find a tree or place" })).toBeVisible();
   const overflow = await page.evaluate(
     () => document.documentElement.scrollWidth > window.innerWidth,
   );
@@ -208,8 +208,8 @@ test("mobile rapid city changes settle on the requested complete inventory", asy
     "aria-busy",
     "false",
   );
-  await page.getByRole("searchbox").fill("1");
-  await page.getByRole("searchbox").press("Enter");
+  await page.getByRole("combobox", { name: "Find a tree or place" }).fill("1");
+  await page.getByRole("combobox", { name: "Find a tree or place" }).press("Enter");
   await page.locator('[id="record-porto:1"]').click();
   await expect(page.getByRole("region", { name: "Selected tree details" })).toContainText(
     "Source ID 1",
@@ -244,8 +244,8 @@ test("Amsterdam records without coordinates stay searchable and readable", async
   await chooseInventory(page, "amsterdam", "Amsterdam");
   await expect(page.getByText(/records have no recorded position/u)).toBeVisible();
   await expect(page.getByRole("list", { name: "Tree records" })).toBeVisible();
-  await page.getByRole("searchbox").fill("3869075");
-  await page.getByRole("searchbox").press("Enter");
+  await page.getByRole("combobox", { name: "Find a tree or place" }).fill("3869075");
+  await page.getByRole("combobox", { name: "Find a tree or place" }).press("Enter");
   const record = page.locator('[id="record-amsterdam:3869075"]');
   await expect(record).toBeVisible();
   await expect(page.getByRole("region", { name: "Tree map" })).toHaveAttribute(

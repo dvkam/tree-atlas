@@ -1,8 +1,11 @@
+import { InventorySearch } from "./inventory-search.tsx";
+import { activation, pressFromPointer, revealFromTrigger } from "./trigger-motion.ts";
+import type { Activation } from "./trigger-motion.ts";
 import { useProgressiveMap } from "./use-progressive-map.ts";
 import { LocationPicker } from "./location-picker.tsx";
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { loadDataset, loadManifest, normalizeText } from "./catalog.ts";
+import { loadDataset, loadManifest } from "./catalog.ts";
 import { measurementLabel, treeKey } from "./domain.ts";
 import { inventoryAt } from "./local-inventory.ts";
 import type { Bounds, Dataset, Manifest, Tree } from "./domain.ts";
@@ -260,6 +263,17 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
   function update(changes: Partial<ViewState>) {
     navigate({ ...view, release: dataset.release, ...changes });
   }
+  const opener = useRef<{ id: string; source: Activation } | null>(null);
+  const takeOpener = useCallback((id: string): Activation | null => {
+    const selected = opener.current;
+    opener.current = null;
+    return selected?.id === id ? selected.source : null;
+  }, []);
+  function openRecord(tree: Summary, source: Activation) {
+    const id = summaryKey(tree);
+    opener.current = { id, source };
+    update({ tree: id });
+  }
   function changeCity(next: Dataset) {
     navigate({
       city: next.id,
@@ -313,7 +327,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
     );
   }
   return (
-    <main className="atlas">
+    <main className="atlas" onPointerDownCapture={pressFromPointer}>
       <aside className="sidebar" aria-label="Search and tree records">
         <div className="intro">
           <p className="eyebrow">A CLOSER LOOK AT CITY TREES</p>
@@ -339,9 +353,9 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
           </div>
         )}
         <div className="search-section">
-          <SearchBox
-            key={`${session.key}:${view.q}`}
-            initial={view.q}
+          <InventorySearch
+            key={session.key}
+            query={view.q}
             client={session.client}
             datasets={manifest.datasets}
             onSearch={(q) => update({ q, tree: null })}
@@ -452,8 +466,10 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
             )}
             {view.tree !== null && detail.data !== undefined && detail.data !== null && (
               <TreeDetails
+                key={treeKey(detail.data)}
                 tree={detail.data}
                 dataset={dataset}
+                takeOpener={takeOpener}
                 close={() => update({ tree: null })}
               />
             )}
@@ -500,7 +516,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
                   offset={findings.data.offset}
                   selected={view.tree}
                   onPage={(next) => setPaging({ key: scopeKey, offset: next })}
-                  onSelect={(tree) => update({ tree: summaryKey(tree) })}
+                  onSelect={openRecord}
                 />
               )
             )}
@@ -517,15 +533,17 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
           </p>
           <details>
             <summary>Release and source notes</summary>
-            <p>
-              Release <code>{dataset.release}</code>. {number.format(dataset.count)} validated
-              records. Missing measurements stay unknown. Source records may describe different
-              survey dates.
-            </p>
-            <p>
-              Map tiles: OpenStreetMap. Canopy: Copernicus Land Monitoring Service. Opening these
-              layers sends map-area requests to their providers.
-            </p>
+            <div className="source-notes-body">
+              <p>
+                Release <code>{dataset.release}</code>. {number.format(dataset.count)} validated
+                records. Missing measurements stay unknown. Source records may describe different
+                survey dates.
+              </p>
+              <p>
+                Map tiles: OpenStreetMap. Canopy: Copernicus Land Monitoring Service. Opening these
+                layers sends map-area requests to their providers.
+              </p>
+            </div>
           </details>
         </footer>
       </aside>
@@ -555,7 +573,7 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
           selectedTree={view.tree !== null ? (detail.data ?? null) : null}
           canopy={view.canopy}
           area={view.area}
-          onSelect={(tree) => update({ tree: summaryKey(tree) })}
+          onSelect={openRecord}
           onArea={(area) => update({ area, tree: null })}
           onViewport={(bounds, nextZoom) =>
             setCamera({ key: datasetKey(dataset), bounds, zoom: nextZoom })
@@ -563,119 +581,6 @@ function CityExplorer({ manifest, dataset, current, view, navigate }: ExplorerPr
         />
       </Suspense>
     </main>
-  );
-}
-
-type SearchProps = {
-  initial: string;
-  client: InventoryClient | null;
-  datasets: readonly Dataset[];
-  onSearch: (q: string) => void;
-  onCity: (dataset: Dataset) => void;
-};
-function SearchBox({ initial, client, datasets, onSearch, onCity }: SearchProps) {
-  const [draft, setDraft] = useState(initial);
-  const [open, setOpen] = useState(false);
-  const [suggestions, setSuggestions] = useState<{ term: string; values: string[] } | null>(null);
-  const term = normalizeText(draft);
-  useEffect(() => {
-    if (client === null || term.length < 2) return undefined;
-    let active = true;
-    const timer = window.setTimeout(() => {
-      void client
-        .suggest(term)
-        .then((values) => {
-          if (active) setSuggestions({ term, values });
-        })
-        .catch(() => {
-          if (active) setSuggestions({ term, values: [] });
-        });
-    }, 200);
-    return () => {
-      active = false;
-      window.clearTimeout(timer);
-    };
-  }, [client, term]);
-  const values = suggestions?.term === term ? suggestions.values : [];
-  const cities =
-    term.length >= 2
-      ? datasets.filter((item) => normalizeText(`${item.city} ${item.country}`).includes(term))
-      : [];
-  return (
-    <form
-      className="search-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setOpen(false);
-        onSearch(draft.trim());
-      }}
-    >
-      <label htmlFor="tree-search">Find a tree or place</label>
-      <div className="search-row">
-        <input
-          id="tree-search"
-          name="q"
-          type="search"
-          autoComplete="off"
-          value={draft}
-          placeholder="Species, street, tag or city…"
-          aria-describedby="search-help"
-          aria-controls={open ? "search-suggestions" : undefined}
-          onFocus={() => setOpen(true)}
-          onChange={(event) => {
-            setDraft(event.target.value);
-            setOpen(true);
-          }}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") setOpen(false);
-            if (event.key === "ArrowDown") {
-              event.preventDefault();
-              document.querySelector<HTMLButtonElement>("#search-suggestions button")?.focus();
-            }
-          }}
-        />
-        <button type="submit" aria-label="Search">
-          ↗
-        </button>
-      </div>
-      {open && term.length >= 2 && (
-        <div id="search-suggestions" className="suggestions" aria-label="Search suggestions">
-          {cities.map((city) => (
-            <button
-              type="button"
-              key={city.id}
-              onClick={() => {
-                setOpen(false);
-                onCity(city);
-              }}
-            >
-              {city.city}
-              <small>Inventory · {city.country}</small>
-            </button>
-          ))}
-          {values.map((text) => (
-            <button
-              type="button"
-              key={text}
-              onClick={() => {
-                setOpen(false);
-                onSearch(text);
-              }}
-            >
-              {text}
-              <small>Recorded name or tag</small>
-            </button>
-          ))}
-          <button type="submit">
-            Search for “{draft}”<small>In the selected inventory</small>
-          </button>
-        </div>
-      )}
-      <p id="search-help" className="small">
-        Search recorded species, street labels or tree tags. Full address and landmark search is not
-        included.
-      </p>
-    </form>
   );
 }
 
@@ -691,7 +596,7 @@ function TreeList({
   total: number;
   offset: number;
   selected: string | null;
-  onSelect: (tree: Summary) => void;
+  onSelect: (tree: Summary, source: Activation) => void;
   onPage: (offset: number) => void;
 }) {
   if (total === 0)
@@ -709,7 +614,9 @@ function TreeList({
             <button
               id={`record-${summaryKey(tree)}`}
               aria-pressed={selected === summaryKey(tree)}
-              onClick={() => onSelect(tree)}
+              onClick={(event) =>
+                onSelect(tree, activation(event.currentTarget, event.nativeEvent))
+              }
             >
               <span className="list-leaf" aria-hidden="true">
                 ⌁
@@ -746,26 +653,38 @@ function TreeList({
 }
 
 function TreeDetails({
+  takeOpener,
   tree,
   dataset,
   close,
 }: {
+  takeOpener: (id: string) => Activation | null;
   tree: Tree;
   dataset: Dataset;
   close: () => void;
 }) {
   const selection = treeKey(tree);
+  const section = useRef<HTMLElement>(null);
+  const returnTo = useRef<HTMLElement | null>(null);
   useEffect(() => {
     const heading = document.getElementById(`detail-${selection}`);
     heading?.focus({ preventScroll: true });
     heading?.scrollIntoView({ block: "nearest", behavior: "instant" });
-  }, [selection]);
+    const source = takeOpener(selection);
+    if (section.current && source) {
+      returnTo.current = source.element;
+      revealFromTrigger(section.current, source);
+    }
+  }, [takeOpener, selection]);
   function closeDetails() {
-    document.getElementById(`record-${selection}`)?.focus({ preventScroll: true });
+    const trigger = returnTo.current?.isConnected
+      ? returnTo.current
+      : document.getElementById(`record-${selection}`);
+    (trigger ?? document.getElementById("tree-search"))?.focus();
     close();
   }
   return (
-    <section className="tree-detail" aria-label="Selected tree details">
+    <section ref={section} className="tree-detail" aria-label="Selected tree details">
       <div className="detail-heading">
         <span className="eyebrow">INVENTORY RECORD</span>
         <button onClick={closeDetails} aria-label="Close tree details">

@@ -15,7 +15,7 @@ for (const locale of ["en-GB", "tr-TR"]) {
       await expect(count).toBeVisible();
       await expect(rows).toHaveCount(30);
       const ids = await rows.evaluateAll((buttons) => buttons.map((button) => button.id));
-      const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+      const search = page.getByRole("combobox", { name: "Find a tree or place" });
       await search.fill("TILIA");
       await search.press("Enter");
       await expect(page).toHaveURL(/q=TILIA/u);
