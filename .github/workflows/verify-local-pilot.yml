@@ -34,6 +34,7 @@ jobs:
           python3 "$PILOT/scripts/verify-source-import.py"
           python3 "$PILOT/scripts/prepare-workspace.py"
           python3 -m unittest discover -s "$PILOT/scripts" -v
+          python3 -B -m unittest discover -s "$PILOT/scripts/catalogue-audit" -v
           python3 -m unittest discover -s "$PILOT/tree-atlas-postgres-pilot/tests" -p test_setup_preflight.py -v
           node "$PILOT/tree-atlas-contract-v1/verify-freeze.mjs" --assets
 
