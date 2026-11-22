@@ -1,0 +1,112 @@
+name: Verify local pilot
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: local-pilot-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  pilot:
+    name: Carbon, PostgreSQL and offline frontend
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'pilot/carbon-postgres-local'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PILOT: experiments/local-pilot
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 26.13.0
+          package-manager-cache: false
+
+      - name: Check source isolation and frozen inputs
+        run: |
+          python3 "$PILOT/scripts/verify-source-import.py"
+          python3 "$PILOT/scripts/prepare-workspace.py"
+          python3 -m unittest discover -s "$PILOT/scripts" -v
+          python3 -B -m unittest discover -s "$PILOT/scripts/catalogue-audit" -v
+          python3 -m unittest discover -s "$PILOT/tree-atlas-postgres-pilot/tests" -p test_setup_preflight.py -v
+          node "$PILOT/tree-atlas-contract-v1/verify-freeze.mjs" --assets
+
+      - name: Check pilot frontend source and build
+        working-directory: experiments/local-pilot/tree-atlas-local
+        run: |
+          npm install --global --ignore-scripts pnpm@11.25.0
+          pnpm install --frozen-lockfile --ignore-scripts
+          python3 verification/check-local.py
+          node scripts/bootstrap-local.mjs
+          pnpm build
+
+      - name: Install native prerequisites
+        run: |
+          sudo apt-get -o Acquire::Retries=3 update
+          sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
+            build-essential pkg-config bison flex libssl-dev libjson-c-dev libmicrohttpd-dev \
+            postgresql-16 postgresql-client-16
+          sudo systemctl start postgresql@16-main
+          pg_lsclusters --no-header | awk '$1 == 16 && $2 == "main" && $3 == 5432 && $4 == "online" { ready = 1 } END { exit !ready }'
+          pg_isready -h 127.0.0.1 -p 5432
+
+      - name: Build pinned Carbon inventory adapter
+        run: |
+          carbon_version=0.0.0-0.nightly.2026.11.07
+          carbon_tools="$PILOT/tree-atlas-carbon-poc/tools"
+          carbon_archive="$RUNNER_TEMP/carbon-toolchain.tar.gz"
+          curl --fail --silent --show-error --location --retry 3 --max-time 180 \
+            --output "$carbon_archive" \
+            "https://github.com/carbon-language/carbon-lang/releases/download/v$carbon_version/carbon_toolchain-$carbon_version.tar.gz"
+          printf '%s  %s\n' 5ba8e554dfec058bdad8eace18591125d1f06857005de6f4ed3706a735245c22 "$carbon_archive" | sha256sum --check
+          tar -xzf "$carbon_archive" -C "$carbon_tools"
+          python3 "$carbon_tools/build_libpq.py"
+          python3 "$PILOT/tree-atlas-carbon-inventory-api/unicode/fetch_icu.py"
+          python3 "$PILOT/tree-atlas-carbon-inventory-api/tools/build.py"
+
+      - name: Import and independently verify all four inventories
+        working-directory: experiments/local-pilot/tree-atlas-postgres-pilot
+        run: |
+          # The existing local setup expects David's path. The runner is disposable.
+          sudo useradd --create-home -K HOME_MODE=0755 david
+          sudo python3 setup_database.py
+          sudo chown "$(id -u):$(id -g)" /home/david/.config
+          sudo chown -R "$(id -u):$(id -g)" /home/david/.config/tree-atlas-postgres-pilot
+          sudo python3 -m unittest discover -s tests -p test_staging.py -v
+          node verification/selftest.mjs
+          node import.mjs
+          node verification/verify-postgres.mjs
+          sudo python3 validate_staged.py
+
+      - name: Run SQL and HTTP conformance
+        working-directory: experiments/local-pilot/tree-atlas-carbon-inventory-api
+        run: |
+          sudo python3 tools/install_sql.py
+          sudo python3 sql/apply_spatial_index.py
+          sudo python3 sql/apply_search_index.py
+          sudo python3 -m unittest discover -s sql -v
+          sudo python3 tools/check_sql_guards.py
+          sudo TREE_ATLAS_HTTP_FAULTS=1 python3 -m unittest discover -s tests -v
+          node verification/http-conformance.mjs --quick
+
+      - name: Exercise online search and four complete offline packs
+        working-directory: experiments/local-pilot/tree-atlas-local
+        run: |
+          pnpm exec playwright install --with-deps chromium
+          python3 scripts/run-local.py --skip-build &
+          launcher=$!
+          trap 'kill -TERM "$launcher" 2>/dev/null || true; wait "$launcher" || true' EXIT
+          curl --fail --silent --show-error --retry 30 --retry-connrefused \
+            --retry-delay 1 --max-time 3 --retry-max-time 45 http://127.0.0.1:4199/api/health
+          pnpm exec playwright test --config verification/playwright.local.config.ts \
+            online.spec.ts offline.spec.ts offline-large.spec.ts shell-update.spec.ts cluster-taps.spec.ts search-interaction.spec.ts
+          kill -TERM "$launcher"
+          wait "$launcher"
+          trap - EXIT

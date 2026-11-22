@@ -1,0 +1,1 @@
+{ "ignorePatterns": ["pnpm-lock.yaml", "public/data/**", "data/**", "dist/**"] }

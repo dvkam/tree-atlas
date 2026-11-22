@@ -1,0 +1,57 @@
+{
+  "scope": "localhost TLS-verified libpq cancellation-EOF regression",
+  "configured_request_deadline_ms": 200,
+  "http_completion_limit_ms": 900,
+  "sslmode": "verify-full",
+  "mechanism": "Hold TLS cancel-channel EOF after forwarding genuine CancelRequest to real PostgreSQL",
+  "upstream_proxy_leg": "plaintext localhost, unchanged server configuration",
+  "untrusted_certificate_rejected": true,
+  "http_pending_while_tls_eof_held": false,
+  "observed_http_status": 504,
+  "observed_http_error": "timeout",
+  "observed_http_elapsed_ms": 351.78,
+  "recovery_while_tls_eof_held": [
+    {
+      "status": 200,
+      "echo": "tls-recovery-0",
+      "pid": "27917"
+    },
+    {
+      "status": 200,
+      "echo": "tls-recovery-1",
+      "pid": "27997"
+    }
+  ],
+  "cancel_acknowledgements_added": 1,
+  "fault_still_held_after_recovery": true,
+  "tls_connections": [
+    {
+      "version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    {
+      "version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    {
+      "version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    {
+      "version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    }
+  ],
+  "encrypted_sql_connections": 3,
+  "encrypted_cancel_connections": 1,
+  "held_tls_eof_ms": 1164.89,
+  "upstream_cancel_eof_observed": true,
+  "passed": true,
+  "owned_service_exit_code": 0,
+  "proxy_worker_threads_remaining": 0,
+  "proxy_listener_thread_remaining": false,
+  "proxy_sockets_remaining": 0,
+  "postgres_pool_sessions_remaining": 0,
+  "cleanup_passed": true,
+  "temporary_tls_material_removed": true
+}

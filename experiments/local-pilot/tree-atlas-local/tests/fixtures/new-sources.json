@@ -1,0 +1,291 @@
+{
+  "amsterdam": {
+    "url": "https://api.data.amsterdam.nl/v1/bomen/v2/stamgegevens?_format=geojson&_pageSize=2",
+    "retrievedAt": "2026-10-26T22:06:02.738Z",
+    "body": {
+      "type": "FeatureCollection",
+      "crs": {
+        "type": "name",
+        "properties": {
+          "name": "urn:ogc:def:crs:OGC::CRS84"
+        }
+      },
+      "features": [
+        {
+          "type": "Feature",
+          "id": "stamgegevens.919933",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [4.904670906630066, 52.3398135015195]
+          },
+          "properties": {
+            "id": 919933,
+            "gbdBuurtId": "03630980000301",
+            "typeBeheerderPlus": "R&E_VOR_Bomen",
+            "boomhoogteklasseActueel": "e. 15 tot 18 m.",
+            "typeEigenaarPlus": "Gemeente Amsterdam",
+            "jaarVanAanleg": 1948,
+            "soortnaam": "Tilia americana",
+            "stamdiameterklasse": null,
+            "standplaats": "Groenobject",
+            "standplaatsGedetailleerd": null,
+            "typeObject": "Boom niet vrij uitgroeiend",
+            "typeSoortnaam": "Bomen",
+            "groeiplaatsBoomId": null,
+            "beschermingsstatusGedetailleerd": null,
+            "beschermingsstatus": null,
+            "geldigVanaf": "2020-03-10",
+            "mutatieDatum": "2026-06-30T16:30:00.054542",
+            "soortnaamKort": "Tilia",
+            "soortnaamTop": "Linde (Tilia)"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "stamgegevens.919934",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [4.902687462660142, 52.34009449028671]
+          },
+          "properties": {
+            "id": 919934,
+            "gbdBuurtId": "03630980000301",
+            "typeBeheerderPlus": "R&E_VOR_Bomen",
+            "boomhoogteklasseActueel": "c. 9 tot 12 m.",
+            "typeEigenaarPlus": "Gemeente Amsterdam",
+            "jaarVanAanleg": 1978,
+            "soortnaam": "Ulmus hollandica 'Vegeta'",
+            "stamdiameterklasse": null,
+            "standplaats": "Elementenverharding",
+            "standplaatsGedetailleerd": "Tegels",
+            "typeObject": "Boom niet vrij uitgroeiend",
+            "typeSoortnaam": "Bomen",
+            "groeiplaatsBoomId": null,
+            "beschermingsstatusGedetailleerd": null,
+            "beschermingsstatus": null,
+            "geldigVanaf": "2020-03-10",
+            "mutatieDatum": "2026-07-02T15:23:36.870922",
+            "soortnaamKort": "Ulmus",
+            "soortnaamTop": "Iep (Ulmus)"
+          }
+        }
+      ],
+      "_links": [
+        {
+          "href": "https://api.data.amsterdam.nl/v1/bomen/v2/stamgegevens?_format=geojson&_pageSize=2&page=2",
+          "rel": "next",
+          "type": "application/geo+json",
+          "title": "next page"
+        }
+      ]
+    }
+  },
+  "amsterdamUnlocated": {
+    "url": "https://api.data.amsterdam.nl/v1/bomen/v2/stamgegevens/3869075?_format=geojson",
+    "retrievedAt": "2026-10-26T22:06:02.896Z",
+    "body": {
+      "type": "Feature",
+      "id": "stamgegevens.3869075",
+      "properties": {
+        "id": 3869075,
+        "gbdBuurtId": null,
+        "geometrie": null,
+        "typeBeheerderPlus": "R&E_VOR_Bomen",
+        "boomhoogteklasseActueel": null,
+        "typeEigenaarPlus": null,
+        "jaarVanAanleg": 0,
+        "soortnaam": null,
+        "stamdiameterklasse": null,
+        "standplaats": null,
+        "standplaatsGedetailleerd": null,
+        "typeObject": "Boom niet vrij uitgroeiend",
+        "typeSoortnaam": "Bomen",
+        "groeiplaatsBoomId": null,
+        "beschermingsstatusGedetailleerd": null,
+        "beschermingsstatus": null,
+        "geldigVanaf": "2022-08-01",
+        "mutatieDatum": "2025-12-10T11:44:32.879822",
+        "soortnaamKort": null,
+        "soortnaamTop": null
+      },
+      "crs": {
+        "type": "name",
+        "properties": {
+          "name": "urn:ogc:def:crs:OGC::CRS84"
+        }
+      }
+    }
+  },
+  "hamburg": {
+    "url": "https://geodienste.hamburg.de/HH_WFS_Strassenbaumkataster?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=de.hh.up:strassenbaumkataster&COUNT=2&OUTPUTFORMAT=application/geo%2Bjson&SRSNAME=EPSG:4326",
+    "retrievedAt": "2026-10-26T22:06:03.017Z",
+    "body": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "id": "DE.HH.UP_STRASSENBAUMKATASTER_1",
+          "geometry": {
+            "type": "MultiPoint",
+            "coordinates": [[9.846289287519417, 53.52547419808404]]
+          },
+          "properties": {
+            "baumid": 100000117,
+            "baumnummer": "F122-83-1",
+            "gattung": "Populus / Pappel",
+            "gattung_latein": "Populus",
+            "gattung_deutsch": "Pappel",
+            "art": "Populus canadensis / Kanadische Pappel",
+            "art_latein": "Populus canadensis",
+            "art_deutsch": "Kanadische Pappel",
+            "sorte": "Populus canadensis / Kanadische Pappel",
+            "sorte_latein": "Populus canadensis",
+            "sorte_deutsch": "Kanadische Pappel",
+            "pflanzjahr": 1959,
+            "kronendurchmesser": 13,
+            "kronendurchmesser_z": "13 m",
+            "stammumfang": 271,
+            "stammumfang_z": "271 cm",
+            "strasse": "Finkenwerder Westerdeich",
+            "hausnummer": "0",
+            "ortsteil_nr": 141,
+            "stadtteil": "Finkenwerder",
+            "bezirk": "Hamburg-Mitte",
+            "daten_aus_vorjahr": 2026
+          },
+          "srsName": "EPSG:4326"
+        },
+        {
+          "type": "Feature",
+          "id": "DE.HH.UP_STRASSENBAUMKATASTER_2",
+          "geometry": {
+            "type": "MultiPoint",
+            "coordinates": [[9.846253767055849, 53.52543221595021]]
+          },
+          "properties": {
+            "baumid": 100000118,
+            "baumnummer": "F122-134-1",
+            "gattung": "Populus / Pappel",
+            "gattung_latein": "Populus",
+            "gattung_deutsch": "Pappel",
+            "art": "Populus canadensis / Kanadische Pappel",
+            "art_latein": "Populus canadensis",
+            "art_deutsch": "Kanadische Pappel",
+            "sorte": "Populus canadensis / Kanadische Pappel",
+            "sorte_latein": "Populus canadensis",
+            "sorte_deutsch": "Kanadische Pappel",
+            "pflanzjahr": 1949,
+            "kronendurchmesser": 20,
+            "kronendurchmesser_z": "20 m",
+            "stammumfang": 332,
+            "stammumfang_z": "332 cm",
+            "strasse": "Finkenwerder Westerdeich",
+            "hausnummer": "0",
+            "ortsteil_nr": 141,
+            "stadtteil": "Finkenwerder",
+            "bezirk": "Hamburg-Mitte",
+            "daten_aus_vorjahr": 2026
+          },
+          "srsName": "EPSG:4326"
+        }
+      ]
+    }
+  },
+  "zurich": {
+    "url": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Baumkataster?SERVICE=WFS&REQUEST=GetFeature&VERSION=1.1.0&TYPENAME=baumkataster_baumstandorte&MAXFEATURES=2&OUTPUTFORMAT=application/vnd.geo%2Bjson&SRSNAME=EPSG:4326",
+    "retrievedAt": "2026-10-26T22:06:03.121Z",
+    "body": {
+      "type": "FeatureCollection",
+      "bbox": [8.461664, 47.320565, 8.614473, 47.43675],
+      "features": [
+        {
+          "geometry": {
+            "coordinates": [8.509643, 47.321987],
+            "type": "Point"
+          },
+          "id": "baumkataster_baumstandorte.1",
+          "properties": {
+            "baumartlat": "regia",
+            "baumgattunglat": "Juglans",
+            "baumnamedeu": "Walnuss-Obstgehölz, Sorte unbekannt",
+            "baumnamelat": "Juglas regia cv.",
+            "baumnummer": "nn-1851",
+            "baumtyp": 6,
+            "baumtyptext": "Obstbäume",
+            "genauigkeit": "Bildschirmeingabe",
+            "geometrie_gdo": null,
+            "kategorie": "Parkbaum",
+            "kronendurchmesser": 14,
+            "objectid": 1,
+            "pflanzjahr": 1980,
+            "poi_id": "nn-1851",
+            "quartier": "ausserhalb Stadtgebiet",
+            "status": "Obst",
+            "strasse": null
+          },
+          "type": "Feature"
+        },
+        {
+          "geometry": {
+            "coordinates": [8.555804, 47.429614],
+            "type": "Point"
+          },
+          "id": "baumkataster_baumstandorte.2",
+          "properties": {
+            "baumartlat": "oblonga",
+            "baumgattunglat": "Cydonia",
+            "baumnamedeu": "Quitte-Obstgehölz, Sorte unbekannt",
+            "baumnamelat": "Cydonia oblonga cv.",
+            "baumnummer": "nn-1177",
+            "baumtyp": 6,
+            "baumtyptext": "Obstbäume",
+            "genauigkeit": "Bildschirmeingabe",
+            "geometrie_gdo": null,
+            "kategorie": "Parkbaum",
+            "kronendurchmesser": 8,
+            "objectid": 2,
+            "pflanzjahr": null,
+            "poi_id": "nn-1177",
+            "quartier": "ausserhalb Stadtgebiet",
+            "status": "Obst",
+            "strasse": null
+          },
+          "type": "Feature"
+        }
+      ]
+    }
+  },
+  "amsterdamOutlier": {
+    "url": "https://api.data.amsterdam.nl/v1/bomen/v2/stamgegevens/9441293?_format=geojson",
+    "retrievedAt": "2026-10-26T22:09:27.525Z",
+    "body": {
+      "type": "Feature",
+      "id": "stamgegevens.9441293",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.3136044864878, 47.97523746667059]
+      },
+      "properties": {
+        "id": 9441293,
+        "gbdBuurtId": null,
+        "typeBeheerderPlus": "R&E_VOR_Bomen",
+        "boomhoogteklasseActueel": null,
+        "typeEigenaarPlus": null,
+        "jaarVanAanleg": null,
+        "soortnaam": null,
+        "stamdiameterklasse": null,
+        "standplaats": null,
+        "standplaatsGedetailleerd": null,
+        "typeObject": "Stobbe",
+        "typeSoortnaam": null,
+        "groeiplaatsBoomId": null,
+        "beschermingsstatusGedetailleerd": null,
+        "beschermingsstatus": null,
+        "geldigVanaf": "2026-10-12",
+        "mutatieDatum": "2026-10-13T18:13:34.509883",
+        "soortnaamKort": null,
+        "soortnaamTop": null
+      }
+    }
+  }
+}

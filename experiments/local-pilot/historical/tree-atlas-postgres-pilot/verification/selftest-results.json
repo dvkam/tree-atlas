@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "scope": "Synthetic independent readback comparator, not database conformance",
+  "rejectedMutants": [
+    "ordinalGap",
+    "changedContent",
+    "wrongNormalizer",
+    "wrongGeometry",
+    "wrongMembership",
+    "truncatedRecords",
+    "wrongDictionary",
+    "wrongSuggestions",
+    "releaseMix",
+    "changedFreeze",
+    "writableSnapshot"
+  ]
+}

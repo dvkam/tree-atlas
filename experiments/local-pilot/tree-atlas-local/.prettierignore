@@ -1,0 +1,4 @@
+evidence/
+verification/*.json
+verification/verification/
+verification/initial-offline-failure/

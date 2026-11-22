@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "databaseBytes": 1741315095,
+  "validatedRecords": 1657347,
+  "validatedReleases": 4,
+  "unsealedReleases": 0,
+  "ownedSessions": 0,
+  "readerCanReadBase": false,
+  "readerCanWrite": false,
+  "apiFunctionsAreInvoker": true,
+  "spatialIndexValid": true,
+  "spatialIndexBytes": 128090112,
+  "originalPocUnchanged": true,
+  "deployment": false
+}

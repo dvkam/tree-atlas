@@ -1,0 +1,542 @@
+{
+  "passed": true,
+  "date": "2026-11-19",
+  "baselineCommit": "991a2fc6a0e1ff50a4fbd6b8a14b8d4fd1144882",
+  "candidateCommit": "ebcd6dcf4a29d4efda82cb126812855d75895500",
+  "scope": "Five alternating fresh-browser runs per build. Local desktop Chromium mobile emulation, same complete London pack, no profiler or explicit GC, external tiles blocked, warm/uncontrolled OS caches. Sampled owned process-tree RSS double-counts shared pages; PSS requires readable samples. Not a physical-device or hard-budget acceptance.",
+  "executionStartedAt": "2026-11-19T08:34:15.311Z",
+  "executionCompletedAt": "2026-11-19T08:36:46.819Z",
+  "runsPerSide": 5,
+  "order": "baseline, candidate, repeated five times with a fresh owned browser for each run",
+  "rawComparisonSha256": "8ec82fb57b54d5a58946057a1c04de0a3e62f848a42973a84fb7299352bacad4",
+  "baseline": {
+    "side": "baseline",
+    "runs": 5,
+    "sampledPeakPssKiB": {
+      "median": 1220508,
+      "min": 1202382,
+      "max": 1264273
+    },
+    "sampledPeakRssKiB": {
+      "median": 1494464,
+      "min": 1474948,
+      "max": 1533664
+    },
+    "offlineInitializeMs": {
+      "median": 4930.382784000001,
+      "min": 4920.067345000003,
+      "max": 4934.743262
+    },
+    "offlineRefreshMs": {
+      "median": 5248.873520000023,
+      "min": 5177.750839999993,
+      "max": 6273.528422999996
+    },
+    "downloadValidateCommitMs": {
+      "median": 3098.8143720000007,
+      "min": 3060.136041000005,
+      "max": 3692.9115500000044
+    },
+    "cameraZoomMs": {
+      "median": 359.9757000000027,
+      "min": 354.0806499999999,
+      "max": 367.1290489999956
+    },
+    "cameraPanMs": {
+      "median": 320.8620729999966,
+      "min": 317.82419599999776,
+      "max": 344.094711999991
+    }
+  },
+  "candidate": {
+    "side": "candidate",
+    "runs": 5,
+    "sampledPeakPssKiB": {
+      "median": 726152,
+      "min": 714833,
+      "max": 756228
+    },
+    "sampledPeakRssKiB": {
+      "median": 996940,
+      "min": 986012,
+      "max": 1027244
+    },
+    "offlineInitializeMs": {
+      "median": 2918.5614110000024,
+      "min": 2914.6939270000003,
+      "max": 2949.3504530000064
+    },
+    "offlineRefreshMs": {
+      "median": 3246.9433690000005,
+      "min": 3227.739201999997,
+      "max": 3294.551514999999
+    },
+    "downloadValidateCommitMs": {
+      "median": 3105.9364669999995,
+      "min": 3079.580826999998,
+      "max": 3136.9191250000003
+    },
+    "cameraZoomMs": {
+      "median": 330.3005609999964,
+      "min": 324.5230670000019,
+      "max": 344.5864550000115
+    },
+    "cameraPanMs": {
+      "median": 312.3160280000011,
+      "min": 308.296537000002,
+      "max": 312.7839629999944
+    }
+  },
+  "medianSampledBrowserPssReductionPercent": 40.5,
+  "correctness": {
+    "browserRunsPassed": 10,
+    "londonRecords": 1111784,
+    "commonGenusRecords": 150303,
+    "frozenFirstIdsChecked": true,
+    "completedCameraQueries": 20,
+    "busyTransitionsObserved": true,
+    "pageErrors": 0,
+    "offlineApiRequests": 0,
+    "ownedBrowsersExited": true,
+    "completePssCoverage": true
+  },
+  "cameraWork": [
+    {
+      "side": "baseline",
+      "zoomMarkerCounts": [
+        72
+      ],
+      "panMarkerCounts": [
+        57
+      ],
+      "zoomRenderedClusterNodes": [
+        72
+      ],
+      "panRenderedClusterNodes": [
+        57
+      ],
+      "workerFiles": [
+        "offline-validation.worker-B2PgUhV0.js",
+        "offline.worker-fP70MARZ.js"
+      ]
+    },
+    {
+      "side": "candidate",
+      "zoomMarkerCounts": [
+        30
+      ],
+      "panMarkerCounts": [
+        29
+      ],
+      "zoomRenderedClusterNodes": [
+        30
+      ],
+      "panRenderedClusterNodes": [
+        29
+      ],
+      "workerFiles": [
+        "offline-validation.worker-CQKKSRW0.js",
+        "offline.worker-Dp-Amn_j.js"
+      ]
+    }
+  ],
+  "sampling": {
+    "requestedIntervalMs": 250,
+    "maximumObservedSampleGapMs": 303.50275400001556,
+    "completePssSamples": 544,
+    "rssSharedPageCaution": "Summed process-tree RSS double-counts shared mappings. PSS and RSS cover the owned browser tree, including renderer and worker allocations; they exclude API, PostgreSQL and the test runner."
+  },
+  "backgroundWork": {
+    "cores": 12,
+    "loadBefore": [
+      0.41,
+      2.12,
+      2.84
+    ],
+    "loadAfter": [
+      1.71,
+      1.91,
+      2.64
+    ],
+    "note": "Unrelated Vue TypeScript and esbuild work was observed on this shared WSL machine and left untouched. Five alternating runs per side reduce ordering bias; latency remains sensitive to shared load."
+  },
+  "latencyVerdict": "Observed median initialization and refresh readiness improved. Final camera measurements showed no slowdown after responsive grouping. These are end-to-end observations including UI automation, animation and rendering on a shared machine. They are not isolated worker throughput, percentiles or latency guarantees.",
+  "candidatePhasePeaks": [
+    {
+      "phase": "download-and-validate",
+      "sampledPeakPssKiB": {
+        "median": 611176,
+        "min": 585034,
+        "max": 634032,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "launch",
+      "sampledPeakPssKiB": {
+        "median": 115761,
+        "min": 104854,
+        "max": 123520,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "offline-initialize",
+      "sampledPeakPssKiB": {
+        "median": 717850,
+        "min": 714833,
+        "max": 756228,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "offline-map-pan",
+      "sampledPeakPssKiB": {
+        "median": 726152,
+        "min": 701188,
+        "max": 727236,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "offline-map-zoom",
+      "sampledPeakPssKiB": {
+        "median": 723840,
+        "min": 697252,
+        "max": 726072,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "offline-query-all",
+      "sampledPeakPssKiB": {
+        "median": 723445.5,
+        "min": 696859,
+        "max": 724898,
+        "observedRuns": 4
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "offline-query-common-genus",
+      "sampledPeakPssKiB": {
+        "median": 721591,
+        "min": 695247,
+        "max": 723934,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "offline-refresh",
+      "sampledPeakPssKiB": {
+        "median": 718358,
+        "min": 692447,
+        "max": 721528,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    },
+    {
+      "phase": "online-open",
+      "sampledPeakPssKiB": {
+        "median": 219991,
+        "min": 211288,
+        "max": 263229,
+        "observedRuns": 5
+      },
+      "scope": "Available phase samples only. A phase shorter than the sampling interval can have no sample."
+    }
+  ],
+  "independentSessionConformance": {
+    "passed": true,
+    "rawReportSha256": "d70b8ab1090ed0f08b43ccc0c73ccce25674b8cb62237b461b533ac48d7a4947",
+    "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+    "referenceSha256": "27932b3a3e01aff94db230d90ea0a39308719ee190267bc196946641ff45b6ab",
+    "completeInventoryRecords": 1657347,
+    "completeQuerySets": 48,
+    "selectedPageChecks": 192,
+    "suggestionChecks": 16,
+    "scope": "Actual offline inventory session over hash-verified local pinned assets. Complete identity enumeration and frozen query/dictionary results; no HTTP, IndexedDB, browser memory, municipal completeness or hosted performance claim.",
+    "datasets": [
+      {
+        "dataset": "london",
+        "release": "london-316fa121a19059da",
+        "completeRecords": 1111784,
+        "completeIdentitySha256": "7f5e171bfcd55e6f818283f3f742f72cccdcf1346edbf55a300e0e4b33af3464",
+        "smallMarkerUnions": [
+          {
+            "case": "leading-zeros",
+            "represented": 310,
+            "memberPages": 39
+          }
+        ]
+      },
+      {
+        "dataset": "vienna",
+        "release": "vienna-2925984ab1dd6276",
+        "completeRecords": 233102,
+        "completeIdentitySha256": "0868859e2935efa1d5a391bc6413ae971c3f513d3fd0869052cbe3a7516f5415",
+        "smallMarkerUnions": [
+          {
+            "case": "literal-underscore",
+            "represented": 2,
+            "memberPages": 0
+          }
+        ]
+      },
+      {
+        "dataset": "geneva",
+        "release": "geneva-a3456b2d943dc57d",
+        "completeRecords": 240827,
+        "completeIdentitySha256": "897bfb921163a09d9b4a144395ac8f5c302415736ce9975d2d104e6a584e69a0",
+        "smallMarkerUnions": [
+          {
+            "case": "rare-genus",
+            "represented": 13,
+            "memberPages": 4
+          }
+        ]
+      },
+      {
+        "dataset": "porto",
+        "release": "porto-6be0471b6c303ac2",
+        "completeRecords": 71634,
+        "completeIdentitySha256": "a0746e08edac6a940dbc6d64fd55cd2c1ac3e0300ef40702de6b337a8451a76d",
+        "smallMarkerUnions": [
+          {
+            "case": "leading-zeros",
+            "represented": 5,
+            "memberPages": 0
+          }
+        ]
+      }
+    ]
+  },
+  "allocationDiagnostics": {
+    "scope": "Separate traced runs with allocation sampling, CPU profiling and explicit GC. Do not use their timings or process-memory peaks as benchmark measurements. Sampled allocation totals are estimates, not retained heap size.",
+    "baseline": {
+      "passed": true,
+      "workerFile": "offline.worker-fP70MARZ.js",
+      "rawReportSha256": "bf44a30a600a354398f0aabd90df7593de79511b6d8a4f870a7bef8aa96e949a",
+      "estimatedCumulativeSampledAllocationBytes": 990725980,
+      "workerHeapBeforeExplicitGC": {
+        "usedSize": 278562160,
+        "totalSize": 347271168,
+        "embedderHeapUsedSize": 122496,
+        "backingStorageSize": 204529897
+      },
+      "workerHeapAfterExplicitGC": {
+        "usedSize": 179423608,
+        "totalSize": 182669312,
+        "embedderHeapUsedSize": 25576,
+        "backingStorageSize": 188529685
+      },
+      "ownedBrowserExited": true
+    },
+    "candidate": {
+      "passed": true,
+      "workerFile": "offline.worker-Dp-Amn_j.js",
+      "rawReportSha256": "71ae28566a8806a6a8eaa303907e2f1ad650482e6e2e74f4efe9396d10a8823c",
+      "estimatedCumulativeSampledAllocationBytes": 535665612,
+      "workerHeapBeforeExplicitGC": {
+        "usedSize": 193428948,
+        "totalSize": 235921408,
+        "embedderHeapUsedSize": 721304,
+        "backingStorageSize": 119184005
+      },
+      "workerHeapAfterExplicitGC": {
+        "usedSize": 151711944,
+        "totalSize": 152555520,
+        "embedderHeapUsedSize": 25576,
+        "backingStorageSize": 4656196
+      },
+      "ownedBrowserExited": true
+    },
+    "mechanism": "Removed million-point GeoJSON objects and Supercluster multi-zoom indexes. Normalized IDs and dictionary values are prepared once around geometry readiness. Reusable bounded grid arrays and prepared-order matched ordinals serve queries. Checked indexed geometry loops avoid per-record iterator tuples and skip an empty early-detail validation pass.",
+    "remaining": "Row decoding, validation, source-ID lookup and normalization still allocate substantial memory. Final whole-browser sampled PSS remains about 0.7 GiB. No physical-phone memory acceptance is established. A compact row representation is a future option, not part of this change."
+  },
+  "rejectedPrototype": {
+    "scope": "Intermediate uncommitted fixed 30-by-30 viewport grid, not the final candidate.",
+    "rawComparisonSha256": "797ad25ee5d9a1d9f11ceccd24274c25996fc71dba3ecd33f79db53fd3f92c5e",
+    "passedCorrectnessRuns": 10,
+    "reason": "The grid rendered 813 zoom markers and 689 pan markers. It reduced memory but increased median zoom/pan time. Responsive approximately 60-pixel cells replaced it before final acceptance.",
+    "baseline": {
+      "side": "baseline",
+      "runs": 5,
+      "sampledPeakPssKiB": {
+        "median": 1240391,
+        "min": 1199848,
+        "max": 1261317
+      },
+      "sampledPeakRssKiB": {
+        "median": 1514128,
+        "min": 1472292,
+        "max": 1533304
+      },
+      "offlineInitializeMs": {
+        "median": 5936.058128999999,
+        "min": 4922.82162599999,
+        "max": 5975.144930999988
+      },
+      "offlineRefreshMs": {
+        "median": 6250.730883000011,
+        "min": 5236.518182,
+        "max": 6263.183552999995
+      },
+      "downloadValidateCommitMs": {
+        "median": 3705.336614,
+        "min": 3653.8188919999957,
+        "max": 4478.018133
+      },
+      "cameraZoomMs": {
+        "median": 362.30312100000447,
+        "min": 355.7916220000043,
+        "max": 380.20856600000116
+      },
+      "cameraPanMs": {
+        "median": 321.45994100000826,
+        "min": 317.0309850000049,
+        "max": 349.93327500000305
+      }
+    },
+    "candidate": {
+      "side": "candidate",
+      "runs": 5,
+      "sampledPeakPssKiB": {
+        "median": 781497,
+        "min": 779277,
+        "max": 786308
+      },
+      "sampledPeakRssKiB": {
+        "median": 1084464,
+        "min": 1081908,
+        "max": 1089068
+      },
+      "offlineInitializeMs": {
+        "median": 2932.1400980000035,
+        "min": 2916.6361500000057,
+        "max": 3976.802873000008
+      },
+      "offlineRefreshMs": {
+        "median": 3262.540010000026,
+        "min": 3238.284427999999,
+        "max": 3313.563049000004
+      },
+      "downloadValidateCommitMs": {
+        "median": 3132.592162999994,
+        "min": 3089.3900060000014,
+        "max": 4463.486267
+      },
+      "cameraZoomMs": {
+        "median": 432.6289819999947,
+        "min": 417.9509990000224,
+        "max": 518.9472690000039
+      },
+      "cameraPanMs": {
+        "median": 491.1979220000212,
+        "min": 471.315625999996,
+        "max": 546.3676530000084
+      }
+    }
+  },
+  "notRun": [
+    "physical Android/iOS",
+    "hard memory-budget acceptance",
+    "retained-profile full browser-process restart",
+    "shaped mobile network",
+    "hosted cold start",
+    "Raspberry Pi compilation/runtime or ARM performance"
+  ],
+  "baselineComparabilityNote": "The earlier 1,036 MiB London journey used a different scenario. This comparison adds common-genus to all-record rebuilds and camera actions. Compare the five paired-build cohorts here; do not combine their peaks with the earlier journey.",
+  "intermediateResponsiveCheckpoint": {
+    "scope": "Earlier five-pair experiment before the geometry iterator change. Different shared-load conditions mean this is a checkpoint, not a direct final-versus-intermediate speedup comparison.",
+    "candidateCommit": "10d55829b3c5067ae6b8b10e8a1717a391bb92f9",
+    "rawComparisonSha256": "221918a025a28caf5b6b75ddbfc3052ab110d26d61455322ca401ab4ef225e59",
+    "baseline": {
+      "side": "baseline",
+      "runs": 5,
+      "sampledPeakPssKiB": {
+        "median": 1201301,
+        "min": 1198233,
+        "max": 1224502
+      },
+      "sampledPeakRssKiB": {
+        "median": 1474088,
+        "min": 1469900,
+        "max": 1497612
+      },
+      "offlineInitializeMs": {
+        "median": 5938.1637089999995,
+        "min": 5925.764965999988,
+        "max": 5946.469490000003
+      },
+      "offlineRefreshMs": {
+        "median": 6284.614772000001,
+        "min": 6273.982208999994,
+        "max": 6317.191143000004
+      },
+      "downloadValidateCommitMs": {
+        "median": 3654.9491600000038,
+        "min": 3643.9520950000006,
+        "max": 3697.813259000017
+      },
+      "cameraZoomMs": {
+        "median": 370.1091580000066,
+        "min": 344.25336999999126,
+        "max": 386.4617490000019
+      },
+      "cameraPanMs": {
+        "median": 325.0641739999992,
+        "min": 320.7312859999947,
+        "max": 356.731660999998
+      }
+    },
+    "candidate": {
+      "side": "candidate",
+      "runs": 5,
+      "sampledPeakPssKiB": {
+        "median": 752897,
+        "min": 726436,
+        "max": 783367
+      },
+      "sampledPeakRssKiB": {
+        "median": 1023832,
+        "min": 999124,
+        "max": 1044656
+      },
+      "offlineInitializeMs": {
+        "median": 2940.3979470000195,
+        "min": 2927.788950000002,
+        "max": 5068.5528690000065
+      },
+      "offlineRefreshMs": {
+        "median": 3267.5950960000046,
+        "min": 3256.7645699999994,
+        "max": 6639.198113999999
+      },
+      "downloadValidateCommitMs": {
+        "median": 3675.406353000002,
+        "min": 3621.8878179999956,
+        "max": 4346.184066000016
+      },
+      "cameraZoomMs": {
+        "median": 336.7607139999891,
+        "min": 324.89488200002233,
+        "max": 339.119405999998
+      },
+      "cameraPanMs": {
+        "median": 307.52790300000925,
+        "min": 305.98003099999914,
+        "max": 321.11122000000614
+      }
+    },
+    "candidateProfileSha256": "d1dec6b28fad9526e188db33409397333dd678d0d950a088c8b3bb2b7db1d342",
+    "estimatedCumulativeSampledAllocationBytes": 661325436
+  }
+}

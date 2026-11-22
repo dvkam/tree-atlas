@@ -1,0 +1,3203 @@
+{
+  "passed": true,
+  "state": "complete",
+  "scope": "Actual local Chromium production preview with default service worker enabled; browser-cold contexts and city switches; byte figures are advertised Content-Length sums from context-wide response events, including service worker precache through shell readiness on cold starts, not measured network transfers; emulated viewport, not physical mobile; API/database/OS caches warm or uncontrolled; external basemap imagery blocked; unrelated machine activity uncontrolled",
+  "percentileMethod": "nearest-rank",
+  "groups": [
+    {
+      "viewport": "desktop",
+      "kind": "browser-cold",
+      "samples": 5,
+      "p50Ms": 592.9797230000004,
+      "p95Ms": 686.7355599999996,
+      "maxMs": 686.7355599999996
+    },
+    {
+      "viewport": "desktop",
+      "kind": "city-switch",
+      "samples": 20,
+      "p50Ms": 252.8319849999998,
+      "p95Ms": 314.23316200000045,
+      "maxMs": 359.6512480000001
+    },
+    {
+      "viewport": "emulated-mobile",
+      "kind": "browser-cold",
+      "samples": 5,
+      "p50Ms": 526.646745,
+      "p95Ms": 595.6192230000015,
+      "maxMs": 595.6192230000015
+    },
+    {
+      "viewport": "emulated-mobile",
+      "kind": "city-switch",
+      "samples": 20,
+      "p50Ms": 225.067159000002,
+      "p95Ms": 262.417010000001,
+      "maxMs": 263.8576099999991
+    }
+  ],
+  "samples": [
+    {
+      "viewport": "desktop",
+      "run": 0,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 686.7355599999996,
+      "shellReadyMs": 700.4359689999997,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49600,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 14,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 0,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        62
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "desktop",
+      "run": 0,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 359.6512480000001,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 51184,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 51184,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 51123,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 0,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 282.9313769999999,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 30945,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 30945,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 30884,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 0,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 273.5994360000004,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 42001,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 42001,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 41940,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 0,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 314.23316200000045,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 48430,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 1,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 622.2123659999997,
+      "shellReadyMs": 630.6264490000003,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49600,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        54
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "desktop",
+      "run": 1,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 313.8323959999998,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 51184,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 51184,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 51123,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 1,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 245.64559199999985,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 30945,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 30945,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 30884,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 1,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 252.8319849999998,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 42001,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 42001,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 41940,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 1,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 291.3476609999998,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 48430,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 2,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 574.1131220000007,
+      "shellReadyMs": 582.7703970000002,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49600,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        51
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "desktop",
+      "run": 2,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 282.96107699999993,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 51184,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 51184,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 51123,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 2,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 218.68193299999984,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 30945,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 30945,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 30884,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 2,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 237.50852600000144,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 42001,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 42001,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 41940,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 2,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 301.23886200000015,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 48430,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 3,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 592.9797230000004,
+      "shellReadyMs": 600.9105230000005,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49600,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        53
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "desktop",
+      "run": 3,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 295.8765119999989,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 51184,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 51184,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 51123,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 3,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 238.8594090000006,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 30945,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 30945,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 30884,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 3,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 236.66595899999993,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 42001,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 42001,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 41940,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 3,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 242.03035099999943,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 48430,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 4,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 524.5726949999989,
+      "shellReadyMs": 532.1554539999997,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49600,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": true
+    },
+    {
+      "viewport": "desktop",
+      "run": 4,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 256.47344300000077,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 51184,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 51184,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 51123,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 4,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 228.95950900000025,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 30945,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 30945,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 30884,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 4,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 239.41409300000123,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 42001,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 42001,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 41940,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "desktop",
+      "run": 4,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 226.83568299999934,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 48430,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 48430,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 48369,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 0,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 526.646745,
+      "shellReadyMs": 535.3873449999992,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 60583,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        55
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 0,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 193.8227569999999,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 22280,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 22280,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 22219,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 0,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 202.30989899999986,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 36760,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 36760,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 36699,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 0,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 238.1080260000017,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 49922,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49922,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 49861,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 0,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 233.17516700000124,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 59413,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 1,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 539.8090039999988,
+      "shellReadyMs": 550.1160049999999,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 60583,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        52
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 1,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 208.82260799999858,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 22280,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 22280,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 22219,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 1,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 236.89640899999722,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 36760,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 36760,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 36699,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 1,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 233.71730899999966,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 49922,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49922,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 49861,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 1,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 263.8576099999991,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 59413,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 2,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 595.6192230000015,
+      "shellReadyMs": 606.5810230000025,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 60583,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [
+        57
+      ],
+      "productionBundle": true
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 2,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 262.417010000001,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 22280,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 22280,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 22219,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 2,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 261.9602440000017,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 36760,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 36760,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 36699,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 2,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 233.36968400000114,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 49922,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49922,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 49861,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 2,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 242.06261799999993,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 59413,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 3,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 499.1915689999987,
+      "shellReadyMs": 506.8229109999993,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 60583,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": true
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 3,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 191.59974900000088,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 22280,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 22280,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 22219,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 3,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 202.62321599999996,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 36760,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 36760,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 36699,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 3,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 217.0576000000001,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 49922,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49922,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 49861,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 3,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 230.6721170000019,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 59413,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 4,
+      "city": "london",
+      "kind": "browser-cold",
+      "readyMs": 505.6002609999996,
+      "shellReadyMs": 514.6039449999989,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 60583,
+      "serviceWorkerAdvertisedBodyBytes": 823,
+      "missingLengthResponses": 15,
+      "requests": [
+        {
+          "path": "/",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "page",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/sw.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/index.html",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 476,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/manifest.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/data/local-config.json",
+          "owner": "service-worker",
+          "advertisedBodyBytes": 347,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-B_r1PS-E.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/index-Cr3wuVBJ.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-CPwSUium.js",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "page",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/map-vh-t_kPv.css",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline-validation.worker-B2PgUhV0.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/assets/offline.worker-fP70MARZ.js",
+          "owner": "service-worker",
+          "advertisedBodyBytes": null,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": true
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 4,
+      "city": "porto",
+      "kind": "city-switch",
+      "readyMs": 192.88289900000018,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 22280,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 22280,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 22219,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 4,
+      "city": "geneva",
+      "kind": "city-switch",
+      "readyMs": 207.88277400000152,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 36760,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 36760,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 36699,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 4,
+      "city": "vienna",
+      "kind": "city-switch",
+      "readyMs": 208.85306599999967,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 49922,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 49922,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 49861,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    },
+    {
+      "viewport": "emulated-mobile",
+      "run": 4,
+      "city": "london",
+      "kind": "city-switch",
+      "readyMs": 225.067159000002,
+      "shellReadyMs": null,
+      "apiRequests": 2,
+      "apiAdvertisedBodyBytes": 59413,
+      "inventoryAssetRequests": 0,
+      "totalAdvertisedBodyBytes": 59413,
+      "serviceWorkerAdvertisedBodyBytes": 0,
+      "missingLengthResponses": 0,
+      "requests": [
+        {
+          "path": "/api/attempt",
+          "owner": "page",
+          "advertisedBodyBytes": 61,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        },
+        {
+          "path": "/api/v1/query",
+          "owner": "page",
+          "advertisedBodyBytes": 59352,
+          "status": 200,
+          "fromServiceWorker": false,
+          "failed": false
+        }
+      ],
+      "longTasks": [],
+      "productionBundle": false
+    }
+  ],
+  "notRun": [
+    "physical Android/iOS",
+    "shaped shared network",
+    "cold database/OS",
+    "hosted deployment",
+    "actual transferred network-byte measurement"
+  ]
+}

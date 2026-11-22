@@ -1,0 +1,2423 @@
+{
+  "passed": true,
+  "state": "complete",
+  "scope": "Local HTTP; fresh API process/cache, warm/uncontrolled database and OS cache. No shaped network, browser, offline or hosted claim.",
+  "cold": [
+    {
+      "iteration": 0,
+      "status": 200,
+      "startupMs": 98.227962,
+      "withAttemptMs": 960.550508,
+      "firstSearchFromLaunchMs": 1058.77847,
+      "bytes": 107986
+    },
+    {
+      "iteration": 1,
+      "status": 200,
+      "startupMs": 85.29124900000011,
+      "withAttemptMs": 917.0576040000001,
+      "firstSearchFromLaunchMs": 1002.3488530000002,
+      "bytes": 107986
+    },
+    {
+      "iteration": 2,
+      "status": 200,
+      "startupMs": 84.81750499999998,
+      "withAttemptMs": 948.1442110000003,
+      "firstSearchFromLaunchMs": 1032.9617160000003,
+      "bytes": 107986
+    },
+    {
+      "iteration": 3,
+      "status": 200,
+      "startupMs": 80.17669599999999,
+      "withAttemptMs": 904.6880059999999,
+      "firstSearchFromLaunchMs": 984.8647019999999,
+      "bytes": 107986
+    },
+    {
+      "iteration": 4,
+      "status": 200,
+      "startupMs": 80.75308200000018,
+      "withAttemptMs": 907.4946249999994,
+      "firstSearchFromLaunchMs": 988.2477069999995,
+      "bytes": 107986
+    },
+    {
+      "iteration": 5,
+      "status": 200,
+      "startupMs": 77.89758699999948,
+      "withAttemptMs": 871.9420899999996,
+      "firstSearchFromLaunchMs": 949.839676999999,
+      "bytes": 107986
+    },
+    {
+      "iteration": 6,
+      "status": 200,
+      "startupMs": 77.37612600000011,
+      "withAttemptMs": 872.4105090000003,
+      "firstSearchFromLaunchMs": 949.7866350000004,
+      "bytes": 107986
+    },
+    {
+      "iteration": 7,
+      "status": 200,
+      "startupMs": 79.42477599999984,
+      "withAttemptMs": 884.952870000001,
+      "firstSearchFromLaunchMs": 964.3776460000008,
+      "bytes": 107986
+    },
+    {
+      "iteration": 8,
+      "status": 200,
+      "startupMs": 73.18576500000017,
+      "withAttemptMs": 885.5040509999999,
+      "firstSearchFromLaunchMs": 958.6898160000001,
+      "bytes": 107986
+    },
+    {
+      "iteration": 9,
+      "status": 200,
+      "startupMs": 78.49936999999954,
+      "withAttemptMs": 883.9353470000005,
+      "firstSearchFromLaunchMs": 962.4347170000001,
+      "bytes": 107986
+    },
+    {
+      "iteration": 10,
+      "status": 200,
+      "startupMs": 76.06581799999913,
+      "withAttemptMs": 890.5910039999999,
+      "firstSearchFromLaunchMs": 966.656821999999,
+      "bytes": 107986
+    },
+    {
+      "iteration": 11,
+      "status": 200,
+      "startupMs": 75.85588800000005,
+      "withAttemptMs": 920.4611029999996,
+      "firstSearchFromLaunchMs": 996.3169909999997,
+      "bytes": 107986
+    },
+    {
+      "iteration": 12,
+      "status": 200,
+      "startupMs": 78.33497900000111,
+      "withAttemptMs": 929.4546759999994,
+      "firstSearchFromLaunchMs": 1007.7896550000005,
+      "bytes": 107986
+    },
+    {
+      "iteration": 13,
+      "status": 200,
+      "startupMs": 73.59941799999979,
+      "withAttemptMs": 878.8359200000014,
+      "firstSearchFromLaunchMs": 952.4353380000011,
+      "bytes": 107986
+    },
+    {
+      "iteration": 14,
+      "status": 200,
+      "startupMs": 77.94815700000072,
+      "withAttemptMs": 883.2781969999996,
+      "firstSearchFromLaunchMs": 961.2263540000004,
+      "bytes": 107986
+    },
+    {
+      "iteration": 15,
+      "status": 200,
+      "startupMs": 77.49955099999897,
+      "withAttemptMs": 880.5014769999998,
+      "firstSearchFromLaunchMs": 958.0010279999988,
+      "bytes": 107986
+    },
+    {
+      "iteration": 16,
+      "status": 200,
+      "startupMs": 77.15455099999963,
+      "withAttemptMs": 884.2479600000006,
+      "firstSearchFromLaunchMs": 961.4025110000002,
+      "bytes": 107986
+    },
+    {
+      "iteration": 17,
+      "status": 200,
+      "startupMs": 77.05123100000128,
+      "withAttemptMs": 888.6896679999991,
+      "firstSearchFromLaunchMs": 965.7408990000004,
+      "bytes": 107986
+    },
+    {
+      "iteration": 18,
+      "status": 200,
+      "startupMs": 78.4947650000031,
+      "withAttemptMs": 882.3989349999974,
+      "firstSearchFromLaunchMs": 960.8937000000005,
+      "bytes": 107986
+    },
+    {
+      "iteration": 19,
+      "status": 200,
+      "startupMs": 78.14178600000014,
+      "withAttemptMs": 880.3554240000012,
+      "firstSearchFromLaunchMs": 958.4972100000014,
+      "bytes": 107986
+    },
+    {
+      "iteration": 20,
+      "status": 200,
+      "startupMs": 77.52405200000067,
+      "withAttemptMs": 888.8379669999995,
+      "firstSearchFromLaunchMs": 966.3620190000001,
+      "bytes": 107986
+    },
+    {
+      "iteration": 21,
+      "status": 200,
+      "startupMs": 76.27947900000072,
+      "withAttemptMs": 913.2313770000001,
+      "firstSearchFromLaunchMs": 989.5108560000008,
+      "bytes": 107986
+    },
+    {
+      "iteration": 22,
+      "status": 200,
+      "startupMs": 75.47391500000231,
+      "withAttemptMs": 879.3593130000008,
+      "firstSearchFromLaunchMs": 954.8332280000031,
+      "bytes": 107986
+    },
+    {
+      "iteration": 23,
+      "status": 200,
+      "startupMs": 78.94525499999872,
+      "withAttemptMs": 876.341671000002,
+      "firstSearchFromLaunchMs": 955.2869260000007,
+      "bytes": 107986
+    },
+    {
+      "iteration": 24,
+      "status": 200,
+      "startupMs": 72.64753700000074,
+      "withAttemptMs": 883.3925220000019,
+      "firstSearchFromLaunchMs": 956.0400590000027,
+      "bytes": 107986
+    },
+    {
+      "iteration": 25,
+      "status": 200,
+      "startupMs": 77.26741000000038,
+      "withAttemptMs": 886.3793120000009,
+      "firstSearchFromLaunchMs": 963.6467220000013,
+      "bytes": 107986
+    },
+    {
+      "iteration": 26,
+      "status": 200,
+      "startupMs": 77.99281399999745,
+      "withAttemptMs": 881.999538,
+      "firstSearchFromLaunchMs": 959.9923519999975,
+      "bytes": 107986
+    },
+    {
+      "iteration": 27,
+      "status": 200,
+      "startupMs": 78.00701000000117,
+      "withAttemptMs": 878.8280130000021,
+      "firstSearchFromLaunchMs": 956.8350230000033,
+      "bytes": 107986
+    },
+    {
+      "iteration": 28,
+      "status": 200,
+      "startupMs": 78.38499600000068,
+      "withAttemptMs": 879.6806399999987,
+      "firstSearchFromLaunchMs": 958.0656359999994,
+      "bytes": 107986
+    },
+    {
+      "iteration": 29,
+      "status": 200,
+      "startupMs": 78.3250369999987,
+      "withAttemptMs": 892.3357230000001,
+      "firstSearchFromLaunchMs": 970.6607599999988,
+      "bytes": 107986
+    }
+  ],
+  "warm": [
+    {
+      "concurrency": 1,
+      "clientMaxSockets": 32,
+      "samples": 100,
+      "p50": 4.324022000000696,
+      "p95": 7.677582000000257,
+      "max": 8.220306999999593,
+      "elapsedMs": 499.8533419999985,
+      "failures": 0,
+      "rawSamples": [
+        {
+          "index": 0,
+          "status": 200,
+          "withAttemptMs": 7.635620000000927,
+          "requestMs": 7.301555000001827,
+          "bytes": 107986
+        },
+        {
+          "index": 1,
+          "status": 200,
+          "withAttemptMs": 5.192688999999518,
+          "requestMs": 4.414636000001337,
+          "bytes": 83803
+        },
+        {
+          "index": 2,
+          "status": 200,
+          "withAttemptMs": 3.7781419999992067,
+          "requestMs": 3.5158599999995204,
+          "bytes": 66980
+        },
+        {
+          "index": 3,
+          "status": 200,
+          "withAttemptMs": 4.594046000001981,
+          "requestMs": 4.266384999998991,
+          "bytes": 108692
+        },
+        {
+          "index": 4,
+          "status": 200,
+          "withAttemptMs": 7.447510999998485,
+          "requestMs": 7.167546000000584,
+          "bytes": 107594
+        },
+        {
+          "index": 5,
+          "status": 200,
+          "withAttemptMs": 3.943981000000349,
+          "requestMs": 3.6876249999986612,
+          "bytes": 83863
+        },
+        {
+          "index": 6,
+          "status": 200,
+          "withAttemptMs": 3.8084429999980784,
+          "requestMs": 3.4826930000017455,
+          "bytes": 67435
+        },
+        {
+          "index": 7,
+          "status": 200,
+          "withAttemptMs": 4.339507000000594,
+          "requestMs": 4.021021000000474,
+          "bytes": 108697
+        },
+        {
+          "index": 8,
+          "status": 200,
+          "withAttemptMs": 7.409756000000925,
+          "requestMs": 7.144605999998021,
+          "bytes": 104436
+        },
+        {
+          "index": 9,
+          "status": 200,
+          "withAttemptMs": 4.002286999999342,
+          "requestMs": 3.4910090000012133,
+          "bytes": 79405
+        },
+        {
+          "index": 10,
+          "status": 200,
+          "withAttemptMs": 3.2946799999990617,
+          "requestMs": 3.0477869999995164,
+          "bytes": 63151
+        },
+        {
+          "index": 11,
+          "status": 200,
+          "withAttemptMs": 3.6373469999998633,
+          "requestMs": 3.3799400000025344,
+          "bytes": 105806
+        },
+        {
+          "index": 12,
+          "status": 200,
+          "withAttemptMs": 7.205301999998483,
+          "requestMs": 6.870089000000007,
+          "bytes": 107986
+        },
+        {
+          "index": 13,
+          "status": 200,
+          "withAttemptMs": 4.235893999997643,
+          "requestMs": 3.940922000001592,
+          "bytes": 83803
+        },
+        {
+          "index": 14,
+          "status": 200,
+          "withAttemptMs": 3.8219200000021374,
+          "requestMs": 3.5598299999983283,
+          "bytes": 66980
+        },
+        {
+          "index": 15,
+          "status": 200,
+          "withAttemptMs": 4.396474999997736,
+          "requestMs": 4.129125999999815,
+          "bytes": 108692
+        },
+        {
+          "index": 16,
+          "status": 200,
+          "withAttemptMs": 7.323443000001134,
+          "requestMs": 7.075786000001244,
+          "bytes": 107594
+        },
+        {
+          "index": 17,
+          "status": 200,
+          "withAttemptMs": 4.43920000000071,
+          "requestMs": 4.13113400000293,
+          "bytes": 83863
+        },
+        {
+          "index": 18,
+          "status": 200,
+          "withAttemptMs": 3.7740329999978712,
+          "requestMs": 3.504103999999643,
+          "bytes": 67435
+        },
+        {
+          "index": 19,
+          "status": 200,
+          "withAttemptMs": 4.411671999998362,
+          "requestMs": 4.150346000002173,
+          "bytes": 108697
+        },
+        {
+          "index": 20,
+          "status": 200,
+          "withAttemptMs": 6.814841999999771,
+          "requestMs": 6.582382000000507,
+          "bytes": 104436
+        },
+        {
+          "index": 21,
+          "status": 200,
+          "withAttemptMs": 4.2792890000018815,
+          "requestMs": 3.7147709999990184,
+          "bytes": 79405
+        },
+        {
+          "index": 22,
+          "status": 200,
+          "withAttemptMs": 3.231690000000526,
+          "requestMs": 2.9998989999985497,
+          "bytes": 63151
+        },
+        {
+          "index": 23,
+          "status": 200,
+          "withAttemptMs": 3.7199319999999716,
+          "requestMs": 3.4950239999998303,
+          "bytes": 105806
+        },
+        {
+          "index": 24,
+          "status": 200,
+          "withAttemptMs": 7.175766000000294,
+          "requestMs": 6.905836999998428,
+          "bytes": 107986
+        },
+        {
+          "index": 25,
+          "status": 200,
+          "withAttemptMs": 3.9945450000013807,
+          "requestMs": 3.758356999998796,
+          "bytes": 83803
+        },
+        {
+          "index": 26,
+          "status": 200,
+          "withAttemptMs": 3.788752000000386,
+          "requestMs": 3.549792999998317,
+          "bytes": 66980
+        },
+        {
+          "index": 27,
+          "status": 200,
+          "withAttemptMs": 4.800317000001087,
+          "requestMs": 4.16936799999894,
+          "bytes": 108692
+        },
+        {
+          "index": 28,
+          "status": 200,
+          "withAttemptMs": 7.418741000001319,
+          "requestMs": 7.163626999998087,
+          "bytes": 107594
+        },
+        {
+          "index": 29,
+          "status": 200,
+          "withAttemptMs": 4.094621000000188,
+          "requestMs": 3.812935000001744,
+          "bytes": 83863
+        },
+        {
+          "index": 30,
+          "status": 200,
+          "withAttemptMs": 4.4263929999979155,
+          "requestMs": 3.994448999997985,
+          "bytes": 67435
+        },
+        {
+          "index": 31,
+          "status": 200,
+          "withAttemptMs": 4.102266999998392,
+          "requestMs": 3.7806280000004335,
+          "bytes": 108697
+        },
+        {
+          "index": 32,
+          "status": 200,
+          "withAttemptMs": 7.592512000002898,
+          "requestMs": 7.364354000001185,
+          "bytes": 104436
+        },
+        {
+          "index": 33,
+          "status": 200,
+          "withAttemptMs": 4.468258000000787,
+          "requestMs": 3.8825199999992037,
+          "bytes": 79405
+        },
+        {
+          "index": 34,
+          "status": 200,
+          "withAttemptMs": 3.800891999999294,
+          "requestMs": 3.53316199999972,
+          "bytes": 63151
+        },
+        {
+          "index": 35,
+          "status": 200,
+          "withAttemptMs": 3.8326250000027358,
+          "requestMs": 3.6063780000004044,
+          "bytes": 105806
+        },
+        {
+          "index": 36,
+          "status": 200,
+          "withAttemptMs": 7.446267999999691,
+          "requestMs": 7.205588000000716,
+          "bytes": 107986
+        },
+        {
+          "index": 37,
+          "status": 200,
+          "withAttemptMs": 4.091562000001431,
+          "requestMs": 3.848300999998173,
+          "bytes": 83803
+        },
+        {
+          "index": 38,
+          "status": 200,
+          "withAttemptMs": 3.785597999998572,
+          "requestMs": 3.513184999999794,
+          "bytes": 66980
+        },
+        {
+          "index": 39,
+          "status": 200,
+          "withAttemptMs": 4.4047910000008414,
+          "requestMs": 3.84983099999954,
+          "bytes": 108692
+        },
+        {
+          "index": 40,
+          "status": 200,
+          "withAttemptMs": 7.570909999998548,
+          "requestMs": 7.308531999999104,
+          "bytes": 107594
+        },
+        {
+          "index": 41,
+          "status": 200,
+          "withAttemptMs": 4.058681999998953,
+          "requestMs": 3.7754669999994803,
+          "bytes": 83863
+        },
+        {
+          "index": 42,
+          "status": 200,
+          "withAttemptMs": 3.6017900000006193,
+          "requestMs": 3.3849109999973734,
+          "bytes": 67435
+        },
+        {
+          "index": 43,
+          "status": 200,
+          "withAttemptMs": 4.324022000000696,
+          "requestMs": 4.072541000001365,
+          "bytes": 108697
+        },
+        {
+          "index": 44,
+          "status": 200,
+          "withAttemptMs": 7.347912000001088,
+          "requestMs": 7.071389000000636,
+          "bytes": 104436
+        },
+        {
+          "index": 45,
+          "status": 200,
+          "withAttemptMs": 4.470934999997553,
+          "requestMs": 3.7758490000014717,
+          "bytes": 79405
+        },
+        {
+          "index": 46,
+          "status": 200,
+          "withAttemptMs": 3.2800549999992654,
+          "requestMs": 3.030485999999655,
+          "bytes": 63151
+        },
+        {
+          "index": 47,
+          "status": 200,
+          "withAttemptMs": 3.863213000000542,
+          "requestMs": 3.53851399999985,
+          "bytes": 105806
+        },
+        {
+          "index": 48,
+          "status": 200,
+          "withAttemptMs": 7.938906999999745,
+          "requestMs": 7.612296999999671,
+          "bytes": 107986
+        },
+        {
+          "index": 49,
+          "status": 200,
+          "withAttemptMs": 4.3472489999985555,
+          "requestMs": 4.077511999999842,
+          "bytes": 83803
+        },
+        {
+          "index": 50,
+          "status": 200,
+          "withAttemptMs": 3.7442100000007486,
+          "requestMs": 3.508022999998502,
+          "bytes": 66980
+        },
+        {
+          "index": 51,
+          "status": 200,
+          "withAttemptMs": 4.674815000002127,
+          "requestMs": 4.049219000000448,
+          "bytes": 108692
+        },
+        {
+          "index": 52,
+          "status": 200,
+          "withAttemptMs": 7.361006999999518,
+          "requestMs": 7.143459000002622,
+          "bytes": 107594
+        },
+        {
+          "index": 53,
+          "status": 200,
+          "withAttemptMs": 4.110200999999506,
+          "requestMs": 3.8717189999988477,
+          "bytes": 83863
+        },
+        {
+          "index": 54,
+          "status": 200,
+          "withAttemptMs": 3.6486260000019684,
+          "requestMs": 3.4118649999982154,
+          "bytes": 67435
+        },
+        {
+          "index": 55,
+          "status": 200,
+          "withAttemptMs": 3.9891920000009122,
+          "requestMs": 3.77986299999975,
+          "bytes": 108697
+        },
+        {
+          "index": 56,
+          "status": 200,
+          "withAttemptMs": 6.760932000001048,
+          "requestMs": 6.538986000003206,
+          "bytes": 104436
+        },
+        {
+          "index": 57,
+          "status": 200,
+          "withAttemptMs": 4.1244429999969725,
+          "requestMs": 3.4655839999977616,
+          "bytes": 79405
+        },
+        {
+          "index": 58,
+          "status": 200,
+          "withAttemptMs": 3.2212709999985236,
+          "requestMs": 2.9936860000016168,
+          "bytes": 63151
+        },
+        {
+          "index": 59,
+          "status": 200,
+          "withAttemptMs": 3.7553939999997965,
+          "requestMs": 3.5077369999999064,
+          "bytes": 105806
+        },
+        {
+          "index": 60,
+          "status": 200,
+          "withAttemptMs": 7.341317000002164,
+          "requestMs": 7.0927039999987755,
+          "bytes": 107986
+        },
+        {
+          "index": 61,
+          "status": 200,
+          "withAttemptMs": 4.135435000000143,
+          "requestMs": 3.9027840000017022,
+          "bytes": 83803
+        },
+        {
+          "index": 62,
+          "status": 200,
+          "withAttemptMs": 3.7520480000021053,
+          "requestMs": 3.4628110000012384,
+          "bytes": 66980
+        },
+        {
+          "index": 63,
+          "status": 200,
+          "withAttemptMs": 4.36340299999938,
+          "requestMs": 3.8053839999993215,
+          "bytes": 108692
+        },
+        {
+          "index": 64,
+          "status": 200,
+          "withAttemptMs": 7.648714999999356,
+          "requestMs": 7.407271000000037,
+          "bytes": 107594
+        },
+        {
+          "index": 65,
+          "status": 200,
+          "withAttemptMs": 4.0313439999990806,
+          "requestMs": 3.7880829999994603,
+          "bytes": 83863
+        },
+        {
+          "index": 66,
+          "status": 200,
+          "withAttemptMs": 3.5345950000009907,
+          "requestMs": 3.29142999999749,
+          "bytes": 67435
+        },
+        {
+          "index": 67,
+          "status": 200,
+          "withAttemptMs": 4.234843000002002,
+          "requestMs": 4.024749000000156,
+          "bytes": 108697
+        },
+        {
+          "index": 68,
+          "status": 200,
+          "withAttemptMs": 8.220306999999593,
+          "requestMs": 7.98689000000013,
+          "bytes": 104436
+        },
+        {
+          "index": 69,
+          "status": 200,
+          "withAttemptMs": 5.274699000001419,
+          "requestMs": 4.61927999999898,
+          "bytes": 79405
+        },
+        {
+          "index": 70,
+          "status": 200,
+          "withAttemptMs": 3.812839999998687,
+          "requestMs": 3.443217000000004,
+          "bytes": 63151
+        },
+        {
+          "index": 71,
+          "status": 200,
+          "withAttemptMs": 4.68637999999919,
+          "requestMs": 4.46567800000048,
+          "bytes": 105806
+        },
+        {
+          "index": 72,
+          "status": 200,
+          "withAttemptMs": 7.925430000002962,
+          "requestMs": 7.683506999997917,
+          "bytes": 107986
+        },
+        {
+          "index": 73,
+          "status": 200,
+          "withAttemptMs": 4.662866999999096,
+          "requestMs": 4.406797999999981,
+          "bytes": 83803
+        },
+        {
+          "index": 74,
+          "status": 200,
+          "withAttemptMs": 4.229776000000129,
+          "requestMs": 4.001043999996909,
+          "bytes": 66980
+        },
+        {
+          "index": 75,
+          "status": 200,
+          "withAttemptMs": 4.686475999998947,
+          "requestMs": 4.140788000000612,
+          "bytes": 108692
+        },
+        {
+          "index": 76,
+          "status": 200,
+          "withAttemptMs": 7.417688999998063,
+          "requestMs": 7.183413000002474,
+          "bytes": 107594
+        },
+        {
+          "index": 77,
+          "status": 200,
+          "withAttemptMs": 4.611155999999028,
+          "requestMs": 4.352505999999266,
+          "bytes": 83863
+        },
+        {
+          "index": 78,
+          "status": 200,
+          "withAttemptMs": 3.9414959999994608,
+          "requestMs": 3.7024399999972957,
+          "bytes": 67435
+        },
+        {
+          "index": 79,
+          "status": 200,
+          "withAttemptMs": 4.855086000003212,
+          "requestMs": 4.638780000001134,
+          "bytes": 108697
+        },
+        {
+          "index": 80,
+          "status": 200,
+          "withAttemptMs": 7.731682000001456,
+          "requestMs": 7.501898999998957,
+          "bytes": 104436
+        },
+        {
+          "index": 81,
+          "status": 200,
+          "withAttemptMs": 4.76294400000188,
+          "requestMs": 4.221172999998089,
+          "bytes": 79405
+        },
+        {
+          "index": 82,
+          "status": 200,
+          "withAttemptMs": 3.69288200000301,
+          "requestMs": 3.4222850000005565,
+          "bytes": 63151
+        },
+        {
+          "index": 83,
+          "status": 200,
+          "withAttemptMs": 4.254915000001347,
+          "requestMs": 4.0029560000002675,
+          "bytes": 105806
+        },
+        {
+          "index": 84,
+          "status": 200,
+          "withAttemptMs": 7.667641000000003,
+          "requestMs": 7.42648299999928,
+          "bytes": 107986
+        },
+        {
+          "index": 85,
+          "status": 200,
+          "withAttemptMs": 4.186475999998947,
+          "requestMs": 3.9380550000023504,
+          "bytes": 83803
+        },
+        {
+          "index": 86,
+          "status": 200,
+          "withAttemptMs": 3.872483999999531,
+          "requestMs": 3.6169879999979457,
+          "bytes": 66980
+        },
+        {
+          "index": 87,
+          "status": 200,
+          "withAttemptMs": 4.304618999998638,
+          "requestMs": 4.050651999998081,
+          "bytes": 108692
+        },
+        {
+          "index": 88,
+          "status": 200,
+          "withAttemptMs": 7.625392999998439,
+          "requestMs": 7.003046000001632,
+          "bytes": 107594
+        },
+        {
+          "index": 89,
+          "status": 200,
+          "withAttemptMs": 4.380989999997837,
+          "requestMs": 4.144132999997964,
+          "bytes": 83863
+        },
+        {
+          "index": 90,
+          "status": 200,
+          "withAttemptMs": 3.7849290000012843,
+          "requestMs": 3.4595620000000054,
+          "bytes": 67435
+        },
+        {
+          "index": 91,
+          "status": 200,
+          "withAttemptMs": 4.141840000000229,
+          "requestMs": 3.914732000001095,
+          "bytes": 108697
+        },
+        {
+          "index": 92,
+          "status": 200,
+          "withAttemptMs": 7.677582000000257,
+          "requestMs": 7.366933999997855,
+          "bytes": 104436
+        },
+        {
+          "index": 93,
+          "status": 200,
+          "withAttemptMs": 4.5699600000007194,
+          "requestMs": 4.293435999999929,
+          "bytes": 79405
+        },
+        {
+          "index": 94,
+          "status": 200,
+          "withAttemptMs": 3.9378639999995357,
+          "requestMs": 3.3438099999984843,
+          "bytes": 63151
+        },
+        {
+          "index": 95,
+          "status": 200,
+          "withAttemptMs": 3.9936850000012782,
+          "requestMs": 3.7611289999986184,
+          "bytes": 105806
+        },
+        {
+          "index": 96,
+          "status": 200,
+          "withAttemptMs": 7.175671000000875,
+          "requestMs": 6.967967000000499,
+          "bytes": 107986
+        },
+        {
+          "index": 97,
+          "status": 200,
+          "withAttemptMs": 3.9542079999991984,
+          "requestMs": 3.7240420000016456,
+          "bytes": 83803
+        },
+        {
+          "index": 98,
+          "status": 200,
+          "withAttemptMs": 3.6757719999986875,
+          "requestMs": 3.4695990000000165,
+          "bytes": 66980
+        },
+        {
+          "index": 99,
+          "status": 200,
+          "withAttemptMs": 4.3399849999987055,
+          "requestMs": 4.061262000002898,
+          "bytes": 108692
+        }
+      ]
+    },
+    {
+      "concurrency": 10,
+      "clientMaxSockets": 32,
+      "samples": 100,
+      "p50": 14.399993999999424,
+      "p95": 20.04211700000087,
+      "max": 27.035221999998612,
+      "elapsedMs": 154.54302400000233,
+      "failures": 0,
+      "rawSamples": [
+        {
+          "index": 0,
+          "status": 200,
+          "withAttemptMs": 9.074348000001919,
+          "requestMs": 7.79515000000174,
+          "bytes": 107986
+        },
+        {
+          "index": 2,
+          "status": 200,
+          "withAttemptMs": 10.434602000001178,
+          "requestMs": 7.910710000000108,
+          "bytes": 66980
+        },
+        {
+          "index": 1,
+          "status": 200,
+          "withAttemptMs": 11.065454999999929,
+          "requestMs": 8.646609999999782,
+          "bytes": 83803
+        },
+        {
+          "index": 3,
+          "status": 200,
+          "withAttemptMs": 12.569659000000684,
+          "requestMs": 9.89780299999984,
+          "bytes": 108692
+        },
+        {
+          "index": 5,
+          "status": 200,
+          "withAttemptMs": 15.093740999996953,
+          "requestMs": 12.22765900000013,
+          "bytes": 83863
+        },
+        {
+          "index": 4,
+          "status": 200,
+          "withAttemptMs": 16.953324000001885,
+          "requestMs": 14.161894999997457,
+          "bytes": 107594
+        },
+        {
+          "index": 6,
+          "status": 200,
+          "withAttemptMs": 17.68931999999768,
+          "requestMs": 14.716090000001714,
+          "bytes": 67435
+        },
+        {
+          "index": 7,
+          "status": 200,
+          "withAttemptMs": 18.579970999999205,
+          "requestMs": 15.471201000000292,
+          "bytes": 108697
+        },
+        {
+          "index": 9,
+          "status": 200,
+          "withAttemptMs": 20.04211700000087,
+          "requestMs": 16.602914999999484,
+          "bytes": 79405
+        },
+        {
+          "index": 10,
+          "status": 200,
+          "withAttemptMs": 12.946831999997812,
+          "requestMs": 12.468149000000267,
+          "bytes": 63151
+        },
+        {
+          "index": 11,
+          "status": 200,
+          "withAttemptMs": 13.740655999998125,
+          "requestMs": 12.998447000001761,
+          "bytes": 105806
+        },
+        {
+          "index": 8,
+          "status": 200,
+          "withAttemptMs": 27.035221999998612,
+          "requestMs": 23.79636400000163,
+          "bytes": 104436
+        },
+        {
+          "index": 13,
+          "status": 200,
+          "withAttemptMs": 16.358124000002135,
+          "requestMs": 16.103680000000168,
+          "bytes": 83803
+        },
+        {
+          "index": 14,
+          "status": 200,
+          "withAttemptMs": 15.249925000000076,
+          "requestMs": 15.002841000001354,
+          "bytes": 66980
+        },
+        {
+          "index": 12,
+          "status": 200,
+          "withAttemptMs": 20.58665800000017,
+          "requestMs": 20.21263899999758,
+          "bytes": 107986
+        },
+        {
+          "index": 15,
+          "status": 200,
+          "withAttemptMs": 19.23290300000008,
+          "requestMs": 18.974636999999348,
+          "bytes": 108692
+        },
+        {
+          "index": 17,
+          "status": 200,
+          "withAttemptMs": 18.229847000002337,
+          "requestMs": 17.8484669999998,
+          "bytes": 83863
+        },
+        {
+          "index": 16,
+          "status": 200,
+          "withAttemptMs": 19.941944000001968,
+          "requestMs": 18.81912200000079,
+          "bytes": 107594
+        },
+        {
+          "index": 18,
+          "status": 200,
+          "withAttemptMs": 17.959248999999545,
+          "requestMs": 17.6912319999974,
+          "bytes": 67435
+        },
+        {
+          "index": 19,
+          "status": 200,
+          "withAttemptMs": 17.50713700000051,
+          "requestMs": 17.222011000001658,
+          "bytes": 108697
+        },
+        {
+          "index": 21,
+          "status": 200,
+          "withAttemptMs": 12.865872999998828,
+          "requestMs": 12.324772000003577,
+          "bytes": 79405
+        },
+        {
+          "index": 22,
+          "status": 200,
+          "withAttemptMs": 11.77583500000037,
+          "requestMs": 11.28443800000241,
+          "bytes": 63151
+        },
+        {
+          "index": 23,
+          "status": 200,
+          "withAttemptMs": 12.351918000000296,
+          "requestMs": 10.887860999999248,
+          "bytes": 105806
+        },
+        {
+          "index": 20,
+          "status": 200,
+          "withAttemptMs": 19.968517000001157,
+          "requestMs": 17.99557100000311,
+          "bytes": 104436
+        },
+        {
+          "index": 26,
+          "status": 200,
+          "withAttemptMs": 8.156264999997802,
+          "requestMs": 6.729581000003236,
+          "bytes": 66980
+        },
+        {
+          "index": 27,
+          "status": 200,
+          "withAttemptMs": 9.729671000000963,
+          "requestMs": 8.917399999998452,
+          "bytes": 108692
+        },
+        {
+          "index": 24,
+          "status": 200,
+          "withAttemptMs": 16.837954999999056,
+          "requestMs": 13.155013999999937,
+          "bytes": 107986
+        },
+        {
+          "index": 25,
+          "status": 200,
+          "withAttemptMs": 13.104737000001478,
+          "requestMs": 10.561633000001166,
+          "bytes": 83803
+        },
+        {
+          "index": 29,
+          "status": 200,
+          "withAttemptMs": 12.970441000001301,
+          "requestMs": 12.025690000002214,
+          "bytes": 83863
+        },
+        {
+          "index": 28,
+          "status": 200,
+          "withAttemptMs": 15.190472000002046,
+          "requestMs": 13.865201000000525,
+          "bytes": 107594
+        },
+        {
+          "index": 30,
+          "status": 200,
+          "withAttemptMs": 14.317504999999073,
+          "requestMs": 13.51737200000207,
+          "bytes": 67435
+        },
+        {
+          "index": 31,
+          "status": 200,
+          "withAttemptMs": 14.789593000001332,
+          "requestMs": 14.403913000001921,
+          "bytes": 108697
+        },
+        {
+          "index": 33,
+          "status": 200,
+          "withAttemptMs": 12.770957999997336,
+          "requestMs": 12.52492500000153,
+          "bytes": 79405
+        },
+        {
+          "index": 34,
+          "status": 200,
+          "withAttemptMs": 12.8420729999998,
+          "requestMs": 12.591546999999991,
+          "bytes": 63151
+        },
+        {
+          "index": 35,
+          "status": 200,
+          "withAttemptMs": 11.768188000001828,
+          "requestMs": 10.754903000000922,
+          "bytes": 105806
+        },
+        {
+          "index": 32,
+          "status": 200,
+          "withAttemptMs": 17.47339700000157,
+          "requestMs": 17.011343999998644,
+          "bytes": 104436
+        },
+        {
+          "index": 37,
+          "status": 200,
+          "withAttemptMs": 13.055702000001475,
+          "requestMs": 12.019000000000233,
+          "bytes": 83803
+        },
+        {
+          "index": 38,
+          "status": 200,
+          "withAttemptMs": 10.892735000001267,
+          "requestMs": 9.582566999997653,
+          "bytes": 66980
+        },
+        {
+          "index": 36,
+          "status": 200,
+          "withAttemptMs": 18.302873000000545,
+          "requestMs": 17.94108799999958,
+          "bytes": 107986
+        },
+        {
+          "index": 39,
+          "status": 200,
+          "withAttemptMs": 14.608080000001792,
+          "requestMs": 12.015558999999485,
+          "bytes": 108692
+        },
+        {
+          "index": 40,
+          "status": 200,
+          "withAttemptMs": 15.198691999998118,
+          "requestMs": 13.91700800000035,
+          "bytes": 107594
+        },
+        {
+          "index": 41,
+          "status": 200,
+          "withAttemptMs": 14.876191999999719,
+          "requestMs": 13.169160000001284,
+          "bytes": 83863
+        },
+        {
+          "index": 42,
+          "status": 200,
+          "withAttemptMs": 14.399993999999424,
+          "requestMs": 13.07329000000027,
+          "bytes": 67435
+        },
+        {
+          "index": 45,
+          "status": 200,
+          "withAttemptMs": 11.917584999999235,
+          "requestMs": 11.486501999999746,
+          "bytes": 79405
+        },
+        {
+          "index": 43,
+          "status": 200,
+          "withAttemptMs": 17.07901700000002,
+          "requestMs": 14.583514000001742,
+          "bytes": 108697
+        },
+        {
+          "index": 46,
+          "status": 200,
+          "withAttemptMs": 13.519475000000966,
+          "requestMs": 12.456582999999227,
+          "bytes": 63151
+        },
+        {
+          "index": 47,
+          "status": 200,
+          "withAttemptMs": 14.79322499999762,
+          "requestMs": 14.345032999997784,
+          "bytes": 105806
+        },
+        {
+          "index": 44,
+          "status": 200,
+          "withAttemptMs": 19.92158600000039,
+          "requestMs": 18.097846000000573,
+          "bytes": 104436
+        },
+        {
+          "index": 51,
+          "status": 200,
+          "withAttemptMs": 10.413381999998819,
+          "requestMs": 7.985074000000168,
+          "bytes": 108692
+        },
+        {
+          "index": 49,
+          "status": 200,
+          "withAttemptMs": 17.283854000001156,
+          "requestMs": 17.023004999999102,
+          "bytes": 83803
+        },
+        {
+          "index": 48,
+          "status": 200,
+          "withAttemptMs": 19.61256300000241,
+          "requestMs": 19.21063299999878,
+          "bytes": 107986
+        },
+        {
+          "index": 50,
+          "status": 200,
+          "withAttemptMs": 17.774389999998675,
+          "requestMs": 16.851432999999815,
+          "bytes": 66980
+        },
+        {
+          "index": 52,
+          "status": 200,
+          "withAttemptMs": 17.008284999999887,
+          "requestMs": 15.71216899999854,
+          "bytes": 107594
+        },
+        {
+          "index": 55,
+          "status": 200,
+          "withAttemptMs": 13.68330600000263,
+          "requestMs": 12.997969000000012,
+          "bytes": 108697
+        },
+        {
+          "index": 53,
+          "status": 200,
+          "withAttemptMs": 18.0705089999974,
+          "requestMs": 16.792457000003196,
+          "bytes": 83863
+        },
+        {
+          "index": 54,
+          "status": 200,
+          "withAttemptMs": 16.132164000002376,
+          "requestMs": 14.944342999999208,
+          "bytes": 67435
+        },
+        {
+          "index": 57,
+          "status": 200,
+          "withAttemptMs": 13.511159000001498,
+          "requestMs": 8.070240000000922,
+          "bytes": 79405
+        },
+        {
+          "index": 58,
+          "status": 200,
+          "withAttemptMs": 13.149660999999469,
+          "requestMs": 8.421605999999883,
+          "bytes": 63151
+        },
+        {
+          "index": 56,
+          "status": 200,
+          "withAttemptMs": 16.92187699999704,
+          "requestMs": 15.424652000001515,
+          "bytes": 104436
+        },
+        {
+          "index": 59,
+          "status": 200,
+          "withAttemptMs": 10.56822800000009,
+          "requestMs": 9.43976499999917,
+          "bytes": 105806
+        },
+        {
+          "index": 63,
+          "status": 200,
+          "withAttemptMs": 7.675670000000537,
+          "requestMs": 6.735984999999346,
+          "bytes": 108692
+        },
+        {
+          "index": 65,
+          "status": 200,
+          "withAttemptMs": 7.107232000002114,
+          "requestMs": 6.592704999999114,
+          "bytes": 83863
+        },
+        {
+          "index": 61,
+          "status": 200,
+          "withAttemptMs": 13.359850000000733,
+          "requestMs": 12.255473999997776,
+          "bytes": 83803
+        },
+        {
+          "index": 62,
+          "status": 200,
+          "withAttemptMs": 14.940042000001995,
+          "requestMs": 14.504370999999082,
+          "bytes": 66980
+        },
+        {
+          "index": 60,
+          "status": 200,
+          "withAttemptMs": 17.86051099999895,
+          "requestMs": 17.456192000001465,
+          "bytes": 107986
+        },
+        {
+          "index": 68,
+          "status": 200,
+          "withAttemptMs": 14.378487000001769,
+          "requestMs": 14.1588359999987,
+          "bytes": 104436
+        },
+        {
+          "index": 64,
+          "status": 200,
+          "withAttemptMs": 20.25077600000077,
+          "requestMs": 19.058176999998977,
+          "bytes": 107594
+        },
+        {
+          "index": 66,
+          "status": 200,
+          "withAttemptMs": 18.855443000000378,
+          "requestMs": 18.44605799999772,
+          "bytes": 67435
+        },
+        {
+          "index": 67,
+          "status": 200,
+          "withAttemptMs": 18.797614999999496,
+          "requestMs": 18.555882999997266,
+          "bytes": 108697
+        },
+        {
+          "index": 69,
+          "status": 200,
+          "withAttemptMs": 17.80297000000064,
+          "requestMs": 17.467756999998528,
+          "bytes": 79405
+        },
+        {
+          "index": 70,
+          "status": 200,
+          "withAttemptMs": 17.03266000000076,
+          "requestMs": 16.789112000002206,
+          "bytes": 63151
+        },
+        {
+          "index": 71,
+          "status": 200,
+          "withAttemptMs": 17.947778999998263,
+          "requestMs": 17.49748300000283,
+          "bytes": 105806
+        },
+        {
+          "index": 73,
+          "status": 200,
+          "withAttemptMs": 14.260823000000528,
+          "requestMs": 13.112669999998616,
+          "bytes": 83803
+        },
+        {
+          "index": 74,
+          "status": 200,
+          "withAttemptMs": 14.849811000000045,
+          "requestMs": 14.318938000000344,
+          "bytes": 66980
+        },
+        {
+          "index": 75,
+          "status": 200,
+          "withAttemptMs": 11.490326000002824,
+          "requestMs": 11.186273999999685,
+          "bytes": 108692
+        },
+        {
+          "index": 72,
+          "status": 200,
+          "withAttemptMs": 21.037813999999344,
+          "requestMs": 20.786715000002005,
+          "bytes": 107986
+        },
+        {
+          "index": 77,
+          "status": 200,
+          "withAttemptMs": 12.47340500000064,
+          "requestMs": 11.116115000000718,
+          "bytes": 83863
+        },
+        {
+          "index": 79,
+          "status": 200,
+          "withAttemptMs": 11.001032000000123,
+          "requestMs": 10.03869399999894,
+          "bytes": 108697
+        },
+        {
+          "index": 76,
+          "status": 200,
+          "withAttemptMs": 15.029413000000204,
+          "requestMs": 13.75872100000197,
+          "bytes": 107594
+        },
+        {
+          "index": 78,
+          "status": 200,
+          "withAttemptMs": 13.493955000001733,
+          "requestMs": 11.220300999997562,
+          "bytes": 67435
+        },
+        {
+          "index": 81,
+          "status": 200,
+          "withAttemptMs": 12.04413900000145,
+          "requestMs": 10.71112599999833,
+          "bytes": 79405
+        },
+        {
+          "index": 82,
+          "status": 200,
+          "withAttemptMs": 12.024352000000363,
+          "requestMs": 11.536874999997963,
+          "bytes": 63151
+        },
+        {
+          "index": 80,
+          "status": 200,
+          "withAttemptMs": 15.846750000000611,
+          "requestMs": 13.618118000002141,
+          "bytes": 104436
+        },
+        {
+          "index": 83,
+          "status": 200,
+          "withAttemptMs": 12.543945999997959,
+          "requestMs": 12.23779099999956,
+          "bytes": 105806
+        },
+        {
+          "index": 85,
+          "status": 200,
+          "withAttemptMs": 10.753947999997763,
+          "requestMs": 9.440434000000096,
+          "bytes": 83803
+        },
+        {
+          "index": 86,
+          "status": 200,
+          "withAttemptMs": 10.13915199999974,
+          "requestMs": 9.195357000000513,
+          "bytes": 66980
+        },
+        {
+          "index": 87,
+          "status": 200,
+          "withAttemptMs": 12.243718000001536,
+          "requestMs": 11.22316900000078,
+          "bytes": 108692
+        },
+        {
+          "index": 84,
+          "status": 200,
+          "withAttemptMs": 16.888613999999507,
+          "requestMs": 14.417867000000115,
+          "bytes": 107986
+        },
+        {
+          "index": 90,
+          "status": 200,
+          "withAttemptMs": 10.037163999997574,
+          "requestMs": 9.721164000002318,
+          "bytes": 67435
+        },
+        {
+          "index": 89,
+          "status": 200,
+          "withAttemptMs": 14.08733900000152,
+          "requestMs": 13.709305000000313,
+          "bytes": 83863
+        },
+        {
+          "index": 88,
+          "status": 200,
+          "withAttemptMs": 16.14745799999946,
+          "requestMs": 15.310430000001361,
+          "bytes": 107594
+        },
+        {
+          "index": 91,
+          "status": 200,
+          "withAttemptMs": 13.364055999998527,
+          "requestMs": 12.490515000001324,
+          "bytes": 108697
+        },
+        {
+          "index": 93,
+          "status": 200,
+          "withAttemptMs": 11.96652499999982,
+          "requestMs": 11.63112099999853,
+          "bytes": 79405
+        },
+        {
+          "index": 94,
+          "status": 200,
+          "withAttemptMs": 12.45639200000005,
+          "requestMs": 12.211887999997998,
+          "bytes": 63151
+        },
+        {
+          "index": 92,
+          "status": 200,
+          "withAttemptMs": 16.865866000000096,
+          "requestMs": 16.53858599999876,
+          "bytes": 104436
+        },
+        {
+          "index": 95,
+          "status": 200,
+          "withAttemptMs": 13.421883999999409,
+          "requestMs": 13.033049000001483,
+          "bytes": 105806
+        },
+        {
+          "index": 98,
+          "status": 200,
+          "withAttemptMs": 10.479334999999992,
+          "requestMs": 10.146129999997356,
+          "bytes": 66980
+        },
+        {
+          "index": 97,
+          "status": 200,
+          "withAttemptMs": 13.262450999998691,
+          "requestMs": 12.357557999999699,
+          "bytes": 83803
+        },
+        {
+          "index": 99,
+          "status": 200,
+          "withAttemptMs": 12.754134999999224,
+          "requestMs": 12.49558099999922,
+          "bytes": 108692
+        },
+        {
+          "index": 96,
+          "status": 200,
+          "withAttemptMs": 16.81855099999666,
+          "requestMs": 15.875043000000005,
+          "bytes": 107986
+        }
+      ]
+    },
+    {
+      "concurrency": 25,
+      "clientMaxSockets": 32,
+      "samples": 100,
+      "p50": 36.90482800000245,
+      "p95": 47.255889000000025,
+      "max": 52.61288699999932,
+      "elapsedMs": 144.9813890000005,
+      "failures": 9,
+      "rawSamples": [
+        {
+          "index": 1,
+          "status": 200,
+          "withAttemptMs": 9.699657000001025,
+          "requestMs": 6.862633000000642,
+          "bytes": 83803
+        },
+        {
+          "index": 2,
+          "status": 200,
+          "withAttemptMs": 11.577306999999564,
+          "requestMs": 8.560394000000088,
+          "bytes": 66980
+        },
+        {
+          "index": 0,
+          "status": 200,
+          "withAttemptMs": 12.964324000000488,
+          "requestMs": 10.285203999999794,
+          "bytes": 107986
+        },
+        {
+          "index": 3,
+          "status": 200,
+          "withAttemptMs": 13.419111999999586,
+          "requestMs": 10.211701000000176,
+          "bytes": 108692
+        },
+        {
+          "index": 5,
+          "status": 200,
+          "withAttemptMs": 15.702132000002166,
+          "requestMs": 12.145360999998957,
+          "bytes": 83863
+        },
+        {
+          "index": 4,
+          "status": 200,
+          "withAttemptMs": 16.84302100000059,
+          "requestMs": 13.453043999998044,
+          "bytes": 107594
+        },
+        {
+          "index": 9,
+          "status": 200,
+          "withAttemptMs": 17.666284999999334,
+          "requestMs": 13.382024999998976,
+          "bytes": 79405
+        },
+        {
+          "index": 6,
+          "status": 200,
+          "withAttemptMs": 18.168100000002596,
+          "requestMs": 14.446543000001839,
+          "bytes": 67435
+        },
+        {
+          "index": 7,
+          "status": 200,
+          "withAttemptMs": 20.458001999999397,
+          "requestMs": 16.56554099999994,
+          "bytes": 108697
+        },
+        {
+          "index": 10,
+          "status": 200,
+          "withAttemptMs": 21.896539000001212,
+          "requestMs": 16.30631700000231,
+          "bytes": 63151
+        },
+        {
+          "index": 11,
+          "status": 200,
+          "withAttemptMs": 23.719035999998596,
+          "requestMs": 18.013253999997687,
+          "bytes": 105806
+        },
+        {
+          "index": 8,
+          "status": 200,
+          "withAttemptMs": 26.499284000001353,
+          "requestMs": 22.442226999999548,
+          "bytes": 104436
+        },
+        {
+          "index": 13,
+          "status": 200,
+          "withAttemptMs": 27.876359999998385,
+          "requestMs": 21.82991700000275,
+          "bytes": 83803
+        },
+        {
+          "index": 14,
+          "status": 200,
+          "withAttemptMs": 28.590754000000743,
+          "requestMs": 22.442896999997174,
+          "bytes": 66980
+        },
+        {
+          "index": 15,
+          "status": 200,
+          "withAttemptMs": 32.41620999999941,
+          "requestMs": 25.89089199999944,
+          "bytes": 108692
+        },
+        {
+          "index": 12,
+          "status": 200,
+          "withAttemptMs": 33.70668800000203,
+          "requestMs": 27.83306100000118,
+          "bytes": 107986
+        },
+        {
+          "index": 17,
+          "status": 200,
+          "withAttemptMs": 35.531575000000885,
+          "requestMs": 28.647052000000258,
+          "bytes": 83863
+        },
+        {
+          "index": 16,
+          "status": 200,
+          "withAttemptMs": 36.510831000003236,
+          "requestMs": 29.801322999999684,
+          "bytes": 107594
+        },
+        {
+          "index": 18,
+          "status": 200,
+          "withAttemptMs": 37.59226699999999,
+          "requestMs": 30.3121229999997,
+          "bytes": 67435
+        },
+        {
+          "index": 19,
+          "status": 200,
+          "withAttemptMs": 38.51474699999744,
+          "requestMs": 31.061883000002126,
+          "bytes": 108697
+        },
+        {
+          "index": 21,
+          "status": 200,
+          "withAttemptMs": 39.62151300000187,
+          "requestMs": 31.8664119999994,
+          "bytes": 79405
+        },
+        {
+          "index": 22,
+          "status": 200,
+          "withAttemptMs": 41.33647700000074,
+          "requestMs": 33.46505199999956,
+          "bytes": 63151
+        },
+        {
+          "index": 20,
+          "status": 200,
+          "withAttemptMs": 44.02228800000012,
+          "requestMs": 36.41543900000033,
+          "bytes": 104436
+        },
+        {
+          "index": 23,
+          "status": 200,
+          "withAttemptMs": 44.581357999999454,
+          "requestMs": 36.569424999997864,
+          "bytes": 105806
+        },
+        {
+          "index": 25,
+          "status": 200,
+          "withAttemptMs": 36.990757999999914,
+          "requestMs": 36.75151100000221,
+          "bytes": 83803
+        },
+        {
+          "index": 26,
+          "status": 200,
+          "withAttemptMs": 36.90482800000245,
+          "requestMs": 36.60584200000085,
+          "bytes": 66980
+        },
+        {
+          "index": 27,
+          "status": 200,
+          "withAttemptMs": 38.187276000000566,
+          "requestMs": 37.37863700000162,
+          "bytes": 108692
+        },
+        {
+          "index": 24,
+          "status": 200,
+          "withAttemptMs": 52.61288699999932,
+          "requestMs": 44.520088000001124,
+          "bytes": 107986
+        },
+        {
+          "index": 28,
+          "status": 200,
+          "withAttemptMs": 42.260965000001306,
+          "requestMs": 41.924221999997826,
+          "bytes": 107594
+        },
+        {
+          "index": 29,
+          "status": 200,
+          "withAttemptMs": 40.43741599999703,
+          "requestMs": 40.176375999999436,
+          "bytes": 83863
+        },
+        {
+          "index": 31,
+          "status": 200,
+          "withAttemptMs": 40.03711100000146,
+          "requestMs": 39.45184999999765,
+          "bytes": 108697
+        },
+        {
+          "index": 30,
+          "status": 200,
+          "withAttemptMs": 41.50652099999934,
+          "requestMs": 41.24920999999813,
+          "bytes": 67435
+        },
+        {
+          "index": 33,
+          "status": 200,
+          "withAttemptMs": 39.5516400000015,
+          "requestMs": 39.132409999998345,
+          "bytes": 79405
+        },
+        {
+          "index": 41,
+          "status": 200,
+          "withAttemptMs": 25.49393300000156,
+          "requestMs": 24.33555200000046,
+          "bytes": 83863
+        },
+        {
+          "index": 34,
+          "status": 200,
+          "withAttemptMs": 41.15983899999992,
+          "requestMs": 40.720916999998735,
+          "bytes": 63151
+        },
+        {
+          "index": 35,
+          "status": 200,
+          "withAttemptMs": 41.486353000000236,
+          "requestMs": 38.4135239999996,
+          "bytes": 105806
+        },
+        {
+          "index": 32,
+          "status": 200,
+          "withAttemptMs": 48.38597800000207,
+          "requestMs": 48.04330900000059,
+          "bytes": 104436
+        },
+        {
+          "index": 38,
+          "status": 200,
+          "withAttemptMs": 38.31488099999842,
+          "requestMs": 37.70477000000028,
+          "bytes": 66980
+        },
+        {
+          "index": 39,
+          "status": 200,
+          "withAttemptMs": 35.95481999999902,
+          "requestMs": 35.571051000002626,
+          "bytes": 108692
+        },
+        {
+          "index": 37,
+          "status": 200,
+          "withAttemptMs": 42.805506000000605,
+          "requestMs": 41.865342999997665,
+          "bytes": 83803
+        },
+        {
+          "index": 36,
+          "status": 200,
+          "withAttemptMs": 47.04025299999921,
+          "requestMs": 46.30951400000049,
+          "bytes": 107986
+        },
+        {
+          "index": 45,
+          "status": 200,
+          "withAttemptMs": 34.39900200000193,
+          "requestMs": 34.19149000000107,
+          "bytes": 79405
+        },
+        {
+          "index": 40,
+          "status": 200,
+          "withAttemptMs": 42.75981700000193,
+          "requestMs": 42.50862199999756,
+          "bytes": 107594
+        },
+        {
+          "index": 42,
+          "status": 200,
+          "withAttemptMs": 40.37977899999896,
+          "requestMs": 39.9965830000001,
+          "bytes": 67435
+        },
+        {
+          "index": 43,
+          "status": 200,
+          "withAttemptMs": 41.11348100000032,
+          "requestMs": 39.989988000001176,
+          "bytes": 108697
+        },
+        {
+          "index": 47,
+          "status": 200,
+          "withAttemptMs": 35.78812199999811,
+          "requestMs": 34.71509799999694,
+          "bytes": 105806
+        },
+        {
+          "index": 64,
+          "status": 503,
+          "withAttemptMs": 12.68282900000122,
+          "requestMs": 12.468626999998378,
+          "bytes": 16
+        },
+        {
+          "index": 66,
+          "status": 503,
+          "withAttemptMs": 10.036685999999463,
+          "requestMs": 9.748595999997633,
+          "bytes": 16
+        },
+        {
+          "index": 44,
+          "status": 200,
+          "withAttemptMs": 47.255889000000025,
+          "requestMs": 46.89458300000115,
+          "bytes": 104436
+        },
+        {
+          "index": 48,
+          "status": 200,
+          "withAttemptMs": 42.46752099999867,
+          "requestMs": 41.99648399999933,
+          "bytes": 107986
+        },
+        {
+          "index": 46,
+          "status": 200,
+          "withAttemptMs": 46.538915000001,
+          "requestMs": 46.31381599999804,
+          "bytes": 63151
+        },
+        {
+          "index": 49,
+          "status": 200,
+          "withAttemptMs": 43.44410099999732,
+          "requestMs": 43.22884700000213,
+          "bytes": 83803
+        },
+        {
+          "index": 50,
+          "status": 200,
+          "withAttemptMs": 42.41590599999836,
+          "requestMs": 42.16490299999714,
+          "bytes": 66980
+        },
+        {
+          "index": 51,
+          "status": 200,
+          "withAttemptMs": 41.36649100000068,
+          "requestMs": 41.05995299999995,
+          "bytes": 108692
+        },
+        {
+          "index": 73,
+          "status": 503,
+          "withAttemptMs": 6.255485000001499,
+          "requestMs": 5.92543399999704,
+          "bytes": 16
+        },
+        {
+          "index": 53,
+          "status": 200,
+          "withAttemptMs": 38.72445700000026,
+          "requestMs": 38.03051899999991,
+          "bytes": 83863
+        },
+        {
+          "index": 52,
+          "status": 200,
+          "withAttemptMs": 42.049245999998675,
+          "requestMs": 41.81449200000134,
+          "bytes": 107594
+        },
+        {
+          "index": 54,
+          "status": 200,
+          "withAttemptMs": 40.37251399999877,
+          "requestMs": 39.99438399999781,
+          "bytes": 67435
+        },
+        {
+          "index": 55,
+          "status": 200,
+          "withAttemptMs": 40.31086300000243,
+          "requestMs": 39.662326000001485,
+          "bytes": 108697
+        },
+        {
+          "index": 74,
+          "status": 200,
+          "withAttemptMs": 10.821335000000545,
+          "requestMs": 9.927338999998028,
+          "bytes": 66980
+        },
+        {
+          "index": 58,
+          "status": 200,
+          "withAttemptMs": 38.05967199999941,
+          "requestMs": 37.849960999999894,
+          "bytes": 63151
+        },
+        {
+          "index": 62,
+          "status": 200,
+          "withAttemptMs": 32.91907699999865,
+          "requestMs": 32.6262089999982,
+          "bytes": 66980
+        },
+        {
+          "index": 59,
+          "status": 200,
+          "withAttemptMs": 38.562730000001466,
+          "requestMs": 38.230193999999756,
+          "bytes": 105806
+        },
+        {
+          "index": 57,
+          "status": 200,
+          "withAttemptMs": 43.45394599999781,
+          "requestMs": 43.1794289999998,
+          "bytes": 79405
+        },
+        {
+          "index": 56,
+          "status": 200,
+          "withAttemptMs": 46.31639600000199,
+          "requestMs": 46.03834300000017,
+          "bytes": 104436
+        },
+        {
+          "index": 67,
+          "status": 200,
+          "withAttemptMs": 29.303618000001734,
+          "requestMs": 28.52183800000057,
+          "bytes": 108697
+        },
+        {
+          "index": 61,
+          "status": 200,
+          "withAttemptMs": 40.48664199999985,
+          "requestMs": 39.605931999998575,
+          "bytes": 83803
+        },
+        {
+          "index": 70,
+          "status": 200,
+          "withAttemptMs": 27.12946799999918,
+          "requestMs": 26.691406999998435,
+          "bytes": 63151
+        },
+        {
+          "index": 63,
+          "status": 200,
+          "withAttemptMs": 39.89956600000005,
+          "requestMs": 39.636327000000165,
+          "bytes": 108692
+        },
+        {
+          "index": 65,
+          "status": 200,
+          "withAttemptMs": 38.3121089999986,
+          "requestMs": 38.06846599999699,
+          "bytes": 83863
+        },
+        {
+          "index": 88,
+          "status": 503,
+          "withAttemptMs": 8.815601999998762,
+          "requestMs": 7.468730000000505,
+          "bytes": 16
+        },
+        {
+          "index": 89,
+          "status": 503,
+          "withAttemptMs": 8.017190999999002,
+          "requestMs": 6.443116000002192,
+          "bytes": 16
+        },
+        {
+          "index": 93,
+          "status": 503,
+          "withAttemptMs": 4.915494999997463,
+          "requestMs": 1.4363379999958852,
+          "bytes": 16
+        },
+        {
+          "index": 60,
+          "status": 200,
+          "withAttemptMs": 49.26410699999906,
+          "requestMs": 48.1463479999984,
+          "bytes": 107986
+        },
+        {
+          "index": 68,
+          "status": 200,
+          "withAttemptMs": 38.70486299999902,
+          "requestMs": 38.3543570000038,
+          "bytes": 104436
+        },
+        {
+          "index": 69,
+          "status": 200,
+          "withAttemptMs": 37.85980600000039,
+          "requestMs": 37.60239900000306,
+          "bytes": 79405
+        },
+        {
+          "index": 71,
+          "status": 200,
+          "withAttemptMs": 34.56761199999892,
+          "requestMs": 33.15736800000377,
+          "bytes": 105806
+        },
+        {
+          "index": 95,
+          "status": 503,
+          "withAttemptMs": 5.999893999996857,
+          "requestMs": 4.972940999999992,
+          "bytes": 16
+        },
+        {
+          "index": 96,
+          "status": 503,
+          "withAttemptMs": 6.723463000002084,
+          "requestMs": 5.49435000000085,
+          "bytes": 16
+        },
+        {
+          "index": 76,
+          "status": 200,
+          "withAttemptMs": 31.952628999999433,
+          "requestMs": 31.003289999996923,
+          "bytes": 107594
+        },
+        {
+          "index": 99,
+          "status": 503,
+          "withAttemptMs": 6.054855000002135,
+          "requestMs": 5.78444799999852,
+          "bytes": 16
+        },
+        {
+          "index": 92,
+          "status": 200,
+          "withAttemptMs": 15.87380100000155,
+          "requestMs": 14.245051999998395,
+          "bytes": 104436
+        },
+        {
+          "index": 90,
+          "status": 200,
+          "withAttemptMs": 18.287293000001227,
+          "requestMs": 16.54145399999834,
+          "bytes": 67435
+        },
+        {
+          "index": 75,
+          "status": 200,
+          "withAttemptMs": 38.64846800000305,
+          "requestMs": 36.96122299999843,
+          "bytes": 108692
+        },
+        {
+          "index": 72,
+          "status": 200,
+          "withAttemptMs": 43.10984400000234,
+          "requestMs": 38.8507239999999,
+          "bytes": 107986
+        },
+        {
+          "index": 79,
+          "status": 200,
+          "withAttemptMs": 36.11301099999764,
+          "requestMs": 35.20286199999828,
+          "bytes": 108697
+        },
+        {
+          "index": 78,
+          "status": 200,
+          "withAttemptMs": 36.829890000004525,
+          "requestMs": 36.19894099999874,
+          "bytes": 67435
+        },
+        {
+          "index": 83,
+          "status": 200,
+          "withAttemptMs": 32.43590100000438,
+          "requestMs": 31.702102999999624,
+          "bytes": 105806
+        },
+        {
+          "index": 81,
+          "status": 200,
+          "withAttemptMs": 35.514656000003015,
+          "requestMs": 34.346622000000934,
+          "bytes": 79405
+        },
+        {
+          "index": 85,
+          "status": 200,
+          "withAttemptMs": 32.63758300000336,
+          "requestMs": 31.86497799999779,
+          "bytes": 83803
+        },
+        {
+          "index": 98,
+          "status": 200,
+          "withAttemptMs": 19.075859999997192,
+          "requestMs": 18.699927999994543,
+          "bytes": 66980
+        },
+        {
+          "index": 80,
+          "status": 200,
+          "withAttemptMs": 40.860279000000446,
+          "requestMs": 39.501171999996586,
+          "bytes": 104436
+        },
+        {
+          "index": 86,
+          "status": 200,
+          "withAttemptMs": 35.48703300000125,
+          "requestMs": 35.00051099999473,
+          "bytes": 66980
+        },
+        {
+          "index": 87,
+          "status": 200,
+          "withAttemptMs": 35.0210619999998,
+          "requestMs": 34.717774000000645,
+          "bytes": 108692
+        },
+        {
+          "index": 91,
+          "status": 200,
+          "withAttemptMs": 31.00978999999643,
+          "requestMs": 30.38017899999977,
+          "bytes": 108697
+        },
+        {
+          "index": 77,
+          "status": 200,
+          "withAttemptMs": 48.70981600000232,
+          "requestMs": 48.38798499999757,
+          "bytes": 83863
+        },
+        {
+          "index": 82,
+          "status": 200,
+          "withAttemptMs": 44.20122100000299,
+          "requestMs": 41.691476000003604,
+          "bytes": 63151
+        },
+        {
+          "index": 94,
+          "status": 200,
+          "withAttemptMs": 30.424529999996594,
+          "requestMs": 29.35542500000156,
+          "bytes": 63151
+        },
+        {
+          "index": 84,
+          "status": 200,
+          "withAttemptMs": 44.35291199999483,
+          "requestMs": 42.544465999999375,
+          "bytes": 107986
+        },
+        {
+          "index": 97,
+          "status": 200,
+          "withAttemptMs": 30.80313799999567,
+          "requestMs": 27.248948000000382,
+          "bytes": 83803
+        }
+      ]
+    }
+  ],
+  "cacheAndPool": {
+    "capacity": 2,
+    "active": 0,
+    "waiting": 0,
+    "waiterLimit": 16,
+    "max_active": 2,
+    "available": 2,
+    "connections": 2,
+    "cancellations": 0,
+    "cancel_acknowledged": 0,
+    "reconnects": 0,
+    "attempts_tracked": 0,
+    "attempts_pending": 0,
+    "cacheEntries": 4,
+    "cacheBytes": 219447,
+    "cacheLimitBytes": 33554432,
+    "cacheEntryLimit": 64
+  },
+  "serverRssKiB": 44984,
+  "cleanup": {
+    "serviceExit": 0,
+    "poolSessionsRemaining": 0
+  },
+  "coldSummary": {
+    "samples": 30,
+    "p50": 962.4347170000001,
+    "p95": 1032.9617160000003,
+    "max": 1058.77847
+  },
+  "localThreeSecondFreshProcessTarget": true,
+  "warmTenSessionZeroErrorTarget": true,
+  "notRun": [
+    "cold database/OS cache",
+    "cold uncached 10 distinct text filters",
+    "mobile shaped network",
+    "physical browsers",
+    "hosted deployment"
+  ]
+}

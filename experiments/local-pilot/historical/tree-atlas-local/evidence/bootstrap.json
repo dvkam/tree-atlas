@@ -1,0 +1,28 @@
+{
+  "baseCommit": "8fb090145c0852a83dec1038fa663e7ba15e0de3",
+  "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+  "datasets": [
+    {
+      "dataset": "london",
+      "release": "london-316fa121a19059da",
+      "count": 1111784
+    },
+    {
+      "dataset": "vienna",
+      "release": "vienna-2925984ab1dd6276",
+      "count": 233102
+    },
+    {
+      "dataset": "geneva",
+      "release": "geneva-a3456b2d943dc57d",
+      "count": 240827
+    },
+    {
+      "dataset": "porto",
+      "release": "porto-6be0471b6c303ac2",
+      "count": 71634
+    }
+  ],
+  "originalAppChanged": false,
+  "deployment": false
+}

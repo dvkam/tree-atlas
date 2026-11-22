@@ -1,0 +1,229 @@
+{
+  "passed": true,
+  "date": "2026-11-19",
+  "scope": "Fresh Ubuntu 24.04 userspace and a new PostgreSQL cluster in private mount, PID and network namespaces on the existing WSL kernel.",
+  "startedAtUtc": "2026-11-19T07:21:08.723894+00:00",
+  "runStartedAtUtc": "2026-11-19T07:22:21.828127+00:00",
+  "completedAtUtc": "2026-11-19T07:26:19.171643+00:00",
+  "source": {
+    "commit": "06015e5d21e9a0cf16f2a14f8f53618a223abcb8",
+    "archiveSha256": "30063afb8472adf86c20cb63ef23be308d9f4faa14102baa995424ce11f0800f",
+    "archiveBytes": 946882560,
+    "gitTransport": "Windows Git for Windows-mounted checkout",
+    "seconds": 18.502
+  },
+  "evidence": {
+    "rawReportSha256": "89437febc22f86597ecb15e691f813305b667d21b42a6268c9a850a04ca9a6e0",
+    "nativePackageManifestSha256": "21a5285f6c2627b6d544f4ec309816a3002eb06aed2a2235107b266c3f53d888",
+    "rawReportsRetainedPrivately": true,
+    "committedSummaryContainsCredentialsPathsOrPids": false
+  },
+  "image": {
+    "url": "https://cloud-images.ubuntu.com/minimal/releases/noble/release/ubuntu-24.04-minimal-cloudimg-amd64-root.tar.xz",
+    "sha256": "10c5f5cdef565404592ff17ba836cfc1b12f45f736db17fe7781cf32b1760dca",
+    "publishedBuild": "20261105"
+  },
+  "nativePackages": {
+    "postgresql-16": "16.15-0ubuntu0.24.04.1",
+    "libmicrohttpd-dev": "1.0.0-2.1ubuntu2",
+    "libmicrohttpd12t64": "1.0.0-2.1ubuntu2",
+    "libjson-c-dev": "0.17-1build1",
+    "libjson-c5": "0.17-1build1",
+    "libssl-dev": "3.0.13-0ubuntu3.16",
+    "gcc-13": "13.3.0-6ubuntu2~24.04.1",
+    "g++-13": "13.3.0-6ubuntu2~24.04.1",
+    "python3.12": "3.12.3-1ubuntu0.17"
+  },
+  "packageReproducibility": "OS package versions are recorded after installation from signed Ubuntu repositories. Future apt dependency resolution is not locked to this exact manifest.",
+  "pinnedTools": {
+    "node": "v26.13.0",
+    "nodeUnicode": "17.0",
+    "nodeSha256": "d28a96af6c38596f6d9d97c0ee531c13d238d757742387d1928de822d959e997",
+    "carbon": "Carbon Language toolchain version: 0.0.0-0.nightly.2026.11.07+ca18985",
+    "carbonSha256": "5ba8e554dfec058bdad8eace18591125d1f06857005de6f4ed3706a735245c22",
+    "libpqVersion": 170011,
+    "libpqSha256": "dd27f2b3c59e73ed14aa3324901242bf69a032a6347805f274e6260322d42979",
+    "icu": "78.3",
+    "icuSha256": "9c8abe58a20cf82ea22341d8125272094f7fca2414173cbc2d8742feb84566a2",
+    "pnpm": "11.25.0",
+    "frontendPackages": "Frozen committed pnpm lockfile; 157 packages fetched with no reused packages."
+  },
+  "isolation": {
+    "privateMount": true,
+    "privatePid": true,
+    "privateNetwork": true,
+    "sharedKernelAndDev": true,
+    "freshCompilerAndDependencyRoots": 5,
+    "hostDependencyLinks": false,
+    "preparationPostgresClustersObservedDown": true,
+    "processesSurvivingPreparation": 0,
+    "runtimeMunicipalApiCalls": 0,
+    "hostDatabaseWrites": false
+  },
+  "backup": {
+    "bytes": 69869949,
+    "sha256": "f801998d689a08be9198f92aaf92ca376632e2e1e87c784c6869ece6b8b83f8e",
+    "defaultTransactionReadOnly": true,
+    "sourceDatabaseWrites": false
+  },
+  "database": {
+    "bytes": 1914035223,
+    "records": 1657347,
+    "releases": [
+      {
+        "dataset": "geneva",
+        "release": "geneva-a3456b2d943dc57d",
+        "status": "validated",
+        "expected_count": 240827
+      },
+      {
+        "dataset": "london",
+        "release": "london-316fa121a19059da",
+        "status": "validated",
+        "expected_count": 1111784
+      },
+      {
+        "dataset": "porto",
+        "release": "porto-6be0471b6c303ac2",
+        "status": "validated",
+        "expected_count": 71634
+      },
+      {
+        "dataset": "vienna",
+        "release": "vienna-2925984ab1dd6276",
+        "status": "validated",
+        "expected_count": 233102
+      }
+    ],
+    "runtimeDefaultReadOnly": true,
+    "currentSourceSqlAndIndexesApplied": true
+  },
+  "independentChecks": {
+    "passed": true,
+    "records": 1657347,
+    "normalizedRecords": 1657347,
+    "queryCases": 48,
+    "pageSlices": 192,
+    "suggestionCases": 16,
+    "literalSqlCases": 22,
+    "freezeSha256": "ec2a09150674c1b5c991bb6c4adfdce8096e9b82144c00985be589c0e826948d",
+    "baselineLockSha256": "c76207062bec197f00f3a46dcb8dfe20f0d513e9003896c2c045795ee00ad518",
+    "referenceSha256": "27932b3a3e01aff94db230d90ea0a39308719ee190267bc196946641ff45b6ab",
+    "databaseWrites": false,
+    "historicalVerifierDateLabel": "2026-11-08",
+    "actualRunTimestamps": "Use the top-level UTC timestamps. The unchanged independent verifier retains its historical date label."
+  },
+  "httpChecks": {
+    "passed": true,
+    "quick": true,
+    "selectedPageChecks": 192,
+    "suggestionChecks": 16,
+    "detailChecks": 8,
+    "completeSmallFilterSets": 6,
+    "markerPartitionChecks": 3,
+    "viewportPageChecks": 5,
+    "readerSessionsAfterHttp": 0,
+    "notRun": [
+      "complete unfiltered HTTP enumeration",
+      "full broad-filter HTTP enumeration",
+      "full viewport/cluster expansion across every city",
+      "browser/offline pack",
+      "network-shaped physical mobile",
+      "hosted cold performance"
+    ],
+    "sourceBinding": "The archive has no .git directory. The outer source commit and archive hash identify the executed HTTP source."
+  },
+  "frontendChecks": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "types",
+        "exitCode": 0,
+        "seconds": 1.573
+      },
+      {
+        "name": "lint",
+        "exitCode": 0,
+        "seconds": 0.563
+      },
+      {
+        "name": "format",
+        "exitCode": 0,
+        "seconds": 0.205
+      },
+      {
+        "name": "regression",
+        "exitCode": 0,
+        "seconds": 1.933
+      },
+      {
+        "name": "normalizer",
+        "exitCode": 0,
+        "seconds": 1.333
+      },
+      {
+        "name": "freeze",
+        "exitCode": 0,
+        "seconds": 0.158
+      }
+    ],
+    "regressionsPassed": 63,
+    "viteBuildPassed": true,
+    "launcher": {
+      "passed": true,
+      "scope": "Documented local production build/start/health/stop; no browser or deployment.",
+      "startupIncludingBuildSeconds": 2.465,
+      "httpListenerClosed": true
+    }
+  },
+  "timingsSeconds": {
+    "imageDownloadAndExtract": 14.328,
+    "nativeOsPackages": 42.421,
+    "sourceExport": 18.502,
+    "readOnlyDump": 7.739,
+    "freshDependencies": 43.481,
+    "setupRestoreSourceSqlAndVacuum": 47.255,
+    "independentReadback": 78.222,
+    "quickHttp": 17.485,
+    "frontendSourceChecks": 5.765,
+    "frontendLauncherIncludingBuild": 2.465,
+    "runWallClock": 237.344
+  },
+  "diskDirectoryBytesAtCheckpoints": {
+    "prepared": 1596391410,
+    "dependencies": 4579975277,
+    "completed": 7602938645
+  },
+  "diskMetricLimit": "Directory sizes at checkpoints include retained image, source archive, copied data, tools, dependencies, backup, logs and stopped database. These are not continuous peak disk or WAL/temp measurements.",
+  "cleanup": {
+    "isolatedClusterStopped": true,
+    "readerSessionsRemaining": 0,
+    "ownedProcessesObservedAfterNamespaceExit": 0,
+    "stoppedWorkspaceAndBackupRetainedPrivately": true
+  },
+  "failedAttempts": [
+    {
+      "stage": "Official Ubuntu HTTP mirror access",
+      "result": "Timed out. The dedicated old namespace was stopped. The successful preparations use signed official Ubuntu repositories over HTTPS with bounded IPv4 retries."
+    },
+    {
+      "stage": "Source status over WSL Windows filesystem bridge",
+      "result": "Stopped before creating an archive, backup or dependency installation. The source exporter now selects the fixed Windows Git executable for a Windows-mounted checkout and bounds status duration."
+    },
+    {
+      "sourceCommit": "7e880a7e11d35b5b6d77959e7a2cb5895b8af8ce",
+      "stage": "Fresh database setup",
+      "result": "Failed because a newly created user had no .config directory. The setup now creates that missing parent with the correct owner and permissions. A new rootfs, new downloads and new database produced this successful result.",
+      "isolatedClusterStopped": true,
+      "originalDatabaseWrites": false,
+      "failedWorkspaceRetainedPrivately": true
+    }
+  ],
+  "limits": [
+    "Shared WSL kernel and /dev; no fresh VM, physical server, security sandbox or hosted deployment proof.",
+    "The complete independent database checker ran. The clean userspace reran quick HTTP checks, not full HTTP inventory enumeration.",
+    "No physical browser, offline pack or memory test ran inside this rootfs. The separate browser qualification covers those checks.",
+    "No hosted cold-load, shaped mobile, TLS cancellation fault, concurrent import/traffic or continuous peak-disk claim.",
+    "The local original database was read for backup only. No push, public data change or deployment occurred."
+  ]
+}

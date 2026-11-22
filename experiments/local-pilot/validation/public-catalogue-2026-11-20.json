@@ -1,0 +1,483 @@
+{
+  "reviewDate": "2026-11-20",
+  "pilotHead": "52dba7111a8538b0167ecd07df93f6d6bad9876c",
+  "manifestSha256": "c870f8687cc0098bcfb53ae00bc4dbc00d703d258bd9deeb0748b53a496f438a",
+  "canonicalRecords": 7613581,
+  "located": 7613308,
+  "unlocated": 273,
+  "countOfMapLeaves": 36193,
+  "inventories": [
+    {
+      "dataset": "vienna",
+      "release": "vienna-2925984ab1dd6276",
+      "records": 233102,
+      "located": 233102,
+      "mapLeaves": 1096,
+      "leafRows": 233102,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_circumference": 2
+      }
+    },
+    {
+      "dataset": "geneva",
+      "release": "geneva-a3456b2d943dc57d",
+      "records": 240827,
+      "located": 240827,
+      "mapLeaves": 1156,
+      "leafRows": 240827,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "plantingAfterObservation": 58,
+        "extreme_height": 2
+      }
+    },
+    {
+      "dataset": "porto",
+      "release": "porto-6be0471b6c303ac2",
+      "records": 71634,
+      "located": 71634,
+      "mapLeaves": 357,
+      "leafRows": 71634,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "amsterdam",
+      "release": "amsterdam-4385e89d7cd9ab11",
+      "records": 326518,
+      "located": 326494,
+      "mapLeaves": 1612,
+      "leafRows": 326494,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "hamburg",
+      "release": "hamburg-1f7ef54a6439fefb",
+      "records": 229876,
+      "located": 229876,
+      "mapLeaves": 1068,
+      "leafRows": 229876,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "plantingYearAfterAcquisition": 2
+      }
+    },
+    {
+      "dataset": "zurich",
+      "release": "zurich-d13ddfe9777cc198",
+      "records": 81142,
+      "located": 81142,
+      "mapLeaves": 408,
+      "leafRows": 81142,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "camden",
+      "release": "camden-d53cf4a979a41bd9",
+      "records": 28128,
+      "located": 27883,
+      "mapLeaves": 127,
+      "leafRows": 27883,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "london",
+      "release": "london-316fa121a19059da",
+      "records": 1111784,
+      "located": 1111784,
+      "mapLeaves": 5088,
+      "leafRows": 1111784,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "edinburgh",
+      "release": "edinburgh-b920f1d895a04bc5",
+      "records": 50400,
+      "located": 50400,
+      "mapLeaves": 254,
+      "leafRows": 50400,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "belfast",
+      "release": "belfast-6002ead22edbb8db",
+      "records": 56521,
+      "located": 56521,
+      "mapLeaves": 298,
+      "leafRows": 56521,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "basel",
+      "release": "basel-1a1c54215dc317c6",
+      "records": 32435,
+      "located": 32435,
+      "mapLeaves": 149,
+      "leafRows": 32435,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "bologna",
+      "release": "bologna-5dc92bf5233c95ac",
+      "records": 87285,
+      "located": 87285,
+      "mapLeaves": 434,
+      "leafRows": 87285,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "strasbourg",
+      "release": "strasbourg-2bca6a7cf5380727",
+      "records": 83399,
+      "located": 83398,
+      "mapLeaves": 386,
+      "leafRows": 83398,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "bordeaux",
+      "release": "bordeaux-081ecf92c51d9738",
+      "records": 84718,
+      "located": 84718,
+      "mapLeaves": 441,
+      "leafRows": 84718,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "rennes",
+      "release": "rennes-a80321e4cfab58e2",
+      "records": 192000,
+      "located": 192000,
+      "mapLeaves": 969,
+      "leafRows": 192000,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "cascais",
+      "release": "cascais-3862d056075d460e",
+      "records": 37944,
+      "located": 37944,
+      "mapLeaves": 181,
+      "leafRows": 37944,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "toulouse",
+      "release": "toulouse-274c431bab064d0b",
+      "records": 124214,
+      "located": 124214,
+      "mapLeaves": 637,
+      "leafRows": 124214,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "montpellier",
+      "release": "montpellier-2c22345854081d69",
+      "records": 60882,
+      "located": 60882,
+      "mapLeaves": 300,
+      "leafRows": 60882,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "bern",
+      "release": "bern-c3e05d85f1483695",
+      "records": 23984,
+      "located": 23984,
+      "mapLeaves": 110,
+      "leafRows": 23984,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "valencia",
+      "release": "valencia-03ff89a4e5877bc5",
+      "records": 157649,
+      "located": 157649,
+      "mapLeaves": 718,
+      "leafRows": 157649,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "replacementOrMojibakeText": 1
+      }
+    },
+    {
+      "dataset": "barcelona",
+      "release": "barcelona-827f75c8127a8478",
+      "records": 222476,
+      "located": 222476,
+      "mapLeaves": 1056,
+      "leafRows": 222476,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "lyon",
+      "release": "lyon-8319810b2dca26ba",
+      "records": 112425,
+      "located": 112425,
+      "mapLeaves": 536,
+      "leafRows": 112425,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "lisbon",
+      "release": "lisbon-98fd8de08edbd175",
+      "records": 80957,
+      "located": 80957,
+      "mapLeaves": 381,
+      "leafRows": 80957,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "turin",
+      "release": "turin-5d51413a6cacbca1",
+      "records": 105476,
+      "located": 105476,
+      "mapLeaves": 470,
+      "leafRows": 105476,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "madrid",
+      "release": "madrid-a6c3adb89d4d037e",
+      "records": 799110,
+      "located": 799110,
+      "mapLeaves": 3711,
+      "leafRows": 799110,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_height": 4,
+        "extreme_circumference": 1
+      }
+    },
+    {
+      "dataset": "paris",
+      "release": "paris-13cda4e16741ed2f",
+      "records": 220112,
+      "located": 220112,
+      "mapLeaves": 1072,
+      "leafRows": 220112,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_height": 2
+      }
+    },
+    {
+      "dataset": "florence",
+      "release": "florence-47ebe6da106bc6ce",
+      "records": 82269,
+      "located": 82269,
+      "mapLeaves": 414,
+      "leafRows": 82269,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_circumference": 14
+      }
+    },
+    {
+      "dataset": "milan",
+      "release": "milan-6af52df30bb51e47",
+      "records": 247779,
+      "located": 247779,
+      "mapLeaves": 1162,
+      "leafRows": 247779,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_height": 1
+      }
+    },
+    {
+      "dataset": "liege",
+      "release": "liege-3248e2d5896ad1db",
+      "records": 28473,
+      "located": 28473,
+      "mapLeaves": 132,
+      "leafRows": 28473,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "eindhoven",
+      "release": "eindhoven-4d5c74beb56bedb3",
+      "records": 128034,
+      "located": 128034,
+      "mapLeaves": 576,
+      "leafRows": 128034,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "arnhem",
+      "release": "arnhem-8c88ace1a83bb94d",
+      "records": 47423,
+      "located": 47423,
+      "mapLeaves": 240,
+      "leafRows": 47423,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "leipzig",
+      "release": "leipzig-cb8ac9aa628ea1e7",
+      "records": 187989,
+      "located": 187989,
+      "mapLeaves": 909,
+      "leafRows": 187989,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "berlin",
+      "release": "berlin-941581530feccafb",
+      "records": 962545,
+      "located": 962545,
+      "mapLeaves": 4644,
+      "leafRows": 962545,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "rostock",
+      "release": "rostock-f0e060805c21535a",
+      "records": 70590,
+      "located": 70590,
+      "mapLeaves": 374,
+      "leafRows": 70590,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_crown": 8,
+        "extreme_height": 26,
+        "extreme_circumference": 4
+      }
+    },
+    {
+      "dataset": "luxembourgnational",
+      "release": "luxembourgnational-bb25f2eb9611f7ab",
+      "records": 238,
+      "located": 238,
+      "mapLeaves": 1,
+      "leafRows": 238,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "nantes",
+      "release": "nantes-291e4746892a17f3",
+      "records": 124583,
+      "located": 124583,
+      "mapLeaves": 620,
+      "leafRows": 124583,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "plantingAfterObservation": 241
+      }
+    },
+    {
+      "dataset": "ghent",
+      "release": "ghent-05f2236164f3f745",
+      "records": 68240,
+      "located": 68240,
+      "mapLeaves": 296,
+      "leafRows": 68240,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "delft",
+      "release": "delft-c4d2485981bc345f",
+      "records": 36763,
+      "located": 36763,
+      "mapLeaves": 158,
+      "leafRows": 36763,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "utrecht",
+      "release": "utrecht-cf0b5e7e62814f02",
+      "records": 162653,
+      "located": 162653,
+      "mapLeaves": 750,
+      "leafRows": 162653,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "cologne",
+      "release": "cologne-1568b96b8b8b7b00",
+      "records": 108071,
+      "located": 108071,
+      "mapLeaves": 530,
+      "leafRows": 108071,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_height": 21,
+        "extreme_circumference": 3,
+        "extreme_crown": 8
+      }
+    },
+    {
+      "dataset": "antwerp",
+      "release": "antwerp-731afa9f745f2fc7",
+      "records": 135017,
+      "located": 135017,
+      "mapLeaves": 675,
+      "leafRows": 135017,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "rotterdam",
+      "release": "rotterdam-c7e7373fa32c6b81",
+      "records": 199558,
+      "located": 199558,
+      "mapLeaves": 874,
+      "leafRows": 199558,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "replacementOrMojibakeText": 44783
+      }
+    },
+    {
+      "dataset": "brussels",
+      "release": "brussels-b79c097eeb2858a8",
+      "records": 4789,
+      "located": 4789,
+      "mapLeaves": 27,
+      "leafRows": 4789,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {}
+    },
+    {
+      "dataset": "frankfurt",
+      "release": "frankfurt-101a04e5457168ec",
+      "records": 163569,
+      "located": 163566,
+      "mapLeaves": 796,
+      "leafRows": 163566,
+      "mapDiscrepancies": 0,
+      "sourceQualityFlags": {
+        "extreme_circumference": 1
+      }
+    }
+  ]
+}

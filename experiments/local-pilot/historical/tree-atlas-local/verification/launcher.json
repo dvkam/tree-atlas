@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "scope": "Documented local production build/start/health/stop; no browser or deployment.",
+  "startupIncludingBuildSeconds": 12.809,
+  "httpListenerClosed": true
+}

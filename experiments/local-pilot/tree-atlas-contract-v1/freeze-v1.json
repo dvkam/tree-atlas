@@ -1,0 +1,125 @@
+{
+  "contract": "tree-atlas-search-release-v1",
+  "version": "1.0.0",
+  "status": "frozen-local",
+  "date": "2026-11-08",
+  "appCommit": "8fb090145c0852a83dec1038fa663e7ba15e0de3",
+  "totalRecords": 1657347,
+  "verified": [
+    "literal reference and mutation sentinels",
+    "canonical frozen-record audit",
+    "stored asset integrity",
+    "independent subagent review"
+  ],
+  "notRun": [
+    "database import",
+    "PostgreSQL/PostGIS inventory conformance",
+    "remote adapter",
+    "offline pack implementation",
+    "browser journeys",
+    "production performance",
+    "deployment"
+  ],
+  "files": [
+    {
+      "file": "CONTRACT.md",
+      "sha256": "a8af452983310cc784bf11d98f34912d462406329f81902ed796258dccf5ed0a",
+      "bytes": 17512
+    },
+    {
+      "file": "README.md",
+      "sha256": "3cd9dd7ff91f7d597309ad1d6a84ad9a9f78dbd5e5255b20e378e1c4c714c9c1",
+      "bytes": 5404
+    },
+    {
+      "file": "baseline.lock.json",
+      "sha256": "c76207062bec197f00f3a46dcb8dfe20f0d513e9003896c2c045795ee00ad518",
+      "bytes": 693155
+    },
+    {
+      "file": "evidence/review-results.json",
+      "sha256": "a3dd5ba184377848e97a879f33ce54f8140e183c5405f18808353b690338a1d6",
+      "bytes": 2066
+    },
+    {
+      "file": "evidence/review.md",
+      "sha256": "5bafa4d50ddd0919180e11509f1de2a204f920f143164f78d9d3e9bb408d10e0",
+      "bytes": 2619
+    },
+    {
+      "file": "evidence/source-asset-audit.json",
+      "sha256": "935a6581121dbc1b333d85bcb196ac5bbd14fb065eb63b4e340b81a469fc2d2b",
+      "bytes": 3012147
+    },
+    {
+      "file": "freeze-baseline.mjs",
+      "sha256": "1934d67263550ea0ce65a948b1bc506146a79a50cad7baeec606b6b23f717e45",
+      "bytes": 3583
+    },
+    {
+      "file": "lifecycle-cases.json",
+      "sha256": "45c46da2df7c836f4b63390cbf098dcf8f51629f47e8370321ce044686eb1ab9",
+      "bytes": 3116
+    },
+    {
+      "file": "reference/audit-baseline.mjs",
+      "sha256": "4b25811f9daa894abcc46e47e6b7405fc19e6e57836870e39f5120e88f326d07",
+      "bytes": 9446
+    },
+    {
+      "file": "reference/candidate-checker-selftest.json",
+      "sha256": "0e8ce2b27294dc643e3af3941c047075e4d63806e03605e5e0f194a307b30b24",
+      "bytes": 251
+    },
+    {
+      "file": "reference/check-query-key-goldens.py",
+      "sha256": "75548e5d8b538714382f16a817d4ec695c49bff51e0d536b549cdc722a55bf3b",
+      "bytes": 744
+    },
+    {
+      "file": "reference/compare-candidate.mjs",
+      "sha256": "ae4b824d9e3c10fea9735c005a89152b128f9d2ab5397d42a427862683d96ece",
+      "bytes": 5904
+    },
+    {
+      "file": "reference/fixtures.json",
+      "sha256": "3251d0416c76006e1ecc0c6f51da3168295060fe93348e051d396b28f6e54ece",
+      "bytes": 3660
+    },
+    {
+      "file": "reference/oracle.mjs",
+      "sha256": "9a959847e9e55d82ff6523c98344cb1aa7b63f357c63a7bc3d0b7ae463e53973",
+      "bytes": 3981
+    },
+    {
+      "file": "reference/query-key-input.json",
+      "sha256": "056aa3557c7df4ec03e67cf6ba40da3a6de047a0d3c78f28ac99d63a288a7d7e",
+      "bytes": 97
+    },
+    {
+      "file": "reference/reference-results.json",
+      "sha256": "27932b3a3e01aff94db230d90ea0a39308719ee190267bc196946641ff45b6ab",
+      "bytes": 126300
+    },
+    {
+      "file": "reference/selftest-results.json",
+      "sha256": "28c8b3463769acf184fa76acf5ef71a07953f061513fe2aefc20e08fbebeeee8",
+      "bytes": 440
+    },
+    {
+      "file": "reference/selftest.mjs",
+      "sha256": "2d6b43224a740ba856f13f5863961d9fe4e9eb3ebd5c5137be0e97580c84cb1c",
+      "bytes": 5300
+    },
+    {
+      "file": "seal-freeze.mjs",
+      "sha256": "84d15bb7341c7486ee5bd3e90a528eff011341349f403e10d39366e54d232977",
+      "bytes": 2301
+    },
+    {
+      "file": "verify-freeze.mjs",
+      "sha256": "ddd7a809d629376771624d37fbb95072cc11a0728fbc060c6057a84148737543",
+      "bytes": 2916
+    }
+  ]
+}

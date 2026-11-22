@@ -1,0 +1,105 @@
+{
+  "scope": "local read-only SQL summary profile; fresh backend, not cold OS/database cache",
+  "samples": [
+    {
+      "city": "vienna",
+      "jit": "off",
+      "freshSession": 0,
+      "queryTimesMs": [
+        636.605,
+        556.163,
+        499.264,
+        464.616,
+        407.584,
+        1190.394,
+        1138.233
+      ],
+      "connectionInclusiveMs": 4940.27,
+      "exitCode": 0,
+      "markers": [
+        "467",
+        "467",
+        "467",
+        "467",
+        "467",
+        "467",
+        "467"
+      ]
+    },
+    {
+      "city": "vienna",
+      "jit": "off",
+      "freshSession": 1,
+      "queryTimesMs": [
+        360.266,
+        352.671,
+        345.322,
+        335.367,
+        358.773,
+        1292.748,
+        1224.17
+      ],
+      "connectionInclusiveMs": 4311.75,
+      "exitCode": 0,
+      "markers": [
+        "467",
+        "467",
+        "467",
+        "467",
+        "467",
+        "467",
+        "467"
+      ]
+    },
+    {
+      "city": "london",
+      "jit": "off",
+      "freshSession": 0,
+      "queryTimesMs": [
+        1204.94,
+        1309.312,
+        1202.631,
+        1175.036,
+        1077.075,
+        5544.558,
+        5787.523
+      ],
+      "connectionInclusiveMs": 17344.67,
+      "exitCode": 0,
+      "markers": [
+        "596",
+        "596",
+        "596",
+        "596",
+        "596",
+        "596",
+        "596"
+      ]
+    },
+    {
+      "city": "london",
+      "jit": "off",
+      "freshSession": 1,
+      "queryTimesMs": [
+        1263.051,
+        1123.037,
+        1086.905,
+        1200.573,
+        1279.018,
+        6104.899,
+        5204.127
+      ],
+      "connectionInclusiveMs": 17322.92,
+      "exitCode": 0,
+      "markers": [
+        "596",
+        "596",
+        "596",
+        "596",
+        "596",
+        "596",
+        "596"
+      ]
+    }
+  ]
+}

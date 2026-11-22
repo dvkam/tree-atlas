@@ -1,0 +1,20 @@
+{
+  "contract": "tree-atlas-search-release-v1",
+  "purpose": "Literal expected outcomes for future catalogue/offline adapters; not executed backend or browser tests.",
+  "cases": [
+    {"id":"failed-staging", "given":{"catalogue":"A","ready":["r1"]}, "when":["stage r2","r2 detail hash fails"], "expected":{"catalogue":"A","ready":["r1"],"r2":"rejected"}},
+    {"id":"catalogue-cas-conflict", "given":{"catalogue":"A","ready":["r1","r2","r3"]}, "when":["publisher one advances A to B(r2)","publisher two attempts predecessor A to C(r3)"], "expected":{"catalogue":"B","secondPublisher":"conflict","r1Retained":true}},
+    {"id":"immutable-collision", "given":{"release":"r1","digest":"old"}, "when":["attempt to publish r1 with different digest"], "expected":{"result":"immutable-conflict","oldReleaseChanged":false}},
+    {"id":"missing-pinned-release", "given":{"pin":"r1","latest":"r2","r1Available":false}, "when":["query r1"], "expected":{"result":"release-unavailable","usedRelease":null,"fallbackToLatest":false}},
+    {"id":"idempotent-import", "given":{"release":"r1","digest":"same"}, "when":["stage identical r1 payload twice"], "expected":{"releaseCopies":1,"duplicateRecords":0,"result":"unchanged"}},
+    {"id":"offline-interrupted-update", "given":{"offlineReady":"r1","onlineLatest":"r2"}, "when":["download r2 staging","cancel before geometry finishes"], "expected":{"offlineReady":"r1","r2Ready":false}},
+    {"id":"offline-mixed-release", "given":{"offlineReady":"r1"}, "when":["stage r2 text with r3 geometry"], "expected":{"offlineReady":"r1","candidate":"rejected"}},
+    {"id":"offline-quota-failure", "given":{"offlineReady":"r1"}, "when":["stage r2","storage rejects required bytes"], "expected":{"offlineReady":"r1","candidateReady":false,"state":"quota-error"}},
+    {"id":"offline-eviction", "given":{"offlineReady":"r1"}, "when":["browser evicts r1 geometry","reopen offline"], "expected":{"offlineReady":null,"state":"pack-incomplete","zeroTreesSuccess":false}},
+    {"id":"offline-saved-detail", "given":{"offlineReady":"r1","savedDetails":["0007"],"searchableRecords":["0007","0008"]}, "when":["airplane mode","query all","open 0008","open 0007"], "expected":{"searchIds":["0007","0008"],"0008":"detail-unavailable-offline","0007":"saved-detail","missingTree":false}},
+    {"id":"latest-response-guard", "given":{"activeRequest":"B","activeCity":"porto"}, "when":["late successful London request A arrives"], "expected":{"paintResponseA":false,"activeCity":"porto"}},
+    {"id":"spatial-not-ready", "given":{"textReady":true,"geometryReady":false}, "when":["query selected area"], "expected":{"result":"not-ready","completeSuccess":false,"zeroLocatedClaim":false}},
+    {"id":"offline-version-mismatch", "given":{"offlineReady":"r1","appSupports":"1.0.0"}, "when":["stage pack requiring contract 2.0.0"], "expected":{"offlineReady":"r1","candidate":"incompatible"}},
+    {"id":"hash-corrupt-pack", "given":{"offlineReady":"r1"}, "when":["stage r2","one stored required asset fails SHA-256"], "expected":{"offlineReady":"r1","candidate":"integrity-error","candidateReady":false}}
+  ]
+}

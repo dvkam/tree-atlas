@@ -1,0 +1,20 @@
+{
+  "scope": "literal synthetic specification checks, no app or database",
+  "node": "v26.13.0",
+  "unicode": "17.0",
+  "assertions": 99,
+  "normalizationGoldens": 10,
+  "queryGoldens": 21,
+  "killedMutants": [
+    "caseSensitive",
+    "tokenized",
+    "joinedFields",
+    "dropsUnlocated",
+    "viewportFiltersList",
+    "excludesBoundary",
+    "silentTruncation",
+    "dropsRemoved",
+    "deduplicatesCoordinates"
+  ],
+  "passed": true
+}

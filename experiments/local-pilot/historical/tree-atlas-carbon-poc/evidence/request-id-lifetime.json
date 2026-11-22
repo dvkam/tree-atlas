@@ -1,0 +1,8 @@
+{
+  "completed_public_http_queries": 4097,
+  "elapsed_ms": 2502.84,
+  "tracked_after_completion": 0,
+  "oldest_id_replay_status": 409,
+  "oldest_id_cancel_status": 404,
+  "scope": "actual HTTP responses and real PostgreSQL synthetic fixture; no imported inventories"
+}
