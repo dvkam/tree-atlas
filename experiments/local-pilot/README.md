@@ -1,5 +1,7 @@
 # Local Carbon / PostgreSQL / frontend pilot
 
+Start with the [maintainer handover](docs/handover.md), [milestone and issue index](docs/milestone.md), [source research](docs/source-research.md) and [UI/UX review](docs/ux-ui-review.md). These describe the November 22 review branches, historical experiments and outstanding work.
+
 This directory versions the isolated four-inventory pilot without changing the
 public Tree Atlas application. The public application still uses its existing
 static releases. This pilot runs locally in WSL and has no deployment step.

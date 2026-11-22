@@ -252,6 +252,8 @@ electricity tariff. The EUR 30 monthly ceiling remains a planning budget.
 
 ## Local issue drafts
 
+The [November 22 issue index](docs/milestone.md#work-queue) links the published trackers. The drafts below record the earlier planning discussion.
+
 Create GitHub issues after publication is authorized. Each issue should identify
 its test gate and link to evidence. Do not open a separate issue for every small
 refactor. These drafts track work that can otherwise be lost between chats:
