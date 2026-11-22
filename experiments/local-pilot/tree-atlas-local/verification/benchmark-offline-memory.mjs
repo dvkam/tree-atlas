@@ -149,7 +149,7 @@ async function run(side, baseURL, iteration) {
       const expected = reference("london", name);
       memory.phase(`offline-query-${name}`);
       started = performance.now();
-      const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+      const search = page.getByRole("combobox", { name: "Find a tree or place" });
       await search.fill(expected.q);
       await search.press("Enter");
       await ready(page, "london", expected.total, 120_000);

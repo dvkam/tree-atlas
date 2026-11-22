@@ -40,7 +40,7 @@ test("a complete pinned pack survives an offline refresh, with saved details onl
     await page.getByRole("button", { name: "Clear filters" }).click();
     await ready(page, "porto", city("porto").count);
     const common = reference("porto", "common-genus");
-    const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+    const search = page.getByRole("combobox", { name: "Find a tree or place" });
     await search.fill(common.q);
     await search.press("Enter");
     await ready(page, "porto", common.total);

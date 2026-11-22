@@ -183,7 +183,7 @@ for (const id of cities) {
         const expected = reference(id, queryName);
         memory.phase(`offline-${queryName}`);
         started = performance.now();
-        const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+        const search = page.getByRole("combobox", { name: "Find a tree or place" });
         await search.fill(expected.q);
         await search.press("Enter");
         await ready(page, id, expected.total, 90_000);

@@ -1,5 +1,8 @@
+import { InventorySearch } from "./inventory-search.tsx";
+import { activation, pressFromPointer, revealFromTrigger } from "./trigger-motion.ts";
+import type { Activation } from "./trigger-motion.ts";
 import { LocationPicker } from "./location-picker.tsx";
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import { loadManifest, normalizeText } from "./catalog.ts";
@@ -270,9 +273,14 @@ function CityExplorer({
   const [cluster, setCluster] = useState<ClusterSelection | null>(null);
   const clusterHeading = useRef<HTMLHeadingElement>(null);
   const clusterTrigger = useRef<HTMLElement>(null);
+  const clusterOrigin = useRef<Activation | null>(null);
   const clusterId = cluster?.id;
   useEffect(() => {
-    if (clusterId !== undefined) clusterHeading.current?.focus();
+    const heading = clusterHeading.current;
+    if (clusterId === undefined || !heading) return;
+    heading.focus();
+    const panel = heading.parentElement;
+    if (panel && clusterOrigin.current) revealFromTrigger(panel, clusterOrigin.current);
   }, [clusterId]);
   const clusterKey = JSON.stringify([scopeKey, viewport, zoom]);
   const [clusterScope, setClusterScope] = useState(clusterKey);
@@ -317,6 +325,17 @@ function CityExplorer({
   const [locationMessage, setLocationMessage] = useState("");
   function update(changes: Partial<ViewState>) {
     navigate({ ...view, release: dataset.release, ...changes });
+  }
+  const opener = useRef<{ id: string; source: Activation } | null>(null);
+  const takeOpener = useCallback((id: string): Activation | null => {
+    const selected = opener.current;
+    opener.current = null;
+    return selected?.id === id ? selected.source : null;
+  }, []);
+  function openRecord(tree: Summary, source: Activation) {
+    const id = summaryKey(tree);
+    opener.current = { id, source };
+    update({ tree: id });
   }
   function changeCity(next: Dataset) {
     navigate({
@@ -400,7 +419,7 @@ function CityExplorer({
   }
   const packStatus: OfflinePackStatus | undefined = pack.data;
   return (
-    <main className="atlas">
+    <main className="atlas" onPointerDownCapture={pressFromPointer}>
       <aside className="sidebar" aria-label="Search and tree records">
         <div className="intro">
           <p className="eyebrow">LOCAL RESEARCH PILOT</p>
@@ -465,9 +484,9 @@ function CityExplorer({
           {packError !== null && <p role="alert">{packError}</p>}
         </section>
         <div className="search-section">
-          <SearchBox
-            key={`${session.key}:${view.q}`}
-            initial={view.q}
+          <InventorySearch
+            key={session.key}
+            query={view.q}
             client={session.client}
             datasets={manifest.datasets}
             onSearch={(q) => update({ q, tree: null })}
@@ -533,8 +552,10 @@ function CityExplorer({
         {selectedId !== null && detail.data != null && (
           <>
             <TreeDetails
+              key={treeKey(detail.data)}
               tree={detail.data}
               dataset={dataset}
+              takeOpener={takeOpener}
               close={() => update({ tree: null })}
             />
             <button
@@ -572,7 +593,7 @@ function CityExplorer({
                 total={members.data.total}
                 offset={cluster.offset}
                 selected={view.tree}
-                onSelect={(tree) => update({ tree: summaryKey(tree) })}
+                onSelect={openRecord}
                 onPage={(next) => setCluster({ ...cluster, offset: next })}
               />
             )}
@@ -609,7 +630,7 @@ function CityExplorer({
               offset={findings.data.offset}
               selected={view.tree}
               onPage={(next) => setPaging({ key: scopeKey, offset: next })}
-              onSelect={(tree) => update({ tree: summaryKey(tree) })}
+              onSelect={openRecord}
             />
           </>
         )}
@@ -640,130 +661,17 @@ function CityExplorer({
           selectedTree={view.tree !== null ? (detail.data ?? null) : null}
           canopy={mode === "api" && view.canopy}
           area={view.area}
-          onSelect={(tree) => update({ tree: summaryKey(tree) })}
+          onSelect={openRecord}
           onArea={(area) => update({ area, tree: null })}
           onCluster={(item, trigger) => {
             clusterTrigger.current = trigger;
+            clusterOrigin.current = trigger ? activation(trigger) : null;
             setCluster({ id: item.id, request, offset: 0 });
           }}
           onViewport={(bounds, nextZoom) => setCamera({ bounds, zoom: nextZoom })}
         />
       </Suspense>
     </main>
-  );
-}
-
-type SearchProps = {
-  initial: string;
-  client: InventoryClient | null;
-  datasets: readonly Dataset[];
-  onSearch: (q: string) => void;
-  onCity: (dataset: Dataset) => void;
-};
-function SearchBox({ initial, client, datasets, onSearch, onCity }: SearchProps) {
-  const [draft, setDraft] = useState(initial);
-  const [open, setOpen] = useState(false);
-  const [suggestions, setSuggestions] = useState<{ term: string; values: string[] } | null>(null);
-  const term = normalizeText(draft);
-  useEffect(() => {
-    if (client === null || term.length < 2) return undefined;
-    let active = true;
-    const timer = window.setTimeout(() => {
-      void client
-        .suggest(term)
-        .then((values) => {
-          if (active) setSuggestions({ term, values });
-        })
-        .catch(() => {
-          if (active) setSuggestions({ term, values: [] });
-        });
-    }, 200);
-    return () => {
-      active = false;
-      window.clearTimeout(timer);
-    };
-  }, [client, term]);
-  const values = suggestions?.term === term ? suggestions.values : [];
-  const cities =
-    term.length >= 2
-      ? datasets.filter((item) => normalizeText(`${item.city} ${item.country}`).includes(term))
-      : [];
-  return (
-    <form
-      className="search-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setOpen(false);
-        onSearch(draft.trim());
-      }}
-    >
-      <label htmlFor="tree-search">Find a tree or place</label>
-      <div className="search-row">
-        <input
-          id="tree-search"
-          name="q"
-          type="search"
-          maxLength={500}
-          autoComplete="off"
-          value={draft}
-          placeholder="Species, street, tag or city…"
-          aria-describedby="search-help"
-          aria-controls={open ? "search-suggestions" : undefined}
-          onFocus={() => setOpen(true)}
-          onChange={(event) => {
-            setDraft(event.target.value);
-            setOpen(true);
-          }}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") setOpen(false);
-            if (event.key === "ArrowDown") {
-              event.preventDefault();
-              document.querySelector<HTMLButtonElement>("#search-suggestions button")?.focus();
-            }
-          }}
-        />
-        <button type="submit" aria-label="Search">
-          ↗
-        </button>
-      </div>
-      {open && term.length >= 2 && (
-        <div id="search-suggestions" className="suggestions" aria-label="Search suggestions">
-          {cities.map((city) => (
-            <button
-              type="button"
-              key={city.id}
-              onClick={() => {
-                setOpen(false);
-                onCity(city);
-              }}
-            >
-              {city.city}
-              <small>Inventory · {city.country}</small>
-            </button>
-          ))}
-          {values.map((text) => (
-            <button
-              type="button"
-              key={text}
-              onClick={() => {
-                setOpen(false);
-                onSearch(text);
-              }}
-            >
-              {text}
-              <small>Recorded name or tag</small>
-            </button>
-          ))}
-          <button type="submit">
-            Search for “{draft}”<small>In the selected inventory</small>
-          </button>
-        </div>
-      )}
-      <p id="search-help" className="small">
-        Search recorded species, street labels or tree tags. Full address and landmark search is not
-        included.
-      </p>
-    </form>
   );
 }
 
@@ -781,7 +689,7 @@ function TreeList({
   total: number;
   offset: number;
   selected: string | null;
-  onSelect: (tree: Summary) => void;
+  onSelect: (tree: Summary, source: Activation) => void;
   onPage: (offset: number) => void;
 }) {
   if (total === 0)
@@ -799,7 +707,9 @@ function TreeList({
             <button
               id={`${label === "Tree records" ? "record" : "cluster-record"}-${summaryKey(tree)}`}
               aria-pressed={selected === summaryKey(tree)}
-              onClick={() => onSelect(tree)}
+              onClick={(event) =>
+                onSelect(tree, activation(event.currentTarget, event.nativeEvent))
+              }
             >
               <span className="list-leaf" aria-hidden="true">
                 ⌁
@@ -836,26 +746,38 @@ function TreeList({
 }
 
 function TreeDetails({
+  takeOpener,
   tree,
   dataset,
   close,
 }: {
+  takeOpener: (id: string) => Activation | null;
   tree: Tree;
   dataset: Dataset;
   close: () => void;
 }) {
   const selection = treeKey(tree);
+  const section = useRef<HTMLElement>(null);
+  const returnTo = useRef<HTMLElement | null>(null);
   useEffect(() => {
     const heading = document.getElementById(`detail-${selection}`);
     heading?.focus({ preventScroll: true });
     heading?.scrollIntoView({ block: "nearest", behavior: "instant" });
-  }, [selection]);
+    const source = takeOpener(selection);
+    if (section.current && source) {
+      returnTo.current = source.element;
+      revealFromTrigger(section.current, source);
+    }
+  }, [takeOpener, selection]);
   function closeDetails() {
-    document.getElementById(`record-${selection}`)?.focus({ preventScroll: true });
+    const trigger = returnTo.current?.isConnected
+      ? returnTo.current
+      : document.getElementById(`record-${selection}`);
+    (trigger ?? document.getElementById("tree-search"))?.focus();
     close();
   }
   return (
-    <section className="tree-detail" aria-label="Selected tree details">
+    <section ref={section} className="tree-detail" aria-label="Selected tree details">
       <div className="detail-heading">
         <span className="eyebrow">INVENTORY RECORD</span>
         <button onClick={closeDetails} aria-label="Close tree details">

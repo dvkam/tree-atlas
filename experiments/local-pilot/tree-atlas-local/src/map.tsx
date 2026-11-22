@@ -1,3 +1,5 @@
+import { activation } from "./trigger-motion.ts";
+import type { Activation } from "./trigger-motion.ts";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 import L from "leaflet";
 import type { Bounds, Dataset } from "./domain.ts";
@@ -15,7 +17,7 @@ type Props = {
   selectedTree: Summary | null;
   canopy: boolean;
   area: Bounds | null;
-  onSelect: (tree: Summary) => void;
+  onSelect: (tree: Summary, source: Activation) => void;
   onCluster: (item: Extract<MapItem, { kind: "cluster" }>, trigger: HTMLElement) => void;
   onViewport: (bounds: Bounds, zoom: number) => void;
   onArea: (bounds: Bounds) => void;
@@ -172,8 +174,10 @@ export function TreeMap({
       });
       const label = document.createElement("span");
       label.textContent = tree.commonName ?? tree.scientificName ?? `Record ${tree.sourceId}`;
-      marker.bindTooltip(label);
-      marker.on("click", () => select(tree));
+      marker.bindTooltip(label, { className: "tree-tooltip" });
+      marker.on("click", (event: L.LeafletMouseEvent) =>
+        select(tree, activation(map.getContainer(), event.originalEvent)),
+      );
       marker.addTo(map);
       layers.set(key, marker);
     }

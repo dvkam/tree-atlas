@@ -29,7 +29,7 @@ test("API cities and search stay pinned without downloading complete inventory a
   for (const dataset of datasets) {
     await chooseCity(page, dataset.id);
     const expected = reference(dataset.id, "common-genus");
-    const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+    const search = page.getByRole("combobox", { name: "Find a tree or place" });
     await search.fill(expected.q);
     await search.press("Enter");
     await ready(page, dataset.id, expected.total);
@@ -89,7 +89,7 @@ test("switching cities discards an older held search response", async ({ page })
     await work;
   });
   try {
-    const search = page.getByRole("searchbox", { name: "Find a tree or place" });
+    const search = page.getByRole("combobox", { name: "Find a tree or place" });
     await search.fill("acer");
     await search.press("Enter");
     await expect.poll(() => held).toBe(true);
