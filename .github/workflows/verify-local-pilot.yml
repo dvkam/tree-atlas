@@ -105,7 +105,7 @@ jobs:
           curl --fail --silent --show-error --retry 30 --retry-connrefused \
             --retry-delay 1 --max-time 3 --retry-max-time 45 http://127.0.0.1:4199/api/health
           pnpm exec playwright test --config verification/playwright.local.config.ts \
-            online.spec.ts offline.spec.ts offline-large.spec.ts shell-update.spec.ts
+            online.spec.ts offline.spec.ts offline-large.spec.ts shell-update.spec.ts cluster-taps.spec.ts
           kill -TERM "$launcher"
           wait "$launcher"
           trap - EXIT

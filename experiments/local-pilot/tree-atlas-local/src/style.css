@@ -461,25 +461,30 @@ h1 em {
   overflow-wrap: anywhere;
 }
 .map-panel {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   background: #e9edde;
 }
 .map {
-  height: 100%;
+  flex: 1;
+  min-height: 100px;
   width: 100%;
   isolation: isolate;
 }
 .map:focus-visible {
   outline-offset: -3px;
 }
+.map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
 .area-button {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 500;
-  box-shadow: 0 2px 12px #233f3324;
+  min-height: 44px;
   border-color: #b8c3b2;
   font-size: 12px;
   font-weight: 650;
@@ -490,19 +495,26 @@ h1 em {
   padding-left: 10px;
 }
 .map-key {
-  position: absolute;
-  bottom: 27px;
-  left: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
-  z-index: 500;
-  border: 1px solid #d7dfcf;
-  border-radius: 8px;
-  background: #fffef9ed;
-  padding: 10px 13px;
+  gap: 10px;
   font-size: 10px;
-  box-shadow: 0 2px 12px #233f3310;
+}
+.map-footer {
+  display: flex;
+  /* A query status change must not resize the map and start another viewport query. */
+  flex: 0 0 72px;
+  overflow-y: auto;
+  align-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 5px 10px;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+.map-credits {
+  margin-left: auto;
 }
 .map-key span {
   display: flex;
@@ -526,14 +538,11 @@ h1 em {
   background: #a4ba7b;
 }
 .map-alert {
-  position: absolute;
-  top: 75px;
-  left: 20px;
-  right: 20px;
+  width: 100%;
+  margin: 0;
   background: #fff4d9;
-  z-index: 500;
   border: 1px solid #dfc990;
-  padding: 10px;
+  padding: 4px 8px;
   border-radius: 8px;
   font-size: 12px;
 }
@@ -545,16 +554,19 @@ h1 em {
   font-size: 9px !important;
 }
 .leaflet-control-zoom {
-  border: 1px solid #b8c3b2 !important;
-  box-shadow: 0 2px 12px #233f331a !important;
-  margin: 20px !important;
+  display: flex;
+  gap: 4px;
+  border: 0;
+  box-shadow: none;
 }
-.leaflet-control-zoom a {
-  width: 36px !important;
-  height: 36px !important;
-  line-height: 36px !important;
-  background: var(--paper) !important;
-  color: var(--green) !important;
+.map-toolbar .leaflet-control-zoom a {
+  width: 44px;
+  height: 44px;
+  line-height: 42px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--green);
 }
 .notice {
   margin: 20px;
@@ -608,9 +620,6 @@ h1 em {
   button:active:not(:focus-visible) {
     transform: scale(0.97);
   }
-  .area-button:active:not(:focus-visible) {
-    transform: translateX(-50%) scale(0.97);
-  }
 }
 @media (max-width: 1000px) {
   .atlas {
@@ -624,12 +633,6 @@ h1 em {
   }
   .masthead {
     padding: 0 22px;
-  }
-  .map-key {
-    gap: 9px;
-    left: 12px;
-    right: 12px;
-    width: fit-content;
   }
 }
 @media (max-width: 700px) {
@@ -678,20 +681,14 @@ h1 em {
   }
   .map-panel {
     order: -1;
-    height: 42dvh;
-    min-height: 290px;
     border-bottom: 1px solid var(--line);
   }
-  .map-key {
-    bottom: 25px;
-    font-size: 9px;
-    padding: 8px 10px;
+  .map {
+    flex: none;
+    height: max(270px, 36dvh);
   }
-  .area-button {
-    top: 14px;
-  }
-  .leaflet-control-zoom {
-    margin: 14px !important;
+  .map-footer {
+    flex: none;
   }
   .cities {
     max-width: 480px;
@@ -717,9 +714,6 @@ h1 em {
   button:active:not(:focus-visible) {
     transform: none;
   }
-  .area-button:active:not(:focus-visible) {
-    transform: translateX(-50%);
-  }
 }
 .leaflet-marker-icon.inventory-cluster {
   border: 1px solid #386943;
@@ -739,27 +733,9 @@ h1 em {
 .cluster-count {
   pointer-events: none;
 }
-.cluster-hint {
-  position: absolute;
-  top: 73px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 450;
-  border-radius: 20px;
-  padding: 5px 11px;
-  background: #fffef9e8;
-  font-size: 10px;
-  white-space: nowrap;
-}
-.map-message {
-  position: absolute;
-  bottom: 73px;
-  left: 20px;
-  right: 20px;
-  z-index: 450;
-  padding: 10px;
-  background: #fffef9ec;
-  border-radius: 9px;
+.cluster-hint,
+.map-loading {
+  margin: 0;
   font-size: 11px;
 }
 .archive-note {
@@ -803,22 +779,6 @@ h1 em {
   margin: 6px 0 0;
 }
 
-.map-loading {
-  position: absolute;
-  bottom: 73px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 450;
-  width: max-content;
-  max-width: calc(100% - 32px);
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: var(--paper);
-  font-size: 12px;
-  text-align: center;
-  pointer-events: none;
-}
 @media (max-width: 380px) {
   .pilot-badge {
     display: none;

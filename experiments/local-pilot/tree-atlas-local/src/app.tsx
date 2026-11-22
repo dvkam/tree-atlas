@@ -7,7 +7,7 @@ import { measurementLabel, treeKey } from "./domain.ts";
 import { inventoryAt } from "./local-inventory.ts";
 import type { Bounds, Dataset, Manifest, Tree } from "./domain.ts";
 import type { InventoryClient } from "./inventory-client.ts";
-import type { InventoryQuery, Summary, MapItem } from "./index-format.ts";
+import type { InventoryQuery, Summary } from "./index-format.ts";
 import { createRemoteInventorySession } from "./remote-inventory.ts";
 import { createOfflineInventorySession } from "./offline-client.ts";
 import { offlineStore } from "./offline-store.ts";
@@ -268,6 +268,12 @@ function CityExplorer({
     gcTime: 0,
   });
   const [cluster, setCluster] = useState<ClusterSelection | null>(null);
+  const clusterHeading = useRef<HTMLHeadingElement>(null);
+  const clusterTrigger = useRef<HTMLElement>(null);
+  const clusterId = cluster?.id;
+  useEffect(() => {
+    if (clusterId !== undefined) clusterHeading.current?.focus();
+  }, [clusterId]);
   const clusterKey = JSON.stringify([scopeKey, viewport, zoom]);
   const [clusterScope, setClusterScope] = useState(clusterKey);
   if (clusterScope !== clusterKey) {
@@ -543,8 +549,15 @@ function CityExplorer({
         )}
         {cluster !== null && (
           <section aria-label="Cluster records" className="tree-detail">
-            <button onClick={() => setCluster(null)}>Close cluster records</button>
-            <h2>
+            <button
+              onClick={() => {
+                setCluster(null);
+                clusterTrigger.current?.focus();
+              }}
+            >
+              Close cluster records
+            </button>
+            <h2 ref={clusterHeading} tabIndex={-1}>
               {members.data === undefined
                 ? "Loading cluster records…"
                 : `${number.format(members.data.total)} records in this cluster`}
@@ -629,9 +642,10 @@ function CityExplorer({
           area={view.area}
           onSelect={(tree) => update({ tree: summaryKey(tree) })}
           onArea={(area) => update({ area, tree: null })}
-          onCluster={(item: Extract<MapItem, { kind: "cluster" }>) =>
-            setCluster({ id: item.id, request, offset: 0 })
-          }
+          onCluster={(item, trigger) => {
+            clusterTrigger.current = trigger;
+            setCluster({ id: item.id, request, offset: 0 });
+          }}
           onViewport={(bounds, nextZoom) => setCamera({ bounds, zoom: nextZoom })}
         />
       </Suspense>

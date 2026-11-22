@@ -194,7 +194,7 @@ ServiceResult* inventory_execute(ServiceRequest* request,const char* primary,con
     }
     std::string prefix="[\"tree-atlas-search-release-v1\","+string_json(dataset)+","+string_json(release)+","+string_json(term)+","+encode(area)+","+(query?encode(viewport):"[-180,-90,180,90]")+","+decimal(zoom);
     std::string key=sha(prefix+","+decimal(offset)+","+decimal(limit)+"]");
-    std::string cluster_scope=sha(prefix+"]");
+    std::string cluster_scope=sha("screen-grid-v2:"+prefix+"]");
     if(op=="cluster-members"){
       auto id=text(doc,"clusterId");require(id.rfind(cluster_scope+":",0)==0);
       std::string cell=id.substr(cluster_scope.size()+1);size_t split=cell.find(':');require(split!=std::string::npos);

@@ -8,10 +8,13 @@ if os.geteuid()!=0 or not __debug__: raise SystemExit('Run normally as WSL root'
 env={key:value for key,value in os.environ.items() if not key.startswith('PG')}
 sql="""BEGIN;
 DO $test$ BEGIN
- IF atlas_api.cell_x('[0,0,0.000000000001,1]'::jsonb,6)<>29 OR
-    atlas_api.cell_x('[0,0,0.000000000001,1]'::jsonb,-6)<>0 OR
-    atlas_api.cell_y('[0,0,1,0.000000000001]'::jsonb,46)<>29 OR
-    atlas_api.cell_x('[0,0,0.000000000001,1]'::jsonb,0.0000000000005)<>15
+ IF atlas_api.grid_cell(6,0,1e-12,30)<>29 OR
+    atlas_api.grid_cell(-6,0,1e-12,30)<>0 OR
+    atlas_api.grid_cell(46,0,1e-12,1)<>0 OR
+    atlas_api.grid_cell(0.5e-12,0,1e-12,30)<>15 OR
+    atlas_api.grid_divisions(390,1)<>6 OR atlas_api.grid_divisions(353,1)<>5 OR
+    atlas_api.badge_position(59.9,0,120,0,2,1)<>36 OR
+    atlas_api.badge_position(60.1,0,120,1,2,1)<>84
  THEN RAISE EXCEPTION 'Tiny viewport arithmetic guard failed'; END IF;
 END $test$;
 INSERT INTO atlas.releases(dataset,release,metadata,expected_count,expected_located_count,expected_identity_sha256,expected_content_sha256)

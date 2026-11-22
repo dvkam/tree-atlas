@@ -53,16 +53,27 @@ LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
     'commonName',tree->'commonName','location',tree->'location')
 $$;
 
--- Both denominator and point difference are in the finite validated viewport.
-CREATE OR REPLACE FUNCTION atlas_api.cell_x(box jsonb,lon float8) RETURNS integer
+-- Use the smallest Mercator scale in the viewport so every cell has room for a touch target.
+CREATE OR REPLACE FUNCTION atlas_api.latitude_scale(box jsonb) RETURNS float8
 LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
-  SELECT CASE WHEN lon<=(box->>0)::float8 THEN 0 WHEN lon>=(box->>2)::float8 THEN 29
-    ELSE greatest(0,least(29,floor(((lon-(box->>0)::float8)/((box->>2)::float8-(box->>0)::float8))*30)::integer)) END
+  SELECT cos(radians(least(85.0511287798066,greatest(0.,(box->>1)::float8,-(box->>3)::float8))))
 $$;
-CREATE OR REPLACE FUNCTION atlas_api.cell_y(box jsonb,lat float8) RETURNS integer
+CREATE OR REPLACE FUNCTION atlas_api.grid_divisions(span float8,pixel_degrees float8) RETURNS integer
 LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
-  SELECT CASE WHEN lat<=(box->>1)::float8 THEN 0 WHEN lat>=(box->>3)::float8 THEN 29
-    ELSE greatest(0,least(29,floor(((lat-(box->>1)::float8)/((box->>3)::float8-(box->>1)::float8))*30)::integer)) END
+  SELECT CASE WHEN span<60*pixel_degrees THEN 1 ELSE least(30.,floor(span/(60*pixel_degrees)))::integer END
+$$;
+CREATE OR REPLACE FUNCTION atlas_api.grid_cell(point float8,lo float8,hi float8,divisions integer) RETURNS integer
+LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
+  SELECT CASE WHEN divisions=1 OR point<=lo THEN 0 WHEN point>=hi THEN divisions-1
+    ELSE least(divisions-1,floor(((point-lo)/(hi-lo))*divisions)::integer) END
+$$;
+-- Keep the 44px cluster badge inside its own cell. Individual tree coordinates stay exact.
+CREATE OR REPLACE FUNCTION atlas_api.badge_position(mean float8,lo float8,hi float8,cell integer,divisions integer,pixel_degrees float8) RETURNS float8
+LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
+  SELECT CASE WHEN hi-lo<1e-12 THEN greatest(lo,least(hi,mean))
+    ELSE greatest(lo+cell*width+margin,least(lo+(cell+1)*width-margin,mean)) END
+  FROM (SELECT (hi-lo)/divisions AS width) w
+  CROSS JOIN LATERAL (SELECT least(24*pixel_degrees,CASE WHEN hi-lo<1e-12 THEN 0 ELSE width/2 END) AS margin) m
 $$;
 
 CREATE OR REPLACE FUNCTION atlas_api.summary(p jsonb,term text) RETURNS jsonb
@@ -72,6 +83,10 @@ DECLARE metadata jsonb; total bigint; located bigint; visible bigint; markers js
         area jsonb:=p->'area'; viewport jsonb:=p->'viewport'; pattern text:=atlas_api.like_pattern(term);
         global_empty boolean:=term='' AND (area IS NULL OR area='null'::jsonb);
         scanned_total bigint; scanned_located bigint;
+        w float8:=(viewport->>0)::float8; s float8:=(viewport->>1)::float8;
+        e float8:=(viewport->>2)::float8; n float8:=(viewport->>3)::float8;
+        dx float8:=360/(256*power(2::float8,(p->>'zoom')::float8)); dy float8:=dx*atlas_api.latitude_scale(viewport);
+        cols integer:=atlas_api.grid_divisions(e-w,dx); rows integer:=atlas_api.grid_divisions(n-s,dy);
 BEGIN
   metadata:=atlas_api.require_release(p);
   IF COALESCE((p->>'containsNul')::boolean,false) THEN
@@ -84,8 +99,8 @@ BEGIN
   -- exposing them as map markers. Global empty queries keep the index-only
   -- viewport path and use immutable release counts for the full inventory.
   WITH grouped AS (
-    SELECT CASE WHEN atlas_api.inside(viewport,t.lon,t.lat) THEN atlas_api.cell_x(viewport,t.lon) ELSE -1 END AS gx,
-      CASE WHEN atlas_api.inside(viewport,t.lon,t.lat) THEN atlas_api.cell_y(viewport,t.lat) ELSE -1 END AS gy,
+    SELECT CASE WHEN atlas_api.inside(viewport,t.lon,t.lat) THEN atlas_api.grid_cell(t.lon,w,e,cols) ELSE -1 END AS gx,
+      CASE WHEN atlas_api.inside(viewport,t.lon,t.lat) THEN atlas_api.grid_cell(t.lat,s,n,rows) ELSE -1 END AS gy,
       count(*) AS members,count(t.lon) AS located_members,
       avg(t.lon) AS lon,avg(t.lat) AS lat,min(t.ordinal) AS first_ordinal
     FROM atlas.validated_records t
@@ -103,7 +118,8 @@ BEGIN
           (SELECT atlas_api.summary_tree(t.canonical) FROM atlas.validated_records t
            WHERE t.dataset=p->>'dataset' AND t.release=p->>'release' AND t.ordinal=g.first_ordinal))
         ELSE jsonb_build_object('kind','cluster','cell',g.gx::text||':'||g.gy::text,
-          'position',jsonb_build_array(g.lon,g.lat),'count',g.members,
+          'position',jsonb_build_array(atlas_api.badge_position(g.lon,w,e,g.gx,cols,dx),
+                                       atlas_api.badge_position(g.lat,s,n,g.gy,rows,dy)),'count',g.members,
           'zoom',least(24,floor((p->>'zoom')::float8)::integer+1)) END AS marker
       FROM grouped g
   ) SELECT COALESCE(sum(members),0)::bigint,COALESCE(sum(located_members),0)::bigint,
@@ -197,10 +213,14 @@ SET plan_cache_mode=force_custom_plan AS $$
 DECLARE area jsonb:=p->'area'; viewport jsonb:=p->'viewport'; pattern text:=atlas_api.like_pattern(term); result jsonb;
         x integer:=(p->>'cellX')::integer; y integer:=(p->>'cellY')::integer;
         metadata jsonb; bounds jsonb;
+        w float8:=(viewport->>0)::float8; s float8:=(viewport->>1)::float8;
+        e float8:=(viewport->>2)::float8; n float8:=(viewport->>3)::float8;
+        dx float8:=360/(256*power(2::float8,(p->>'zoom')::float8)); dy float8:=dx*atlas_api.latitude_scale(viewport);
+        cols integer:=atlas_api.grid_divisions(e-w,dx); rows integer:=atlas_api.grid_divisions(n-s,dy);
 BEGIN
   metadata:=atlas_api.require_release(p);
   bounds:=metadata->'metadata'->'source'->'bounds';
-  IF x IS NULL OR y IS NULL OR x NOT BETWEEN 0 AND 29 OR y NOT BETWEEN 0 AND 29 THEN
+  IF x IS NULL OR y IS NULL OR x<0 OR x>=cols OR y<0 OR y>=rows THEN
     RAISE EXCEPTION USING ERRCODE='22023',MESSAGE='invalid_cluster';
   END IF;
   IF COALESCE((p->>'containsNul')::boolean,false) THEN RETURN jsonb_build_object('items','[]'::jsonb,'memberCount',0,'total',0,'releaseFingerprint',atlas_api.fingerprint(p)); END IF;
@@ -211,14 +231,14 @@ BEGIN
      (metadata->>'expected_count')::bigint=(metadata->>'expected_located_count')::bigint AND
      atlas_api.inside(viewport,(bounds->>0)::float8,(bounds->>1)::float8) AND
      atlas_api.inside(viewport,(bounds->>2)::float8,(bounds->>3)::float8) AND
-     atlas_api.cell_x(viewport,(bounds->>0)::float8)=x AND atlas_api.cell_x(viewport,(bounds->>2)::float8)=x AND
-     atlas_api.cell_y(viewport,(bounds->>1)::float8)=y AND atlas_api.cell_y(viewport,(bounds->>3)::float8)=y THEN
+     atlas_api.grid_cell((bounds->>0)::float8,w,e,cols)=x AND atlas_api.grid_cell((bounds->>2)::float8,w,e,cols)=x AND
+     atlas_api.grid_cell((bounds->>1)::float8,s,n,rows)=y AND atlas_api.grid_cell((bounds->>3)::float8,s,n,rows)=y THEN
     RETURN atlas_api.page(p,term)||jsonb_build_object('total',metadata->'expected_count','memberCount',metadata->'expected_count');
   END IF;
   WITH matching AS NOT MATERIALIZED (
     SELECT t.dataset,t.release,t.ordinal FROM atlas.validated_records t
     WHERE t.dataset=p->>'dataset' AND t.release=p->>'release' AND atlas_api.inside(viewport,t.lon,t.lat)
-      AND atlas_api.cell_x(viewport,t.lon)=x AND atlas_api.cell_y(viewport,t.lat)=y
+      AND atlas_api.grid_cell(t.lon,w,e,cols)=x AND atlas_api.grid_cell(t.lat,s,n,rows)=y
       AND (area IS NULL OR area='null'::jsonb OR atlas_api.inside(area,t.lon,t.lat))
       AND (term='' OR t.search_id LIKE pattern ESCAPE E'\\' OR t.search_tag LIKE pattern ESCAPE E'\\'
         OR t.search_scientific LIKE pattern ESCAPE E'\\' OR t.search_common LIKE pattern ESCAPE E'\\'
@@ -279,6 +299,7 @@ LANGUAGE sql STABLE PARALLEL SAFE SECURITY INVOKER SET search_path=pg_catalog,at
   FROM atlas.validated_releases r
 $$;
 
+DROP FUNCTION IF EXISTS atlas_api.cell_x(jsonb,float8),atlas_api.cell_y(jsonb,float8);
 REVOKE ALL ON ALL FUNCTIONS IN SCHEMA atlas_api FROM PUBLIC;
 GRANT USAGE ON SCHEMA atlas_api TO tree_atlas_reader;
 -- Helpers execute as invoker too, so the role needs their EXECUTE rights.

@@ -144,22 +144,38 @@ const GRID_CELLS = MAX_GRID_WIDTH * MAX_GRID_WIDTH;
 const CELL_PIXELS = 60;
 const MAX_MERCATOR_LATITUDE = 85.0511287798066;
 
-type GridLayout = { columns: number; rows: number; cells: number };
-
-function mercatorY(latitude: number): number {
-  const clamped = Math.max(-MAX_MERCATOR_LATITUDE, Math.min(MAX_MERCATOR_LATITUDE, latitude));
-  const sine = Math.sin((clamped * Math.PI) / 180);
-  return 0.5 - Math.log((1 + sine) / (1 - sine)) / (4 * Math.PI);
-}
+type GridLayout = { columns: number; rows: number; cells: number; dx: number; dy: number };
 
 function gridLayout(query: InventoryQuery): GridLayout {
   const [west, south, east, north] = query.viewport;
   const worldPixels = 256 * 2 ** query.zoom;
-  const width = ((east - west) / 360) * worldPixels;
-  const height = (mercatorY(south) - mercatorY(north)) * worldPixels;
-  const columns = Math.max(1, Math.min(MAX_GRID_WIDTH, Math.floor(width / CELL_PIXELS)));
-  const rows = Math.max(1, Math.min(MAX_GRID_WIDTH, Math.floor(height / CELL_PIXELS)));
-  return { columns, rows, cells: columns * rows };
+  const dx = 360 / worldPixels;
+  const nearestEquator = Math.min(MAX_MERCATOR_LATITUDE, Math.max(0, south, -north));
+  const dy = dx * Math.cos((nearestEquator * Math.PI) / 180);
+  const columns = Math.max(
+    1,
+    Math.min(MAX_GRID_WIDTH, Math.floor((east - west) / (dx * CELL_PIXELS))),
+  );
+  const rows = Math.max(
+    1,
+    Math.min(MAX_GRID_WIDTH, Math.floor((north - south) / (dy * CELL_PIXELS))),
+  );
+  return { columns, rows, cells: columns * rows, dx, dy };
+}
+
+/** A cluster badge stays inside its cell, including when two centroids approach the same edge. */
+function badgePosition(
+  mean: number,
+  lo: number,
+  hi: number,
+  cell: number,
+  divisions: number,
+  pixelDegrees: number,
+): number {
+  if (hi - lo < 1e-12) return Math.max(lo, Math.min(hi, mean));
+  const width = (hi - lo) / divisions;
+  const margin = Math.min(24 * pixelDegrees, width / 2);
+  return Math.max(lo + cell * width + margin, Math.min(lo + (cell + 1) * width - margin, mean));
 }
 
 function gridCell(
@@ -197,7 +213,7 @@ function engine(
   let filteredCount = 0;
   let cachedMap: string | null = null;
   let generation = 0;
-  let layout: GridLayout = { columns: 1, rows: 1, cells: 1 };
+  let layout: GridLayout = { columns: 1, rows: 1, cells: 1, dx: 1, dy: 1 };
   const counts = new Uint32Array(GRID_CELLS);
   const firstRows = new Uint32Array(GRID_CELLS);
   const longitudes = new Float64Array(GRID_CELLS);
@@ -307,7 +323,24 @@ function engine(
           markers.push({
             kind: "cluster",
             id: generation * GRID_CELLS + cell,
-            position: [(longitudes[cell] ?? 0) / count, (latitudes[cell] ?? 0) / count],
+            position: [
+              badgePosition(
+                (longitudes[cell] ?? 0) / count,
+                query.viewport[0],
+                query.viewport[2],
+                cell % layout.columns,
+                layout.columns,
+                layout.dx,
+              ),
+              badgePosition(
+                (latitudes[cell] ?? 0) / count,
+                query.viewport[1],
+                query.viewport[3],
+                Math.floor(cell / layout.columns),
+                layout.rows,
+                layout.dy,
+              ),
+            ],
             count,
             zoom: Math.min(24, Math.floor(query.zoom) + 1),
           });

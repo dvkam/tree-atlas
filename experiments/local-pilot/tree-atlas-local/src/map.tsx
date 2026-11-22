@@ -16,7 +16,7 @@ type Props = {
   canopy: boolean;
   area: Bounds | null;
   onSelect: (tree: Summary) => void;
-  onCluster: (item: Extract<MapItem, { kind: "cluster" }>) => void;
+  onCluster: (item: Extract<MapItem, { kind: "cluster" }>, trigger: HTMLElement) => void;
   onViewport: (bounds: Bounds, zoom: number) => void;
   onArea: (bounds: Bounds) => void;
 };
@@ -37,20 +37,19 @@ export function TreeMap({
   onViewport,
 }: Props) {
   const host = useRef<HTMLDivElement>(null);
+  const zoomHost = useRef<HTMLDivElement>(null);
+  const creditsHost = useRef<HTMLDivElement>(null);
   const mapRef = useRef<L.Map | null>(null);
   const visibleLayers = useRef(new Map<string, L.Layer>());
   const [canopyError, setCanopyError] = useState(false);
   const [basemapError, setBasemapError] = useState(false);
   const select = useEffectEvent(onSelect);
-  const selectCluster = useEffectEvent((item: Extract<MapItem, { kind: "cluster" }>) =>
-    onCluster(item),
-  );
+  const selectCluster = useEffectEvent(onCluster);
   const reportViewport = useEffectEvent(onViewport);
-  const [mapMessage, setMapMessage] = useState("");
   const areaKey = area?.join(",") ?? "";
 
   useEffect(() => {
-    if (host.current === null) return undefined;
+    if (host.current === null || !zoomHost.current || !creditsHost.current) return undefined;
     const map = L.map(host.current, {
       preferCanvas: true,
       scrollWheelZoom: true,
@@ -59,9 +58,13 @@ export function TreeMap({
       worldCopyJump: true,
     }).setView([48.207, 16.394], 15);
     mapRef.current = map;
+    // Keep Leaflet's accessible controls and live layer attribution outside the marker hit area.
+    const zoomButtons = map.zoomControl.getContainer();
+    const credits = map.attributionControl.getContainer();
+    if (zoomButtons) zoomHost.current.append(zoomButtons);
+    if (credits) creditsHost.current.append(credits);
     const layers = visibleLayers.current;
     map.on("moveend", () => {
-      setMapMessage("");
       reportViewport(viewportBounds(map), map.getZoom());
     });
     const basemap = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -151,7 +154,10 @@ export function TreeMap({
         marker
           .getElement()
           ?.setAttribute("aria-label", `${item.count.toLocaleString("en")} records; open cluster`);
-        marker.on("click", () => selectCluster(item));
+        marker.on("click", () => {
+          const trigger = marker.getElement();
+          if (trigger) selectCluster(item, trigger);
+        });
         layers.set(key, marker);
         continue;
       }
@@ -232,48 +238,51 @@ export function TreeMap({
       data-filter-ready={!preview}
       data-marker-count={markers.length}
     >
+      <div className="map-toolbar">
+        <div ref={zoomHost} />
+        <button className="area-button" onClick={searchArea}>
+          Search this area <span aria-hidden="true">↗</span>
+        </button>
+      </div>
       <div
         ref={host}
         className="map"
         aria-label="Interactive map. Use the result list for keyboard access to trees."
       />
-      <button className="area-button" onClick={searchArea}>
-        Search this area <span aria-hidden="true">↗</span>
-      </button>
-      <div className="map-key">
-        <span>
-          <i className="tree-dot" /> Inventory record
-        </span>
-        <span>
-          <i className="coverage-line" /> Published extent
-        </span>
-        {canopy && (
+      <div className="map-footer">
+        <div className="map-key">
           <span>
-            <i className="canopy-swatch" /> Canopy · 2021
+            <i className="tree-dot" /> Inventory record
           </span>
+          <span>
+            <i className="coverage-line" /> Published extent
+          </span>
+          {canopy && (
+            <span>
+              <i className="canopy-swatch" /> Canopy · 2021
+            </span>
+          )}
+        </div>
+        <div ref={creditsHost} className="map-credits" />
+        {loading && (
+          <output className="map-loading">
+            Opening {dataset.city}… You can still move the map.
+          </output>
+        )}
+        {!loading && preview && (
+          <p className="cluster-hint">Unfiltered map · groups may extend beyond the view</p>
+        )}
+        {!loading && !preview && aggregated && (
+          <p className="cluster-hint">Select a group to see its records.</p>
+        )}
+        {(basemapError || (canopy && canopyError)) && (
+          <p className="map-alert" aria-live="polite">
+            {basemapError ? "Street-map tiles could not load. " : ""}
+            {canopy && canopyError ? "Canopy tiles could not load. " : ""}
+            The record list can be used without map tiles.
+          </p>
         )}
       </div>
-      {loading && (
-        <output className="map-loading">Opening {dataset.city}… You can still move the map.</output>
-      )}
-      {!loading && preview && (
-        <p className="cluster-hint">Unfiltered map · groups may extend beyond the view</p>
-      )}
-      {!loading && !preview && aggregated && (
-        <p className="cluster-hint">Grouped records · zoom in to explore</p>
-      )}
-      {mapMessage !== "" && (
-        <p className="map-message" aria-live="polite">
-          {mapMessage}
-        </p>
-      )}
-      {(basemapError || (canopy && canopyError)) && (
-        <p className="map-alert" aria-live="polite">
-          {basemapError ? "Street-map tiles could not load. " : ""}
-          {canopy && canopyError ? "Canopy tiles could not load. " : ""}
-          The record list can be used without map tiles.
-        </p>
-      )}
     </section>
   );
 }
