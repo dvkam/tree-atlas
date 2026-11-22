@@ -34,7 +34,7 @@ const report={passed:false,state:'running',
   freezeSha256:hash(sealBytes),
   scope:'Actual local Carbon HTTP list/count/correlation/detail/suggestion/map member checks; no browser, offline or hosted performance claim',
   selectedPageChecks:0,suggestionChecks:0,detailChecks:0,smallFullFilterSets:[],fullEmptyInventories:[],
-  markerPartitionChecks:[],viewportPageChecks:0,quick,profiles:[]};
+  markerPartitionChecks:[],viewportPageChecks:0,finiteViewportChecks:0,quick,profiles:[]};
 await save(report);
 const measurements=[];
 const started=performance.now();
@@ -145,6 +145,24 @@ try {
     }
   }
   report.selectedCorpusMs=Math.round(performance.now()-firstStarted);
+  // The two boundary coordinates come from the frozen Porto detail records.
+  // The list stays complete while the viewport page uses exact inclusive edges.
+  const porto=reference.datasets.find(item=>item.dataset==='porto');
+  const portoTags=porto.queries.find(item=>item.name==='leading-zeros');
+  const portoIds=['20007','50007','70007','80007','90007'];
+  for(const [name,viewport,visible] of [
+    ['subnormal south',[-9,Number.MIN_VALUE,-8,42],portoIds],
+    ['subnormal south, exact west/east/north edges',[-8.626027675788032,Number.MIN_VALUE,-8.61289679505297,41.15412797497606],['20007','50007']],
+    ['smallest signed spans',[-Number.MIN_VALUE,-Number.MIN_VALUE,Number.MIN_VALUE,Number.MIN_VALUE],[]],
+  ]) {
+    const definition={...portoTags,name,viewport,zoom:24,viewportLocatedTotal:visible.length};
+    const result=await query(porto,definition);
+    checkCountsAndMarkers(result,definition);
+    assert.deepEqual(ids(result.items),portoIds);
+    const page=await query(porto,definition,{offset:0,limit:100},'/v1/viewport-page');
+    assert.deepEqual(ids(page.items),visible);
+    report.finiteViewportChecks++;
+  }
   // Tiny nonempty filters in a world viewport force multiple located records
   // into one grid bucket, then exercise exact cluster paging and viewport paging.
   for(const [city,name] of [['geneva','rare-genus'],['porto','leading-zeros'],['vienna','literal-underscore']]) {

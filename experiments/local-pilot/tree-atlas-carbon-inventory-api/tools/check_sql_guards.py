@@ -14,7 +14,13 @@ DO $test$ BEGIN
     atlas_api.grid_cell(0.5e-12,0,1e-12,30)<>15 OR
     atlas_api.grid_divisions(390,1)<>6 OR atlas_api.grid_divisions(353,1)<>5 OR
     atlas_api.badge_position(59.9,0,120,0,2,1)<>36 OR
-    atlas_api.badge_position(60.1,0,120,1,2,1)<>84
+    atlas_api.badge_position(60.1,0,120,1,2,1)<>84 OR
+    atlas_api.latitude_scale('[0,5e-324,1,20]'::jsonb)<>1 OR
+    atlas_api.latitude_scale('[0,-20,1,-5e-324]'::jsonb)<>1 OR
+    atlas_api.grid_cell(0,-5e-324::float8,180,30)<>0 OR
+    atlas_api.grid_cell(5e-324::float8,0,180,30)<>0 OR
+    atlas_api.grid_cell(0,-5e-324::float8,5e-324::float8,1)<>0 OR
+    atlas_api.grid_cell(6,0,180,30)<>1 OR atlas_api.grid_cell(180,0,180,30)<>29
  THEN RAISE EXCEPTION 'Tiny viewport arithmetic guard failed'; END IF;
 END $test$;
 INSERT INTO atlas.releases(dataset,release,metadata,expected_count,expected_located_count,expected_identity_sha256,expected_content_sha256)

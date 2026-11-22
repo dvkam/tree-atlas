@@ -352,6 +352,20 @@ describe("full inventory published catalogue", () => {
       }),
     ).toBe(true);
     expect(ids.toSorted()).toEqual(["edge", "origin"]);
+    const wide: InventoryQuery = {
+      ...query,
+      viewport: [-Number.MIN_VALUE, -Number.MIN_VALUE, 180, 90],
+      zoom: 24,
+    };
+    const firstCell = catalogue.query(wide).markers;
+    expect(firstCell).toHaveLength(1);
+    const group = firstCell[0];
+    if (group?.kind !== "cluster" || typeof group.id !== "number")
+      throw new Error("Expected both near-zero coordinates in the first cell");
+    expect(catalogue.clusterMembers(wide, group.id).items.map((item) => item.sourceId)).toEqual([
+      "origin",
+      "edge",
+    ]);
     catalogue.dispose();
   });
   it("keeps polar and inconsistent camera extents bounded without losing visible members", async () => {

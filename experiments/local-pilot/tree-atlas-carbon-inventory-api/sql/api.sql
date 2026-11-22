@@ -56,7 +56,10 @@ $$;
 -- Use the smallest Mercator scale in the viewport so every cell has room for a touch target.
 CREATE OR REPLACE FUNCTION atlas_api.latitude_scale(box jsonb) RETURNS float8
 LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
-  SELECT cos(radians(least(85.0511287798066,greatest(0.,(box->>1)::float8,-(box->>3)::float8))))
+  -- At this distance from the equator cosine already rounds to 1 in float8.
+  -- Converting a subnormal positive latitude to radians can instead raise 22003.
+  SELECT CASE WHEN latitude<1e-7 THEN 1::float8 ELSE cos(radians(latitude)) END
+  FROM (SELECT least(85.0511287798066,greatest(0.,(box->>1)::float8,-(box->>3)::float8)) AS latitude) nearest
 $$;
 CREATE OR REPLACE FUNCTION atlas_api.grid_divisions(span float8,pixel_degrees float8) RETURNS integer
 LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
@@ -65,6 +68,9 @@ $$;
 CREATE OR REPLACE FUNCTION atlas_api.grid_cell(point float8,lo float8,hi float8,divisions integer) RETURNS integer
 LANGUAGE sql IMMUTABLE PARALLEL SAFE SECURITY INVOKER AS $$
   SELECT CASE WHEN divisions=1 OR point<=lo THEN 0 WHEN point>=hi THEN divisions-1
+    -- A subnormal displacement divided by a broad viewport may underflow.
+    -- Coordinates span at most 360 degrees and there are at most 30 cells.
+    WHEN (point-lo)*divisions < hi-lo THEN 0
     ELSE least(divisions-1,floor(((point-lo)/(hi-lo))*divisions)::integer) END
 $$;
 -- Keep the 44px cluster badge inside its own cell. Individual tree coordinates stay exact.

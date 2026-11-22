@@ -178,6 +178,13 @@ function badgePosition(
   return Math.max(lo + cell * width + margin, Math.min(lo + (cell + 1) * width - margin, mean));
 }
 
+function axisCell(point: number, lo: number, hi: number, divisions: number): number {
+  const delta = point - lo;
+  const span = hi - lo;
+  if (divisions === 1 || delta * divisions < span) return 0;
+  return Math.min(divisions - 1, Math.floor((delta / span) * divisions));
+}
+
 function gridCell(
   viewport: InventoryQuery["viewport"],
   layout: GridLayout,
@@ -186,12 +193,8 @@ function gridCell(
 ): number {
   const [west, south, east, north] = viewport;
   if (lon < west || lon > east || lat < south || lat > north) return -1;
-  // Divide first so valid subnormal viewport spans cannot overflow the scale.
-  const x = Math.min(
-    layout.columns - 1,
-    Math.floor(((lon - west) / (east - west)) * layout.columns),
-  );
-  const y = Math.min(layout.rows - 1, Math.floor(((lat - south) / (north - south)) * layout.rows));
+  const x = axisCell(lon, west, east, layout.columns);
+  const y = axisCell(lat, south, north, layout.rows);
   return y * layout.columns + x;
 }
 

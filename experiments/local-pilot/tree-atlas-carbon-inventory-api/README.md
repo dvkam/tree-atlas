@@ -179,8 +179,13 @@ Example query body:
 
 `q` is field-by-field literal inventory text search, not address geocoding.
 The query limit is 500 UTF-16 units; pagination limit is 1–100. Viewport does not
-filter the main list. Clusters use at most 900 exact-viewport grid cells and
-never depend on the list page. This implementation represents all exact
+filter the main list. The API and offline pack size their grid from the viewport
+and zoom. They allow about 60 CSS pixels per cell and cap each axis at 30 cells.
+Each 44-pixel group badge stays inside its cell. A single tree keeps its exact
+source coordinates. The map keeps zoom, attribution and search controls outside
+the marker area. Tapping a group opens its paged records and moves keyboard
+focus to the heading. Closing the records returns focus to the group.
+Clusters never depend on the list page. This implementation represents all exact
 viewport points, so representedLocatedCount equals viewportLocatedTotal. Cluster
 grouping/pixels differ from Supercluster without changing frozen membership.
 At maximum zoom the member endpoint still exposes every coincident identity.
